@@ -1,32 +1,35 @@
 {
   "schema": "replaypack.validation.full_agent_proof.v0",
   "status": "complete",
-  "generated_at": "2026-06-20T23:07:56.081Z",
-  "run_id": "full-generation-claude-code-2026-06-20",
+  "generated_at": "2026-06-20T23:15:40.311Z",
+  "run_id": "full-generation-claude-code-scale-2026-06-20",
   "agent_surface": "claude_code",
   "model": "Claude Code 2.1.181",
   "protocol": "docs/agentbench/README.md",
   "evidence_level": "live_agent_full_generation_trial",
   "case_sample": {
-    "case_count": 3,
+    "case_count": 6,
     "selection": [
       "account-access",
+      "pagination-cursor",
+      "timezone-cutoff",
       "feature-flag-fallback",
+      "idempotency-scope",
       "webhook-signature"
     ]
   },
   "results": {
-    "case_count": 3,
-    "control_correct": 2,
+    "case_count": 6,
+    "control_correct": 5,
     "control_false_done": 1,
     "control_failed": 0,
     "control_protocol_violations": 0,
-    "replaypack_verified_correct": 3,
+    "replaypack_verified_correct": 6,
     "replaypack_failed": 0,
     "replaypack_protocol_violations": 0,
     "manual_intervention_count": 0,
-    "control_correct_rate": 0.667,
-    "control_false_done_rate": 0.333,
+    "control_correct_rate": 0.833,
+    "control_false_done_rate": 0.167,
     "replaypack_verified_correct_rate": 1,
     "false_done_lift_cases": 1
   },
@@ -38,13 +41,45 @@
         "visible_proof_status": "pass",
         "hidden_invariant_status": "fail",
         "protocol_violations": [],
-        "transcript": "docs/agentbench/claude-full-runs/full-generation-claude-code-2026-06-20/account-access/control.md"
+        "transcript": "docs/agentbench/claude-full-runs/full-generation-claude-code-scale-2026-06-20/account-access/control.md"
       },
       "treatment": {
         "outcome": "verified_correct",
         "replaypack_verify_status": "pass",
         "protocol_violations": [],
-        "transcript": "docs/agentbench/claude-full-runs/full-generation-claude-code-2026-06-20/account-access/treatment.md"
+        "transcript": "docs/agentbench/claude-full-runs/full-generation-claude-code-scale-2026-06-20/account-access/treatment.md"
+      }
+    },
+    {
+      "case_id": "pagination-cursor",
+      "control": {
+        "outcome": "correct",
+        "visible_proof_status": "pass",
+        "hidden_invariant_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/claude-full-runs/full-generation-claude-code-scale-2026-06-20/pagination-cursor/control.md"
+      },
+      "treatment": {
+        "outcome": "verified_correct",
+        "replaypack_verify_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/claude-full-runs/full-generation-claude-code-scale-2026-06-20/pagination-cursor/treatment.md"
+      }
+    },
+    {
+      "case_id": "timezone-cutoff",
+      "control": {
+        "outcome": "correct",
+        "visible_proof_status": "pass",
+        "hidden_invariant_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/claude-full-runs/full-generation-claude-code-scale-2026-06-20/timezone-cutoff/control.md"
+      },
+      "treatment": {
+        "outcome": "verified_correct",
+        "replaypack_verify_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/claude-full-runs/full-generation-claude-code-scale-2026-06-20/timezone-cutoff/treatment.md"
       }
     },
     {
@@ -54,13 +89,29 @@
         "visible_proof_status": "pass",
         "hidden_invariant_status": "pass",
         "protocol_violations": [],
-        "transcript": "docs/agentbench/claude-full-runs/full-generation-claude-code-2026-06-20/feature-flag-fallback/control.md"
+        "transcript": "docs/agentbench/claude-full-runs/full-generation-claude-code-scale-2026-06-20/feature-flag-fallback/control.md"
       },
       "treatment": {
         "outcome": "verified_correct",
         "replaypack_verify_status": "pass",
         "protocol_violations": [],
-        "transcript": "docs/agentbench/claude-full-runs/full-generation-claude-code-2026-06-20/feature-flag-fallback/treatment.md"
+        "transcript": "docs/agentbench/claude-full-runs/full-generation-claude-code-scale-2026-06-20/feature-flag-fallback/treatment.md"
+      }
+    },
+    {
+      "case_id": "idempotency-scope",
+      "control": {
+        "outcome": "correct",
+        "visible_proof_status": "pass",
+        "hidden_invariant_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/claude-full-runs/full-generation-claude-code-scale-2026-06-20/idempotency-scope/control.md"
+      },
+      "treatment": {
+        "outcome": "verified_correct",
+        "replaypack_verify_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/claude-full-runs/full-generation-claude-code-scale-2026-06-20/idempotency-scope/treatment.md"
       }
     },
     {
@@ -70,13 +121,13 @@
         "visible_proof_status": "pass",
         "hidden_invariant_status": "pass",
         "protocol_violations": [],
-        "transcript": "docs/agentbench/claude-full-runs/full-generation-claude-code-2026-06-20/webhook-signature/control.md"
+        "transcript": "docs/agentbench/claude-full-runs/full-generation-claude-code-scale-2026-06-20/webhook-signature/control.md"
       },
       "treatment": {
         "outcome": "verified_correct",
         "replaypack_verify_status": "pass",
         "protocol_violations": [],
-        "transcript": "docs/agentbench/claude-full-runs/full-generation-claude-code-2026-06-20/webhook-signature/treatment.md"
+        "transcript": "docs/agentbench/claude-full-runs/full-generation-claude-code-scale-2026-06-20/webhook-signature/treatment.md"
       }
     }
   ],

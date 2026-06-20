@@ -18,7 +18,7 @@ ReplayPack catches that before merge.
 | Live AgentBench recovery trial | 3/3 | Codex subagents recovered from visible-green wrong fixes using ReplayPack with no manual intervention |
 | Claude Code recovery trial | 3/3 | Non-Codex agent surface reproduced visible-only false done and ReplayPack recovery |
 | Live AgentBench full generation trial | 3/3 | Codex treatments verified 3/3 correct vs 2/3 control correctness |
-| Claude Code full generation trial | 3/3 | Claude Code treatments verified 3/3 correct vs 2/3 control correctness |
+| Claude Code full generation trial | 6/6 | Claude Code treatments verified 6/6 correct vs 5/6 control correctness |
 | ProofBench | 30/30 pass | Synthetic wrong-fix benchmark across 30 bug families |
 | Visible-green wrong fixes rejected | 30/30 | ReplayPack catches plausible fixes that normal proof accepts |
 | Correct fixes accepted | 30/30 | ReplayPack is not rejecting the intended fixes in the benchmark |
@@ -86,10 +86,10 @@ Latest live full task generation trial:
 
 Latest Claude Code full task generation trial:
 
-- 3 cases
-- control agents truly correct: 2/3
-- control false-done outcomes: 1/3
-- ReplayPack treatment verified correct: 3/3
+- 6 cases
+- control agents truly correct: 5/6
+- control false-done outcomes: 1/6
+- ReplayPack treatment verified correct: 6/6
 - protocol violations: 0
 - manual intervention: 0
 - receipt: `docs/validation/claude-code-full-agent-proof.json`

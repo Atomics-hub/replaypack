@@ -9,8 +9,32 @@ const baseSources = {
   return { allowed: user.role === "admin", source: "user" };
 }
 `,
+  "pagination-cursor": `export function page(items, after, limit) {
+  return { rows: [], nextCursor: null };
+}
+`,
+  "timezone-cutoff": `export function billingDay(iso, timezone) {
+  return "1970-01-01";
+}
+`,
   "feature-flag-fallback": `export function enabled(tenantFlag, globalDefault) {
   return Boolean(globalDefault);
+}
+`,
+  "idempotency-scope": `export function shouldProcess(event, seen) {
+  return false;
+}
+`,
+  "retry-permanent-errors": `export function shouldRetry(error) {
+  return false;
+}
+`,
+  "upload-mime-sniff": `export function acceptUpload(file) {
+  return false;
+}
+`,
+  "permission-after-fetch": `export function visibleRecord(user, record) {
+  return null;
 }
 `,
   "webhook-signature": `export function verifyWebhook(request, secret) {

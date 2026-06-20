@@ -6,7 +6,7 @@ ReplayPack should not go public because we like the idea. It goes public when th
 
 Status: `cross_agent_full_generation_external_next`
 
-ReplayPack is a credible holy-fuck candidate with public GitHub and npm release live. Deterministic agent-loop proof, Codex and Claude Code recovery proof, and small Codex and Claude Code live full task generation proof now exist. External demand and broad large-sample full-generation lift are not proven yet.
+ReplayPack is a credible holy-fuck candidate with public GitHub and npm release live. Deterministic agent-loop proof, Codex and Claude Code recovery proof, small Codex full task generation proof, and a widened Claude Code full task generation proof now exist. External demand and broad large-sample full-generation lift are not proven yet.
 
 The product mechanism is now benchmark-proven locally:
 
@@ -18,7 +18,7 @@ The product mechanism is now benchmark-proven locally:
 - live Codex subagent recovery trial shows 3/3 visible-only controls false-done and 3/3 ReplayPack treatments recover
 - live Claude Code recovery trial shows 3/3 visible-only controls false-done and 3/3 ReplayPack treatments recover with zero protocol violations
 - live Codex full task generation trial shows controls truly correct on 2/3, false-done on 1/3, and ReplayPack treatments verified correct on 3/3
-- live Claude Code full task generation trial shows controls truly correct on 2/3, false-done on 1/3, and ReplayPack treatments verified correct on 3/3
+- live Claude Code full task generation trial shows controls truly correct on 5/6, false-done on 1/6, and ReplayPack treatments verified correct on 6/6
 - 30-case synthetic ProofBench passes the launch bar
 - package surface is clean
 - private GitHub CI passes
@@ -114,14 +114,14 @@ This is live full task generation proof on a small Codex-only sample.
 Latest Claude Code full task generation trial:
 
 - agent surface: Claude Code 2.1.181
-- 3 cases: account access, feature flag fallback, webhook signature
-- control agents truly correct: 2/3
-- control agents false-done: 1/3
-- ReplayPack treatments verified correct: 3/3
+- 6 cases: account access, pagination cursor, timezone cutoff, feature flag fallback, idempotency scope, webhook signature
+- control agents truly correct: 5/6
+- control agents false-done: 1/6
+- ReplayPack treatments verified correct: 6/6
 - protocol violations: 0
 - manual intervention: 0
 
-This proves small-sample full-generation lift is not Codex-only. It does not yet prove broad large-sample lift or external demand.
+This proves widened small-sample full-generation lift is not Codex-only. It does not yet prove broad large-sample lift or external demand.
 
 ## Gate Scores
 
@@ -135,7 +135,7 @@ This proves small-sample full-generation lift is not Codex-only. It does not yet
 | Live-agent recovery proof | 78 | 75 | pass | Codex subagents: 3/3 controls false-done; 3/3 treatments recovered |
 | Full-generation agent proof | 78 | 75 | pass | Codex subagents: controls 2/3 correct and 1/3 false-done; ReplayPack treatments 3/3 verified |
 | Cross-agent recovery proof | 78 | 75 | pass | Claude Code: 3/3 controls false-done; 3/3 treatments recovered; 0 protocol violations |
-| Cross-agent full-generation proof | 78 | 75 | pass | Claude Code: controls 2/3 correct and 1/3 false-done; ReplayPack treatments 3/3 verified; 0 protocol violations |
+| Cross-agent full-generation proof | 82 | 75 | pass | Claude Code: controls 5/6 correct and 1/6 false-done; ReplayPack treatments 6/6 verified; 0 protocol violations |
 | Real repo dogfood | 82 | 80 | pass | self-dogfood caught the real CI pack-destination failure mode |
 | Public repo private trials | 88 | 80 | pass | 7/7 selected public repos verified with local capsules |
 | External user proof | 0 | 75 | fail | no external dev trial yet |
@@ -192,6 +192,6 @@ Until then, the honest answer is:
 
 ```text
 ReplayPack is the prime candidate.
-It is package-launched, agent-loop replay proven, Codex/Claude recovery proven, and small-sample Codex/Claude full-generation proven, but not yet market-proven or large-sample proven.
+It is package-launched, agent-loop replay proven, Codex/Claude recovery proven, small-sample Codex full-generation proven, and widened Claude full-generation proven, but not yet market-proven or broad large-sample proven.
 Next gate is external user proof and larger-sample full-generation proof.
 ```
