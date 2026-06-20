@@ -19,8 +19,9 @@ const baseSources = {
 `
 };
 const defaultCases = Object.keys(baseSources);
-const cases = parseCases(process.argv.slice(2)) ?? defaultCases;
-const runId = `full-generation-${new Date().toISOString().slice(0, 10)}`;
+const options = parseArgs(process.argv.slice(2));
+const cases = options.cases ?? defaultCases;
+const runId = options.runId ?? `full-generation-${new Date().toISOString().slice(0, 10)}`;
 const proofbenchRoot = path.join(root, ".tmp", "proofbench");
 const fullRoot = path.join(root, ".tmp", "full-agentbench", runId);
 const currentRunPath = path.join(root, ".tmp", "full-agentbench", "current-run.json");
@@ -84,6 +85,8 @@ const run = {
   schema: "replaypack.full_agentbench.run.v0",
   run_id: runId,
   generated_at: new Date().toISOString(),
+  agent_surface: options.agentSurface ?? "codex_subagents",
+  model: options.model ?? "inherited Codex subagents",
   evidence_level: "live_agent_full_generation_trial",
   limitation:
     "Starts from deliberately broken minimal implementations generated from ProofBench cases; it measures issue-to-proof behavior and ReplayPack finish behavior on a small sample.",
@@ -159,9 +162,23 @@ Write transcript.md with:
 `;
 }
 
-function parseCases(args) {
-  const index = args.findIndex((arg) => arg === "--cases" || arg.startsWith("--cases="));
+function parseArgs(args) {
+  return {
+    cases: parseListOption(args, "cases"),
+    runId: parseStringOption(args, "run-id"),
+    agentSurface: parseStringOption(args, "agent-surface"),
+    model: parseStringOption(args, "model")
+  };
+}
+
+function parseListOption(args, name) {
+  const value = parseStringOption(args, name);
+  return value ? value.split(",").map((item) => item.trim()).filter(Boolean) : null;
+}
+
+function parseStringOption(args, name) {
+  const flag = `--${name}`;
+  const index = args.findIndex((arg) => arg === flag || arg.startsWith(`${flag}=`));
   if (index === -1) return null;
-  const value = args[index].includes("=") ? args[index].split("=", 2)[1] : args[index + 1];
-  return value.split(",").map((item) => item.trim()).filter(Boolean);
+  return args[index].includes("=") ? args[index].split("=", 2)[1] : args[index + 1];
 }

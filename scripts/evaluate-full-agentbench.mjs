@@ -4,8 +4,9 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
+const options = parseArgs(process.argv.slice(2));
 const currentRunPath = path.join(root, ".tmp", "full-agentbench", "current-run.json");
-const validationPath = path.join(root, "docs", "validation", "full-agent-proof.json");
+const validationPath = path.join(root, options.validation ?? "docs/validation/full-agent-proof.json");
 
 if (!fs.existsSync(currentRunPath)) {
   console.error("Missing .tmp/full-agentbench/current-run.json. Run npm run full-agentbench:prepare first.");
@@ -13,7 +14,7 @@ if (!fs.existsSync(currentRunPath)) {
 }
 
 const run = JSON.parse(fs.readFileSync(currentRunPath, "utf8"));
-const evidenceRoot = path.join(root, "docs", "agentbench", "full-runs", run.run_id);
+const evidenceRoot = path.join(root, options.evidenceRoot ?? "docs/agentbench/full-runs", run.run_id);
 fs.rmSync(evidenceRoot, { recursive: true, force: true });
 fs.mkdirSync(evidenceRoot, { recursive: true });
 
@@ -111,8 +112,8 @@ const validation = {
   status: fullGenerationPasses(summary) ? "complete" : "partial",
   generated_at: new Date().toISOString(),
   run_id: run.run_id,
-  agent_surface: "codex_subagents",
-  model: "inherited Codex subagents",
+  agent_surface: run.agent_surface ?? "codex_subagents",
+  model: run.model ?? "inherited Codex subagents",
   protocol: "docs/agentbench/README.md",
   evidence_level: "live_agent_full_generation_trial",
   case_sample: {
@@ -262,4 +263,18 @@ function tail(text, maxChars) {
 function ratio(numerator, denominator) {
   if (!denominator) return 0;
   return Number((numerator / denominator).toFixed(3));
+}
+
+function parseArgs(args) {
+  return {
+    validation: parseStringOption(args, "validation"),
+    evidenceRoot: parseStringOption(args, "evidence-root")
+  };
+}
+
+function parseStringOption(args, name) {
+  const flag = `--${name}`;
+  const index = args.findIndex((arg) => arg === flag || arg.startsWith(`${flag}=`));
+  if (index === -1) return null;
+  return args[index].includes("=") ? args[index].split("=", 2)[1] : args[index + 1];
 }

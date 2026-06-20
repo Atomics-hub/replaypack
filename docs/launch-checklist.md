@@ -31,6 +31,7 @@ Review:
 - `docs/validation/live-agent-proof.json` shows at least one live recovery trial.
 - `docs/validation/claude-code-agent-proof.json` shows at least one non-Codex live recovery trial.
 - `docs/validation/full-agent-proof.json` shows at least one live full task generation trial.
+- `docs/validation/claude-code-full-agent-proof.json` shows at least one non-Codex live full task generation trial.
 - `docs/public-repo-trials/results.json` shows private public-repo trials passing.
 - No research transcripts, private issue exports, credentials, or bulky fixtures are present.
 - `docs/holy-fuck-scorecard.md` names the current gate honestly.
