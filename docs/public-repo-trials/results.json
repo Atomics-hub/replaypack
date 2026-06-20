@@ -1,0 +1,97 @@
+{
+  "schema": "replaypack.public_repo_private_trials.v0",
+  "generated_at": "2026-06-20T06:18:19.678Z",
+  "methodology": {
+    "mode": "private read-only public repository trials",
+    "writes": "local temp clone only",
+    "install_scripts": "not run",
+    "environment": "proof and invariant commands run with a scrubbed environment",
+    "limitation": "These trials prove portability on public code; they do not replace external developer comprehension proof."
+  },
+  "summary": {
+    "attempted": 3,
+    "passed": 3,
+    "failed": 0,
+    "pass_rate": 1
+  },
+  "trials": [
+    {
+      "id": "escape-string-regexp",
+      "repository": "sindresorhus/escape-string-regexp",
+      "url": "https://github.com/sindresorhus/escape-string-regexp.git",
+      "commit": "cbc42403142c96923b482604e1f3d627b1956aff",
+      "package": {
+        "name": "escape-string-regexp",
+        "version": "5.0.0",
+        "license": "MIT",
+        "type": "module"
+      },
+      "primary_file": "index.js",
+      "proof_command": "node .replaypack-trial/proof.mjs",
+      "invariant_command": "node .replaypack-trial/invariant.mjs",
+      "replaypack_status": "pass",
+      "packet_status": "pass",
+      "proof_status": "ok",
+      "invariant_status": "ok",
+      "capsule_sha256": "3128939d105db49a9da773e23fe48913c735f2681bcf1124bc035ea070e72376",
+      "duration_ms": 706,
+      "clone_stdout_tail": "",
+      "verify_stderr_tail": "",
+      "notes": [
+        "No dependency install required; imports package entrypoint directly."
+      ]
+    },
+    {
+      "id": "is-plain-obj",
+      "repository": "sindresorhus/is-plain-obj",
+      "url": "https://github.com/sindresorhus/is-plain-obj.git",
+      "commit": "97f38e8836f86a642cce98fc6ab3058bc36df181",
+      "package": {
+        "name": "is-plain-obj",
+        "version": "4.1.0",
+        "license": "MIT",
+        "type": "module"
+      },
+      "primary_file": "index.js",
+      "proof_command": "node .replaypack-trial/proof.mjs",
+      "invariant_command": "node .replaypack-trial/invariant.mjs",
+      "replaypack_status": "pass",
+      "packet_status": "pass",
+      "proof_status": "ok",
+      "invariant_status": "ok",
+      "capsule_sha256": "5e61e6c8eb8d026cf00181ef550184e634d47cae3bde0a4fcda87f366f812635",
+      "duration_ms": 757,
+      "clone_stdout_tail": "",
+      "verify_stderr_tail": "",
+      "notes": [
+        "No dependency install required; imports package entrypoint directly."
+      ]
+    },
+    {
+      "id": "yoctocolors",
+      "repository": "sindresorhus/yoctocolors",
+      "url": "https://github.com/sindresorhus/yoctocolors.git",
+      "commit": "ab9da8d65ff69b6dc107cfc048e3769d3a450de4",
+      "package": {
+        "name": "yoctocolors",
+        "version": "2.1.2",
+        "license": "MIT",
+        "type": "module"
+      },
+      "primary_file": "index.js",
+      "proof_command": "node .replaypack-trial/proof.mjs",
+      "invariant_command": "node .replaypack-trial/invariant.mjs",
+      "replaypack_status": "pass",
+      "packet_status": "pass",
+      "proof_status": "ok",
+      "invariant_status": "ok",
+      "capsule_sha256": "19f465427c36169b21bd683743f998697f84e8ab4106407595f615ade74a1282",
+      "duration_ms": 720,
+      "clone_stdout_tail": "",
+      "verify_stderr_tail": "",
+      "notes": [
+        "No dependency install required; invariant forces color capability before dynamic import."
+      ]
+    }
+  ]
+}

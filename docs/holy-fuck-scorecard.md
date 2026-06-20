@@ -18,6 +18,7 @@ The product mechanism is now benchmark-proven locally:
 - private GitHub CI passes
 - real self-dogfood passes on a launch-blocking CI issue
 - fresh private clone can run the wrong/fixed demo and dogfood capsule
+- private public-repo trials pass on 3/3 selected OSS repositories
 
 The missing proof is external comprehension proof:
 
@@ -49,9 +50,10 @@ This is strong mechanism proof. It is still synthetic; it does not replace real 
 | CI/action path | 90 | 85 | pass | private GitHub Actions passed on clean remote |
 | Benchmark proof | 90 | 85 | pass | 10/10 visible-green wrong fixes rejected; 10/10 correct fixes accepted |
 | Real repo dogfood | 82 | 80 | pass | self-dogfood caught the real CI pack-destination failure mode |
+| Public repo private trials | 84 | 80 | pass | 3/3 selected public repos verified with local capsules |
 | External user proof | 0 | 75 | fail | no external dev trial yet |
-| Discovery/readme | 72 | 80 | pending | fresh clone trial works; external comprehension untested |
-| Launch readiness | 82 | 85 | no-go | only external user proof missing |
+| Discovery/readme | 74 | 80 | pending | fresh clone and public-repo trials work; external comprehension untested |
+| Launch readiness | 84 | 85 | no-go | only external user proof missing |
 
 ## Go/No-Go Rules
 
@@ -77,6 +79,7 @@ Public launch is allowed when:
 - ReplayPack accepts at least 90% of correct fixes
 - false positive rate is below 10%
 - at least one real repo dogfood passes
+- private public-repo trials pass on selected OSS repos without public writes
 - at least one external developer understands the value without a live explanation
 
 ## The Answer We Want To Earn

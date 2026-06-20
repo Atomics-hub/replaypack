@@ -1,0 +1,45 @@
+{
+  "schema": "replaypack.validation.public_repo_private_trials.v0",
+  "checked_at": "2026-06-20T06:18:19Z",
+  "results": "docs/public-repo-trials/results.json",
+  "mode": "private read-only public repository trials",
+  "summary": {
+    "attempted": 3,
+    "passed": 3,
+    "failed": 0,
+    "pass_rate": 1.0
+  },
+  "repositories": [
+    {
+      "repository": "sindresorhus/escape-string-regexp",
+      "commit": "cbc42403142c96923b482604e1f3d627b1956aff",
+      "status": "pass"
+    },
+    {
+      "repository": "sindresorhus/is-plain-obj",
+      "commit": "97f38e8836f86a642cce98fc6ab3058bc36df181",
+      "status": "pass"
+    },
+    {
+      "repository": "sindresorhus/yoctocolors",
+      "commit": "ab9da8d65ff69b6dc107cfc048e3769d3a450de4",
+      "status": "pass"
+    }
+  ],
+  "safety": [
+    "No public writes were made.",
+    "No forks, issues, pull requests, or maintainer contacts were created.",
+    "Repository install scripts were not run.",
+    "Proof and invariant commands ran with a scrubbed environment."
+  ],
+  "what_this_proves": [
+    "ReplayPack can privately verify local capsules against public repository checkouts.",
+    "The capsule model works on real public code outside the ReplayPack examples.",
+    "The first pilot batch ran quickly without project-specific dependency installation."
+  ],
+  "limitations": [
+    "These were selected small JavaScript libraries.",
+    "The capsules were created locally rather than by public maintainers.",
+    "This does not replace external developer comprehension proof."
+  ]
+}
