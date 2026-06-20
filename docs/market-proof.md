@@ -81,5 +81,6 @@ External research also supports the pain:
 
 Last local check: 2026-06-20.
 
-- `npm view replaypack name version description repository --json` returned `E404`, so the npm package name appeared unclaimed.
-- `git ls-remote https://github.com/Atomics-hub/replaypack.git` returned repository not found, so the target public repo was not already live.
+- `gh repo view Atomics-hub/replaypack --json nameWithOwner,visibility,defaultBranchRef,url` returned public repository `Atomics-hub/replaypack` on default branch `main`.
+- `npm view replaypack version dist-tags --json` returned `0.2.0` as `latest`.
+- Local package version is `0.2.1`; publish is pending npm OTP.

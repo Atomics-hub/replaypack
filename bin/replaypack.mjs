@@ -19,8 +19,9 @@ if (command === "--version" || command === "-v") {
 }
 
 const scriptByCommand = {
-  capture: "replaypack-capture.mjs",
-  verify: "replaypack-verify.mjs"
+  capture: path.join(here, "replaypack-capture.mjs"),
+  verify: path.join(here, "replaypack-verify.mjs"),
+  trial: path.join(packageRoot, "scripts", "run-external-trial.mjs")
 };
 
 const script = scriptByCommand[command];
@@ -31,7 +32,7 @@ if (!script) {
 }
 
 const args = command === "verify" ? normalizeVerifyArgs(rawArgs) : rawArgs;
-const child = spawn(process.execPath, [path.join(here, script), ...args], {
+const child = spawn(process.execPath, [script, ...args], {
   cwd: process.cwd(),
   stdio: "inherit",
   env: process.env
@@ -90,10 +91,12 @@ Usage:
   replaypack capture --proof-command "npm test -- ..." --out replaypack/issue.json
   replaypack verify replaypack/issue.json
   replaypack verify --root examples/account-access/fixed replaypack/account-access.json
+  replaypack trial
 
 Commands:
   capture   Run a failing proof command and write a portable capsule.
   verify    Run the capsule proof command and invariant commands.
+  trial     Run the 10-minute external developer trial and write a receipt.
 
 Useful capture flags:
   --id <id>

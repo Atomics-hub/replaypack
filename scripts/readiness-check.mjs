@@ -318,9 +318,9 @@ function validateExternalUserProof(data) {
   expect(Array.isArray(data.commands_run) && data.commands_run.length >= 3, errors, "commands_run must include trial commands");
   expect(data.commands_run?.every((item) => Boolean(item.command) && Boolean(item.status)), errors, "every command needs status");
   expect(
-    data.commands_run?.some((item) => item.command.includes("trial:external") && item.status === "pass"),
+    data.commands_run?.some((item) => isTrialCommand(item.command) && item.status === "pass"),
     errors,
-    "npm run trial:external must be recorded as pass"
+    "trial command must be recorded as pass"
   );
   expect(Boolean(data.comprehension?.one_minute_explanation), errors, "one-minute explanation is required");
   expect(data.comprehension?.understood_not_just_tests === true, errors, "developer must understand why this is not just tests");
@@ -332,4 +332,8 @@ function expect(condition, errors, message) {
   if (!condition) {
     errors.push(message);
   }
+}
+
+function isTrialCommand(command) {
+  return command.includes("trial:external") || /replaypack(\.mjs)?\s+trial/.test(command);
 }

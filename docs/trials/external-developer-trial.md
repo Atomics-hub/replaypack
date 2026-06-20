@@ -10,7 +10,7 @@ Target time: 10 minutes.
 git clone https://github.com/Atomics-hub/replaypack.git
 cd replaypack
 node --version
-npm run trial:external
+node bin/replaypack.mjs trial
 ```
 
 Expected summary:

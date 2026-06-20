@@ -31,7 +31,7 @@ body:
       label: Commands run
       description: Paste the commands you ran and whether each passed or failed.
       placeholder: |
-        npm run trial:external -> pass
+        node bin/replaypack.mjs trial -> pass
         receipt: dist/external-trial/receipt.json
         wrong demo: proof=ok invariant=nonzero replaypack=fail
         fixed demo: proof=ok invariant=ok replaypack=pass

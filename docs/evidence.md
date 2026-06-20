@@ -27,6 +27,7 @@ ReplayPack catches that before merge.
 | Real self-dogfood | pass | ReplayPack captured a real CI packaging failure in this repo |
 | GitHub CI | pass | Hosted CI verifies smoke, package contents, and the local Action path |
 | Fresh clone trial | pass | Clone-based setup, wrong/fixed demo, and dogfood capsule all run from a clean checkout |
+| Packed-package trial | pass | Installed tarball exposes `replaypack trial` and runs the full wrong/fixed/dogfood proof loop |
 
 ## ProofBench
 
@@ -117,6 +118,21 @@ Repos:
 - `sindresorhus/quick-lru`
 - `sindresorhus/decamelize`
 - `sindresorhus/camelcase`
+
+## Install Surface
+
+`npm run package-trial` packs ReplayPack, installs the tarball into a fresh temp project, checks the installed `replaypack --version`, and runs `replaypack trial`.
+
+Latest local result:
+
+- packed version: `0.2.1`
+- installed CLI version: `0.2.1`
+- installed `replaypack trial`: pass
+- wrong demo: proof ok, invariant nonzero, ReplayPack fail
+- fixed demo: proof ok, invariant ok, ReplayPack pass
+- dogfood: proof ok, invariant ok, ReplayPack pass
+
+Limitation: this verifies the installable package surface before publish. The live npm `latest` tag is still `0.2.0` until the `0.2.1` publish is completed.
 
 ## Still Not Proven
 

@@ -15,7 +15,7 @@ Short version:
 ```bash
 git clone https://github.com/Atomics-hub/replaypack.git
 cd replaypack
-npm run trial:external
+node bin/replaypack.mjs trial
 ```
 
 It should take about 10 minutes and writes `dist/external-trial/receipt.json`.

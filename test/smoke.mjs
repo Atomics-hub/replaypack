@@ -16,6 +16,7 @@ const help = spawnSync(process.execPath, [cli, "--help"], {
 assert.strictEqual(help.status, 0, help.stderr);
 assert.match(help.stdout, /replaypack capture/);
 assert.match(help.stdout, /replaypack verify/);
+assert.match(help.stdout, /replaypack trial/);
 
 const version = spawnSync(process.execPath, [cli, "--version"], {
   cwd: root,
@@ -121,7 +122,7 @@ ReplayPack is a merge gate for agent-made code. It checks the visible proof and 
 
 ### Commands run
 
-npm run trial:external -> pass
+node bin/replaypack.mjs trial -> pass
 receipt: dist/external-trial/receipt.json
 wrong demo: proof=ok invariant=nonzero replaypack=fail
 fixed demo: proof=ok invariant=ok replaypack=pass
@@ -169,7 +170,7 @@ assert.strictEqual(externalProof.schema, "replaypack.validation.external_user_pr
 assert.strictEqual(externalProof.verdict, "pass");
 assert.strictEqual(externalProof.trial_receipt.referenced, true);
 assert.strictEqual(externalProof.review.errors.length, 0);
-assert.ok(externalProof.commands_run.some((item) => item.command.includes("trial:external") && item.status === "pass"));
+assert.ok(externalProof.commands_run.some((item) => item.command.includes("replaypack.mjs trial") && item.status === "pass"));
 
 const tmpRoot = fs.mkdtempSync(path.join(os.tmpdir(), "replaypack-capture-"));
 writeFixture(tmpRoot);

@@ -4,9 +4,9 @@ ReplayPack should not go public because we like the idea. It goes public when th
 
 ## Current Call
 
-Status: `cross_agent_full_generation_external_next`
+Status: `package_trial_external_next`
 
-ReplayPack is a credible holy-fuck candidate with public GitHub and npm release live. Deterministic agent-loop proof, Codex and Claude Code recovery proof, small Codex full task generation proof, and a widened Claude Code full task generation proof now exist. External demand and broad large-sample full-generation lift are not proven yet.
+ReplayPack is a credible holy-fuck candidate with public GitHub and npm `0.2.0` live, plus a prepared `0.2.1` patch release waiting on npm OTP publish. Deterministic agent-loop proof, Codex and Claude Code recovery proof, small Codex full task generation proof, widened Claude Code full task generation proof, and packed-package trial proof now exist. External demand and broad large-sample full-generation lift are not proven yet.
 
 The product mechanism is now benchmark-proven locally:
 
@@ -28,6 +28,7 @@ The product mechanism is now benchmark-proven locally:
 - public GitHub beta is live with a tester issue
 - npm package `replaypack@0.2.0` is published and install-verified
 - patch release `v0.2.1` is prepared with the external trial/recorder path but still needs npm OTP publish
+- packed `v0.2.1` tarball installs into a fresh temp project and runs `replaypack trial`
 
 The missing proof is scale and market proof:
 
@@ -128,8 +129,8 @@ This proves widened small-sample full-generation lift is not Codex-only. It does
 | Gate | Score | Pass Bar | Status | Evidence |
 | --- | ---: | ---: | --- | --- |
 | Product mechanism | 94 | 85 | pass | one-command account-access demo plus ProofBench |
-| Package cleanliness | 92 | 85 | pass | npm package allowlist is explicit, installs cleanly, CLI runs |
-| CI/action path | 90 | 85 | pass | GitHub Actions passed on public remote |
+| Package cleanliness | 94 | 85 | pass | npm package allowlist is explicit; packed tarball installs and runs `replaypack trial` |
+| CI/action path | 91 | 85 | pass | GitHub Actions passed on public remote; CI now gates repo trial plus packed-package trial |
 | Benchmark proof | 94 | 85 | pass | 30/30 visible-green wrong fixes rejected; 30/30 correct fixes accepted |
 | Agent-loop proof | 88 | 85 | pass | deterministic AgentBench replay: 30/30 false-done prevented and recovered |
 | Live-agent recovery proof | 78 | 75 | pass | Codex subagents: 3/3 controls false-done; 3/3 treatments recovered |
@@ -140,7 +141,7 @@ This proves widened small-sample full-generation lift is not Codex-only. It does
 | Public repo private trials | 88 | 80 | pass | 7/7 selected public repos verified with local capsules |
 | External user proof | 0 | 75 | fail | no external dev trial yet |
 | Discovery/readme | 84 | 80 | pass | npm-ready README, one-command demo, public beta issue, and evidence page live |
-| Launch readiness | 90 | 85 | package-live | GitHub and npm are live; market proof still waits on external users |
+| Launch readiness | 90 | 85 | package-live | GitHub and npm `0.2.0` are live; `0.2.1` waits on npm OTP and market proof still waits on external users |
 
 ## Go/No-Go Rules
 

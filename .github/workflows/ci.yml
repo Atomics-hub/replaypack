@@ -14,6 +14,7 @@ jobs:
           node-version: 24
       - run: npm test
       - run: npm run trial:external
+      - run: npm run package-trial
       - run: mkdir -p dist && npm pack --pack-destination dist
       - name: Local action verifies fixed example
         uses: ./

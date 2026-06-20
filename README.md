@@ -43,7 +43,7 @@ For the beta demo, clone the repo:
 ```bash
 git clone https://github.com/Atomics-hub/replaypack.git
 cd replaypack
-npm run trial:external
+node bin/replaypack.mjs trial
 ```
 
 Run the checkout CLI:

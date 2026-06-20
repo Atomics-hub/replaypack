@@ -195,7 +195,7 @@ function reviewExternalTrial({ verdict, commands, oneMinute, invariantUnderstand
   expect(Boolean(adoption), errors, "adoption response is required");
   expect(Boolean(objection), errors, "first objection is required");
   expect(!looksNegative(invariantUnderstanding), errors, "invariant-vs-visible-proof response appears negative");
-  expect(commands.some((item) => item.command.includes("trial:external") && item.status === "pass"), errors, "npm run trial:external must be recorded as pass");
+  expect(commands.some((item) => isTrialCommand(item.command) && item.status === "pass"), errors, "trial command must be recorded as pass");
   expect(/wrong demo:.*proof=ok.*invariant=(nonzero|fail|failed).*replaypack=fail/is.test(commandsText), errors, "wrong demo summary must show proof ok and ReplayPack fail");
   expect(/fixed demo:.*proof=ok.*invariant=ok.*replaypack=pass/is.test(commandsText), errors, "fixed demo summary must show proof ok and ReplayPack pass");
   expect(/dogfood:.*proof=ok.*invariant=ok.*replaypack=pass/is.test(commandsText), errors, "dogfood summary must show proof ok and ReplayPack pass");
@@ -208,6 +208,10 @@ function reviewExternalTrial({ verdict, commands, oneMinute, invariantUnderstand
 
 function looksNegative(text) {
   return /\b(no|nope|not really|did not|didn't|unclear|confusing|confused|do not|don't)\b/i.test(text);
+}
+
+function isTrialCommand(command) {
+  return command.includes("trial:external") || /replaypack(\.mjs)?\s+trial/.test(command);
 }
 
 function expect(condition, errors, message) {

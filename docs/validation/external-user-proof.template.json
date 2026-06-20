@@ -23,7 +23,7 @@
   },
   "commands_run": [
     {
-      "command": "npm run trial:external",
+      "command": "node bin/replaypack.mjs trial",
       "status": "pass"
     },
     {
