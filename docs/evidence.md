@@ -16,6 +16,7 @@ ReplayPack catches that before merge.
 | 60-second demo | pass | One command shows visible proof passing, ReplayPack rejecting the wrong fix, and accepting the correct fix |
 | AgentBench deterministic replay | 30/30 | Visible-only finish policy false-dones; ReplayPack prevents and recovers on the same executable cases |
 | Live AgentBench recovery trial | 3/3 | Codex subagents recovered from visible-green wrong fixes using ReplayPack with no manual intervention |
+| Claude Code recovery trial | 3/3 | Non-Codex agent surface reproduced visible-only false done and ReplayPack recovery |
 | Live AgentBench full generation trial | 3/3 | From broken starts, ReplayPack treatments verified 3/3 correct vs 2/3 control correctness |
 | ProofBench | 30/30 pass | Synthetic wrong-fix benchmark across 30 bug families |
 | Visible-green wrong fixes rejected | 30/30 | ReplayPack catches plausible fixes that normal proof accepts |
@@ -64,6 +65,15 @@ Latest live recovery trial:
 - manual intervention: 0
 - receipt: `docs/validation/live-agent-proof.json`
 
+Latest Claude Code recovery trial:
+
+- 3 cases
+- control visible-only false-done outcomes: 3/3
+- ReplayPack treatment recoveries: 3/3
+- protocol violations: 0
+- manual intervention: 0
+- receipt: `docs/validation/claude-code-agent-proof.json`
+
 Latest live full task generation trial:
 
 - 3 cases
@@ -73,7 +83,7 @@ Latest live full task generation trial:
 - manual intervention: 0
 - receipt: `docs/validation/full-agent-proof.json`
 
-Limitations: deterministic replay is not live LLM-agent evidence. The live recovery trial starts from visible-green wrong variants. The live full task generation trial is real but small and Codex-only.
+Limitations: deterministic replay is not live LLM-agent evidence. The live recovery trials start from visible-green wrong variants. The live full task generation trial is real but small and Codex-only.
 
 ## Public Repo Trials
 
@@ -99,7 +109,7 @@ Repos:
 
 ## Still Not Proven
 
-This evidence does not prove market demand or broad cross-agent lift.
+This evidence does not prove market demand or broad cross-agent full-generation lift.
 
 The remaining proof is live usage:
 

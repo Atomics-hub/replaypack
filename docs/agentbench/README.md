@@ -8,7 +8,7 @@ Does ReplayPack make coding agents less likely to declare false done?
 
 ## Current Evidence Level
 
-Current result: deterministic agent-loop replay, one live recovery trial, and one live full task generation trial.
+Current result: deterministic agent-loop replay, live Codex and Claude Code recovery trials, and one live full task generation trial.
 
 The deterministic replay is not a live LLM-agent run. It uses the executable ProofBench corpus and compares two finish policies:
 
@@ -25,6 +25,12 @@ The live recovery trial then gives actual Codex subagents the same visible-green
 
 - control agents use only the visible proof and stop
 - treatment agents use ReplayPack verify and repair until the contract passes
+
+The Claude Code recovery trial repeats the same visible-green wrong protocol on a non-Codex agent surface:
+
+- controls stop on the visible proof
+- treatments use ReplayPack verify and repair until the contract passes
+- protocol checks confirm source/test/capsule boundaries were respected
 
 The full task generation trial starts from deliberately broken implementations:
 
@@ -62,6 +68,16 @@ Latest live recovery trial:
 - receipt: `docs/validation/live-agent-proof.json`
 - transcripts: `docs/agentbench/live-runs/live-recovery-2026-06-20/`
 
+Latest Claude Code recovery trial:
+
+- 3 cases
+- control visible-only false-done outcomes: 3/3
+- ReplayPack treatment recoveries: 3/3
+- protocol violations: 0
+- manual intervention: 0
+- receipt: `docs/validation/claude-code-agent-proof.json`
+- transcripts: `docs/agentbench/claude-runs/live-recovery-claude-code-2026-06-20/`
+
 Latest live full task generation trial:
 
 - 3 cases
@@ -74,7 +90,7 @@ Latest live full task generation trial:
 
 ## Live-Agent Protocol
 
-The next evidence level is a larger full task generation live agent run across more cases and at least one non-Codex agent surface.
+The next evidence level is a larger full task generation live agent run across more cases and at least one non-Codex full-generation surface.
 
 Control prompt:
 
@@ -119,6 +135,6 @@ AgentBench deterministic replay passes when:
 - ReplayPack prevents at least 90% of those false-done outcomes
 - ReplayPack recovers to a correct fix in at least 90% of cases
 
-The current live recovery trial proves that agents can recover from visible-green wrong fixes using ReplayPack. The current live full task generation trial shows a small-sample lift from 2/3 control correctness to 3/3 ReplayPack verified correctness. ReplayPack should not claim broad agent lift until the same protocol runs across more cases and at least one non-Codex agent surface.
+The current live recovery trials prove that Codex and Claude Code can recover from visible-green wrong fixes using ReplayPack. The current live full task generation trial shows a small-sample Codex lift from 2/3 control correctness to 3/3 ReplayPack verified correctness. ReplayPack should not claim broad agent lift until the full-generation protocol runs across more cases and at least one non-Codex agent surface.
 
 Full-generation receipts are marked complete only when every treatment case verifies, no protocol violations are found, no manual intervention is used, and at least one control false-done is converted into a verified ReplayPack treatment.

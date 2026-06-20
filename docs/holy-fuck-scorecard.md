@@ -4,9 +4,9 @@ ReplayPack should not go public because we like the idea. It goes public when th
 
 ## Current Call
 
-Status: `full_generation_small_sample_external_next`
+Status: `cross_agent_recovery_external_next`
 
-ReplayPack is a credible holy-fuck candidate with public GitHub and npm release live. Deterministic agent-loop proof, live recovery proof, and a small live full task generation proof now exist. External demand and broad cross-agent lift are not proven yet.
+ReplayPack is a credible holy-fuck candidate with public GitHub and npm release live. Deterministic agent-loop proof, Codex and Claude Code recovery proof, and a small Codex live full task generation proof now exist. External demand and broad cross-agent full-generation lift are not proven yet.
 
 The product mechanism is now benchmark-proven locally:
 
@@ -16,6 +16,7 @@ The product mechanism is now benchmark-proven locally:
 - one-command demo shows the trap without manual log parsing
 - deterministic AgentBench shows visible-only false done at 30/30 and ReplayPack prevention/recovery at 30/30
 - live Codex subagent recovery trial shows 3/3 visible-only controls false-done and 3/3 ReplayPack treatments recover
+- live Claude Code recovery trial shows 3/3 visible-only controls false-done and 3/3 ReplayPack treatments recover with zero protocol violations
 - live full task generation trial shows controls truly correct on 2/3, false-done on 1/3, and ReplayPack treatments verified correct on 3/3
 - 30-case synthetic ProofBench passes the launch bar
 - package surface is clean
@@ -27,10 +28,10 @@ The product mechanism is now benchmark-proven locally:
 - npm package `replaypack@0.2.0` is published and install-verified
 - GitHub release `v0.2.0` points at the published commit
 
-The missing proof is scale, cross-agent, and market proof:
+The missing proof is scale, non-Codex full-generation, and market proof:
 
 - larger live full task generation run against the protocol
-- non-Codex agent surface run
+- non-Codex full task generation run
 - external developer reaction
 - confirmation that the demo makes the value obvious without a live explanation
 
@@ -77,6 +78,21 @@ Latest live recovery trial:
 
 This is live recovery proof. It is not yet a full task generation benchmark.
 
+## Current Cross-Agent Result
+
+`npm run live-agentbench:prepare` and `npm run live-agentbench:evaluate` can prepare and evaluate a live recovery trial on a non-Codex agent surface.
+
+Latest Claude Code recovery trial:
+
+- agent surface: Claude Code 2.1.181
+- 3 cases: account access, feature flag fallback, webhook signature
+- visible-only controls false-done: 3/3
+- ReplayPack treatments recovered: 3/3
+- protocol violations: 0
+- manual intervention: 0
+
+This proves the visible-green recovery effect is not Codex-only. It does not yet prove non-Codex full task generation lift.
+
 ## Current Full-Generation Result
 
 `npm run full-agentbench:prepare` and `npm run full-agentbench:evaluate` prepare, run, and evaluate a live full task generation trial.
@@ -102,7 +118,8 @@ This is live full task generation proof on a small Codex-only sample.
 | Agent-loop proof | 88 | 85 | pass | deterministic AgentBench replay: 30/30 false-done prevented and recovered |
 | Live-agent recovery proof | 78 | 75 | pass | Codex subagents: 3/3 controls false-done; 3/3 treatments recovered |
 | Full-generation agent proof | 78 | 75 | pass | Codex subagents: controls 2/3 correct and 1/3 false-done; ReplayPack treatments 3/3 verified |
-| Cross-agent proof | 0 | 75 | fail | no non-Codex AgentBench run yet |
+| Cross-agent recovery proof | 78 | 75 | pass | Claude Code: 3/3 controls false-done; 3/3 treatments recovered; 0 protocol violations |
+| Cross-agent full-generation proof | 0 | 75 | fail | no non-Codex full-generation AgentBench run yet |
 | Real repo dogfood | 82 | 80 | pass | self-dogfood caught the real CI pack-destination failure mode |
 | Public repo private trials | 88 | 80 | pass | 7/7 selected public repos verified with local capsules |
 | External user proof | 0 | 75 | fail | no external dev trial yet |
@@ -137,6 +154,7 @@ Broad market launch is allowed when:
 - at least one live coding-agent run proves recovery using only the packet
 - at least one live coding-agent run proves full task generation lift
 - at least one non-Codex agent surface reproduces the effect
+- at least one non-Codex agent surface reproduces full-generation lift
 - at least one real repo dogfood passes
 - private public-repo trials pass on selected OSS repos without public writes
 - at least one external developer understands the value without a live explanation
@@ -158,6 +176,6 @@ Until then, the honest answer is:
 
 ```text
 ReplayPack is the prime candidate.
-It is package-launched, agent-loop replay proven, live-recovery proven, and small-sample full-generation proven, but not yet cross-agent or market-proven.
-Next gate is external user proof and non-Codex/larger-sample proof.
+It is package-launched, agent-loop replay proven, Codex/Claude recovery proven, and small-sample Codex full-generation proven, but not yet non-Codex full-generation or market-proven.
+Next gate is external user proof and non-Codex/larger-sample full-generation proof.
 ```

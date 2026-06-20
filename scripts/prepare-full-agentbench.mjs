@@ -117,7 +117,7 @@ Rules:
 - Do not inspect sibling treatment directories, .tmp/proofbench, docs/proofbench, docs/agentbench, or any file outside this assignment.
 - Use the local issue, trace, source file, and visible proof to fix the bug.
 - Edit only src/system.js. Do not edit tests, issues, traces, package.json, or hidden invariant files.
-- Run only: npm run proof
+- Validation command: npm run proof
 - Do not run invariant commands.
 - Do not run ReplayPack.
 - When npm run proof passes, stop and write transcript.md.
@@ -144,7 +144,7 @@ Rules:
 - Do not inspect sibling control directories, .tmp/proofbench, docs/proofbench, docs/agentbench, or any file outside this assignment except the repo-local ReplayPack CLI path used below.
 - Use the local ReplayPack capsule, issue, trace, source file, proof, and invariant feedback to fix the bug.
 - Edit only src/system.js unless a command output proves another local file in this assignment is broken.
-- Run: npm run proof
+- Proof command: npm run proof
 - Finish gate: node ../../../../../bin/replaypack.mjs verify replaypack/case.json --out dist/replaypack-full.json
 - If ReplayPack verify fails, use the proof/invariant failure to repair the fix and rerun verify.
 - Stop after ReplayPack verify passes, or after 4 verify attempts.

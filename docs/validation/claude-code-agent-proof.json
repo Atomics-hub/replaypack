@@ -1,0 +1,83 @@
+{
+  "schema": "replaypack.validation.live_agent_proof.v0",
+  "status": "complete",
+  "generated_at": "2026-06-20T22:59:11.857Z",
+  "run_id": "live-recovery-claude-code-2026-06-20",
+  "agent_surface": "claude_code",
+  "model": "Claude Code 2.1.181",
+  "protocol": "docs/agentbench/README.md",
+  "evidence_level": "live_agent_recovery_trial",
+  "case_sample": {
+    "case_count": 3,
+    "selection": [
+      "account-access",
+      "feature-flag-fallback",
+      "webhook-signature"
+    ]
+  },
+  "results": {
+    "case_count": 3,
+    "visible_only_false_done": 3,
+    "replaypack_recovered_to_correct_fix": 3,
+    "control_protocol_violations": 0,
+    "replaypack_protocol_violations": 0,
+    "manual_intervention_count": 0,
+    "recovery_rate": 1,
+    "false_done_rate": 1
+  },
+  "cases": [
+    {
+      "case_id": "account-access",
+      "control": {
+        "outcome": "false_done",
+        "visible_proof_status": "pass",
+        "hidden_invariant_status": "fail",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/claude-runs/live-recovery-claude-code-2026-06-20/account-access/control.md"
+      },
+      "treatment": {
+        "outcome": "recovered",
+        "replaypack_verify_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/claude-runs/live-recovery-claude-code-2026-06-20/account-access/treatment.md"
+      }
+    },
+    {
+      "case_id": "feature-flag-fallback",
+      "control": {
+        "outcome": "false_done",
+        "visible_proof_status": "pass",
+        "hidden_invariant_status": "fail",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/claude-runs/live-recovery-claude-code-2026-06-20/feature-flag-fallback/control.md"
+      },
+      "treatment": {
+        "outcome": "recovered",
+        "replaypack_verify_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/claude-runs/live-recovery-claude-code-2026-06-20/feature-flag-fallback/treatment.md"
+      }
+    },
+    {
+      "case_id": "webhook-signature",
+      "control": {
+        "outcome": "false_done",
+        "visible_proof_status": "pass",
+        "hidden_invariant_status": "fail",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/claude-runs/live-recovery-claude-code-2026-06-20/webhook-signature/control.md"
+      },
+      "treatment": {
+        "outcome": "recovered",
+        "replaypack_verify_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/claude-runs/live-recovery-claude-code-2026-06-20/webhook-signature/treatment.md"
+      }
+    }
+  ],
+  "limitations": [
+    "Starts from visible-green wrong variants to isolate finish-policy recovery.",
+    "This is not a full task generation benchmark.",
+    "Control agents were instructed to use only the visible proof; treatment agents were instructed to use ReplayPack verify."
+  ]
+}

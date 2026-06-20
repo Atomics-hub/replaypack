@@ -26,6 +26,7 @@ const validationFiles = {
   npm_publish: "docs/validation/npm-publish-v0.2.0.json",
   full_agent_proof: "docs/validation/full-agent-proof.json",
   live_agent_proof: "docs/validation/live-agent-proof.json",
+  cross_agent_recovery_proof: "docs/validation/claude-code-agent-proof.json",
   external_user_proof: "docs/validation/external-user-proof.json"
 };
 const result = {
@@ -42,6 +43,7 @@ const result = {
     npm_publish: exists(validationFiles.npm_publish) ? "present_optional" : "missing_optional",
     full_agent_proof: exists(validationFiles.full_agent_proof) ? "present" : "missing",
     live_agent_proof: exists(validationFiles.live_agent_proof) ? "present" : "missing",
+    cross_agent_recovery_proof: exists(validationFiles.cross_agent_recovery_proof) ? "present" : "missing",
     external_user_proof: exists(validationFiles.external_user_proof) ? "present" : "missing"
   },
   next_required: []
@@ -82,6 +84,9 @@ if (!exists(validationFiles.full_agent_proof)) {
 }
 if (!exists(validationFiles.live_agent_proof)) {
   result.next_required.push("run one live coding-agent AgentBench trial");
+}
+if (!exists(validationFiles.cross_agent_recovery_proof)) {
+  result.next_required.push("run one non-Codex AgentBench recovery trial");
 }
 if (!exists(validationFiles.external_user_proof)) {
   result.next_required.push("run one external developer trial");
