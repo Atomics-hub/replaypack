@@ -138,3 +138,19 @@ The wedge:
 ```text
 ReplayPack keeps agents from fixing the symptom and breaking the contract.
 ```
+
+## Launch Evidence
+
+ReplayPack is being held to a proof loop before broad launch:
+
+- [Holy-Fuck Scorecard](docs/holy-fuck-scorecard.md)
+- [ProofBench](docs/proofbench/README.md)
+- [Market Proof Loop](docs/market-proof.md)
+
+Run the current readiness check:
+
+```bash
+npm run readiness
+```
+
+The readiness check is expected to fail until benchmark and external-user proof exist.

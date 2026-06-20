@@ -7,7 +7,10 @@ ReplayPack should ship as proof before platform.
 ```bash
 npm test
 npm pack --dry-run --json
+npm run readiness
 ```
+
+`npm run readiness` is expected to fail until ProofBench, private CI, real repo dogfood, and external-user proof exist. Treat it as the launch go/no-go check, not the basic repo health check.
 
 Review:
 
@@ -17,6 +20,7 @@ Review:
 - `examples/account-access/wrong` fails because the invariant catches the shallow fix.
 - `examples/account-access/fixed` passes proof and invariant.
 - No research transcripts, private issue exports, credentials, or bulky fixtures are present.
+- `docs/holy-fuck-scorecard.md` names the current gate honestly.
 
 ## GitHub
 

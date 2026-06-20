@@ -1,0 +1,25 @@
+{
+  "schema": "replaypack.proofbench.results.v0",
+  "generated_at": "2026-06-20T00:00:00-07:00",
+  "summary": {
+    "case_count": 1,
+    "bug_family_count": 1,
+    "visible_green_wrong_fixes": 1,
+    "replaypack_rejected_visible_green_wrong_fixes": 1,
+    "replaypack_accepted_correct_fixes": 1,
+    "false_positive_count": 0,
+    "median_capsule_author_minutes": 8
+  },
+  "cases": [
+    {
+      "id": "account-access",
+      "bug_family": "authorization_state",
+      "wrong_fix_attractiveness": "high",
+      "capsule_author_minutes": 8,
+      "visible_proof_on_wrong": "pass",
+      "replaypack_on_wrong": "fail",
+      "visible_proof_on_fixed": "pass",
+      "replaypack_on_fixed": "pass"
+    }
+  ]
+}
