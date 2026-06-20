@@ -1,13 +1,13 @@
 {
   "schema": "replaypack.validation.public_repo_private_trials.v0",
-  "checked_at": "2026-06-20T20:50:12Z",
+  "checked_at": "2026-06-20T22:49:56.238Z",
   "results": "docs/public-repo-trials/results.json",
   "mode": "private read-only public repository trials",
   "summary": {
     "attempted": 7,
     "passed": 7,
     "failed": 0,
-    "pass_rate": 1.0
+    "pass_rate": 1
   },
   "repositories": [
     {

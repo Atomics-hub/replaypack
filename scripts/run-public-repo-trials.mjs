@@ -7,6 +7,7 @@ import path from "node:path";
 const root = path.resolve(import.meta.dirname, "..");
 const workRoot = path.join(root, ".tmp", "public-repo-trials");
 const resultsPath = path.join(root, "docs", "public-repo-trials", "results.json");
+const validationPath = path.join(root, "docs", "validation", "public-repo-private-trials.json");
 const cli = path.join(root, "bin", "replaypack.mjs");
 
 fs.rmSync(workRoot, { recursive: true, force: true });
@@ -93,6 +94,8 @@ const results = {
 
 fs.mkdirSync(path.dirname(resultsPath), { recursive: true });
 fs.writeFileSync(resultsPath, `${JSON.stringify(results, null, 2)}\n`);
+fs.mkdirSync(path.dirname(validationPath), { recursive: true });
+fs.writeFileSync(validationPath, `${JSON.stringify(toValidationReceipt(results), null, 2)}\n`);
 console.log(JSON.stringify(results, null, 2));
 
 if (passed.length !== trials.length) {
@@ -389,6 +392,37 @@ function readPackageSummary(checkout) {
     version: packageJson.version ?? null,
     license: packageJson.license ?? null,
     type: packageJson.type ?? null
+  };
+}
+
+function toValidationReceipt(results) {
+  return {
+    schema: "replaypack.validation.public_repo_private_trials.v0",
+    checked_at: results.generated_at,
+    results: "docs/public-repo-trials/results.json",
+    mode: results.methodology.mode,
+    summary: results.summary,
+    repositories: results.trials.map((trial) => ({
+      repository: trial.repository,
+      commit: trial.commit,
+      status: trial.replaypack_status === "pass" && trial.packet_status === "pass" ? "pass" : "fail"
+    })),
+    safety: [
+      "No public writes were made.",
+      "No forks, issues, pull requests, or maintainer contacts were created.",
+      "Repository install scripts were not run.",
+      "Proof and invariant commands ran with a scrubbed environment."
+    ],
+    what_this_proves: [
+      "ReplayPack can privately verify local capsules against public repository checkouts.",
+      "The capsule model works on real public code outside the ReplayPack examples.",
+      "The seven-repo pilot batch ran quickly without project-specific dependency installation."
+    ],
+    limitations: [
+      "These were selected small JavaScript libraries.",
+      "The capsules were created locally rather than by public maintainers.",
+      "This does not replace external developer comprehension proof."
+    ]
   };
 }
 

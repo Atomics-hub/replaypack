@@ -24,6 +24,7 @@ const validationFiles = {
   public_repo_private_trials: "docs/validation/public-repo-private-trials.json",
   public_github_beta: "docs/validation/public-github-beta.json",
   npm_publish: "docs/validation/npm-publish-v0.2.0.json",
+  full_agent_proof: "docs/validation/full-agent-proof.json",
   live_agent_proof: "docs/validation/live-agent-proof.json",
   external_user_proof: "docs/validation/external-user-proof.json"
 };
@@ -39,6 +40,7 @@ const result = {
     public_repo_private_trials: exists(validationFiles.public_repo_private_trials) ? "present_optional" : "missing_optional",
     public_github_beta: exists(validationFiles.public_github_beta) ? "present_optional" : "missing_optional",
     npm_publish: exists(validationFiles.npm_publish) ? "present_optional" : "missing_optional",
+    full_agent_proof: exists(validationFiles.full_agent_proof) ? "present" : "missing",
     live_agent_proof: exists(validationFiles.live_agent_proof) ? "present" : "missing",
     external_user_proof: exists(validationFiles.external_user_proof) ? "present" : "missing"
   },
@@ -74,6 +76,9 @@ if (!exists(validationFiles.private_github_ci)) {
 }
 if (!exists(validationFiles.real_repo_dogfood)) {
   result.next_required.push("dogfood on one real repo issue");
+}
+if (!exists(validationFiles.full_agent_proof)) {
+  result.next_required.push("run one live full-generation AgentBench trial");
 }
 if (!exists(validationFiles.live_agent_proof)) {
   result.next_required.push("run one live coding-agent AgentBench trial");

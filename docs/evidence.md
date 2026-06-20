@@ -16,6 +16,7 @@ ReplayPack catches that before merge.
 | 60-second demo | pass | One command shows visible proof passing, ReplayPack rejecting the wrong fix, and accepting the correct fix |
 | AgentBench deterministic replay | 30/30 | Visible-only finish policy false-dones; ReplayPack prevents and recovers on the same executable cases |
 | Live AgentBench recovery trial | 3/3 | Codex subagents recovered from visible-green wrong fixes using ReplayPack with no manual intervention |
+| Live AgentBench full generation trial | 3/3 | From broken starts, ReplayPack treatments verified 3/3 correct vs 2/3 control correctness |
 | ProofBench | 30/30 pass | Synthetic wrong-fix benchmark across 30 bug families |
 | Visible-green wrong fixes rejected | 30/30 | ReplayPack catches plausible fixes that normal proof accepts |
 | Correct fixes accepted | 30/30 | ReplayPack is not rejecting the intended fixes in the benchmark |
@@ -63,7 +64,16 @@ Latest live recovery trial:
 - manual intervention: 0
 - receipt: `docs/validation/live-agent-proof.json`
 
-Limitations: deterministic replay is not live LLM-agent evidence. The live recovery trial starts from visible-green wrong variants, so it proves recovery from false done, not full task generation from scratch.
+Latest live full task generation trial:
+
+- 3 cases
+- control agents truly correct: 2/3
+- control false-done outcomes: 1/3
+- ReplayPack treatment verified correct: 3/3
+- manual intervention: 0
+- receipt: `docs/validation/full-agent-proof.json`
+
+Limitations: deterministic replay is not live LLM-agent evidence. The live recovery trial starts from visible-green wrong variants. The live full task generation trial is real but small and Codex-only.
 
 ## Public Repo Trials
 
@@ -89,11 +99,11 @@ Repos:
 
 ## Still Not Proven
 
-This evidence does not prove market demand or full task generation lift.
+This evidence does not prove market demand or broad cross-agent lift.
 
 The remaining proof is live usage:
 
-- Can a coding agent improve end-to-end from an unfixed task, not only recover from a visible-green wrong fix?
+- Does the full task generation lift hold across more cases and non-Codex agent surfaces?
 - Can a developer understand ReplayPack without a live explanation?
 - Would they add it to a repo where coding agents make PRs?
 - What would stop them from using it?

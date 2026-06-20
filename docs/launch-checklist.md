@@ -8,6 +8,8 @@ ReplayPack should ship as proof before platform.
 npm test
 npm run proofbench
 npm run agentbench
+npm run full-agentbench:prepare
+npm run full-agentbench:evaluate
 npm run public-repo-trials
 npm pack --dry-run --json
 npm run readiness
@@ -25,6 +27,7 @@ Review:
 - `docs/proofbench/results.json` has at least 30 cases and passes the launch bar.
 - `docs/agentbench/results.json` shows visible-only false done, ReplayPack prevention, and recovery.
 - `docs/validation/live-agent-proof.json` shows at least one live recovery trial.
+- `docs/validation/full-agent-proof.json` shows at least one live full task generation trial.
 - `docs/public-repo-trials/results.json` shows private public-repo trials passing.
 - No research transcripts, private issue exports, credentials, or bulky fixtures are present.
 - `docs/holy-fuck-scorecard.md` names the current gate honestly.

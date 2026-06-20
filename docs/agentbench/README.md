@@ -8,9 +8,9 @@ Does ReplayPack make coding agents less likely to declare false done?
 
 ## Current Evidence Level
 
-Current result: deterministic agent-loop replay plus one live recovery trial.
+Current result: deterministic agent-loop replay, one live recovery trial, and one live full task generation trial.
 
-This is not a live LLM-agent run. It uses the executable ProofBench corpus and compares two finish policies:
+The deterministic replay is not a live LLM-agent run. It uses the executable ProofBench corpus and compares two finish policies:
 
 - `baseline_visible_only_agent`: stops when the visible proof passes
 - `replaypack_agent`: stops only when `replaypack verify` passes
@@ -25,6 +25,12 @@ The live recovery trial then gives actual Codex subagents the same visible-green
 
 - control agents use only the visible proof and stop
 - treatment agents use ReplayPack verify and repair until the contract passes
+
+The full task generation trial starts from deliberately broken implementations:
+
+- control agents use issue, trace, source, and visible proof only
+- treatment agents use the ReplayPack capsule and verify gate
+- hidden invariants are evaluated after the fact
 
 ## Run
 
@@ -56,9 +62,19 @@ Latest live recovery trial:
 - receipt: `docs/validation/live-agent-proof.json`
 - transcripts: `docs/agentbench/live-runs/live-recovery-2026-06-20/`
 
+Latest live full task generation trial:
+
+- 3 cases
+- control agents truly correct: 2/3
+- control false-done outcomes: 1/3
+- ReplayPack treatment verified correct: 3/3
+- manual intervention: 0
+- receipt: `docs/validation/full-agent-proof.json`
+- transcripts: `docs/agentbench/full-runs/full-generation-2026-06-20/`
+
 ## Live-Agent Protocol
 
-The next evidence level is a full task generation live agent run against the same cases.
+The next evidence level is a larger full task generation live agent run across more cases and at least one non-Codex agent surface.
 
 Control prompt:
 
@@ -103,4 +119,6 @@ AgentBench deterministic replay passes when:
 - ReplayPack prevents at least 90% of those false-done outcomes
 - ReplayPack recovers to a correct fix in at least 90% of cases
 
-The current live recovery trial proves that agents can recover from visible-green wrong fixes using ReplayPack. ReplayPack should not claim full generation lift until at least one real coding-agent surface starts from unfixed tasks and runs the control/treatment protocol end to end.
+The current live recovery trial proves that agents can recover from visible-green wrong fixes using ReplayPack. The current live full task generation trial shows a small-sample lift from 2/3 control correctness to 3/3 ReplayPack verified correctness. ReplayPack should not claim broad agent lift until the same protocol runs across more cases and at least one non-Codex agent surface.
+
+Full-generation receipts are marked complete only when every treatment case verifies, no protocol violations are found, no manual intervention is used, and at least one control false-done is converted into a verified ReplayPack treatment.
