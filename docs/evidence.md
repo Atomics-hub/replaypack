@@ -125,6 +125,7 @@ Repos:
 
 Latest local result:
 
+- receipt: `docs/validation/private-packed-package-trial.json`
 - packed version: `0.2.1`
 - installed CLI version: `0.2.1`
 - installed `replaypack trial`: pass

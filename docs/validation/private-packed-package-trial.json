@@ -1,0 +1,54 @@
+{
+  "schema": "replaypack.validation.private_packed_package_trial.v0",
+  "checked_at": "2026-06-20T23:51:32Z",
+  "repository": "Atomics-hub/replaypack",
+  "repository_visibility": "PUBLIC",
+  "source": "local npm pack tarball installed into fresh temp project",
+  "commit": "cd64110723a4cc77f8d08c9c31235b5316cd21cc",
+  "package": {
+    "name": "replaypack",
+    "version": "0.2.1",
+    "tarball": "replaypack-0.2.1.tgz"
+  },
+  "commands": [
+    {
+      "command": "npm run package-trial",
+      "expected": "exit 0",
+      "actual": "exit 0",
+      "evidence": "Packed ReplayPack trial: pass"
+    },
+    {
+      "command": "replaypack --version",
+      "expected": "0.2.1",
+      "actual": "0.2.1",
+      "evidence": "installed binary version matched package.json"
+    },
+    {
+      "command": "replaypack trial",
+      "expected": "pass",
+      "actual": "pass",
+      "evidence": "wrong demo rejected, fixed demo accepted, dogfood accepted"
+    }
+  ],
+  "trial_summary": {
+    "wrong_demo": {
+      "proof": "ok",
+      "invariant": "nonzero",
+      "replaypack": "fail"
+    },
+    "fixed_demo": {
+      "proof": "ok",
+      "invariant": "ok",
+      "replaypack": "pass"
+    },
+    "dogfood": {
+      "proof": "ok",
+      "invariant": "ok",
+      "replaypack": "pass"
+    }
+  },
+  "limitations": [
+    "This verifies the installable tarball surface before npm publish.",
+    "This is not external developer comprehension or market proof."
+  ]
+}
