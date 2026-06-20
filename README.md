@@ -185,4 +185,10 @@ Run the current readiness check:
 npm run readiness
 ```
 
-Readiness checks receipt contents, transcripts, and launch evidence. The current technical proof gates are valid; readiness still fails until external-user proof exists.
+Run the agent-readable evidence audit:
+
+```bash
+npm run evidence:verify
+```
+
+Readiness checks receipt contents, transcripts, and launch evidence. The evidence audit checks `docs/validation/evidence-manifest.json`, which ties public claims to machine-readable receipts. The current technical proof gates are valid; readiness still fails until external-user proof exists.

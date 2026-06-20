@@ -24,6 +24,7 @@ const validationFiles = {
   real_repo_dogfood: "docs/validation/real-repo-dogfood.json",
   public_repo_private_trials: "docs/validation/public-repo-private-trials.json",
   public_github_beta: "docs/validation/public-github-beta.json",
+  evidence_manifest: "docs/validation/evidence-manifest.json",
   packed_package_trial: "docs/validation/private-packed-package-trial.json",
   npm_publish: `docs/validation/npm-publish-v${packageJson.version}.json`,
   full_agent_proof: "docs/validation/full-agent-proof.json",
@@ -48,6 +49,9 @@ const validationChecks = {
   public_github_beta: {
     optional: true,
     validate: validatePublicGithubBeta
+  },
+  evidence_manifest: {
+    validate: validateEvidenceManifest
   },
   packed_package_trial: {
     optional: true,
@@ -248,6 +252,39 @@ function validatePublicGithubBeta(data) {
   expect(data.visibility === "PUBLIC", errors, "repository visibility must be PUBLIC");
   expect(data.beta_issue?.state === "OPEN", errors, "beta issue must be OPEN");
   expect(Boolean(data.url), errors, "public repository URL is required");
+  return errors;
+}
+
+function validateEvidenceManifest(data) {
+  const errors = [];
+  const requiredClaims = new Set([
+    "proofbench_mechanism",
+    "agentbench_deterministic_loop",
+    "codex_live_recovery",
+    "claude_code_live_recovery",
+    "codex_full_generation",
+    "claude_code_full_generation",
+    "packed_package_trial",
+    "external_user_proof",
+    "broad_large_sample_full_generation"
+  ]);
+  const claims = Array.isArray(data.claims) ? data.claims : [];
+  const claimIds = new Set(claims.map((claim) => claim.id));
+
+  expect(data.schema === "replaypack.validation.evidence_manifest.v0", errors, "schema must be evidence_manifest.v0");
+  expect(data.package?.name === packageJson.name, errors, "manifest package name must match package.json");
+  expect(data.package?.working_version === packageJson.version, errors, "manifest working version must match package.json");
+  expect(claims.length >= requiredClaims.size, errors, "manifest must include required evidence claims");
+  for (const id of requiredClaims) {
+    expect(claimIds.has(id), errors, `manifest missing required claim ${id}`);
+  }
+  expect(claims.every((claim) => Boolean(claim.claim)), errors, "every evidence claim needs claim text");
+  expect(claims.every((claim) => Array.isArray(claim.assertions) && claim.assertions.length > 0), errors, "every evidence claim needs assertions");
+  expect(
+    claims.some((claim) => claim.id === "external_user_proof" && claim.status === "not_proven"),
+    errors,
+    "external user proof must remain not_proven until a receipt exists"
+  );
   return errors;
 }
 

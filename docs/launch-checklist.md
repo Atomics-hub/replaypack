@@ -13,6 +13,7 @@ npm run live-agentbench:evaluate
 npm run full-agentbench:prepare
 npm run full-agentbench:evaluate
 npm run public-repo-trials
+npm run evidence:verify
 npm pack --dry-run --json
 npm run readiness
 ```
@@ -55,11 +56,10 @@ gh repo edit Atomics-hub/replaypack --visibility public
 
 ## npm
 
-The package name was checked on 2026-06-20 and returned 404 from npm.
-Check again immediately before publishing:
+The package is already published as `replaypack@0.2.0`; local `0.2.1` is prepared but still needs npm OTP publish. Check npm immediately before publishing:
 
 ```bash
-npm view replaypack name version --json
+npm view replaypack version dist-tags --json
 ```
 
 Publish only after GitHub CI, tarball install, proofbench, public-repo trials, release notes, and security note pass:

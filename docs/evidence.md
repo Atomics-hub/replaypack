@@ -11,6 +11,11 @@ ReplayPack catches that before merge.
 
 ## Current Proof
 
+Machine-checkable manifest:
+
+- receipt: `docs/validation/evidence-manifest.json`
+- verifier: `npm run evidence:verify`
+
 | Evidence Gate | Result | What It Shows |
 | --- | ---: | --- |
 | 60-second demo | pass | One command shows visible proof passing, ReplayPack rejecting the wrong fix, and accepting the correct fix |

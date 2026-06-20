@@ -1,0 +1,503 @@
+{
+  "schema": "replaypack.validation.evidence_manifest.v0",
+  "checked_at": "2026-06-20T23:56:36Z",
+  "status": "technical_proof_pass_market_proof_missing",
+  "package": {
+    "name": "replaypack",
+    "working_version": "0.2.1",
+    "published_latest": "0.2.0"
+  },
+  "claims": [
+    {
+      "id": "proofbench_mechanism",
+      "status": "proven",
+      "claim": "ProofBench has 30 executable cases across 30 bug families; visible proofs accept 30 plausible wrong fixes, ReplayPack rejects all 30, accepts all 30 correct fixes, and has 0 false positives.",
+      "evidence": [
+        "docs/proofbench/results.json"
+      ],
+      "assertions": [
+        {
+          "file": "docs/proofbench/results.json",
+          "path": "schema",
+          "op": "eq",
+          "value": "replaypack.proofbench.results.v0"
+        },
+        {
+          "file": "docs/proofbench/results.json",
+          "path": "summary.case_count",
+          "op": "eq",
+          "value": 30
+        },
+        {
+          "file": "docs/proofbench/results.json",
+          "path": "summary.bug_family_count",
+          "op": "eq",
+          "value": 30
+        },
+        {
+          "file": "docs/proofbench/results.json",
+          "path": "summary.visible_green_wrong_fixes",
+          "op": "eq",
+          "value": 30
+        },
+        {
+          "file": "docs/proofbench/results.json",
+          "path": "summary.replaypack_rejected_visible_green_wrong_fixes",
+          "op": "eq",
+          "value": 30
+        },
+        {
+          "file": "docs/proofbench/results.json",
+          "path": "summary.replaypack_accepted_correct_fixes",
+          "op": "eq",
+          "value": 30
+        },
+        {
+          "file": "docs/proofbench/results.json",
+          "path": "summary.false_positive_count",
+          "op": "eq",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "agentbench_deterministic_loop",
+      "status": "proven",
+      "claim": "AgentBench deterministic replay has 30 visible-only false-done outcomes; ReplayPack prevents 30/30 and recovers 30/30 to the correct fix.",
+      "evidence": [
+        "docs/agentbench/results.json"
+      ],
+      "assertions": [
+        {
+          "file": "docs/agentbench/results.json",
+          "path": "schema",
+          "op": "eq",
+          "value": "replaypack.agentbench.results.v0"
+        },
+        {
+          "file": "docs/agentbench/results.json",
+          "path": "summary.case_count",
+          "op": "eq",
+          "value": 30
+        },
+        {
+          "file": "docs/agentbench/results.json",
+          "path": "summary.bug_family_count",
+          "op": "eq",
+          "value": 30
+        },
+        {
+          "file": "docs/agentbench/results.json",
+          "path": "summary.baseline_visible_only_false_done",
+          "op": "eq",
+          "value": 30
+        },
+        {
+          "file": "docs/agentbench/results.json",
+          "path": "summary.replaypack_prevented_false_done",
+          "op": "eq",
+          "value": 30
+        },
+        {
+          "file": "docs/agentbench/results.json",
+          "path": "summary.replaypack_recovered_to_correct_fix",
+          "op": "eq",
+          "value": 30
+        }
+      ]
+    },
+    {
+      "id": "codex_live_recovery",
+      "status": "proven",
+      "claim": "Codex live recovery trial shows 3/3 visible-only controls false-done and 3/3 ReplayPack treatments recover with no manual intervention.",
+      "evidence": [
+        "docs/validation/live-agent-proof.json"
+      ],
+      "assertions": [
+        {
+          "file": "docs/validation/live-agent-proof.json",
+          "path": "schema",
+          "op": "eq",
+          "value": "replaypack.validation.live_agent_proof.v0"
+        },
+        {
+          "file": "docs/validation/live-agent-proof.json",
+          "path": "agent_surface",
+          "op": "eq",
+          "value": "codex_subagents"
+        },
+        {
+          "file": "docs/validation/live-agent-proof.json",
+          "path": "results.case_count",
+          "op": "eq",
+          "value": 3
+        },
+        {
+          "file": "docs/validation/live-agent-proof.json",
+          "path": "results.visible_only_false_done",
+          "op": "eq",
+          "value": 3
+        },
+        {
+          "file": "docs/validation/live-agent-proof.json",
+          "path": "results.replaypack_recovered_to_correct_fix",
+          "op": "eq",
+          "value": 3
+        },
+        {
+          "file": "docs/validation/live-agent-proof.json",
+          "path": "results.manual_intervention_count",
+          "op": "eq",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "claude_code_live_recovery",
+      "status": "proven",
+      "claim": "Claude Code live recovery trial reproduces the visible-only false-done and ReplayPack recovery effect on a non-Codex surface.",
+      "evidence": [
+        "docs/validation/claude-code-agent-proof.json"
+      ],
+      "assertions": [
+        {
+          "file": "docs/validation/claude-code-agent-proof.json",
+          "path": "schema",
+          "op": "eq",
+          "value": "replaypack.validation.live_agent_proof.v0"
+        },
+        {
+          "file": "docs/validation/claude-code-agent-proof.json",
+          "path": "agent_surface",
+          "op": "eq",
+          "value": "claude_code"
+        },
+        {
+          "file": "docs/validation/claude-code-agent-proof.json",
+          "path": "results.case_count",
+          "op": "eq",
+          "value": 3
+        },
+        {
+          "file": "docs/validation/claude-code-agent-proof.json",
+          "path": "results.visible_only_false_done",
+          "op": "eq",
+          "value": 3
+        },
+        {
+          "file": "docs/validation/claude-code-agent-proof.json",
+          "path": "results.replaypack_recovered_to_correct_fix",
+          "op": "eq",
+          "value": 3
+        },
+        {
+          "file": "docs/validation/claude-code-agent-proof.json",
+          "path": "results.control_protocol_violations",
+          "op": "eq",
+          "value": 0
+        },
+        {
+          "file": "docs/validation/claude-code-agent-proof.json",
+          "path": "results.replaypack_protocol_violations",
+          "op": "eq",
+          "value": 0
+        },
+        {
+          "file": "docs/validation/claude-code-agent-proof.json",
+          "path": "results.manual_intervention_count",
+          "op": "eq",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "codex_full_generation",
+      "status": "proven_small_sample",
+      "claim": "Codex full-generation trial has ReplayPack treatments verified correct on 3/3 cases versus 2/3 control correctness.",
+      "evidence": [
+        "docs/validation/full-agent-proof.json"
+      ],
+      "assertions": [
+        {
+          "file": "docs/validation/full-agent-proof.json",
+          "path": "schema",
+          "op": "eq",
+          "value": "replaypack.validation.full_agent_proof.v0"
+        },
+        {
+          "file": "docs/validation/full-agent-proof.json",
+          "path": "agent_surface",
+          "op": "eq",
+          "value": "codex_subagents"
+        },
+        {
+          "file": "docs/validation/full-agent-proof.json",
+          "path": "results.case_count",
+          "op": "eq",
+          "value": 3
+        },
+        {
+          "file": "docs/validation/full-agent-proof.json",
+          "path": "results.control_correct",
+          "op": "eq",
+          "value": 2
+        },
+        {
+          "file": "docs/validation/full-agent-proof.json",
+          "path": "results.control_false_done",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "file": "docs/validation/full-agent-proof.json",
+          "path": "results.replaypack_verified_correct",
+          "op": "eq",
+          "value": 3
+        },
+        {
+          "file": "docs/validation/full-agent-proof.json",
+          "path": "results.manual_intervention_count",
+          "op": "eq",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "claude_code_full_generation",
+      "status": "proven_small_sample",
+      "claim": "Claude Code full-generation trial has ReplayPack treatments verified correct on 6/6 cases versus 5/6 control correctness.",
+      "evidence": [
+        "docs/validation/claude-code-full-agent-proof.json"
+      ],
+      "assertions": [
+        {
+          "file": "docs/validation/claude-code-full-agent-proof.json",
+          "path": "schema",
+          "op": "eq",
+          "value": "replaypack.validation.full_agent_proof.v0"
+        },
+        {
+          "file": "docs/validation/claude-code-full-agent-proof.json",
+          "path": "agent_surface",
+          "op": "eq",
+          "value": "claude_code"
+        },
+        {
+          "file": "docs/validation/claude-code-full-agent-proof.json",
+          "path": "results.case_count",
+          "op": "eq",
+          "value": 6
+        },
+        {
+          "file": "docs/validation/claude-code-full-agent-proof.json",
+          "path": "results.control_correct",
+          "op": "eq",
+          "value": 5
+        },
+        {
+          "file": "docs/validation/claude-code-full-agent-proof.json",
+          "path": "results.control_false_done",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "file": "docs/validation/claude-code-full-agent-proof.json",
+          "path": "results.replaypack_verified_correct",
+          "op": "eq",
+          "value": 6
+        },
+        {
+          "file": "docs/validation/claude-code-full-agent-proof.json",
+          "path": "results.manual_intervention_count",
+          "op": "eq",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "public_repo_private_trials",
+      "status": "proven",
+      "claim": "Private public-repo portability trials pass on 7/7 selected OSS repositories with no failed trials.",
+      "evidence": [
+        "docs/validation/public-repo-private-trials.json",
+        "docs/public-repo-trials/results.json"
+      ],
+      "assertions": [
+        {
+          "file": "docs/validation/public-repo-private-trials.json",
+          "path": "schema",
+          "op": "eq",
+          "value": "replaypack.validation.public_repo_private_trials.v0"
+        },
+        {
+          "file": "docs/validation/public-repo-private-trials.json",
+          "path": "summary.attempted",
+          "op": "eq",
+          "value": 7
+        },
+        {
+          "file": "docs/validation/public-repo-private-trials.json",
+          "path": "summary.passed",
+          "op": "eq",
+          "value": 7
+        },
+        {
+          "file": "docs/validation/public-repo-private-trials.json",
+          "path": "summary.failed",
+          "op": "eq",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "packed_package_trial",
+      "status": "proven_pre_publish",
+      "claim": "The packed 0.2.1 tarball installs into a fresh temp project and the installed CLI runs replaypack trial successfully.",
+      "evidence": [
+        "docs/validation/private-packed-package-trial.json"
+      ],
+      "assertions": [
+        {
+          "file": "package.json",
+          "path": "version",
+          "op": "eq",
+          "value": "0.2.1"
+        },
+        {
+          "file": "docs/validation/private-packed-package-trial.json",
+          "path": "schema",
+          "op": "eq",
+          "value": "replaypack.validation.private_packed_package_trial.v0"
+        },
+        {
+          "file": "docs/validation/private-packed-package-trial.json",
+          "path": "package.version",
+          "op": "eq",
+          "value": "0.2.1"
+        },
+        {
+          "file": "docs/validation/private-packed-package-trial.json",
+          "path": "trial_summary.wrong_demo.proof",
+          "op": "eq",
+          "value": "ok"
+        },
+        {
+          "file": "docs/validation/private-packed-package-trial.json",
+          "path": "trial_summary.wrong_demo.replaypack",
+          "op": "eq",
+          "value": "fail"
+        },
+        {
+          "file": "docs/validation/private-packed-package-trial.json",
+          "path": "trial_summary.fixed_demo.replaypack",
+          "op": "eq",
+          "value": "pass"
+        },
+        {
+          "file": "docs/validation/private-packed-package-trial.json",
+          "path": "trial_summary.dogfood.replaypack",
+          "op": "eq",
+          "value": "pass"
+        }
+      ]
+    },
+    {
+      "id": "public_beta_surface",
+      "status": "proven",
+      "claim": "The GitHub repository is public and the external developer beta issue is open.",
+      "evidence": [
+        "docs/validation/public-github-beta.json"
+      ],
+      "assertions": [
+        {
+          "file": "docs/validation/public-github-beta.json",
+          "path": "schema",
+          "op": "eq",
+          "value": "replaypack.validation.public_github_beta.v0"
+        },
+        {
+          "file": "docs/validation/public-github-beta.json",
+          "path": "visibility",
+          "op": "eq",
+          "value": "PUBLIC"
+        },
+        {
+          "file": "docs/validation/public-github-beta.json",
+          "path": "beta_issue.state",
+          "op": "eq",
+          "value": "OPEN"
+        }
+      ]
+    },
+    {
+      "id": "npm_latest_state",
+      "status": "pending_current_version_publish",
+      "claim": "npm latest is 0.2.0; local 0.2.1 is prepared but does not yet have a 0.2.1 publish receipt.",
+      "evidence": [
+        "package.json",
+        "docs/validation/npm-publish-v0.2.0.json"
+      ],
+      "assertions": [
+        {
+          "file": "package.json",
+          "path": "version",
+          "op": "eq",
+          "value": "0.2.1"
+        },
+        {
+          "file": "docs/validation/npm-publish-v0.2.0.json",
+          "path": "version",
+          "op": "eq",
+          "value": "0.2.0"
+        },
+        {
+          "file": "docs/validation/npm-publish-v0.2.0.json",
+          "path": "npm.dist_tag_latest",
+          "op": "eq",
+          "value": "0.2.0"
+        },
+        {
+          "file": "docs/validation/npm-publish-v0.2.1.json",
+          "op": "missing_file"
+        }
+      ]
+    },
+    {
+      "id": "external_user_proof",
+      "status": "not_proven",
+      "claim": "No external developer comprehension or demand proof has been recorded yet.",
+      "evidence": [
+        "docs/validation/external-user-proof.json"
+      ],
+      "assertions": [
+        {
+          "file": "docs/validation/external-user-proof.json",
+          "op": "missing_file"
+        }
+      ]
+    },
+    {
+      "id": "broad_large_sample_full_generation",
+      "status": "not_proven",
+      "claim": "Broad large-sample live full-generation lift is not proven; current live full-generation samples are 3 Codex cases and 6 Claude Code cases.",
+      "evidence": [
+        "docs/validation/full-agent-proof.json",
+        "docs/validation/claude-code-full-agent-proof.json"
+      ],
+      "assertions": [
+        {
+          "file": "docs/validation/full-agent-proof.json",
+          "path": "results.case_count",
+          "op": "lt",
+          "value": 30
+        },
+        {
+          "file": "docs/validation/claude-code-full-agent-proof.json",
+          "path": "results.case_count",
+          "op": "lt",
+          "value": 30
+        }
+      ]
+    }
+  ]
+}

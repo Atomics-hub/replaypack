@@ -29,6 +29,7 @@ The product mechanism is now benchmark-proven locally:
 - npm package `replaypack@0.2.0` is published and install-verified
 - patch release `v0.2.1` is prepared with the external trial/recorder path but still needs npm OTP publish
 - packed `v0.2.1` tarball installs into a fresh temp project and runs `replaypack trial`
+- `npm run evidence:verify` ties public proof claims to current JSON receipts
 
 The missing proof is scale and market proof:
 

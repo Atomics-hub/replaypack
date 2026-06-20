@@ -81,6 +81,7 @@ const readinessPacket = JSON.parse(readiness.stdout);
 for (const gate of [
   "private_github_ci",
   "real_repo_dogfood",
+  "evidence_manifest",
   "full_agent_proof",
   "cross_agent_full_proof",
   "live_agent_proof",
@@ -90,7 +91,7 @@ for (const gate of [
 ]) {
   assert.strictEqual(readinessPacket.gates[gate], "pass", `${gate} must pass readiness`);
 }
-for (const gate of ["public_repo_private_trials", "public_github_beta"]) {
+for (const gate of ["public_repo_private_trials", "public_github_beta", "packed_package_trial"]) {
   assert.strictEqual(readinessPacket.gates[gate], "pass_optional", `${gate} optional receipt must be valid`);
 }
 assert.ok(

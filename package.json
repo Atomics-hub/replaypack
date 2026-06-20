@@ -54,6 +54,7 @@
     "scripts/prepare-full-agentbench.mjs",
     "scripts/prepare-live-agentbench.mjs",
     "scripts/record-external-user-proof.mjs",
+    "scripts/verify-evidence-manifest.mjs",
     "scripts/run-agentbench.mjs",
     "scripts/run-external-trial.mjs",
     "scripts/run-proofbench.mjs",
@@ -78,6 +79,7 @@
     "public-repo-trials": "node scripts/run-public-repo-trials.mjs",
     "record-external-proof": "node scripts/record-external-user-proof.mjs",
     "readiness": "node scripts/readiness-check.mjs",
+    "evidence:verify": "node scripts/verify-evidence-manifest.mjs",
     "package-trial": "node scripts/verify-packed-trial.mjs",
     "trial:external": "node scripts/run-external-trial.mjs",
     "pack:local": "npm pack --pack-destination dist"
