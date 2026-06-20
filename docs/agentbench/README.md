@@ -8,7 +8,7 @@ Does ReplayPack make coding agents less likely to declare false done?
 
 ## Current Evidence Level
 
-Current result: deterministic agent-loop replay.
+Current result: deterministic agent-loop replay plus one live recovery trial.
 
 This is not a live LLM-agent run. It uses the executable ProofBench corpus and compares two finish policies:
 
@@ -20,6 +20,11 @@ The current run shows the mechanism an agent would experience:
 - visible-only finish policy accepts plausible wrong fixes
 - ReplayPack rejects those same false-green fixes
 - the corresponding correct fixes pass the ReplayPack finish gate
+
+The live recovery trial then gives actual Codex subagents the same visible-green wrong variants:
+
+- control agents use only the visible proof and stop
+- treatment agents use ReplayPack verify and repair until the contract passes
 
 ## Run
 
@@ -42,9 +47,18 @@ Latest deterministic replay:
 - ReplayPack prevented false done: 30/30
 - ReplayPack recovered to correct fix: 30/30
 
+Latest live recovery trial:
+
+- 3 cases
+- control visible-only false-done outcomes: 3/3
+- ReplayPack treatment recoveries: 3/3
+- manual intervention: 0
+- receipt: `docs/validation/live-agent-proof.json`
+- transcripts: `docs/agentbench/live-runs/live-recovery-2026-06-20/`
+
 ## Live-Agent Protocol
 
-The next evidence level is live agent runs against the same cases.
+The next evidence level is a full task generation live agent run against the same cases.
 
 Control prompt:
 
@@ -89,4 +103,4 @@ AgentBench deterministic replay passes when:
 - ReplayPack prevents at least 90% of those false-done outcomes
 - ReplayPack recovers to a correct fix in at least 90% of cases
 
-Live-agent proof is a separate gate. ReplayPack should not claim live agent lift until at least one real coding-agent surface has run the protocol.
+The current live recovery trial proves that agents can recover from visible-green wrong fixes using ReplayPack. ReplayPack should not claim full generation lift until at least one real coding-agent surface starts from unfixed tasks and runs the control/treatment protocol end to end.

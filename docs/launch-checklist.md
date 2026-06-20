@@ -13,7 +13,7 @@ npm pack --dry-run --json
 npm run readiness
 ```
 
-`npm run readiness` is expected to fail until live-agent proof and external-user proof exist. Treat it as the market go/no-go check, not the package health check.
+`npm run readiness` is expected to fail until external-user proof exists. Treat it as the market go/no-go check, not the package health check.
 
 Review:
 
@@ -24,6 +24,7 @@ Review:
 - `examples/account-access/fixed` passes proof and invariant.
 - `docs/proofbench/results.json` has at least 30 cases and passes the launch bar.
 - `docs/agentbench/results.json` shows visible-only false done, ReplayPack prevention, and recovery.
+- `docs/validation/live-agent-proof.json` shows at least one live recovery trial.
 - `docs/public-repo-trials/results.json` shows private public-repo trials passing.
 - No research transcripts, private issue exports, credentials, or bulky fixtures are present.
 - `docs/holy-fuck-scorecard.md` names the current gate honestly.
