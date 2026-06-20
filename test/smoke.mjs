@@ -89,9 +89,13 @@ for (const gate of [
 ]) {
   assert.strictEqual(readinessPacket.gates[gate], "pass", `${gate} must pass readiness`);
 }
-for (const gate of ["public_repo_private_trials", "public_github_beta", "npm_publish"]) {
+for (const gate of ["public_repo_private_trials", "public_github_beta"]) {
   assert.strictEqual(readinessPacket.gates[gate], "pass_optional", `${gate} optional receipt must be valid`);
 }
+assert.ok(
+  ["pass_optional", "missing_optional"].includes(readinessPacket.gates.npm_publish),
+  "npm_publish optional receipt must be valid when present"
+);
 assert.deepStrictEqual(readinessPacket.validation_errors, []);
 if (readiness.status === 0) {
   assert.strictEqual(readinessPacket.status, "launch_ready");

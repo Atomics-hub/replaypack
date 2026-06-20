@@ -24,7 +24,7 @@ const validationFiles = {
   real_repo_dogfood: "docs/validation/real-repo-dogfood.json",
   public_repo_private_trials: "docs/validation/public-repo-private-trials.json",
   public_github_beta: "docs/validation/public-github-beta.json",
-  npm_publish: "docs/validation/npm-publish-v0.2.0.json",
+  npm_publish: `docs/validation/npm-publish-v${packageJson.version}.json`,
   full_agent_proof: "docs/validation/full-agent-proof.json",
   cross_agent_full_proof: "docs/validation/claude-code-full-agent-proof.json",
   live_agent_proof: "docs/validation/live-agent-proof.json",

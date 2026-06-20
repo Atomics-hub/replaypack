@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 
+const packageJson = JSON.parse(fs.readFileSync("package.json", "utf8"));
 const workflow = fs.readFileSync(".github/workflows/ci.yml", "utf8");
 const match = workflow.match(/run:\s*(mkdir -p dist && npm pack --pack-destination dist)/);
 
@@ -19,4 +20,4 @@ assert.equal(
   0,
   `fresh-runner package command failed\nstdout:\n${result.stdout}\nstderr:\n${result.stderr}`
 );
-assert.ok(fs.existsSync("dist/replaypack-0.2.0.tgz"), "package tarball should exist in dist");
+assert.ok(fs.existsSync(`dist/replaypack-${packageJson.version}.tgz`), "package tarball should exist in dist");

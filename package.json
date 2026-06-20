@@ -1,6 +1,6 @@
 {
   "name": "replaypack",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Portable proof and invariant capsules for coding agents.",
   "type": "module",
   "homepage": "https://github.com/Atomics-hub/replaypack",
