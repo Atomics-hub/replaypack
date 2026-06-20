@@ -43,8 +43,7 @@ For the beta demo, clone the repo:
 ```bash
 git clone https://github.com/Atomics-hub/replaypack.git
 cd replaypack
-npm test
-npm run demo
+npm run trial:external
 ```
 
 Run the checkout CLI:

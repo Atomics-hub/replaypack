@@ -31,9 +31,11 @@ body:
       label: Commands run
       description: Paste the commands you ran and whether each passed or failed.
       placeholder: |
-        npm test -> pass
-        node bin/replaypack.mjs verify --root examples/account-access/wrong replaypack/account-access.json -> failed as expected
-        node bin/replaypack.mjs verify --root examples/account-access/fixed replaypack/account-access.json -> pass
+        npm run trial:external -> pass
+        receipt: dist/external-trial/receipt.json
+        wrong demo: proof=ok invariant=nonzero replaypack=fail
+        fixed demo: proof=ok invariant=ok replaypack=pass
+        dogfood: proof=ok invariant=ok replaypack=pass
     validations:
       required: true
   - type: textarea

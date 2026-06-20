@@ -10,18 +10,27 @@ Target time: 10 minutes.
 git clone https://github.com/Atomics-hub/replaypack.git
 cd replaypack
 node --version
-npm test
+npm run trial:external
 ```
 
-Expected:
+Expected summary:
 
 ```text
-replaypack smoke ok
+ReplayPack external trial: pass
+wrong demo   proof=ok invariant=nonzero replaypack=fail
+fixed demo   proof=ok invariant=ok replaypack=pass
+dogfood      proof=ok invariant=ok replaypack=pass
+```
+
+The command writes a receipt to:
+
+```text
+dist/external-trial/receipt.json
 ```
 
 ## Demo
 
-Run the wrong fix:
+The trial command runs the wrong fix:
 
 ```bash
 node bin/replaypack.mjs verify --root examples/account-access/wrong replaypack/account-access.json
@@ -29,7 +38,7 @@ node bin/replaypack.mjs verify --root examples/account-access/wrong replaypack/a
 
 Expected: command exits nonzero. The normal proof passes, but the invariant fails.
 
-Run the fixed version:
+It then runs the fixed version:
 
 ```bash
 node bin/replaypack.mjs verify --root examples/account-access/fixed replaypack/account-access.json
@@ -39,7 +48,7 @@ Expected: command exits zero with `"status": "pass"`.
 
 ## Dogfood
 
-Run the real repo dogfood capsule:
+The trial command also runs the real repo dogfood capsule:
 
 ```bash
 node bin/replaypack.mjs verify docs/dogfood/ci-pack-destination/replaypack.json --out dist/dogfood-ci-pack-verify.json

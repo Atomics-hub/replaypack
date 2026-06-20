@@ -10,7 +10,15 @@ Follow:
 
 https://github.com/Atomics-hub/replaypack/blob/main/docs/trials/external-developer-trial.md
 
-It should take about 10 minutes.
+Short version:
+
+```bash
+git clone https://github.com/Atomics-hub/replaypack.git
+cd replaypack
+npm run trial:external
+```
+
+It should take about 10 minutes and writes `dist/external-trial/receipt.json`.
 
 ## Please Reply With
 

@@ -16,6 +16,7 @@
   },
   "files": [
     "bin",
+    "docs/dogfood",
     "docs/demo.md",
     "docs/evidence.md",
     "docs/agentbench/README.md",
@@ -28,6 +29,7 @@
     "docs/proofbench/results.json",
     "docs/public-repo-trials/README.md",
     "docs/public-repo-trials/results.json",
+    "docs/trials",
     "docs/validation/full-agent-proof.json",
     "docs/validation/live-agent-proof.json",
     "docs/validation/claude-code-agent-proof.json",
@@ -52,6 +54,7 @@
     "scripts/prepare-full-agentbench.mjs",
     "scripts/prepare-live-agentbench.mjs",
     "scripts/run-agentbench.mjs",
+    "scripts/run-external-trial.mjs",
     "scripts/run-proofbench.mjs",
     "scripts/run-public-repo-trials.mjs",
     "scripts/readiness-check.mjs",
@@ -71,6 +74,7 @@
     "proofbench": "node scripts/run-proofbench.mjs",
     "public-repo-trials": "node scripts/run-public-repo-trials.mjs",
     "readiness": "node scripts/readiness-check.mjs",
+    "trial:external": "node scripts/run-external-trial.mjs",
     "pack:local": "npm pack --pack-destination dist"
   },
   "keywords": [
