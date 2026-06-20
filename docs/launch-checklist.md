@@ -6,11 +6,12 @@ ReplayPack should ship as proof before platform.
 
 ```bash
 npm test
+npm run proofbench
 npm pack --dry-run --json
 npm run readiness
 ```
 
-`npm run readiness` is expected to fail until ProofBench, private CI, real repo dogfood, and external-user proof exist. Treat it as the launch go/no-go check, not the basic repo health check.
+`npm run readiness` is expected to fail until private CI, real repo dogfood, and external-user proof exist. Treat it as the launch go/no-go check, not the basic repo health check.
 
 Review:
 
@@ -19,6 +20,7 @@ Review:
 - `action.yml` verifies a capsule without requiring a separate npm install.
 - `examples/account-access/wrong` fails because the invariant catches the shallow fix.
 - `examples/account-access/fixed` passes proof and invariant.
+- `docs/proofbench/results.json` has at least 10 cases and passes the launch bar.
 - No research transcripts, private issue exports, credentials, or bulky fixtures are present.
 - `docs/holy-fuck-scorecard.md` names the current gate honestly.
 
@@ -34,7 +36,7 @@ Confirm GitHub Actions passes while the repo is still private.
 
 ## npm
 
-The package name was checked before this repo was prepared and returned 404 from npm.
+The package name was checked on 2026-06-20 and returned 404 from npm.
 Check again immediately before publishing:
 
 ```bash

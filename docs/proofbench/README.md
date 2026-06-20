@@ -43,18 +43,18 @@ Aggregate metrics:
 - median capsule author time
 - number of distinct bug families
 
-## First Ten Case Targets
+## First Executable Cases
 
 1. Account access membership/session binding.
-2. Markdown URL parser balanced parentheses.
-3. Cache invalidation with stale tenant setting.
-4. Date/timezone billing cutoff.
-5. Pagination cursor off-by-one.
-6. Feature flag fallback inversion.
-7. Idempotency key dedupe regression.
-8. Retry/backoff swallowing permanent errors.
-9. File upload MIME sniffing bypass.
-10. Permission check applied after data fetch.
+2. Pagination cursor off-by-one.
+3. Date/timezone billing cutoff.
+4. Feature flag fallback inversion.
+5. Idempotency key dedupe regression.
+6. Retry policy for permanent errors.
+7. File upload MIME sniffing bypass.
+8. Permission check applied after data fetch.
+9. Cache key missing tenant settings version.
+10. Rate limit window boundary.
 
 ## Launch Bar
 
@@ -66,3 +66,13 @@ Minimum public launch data:
 - ReplayPack accepts 90% or more of correct fixes
 - at least 5 bug families represented
 - median capsule author time under 15 minutes
+
+## Run
+
+```bash
+npm run proofbench
+```
+
+The runner generates executable benchmark fixtures under `.tmp/proofbench`, runs ReplayPack against each wrong and fixed variant, and writes `docs/proofbench/results.json`.
+
+The generated benchmark is synthetic mechanism proof. It should be treated as necessary but not sufficient for public launch; real repo dogfood and external user proof are separate gates.
