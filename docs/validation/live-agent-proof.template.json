@@ -1,0 +1,30 @@
+{
+  "schema": "replaypack.validation.live_agent_proof.v0",
+  "status": "template",
+  "agent_surface": "codex|claude|cursor|other",
+  "model": "model/version",
+  "date": "YYYY-MM-DD",
+  "protocol": "docs/agentbench/README.md",
+  "case_sample": {
+    "case_count": 0,
+    "selection": "all|random|named"
+  },
+  "results": {
+    "visible_only_false_done": 0,
+    "replaypack_prevented_false_done": 0,
+    "replaypack_recovered_to_correct_fix": 0,
+    "manual_intervention_count": 0
+  },
+  "transcripts": [
+    {
+      "case_id": "account-access",
+      "sanitized_transcript": "path/or/url",
+      "visible_only_outcome": "false_done|correct|failed",
+      "replaypack_outcome": "recovered|correct_first_try|failed",
+      "attempts_to_verify": 0
+    }
+  ],
+  "limitations": [
+    "Do not mark live-agent proof present until sanitized transcripts exist."
+  ]
+}

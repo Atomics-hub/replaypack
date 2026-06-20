@@ -2,7 +2,7 @@
 
 > Public beta: looking for 5 developers who use coding agents to run the 10-minute trial and tell us whether this is useful or nonsense. Start here: [External Developer Trial](https://github.com/Atomics-hub/replaypack/blob/main/docs/trials/external-developer-trial.md).
 
-ReplayPack is the merge gate for agent-made code.
+ReplayPack is the done-contract for coding agents.
 
 Agents are good at making plausible fixes. ReplayPack checks whether the fix satisfies the issue, the proof command, and the invariants that matter before it merges.
 
@@ -12,7 +12,7 @@ hidden invariant fails
 ReplayPack rejects the fix
 ```
 
-Current proof receipt: ProofBench has 30 executable cases across 30 bug families. In the latest run, normal visible proofs accepted 30 plausible wrong fixes; ReplayPack rejected all 30 and accepted all 30 correct fixes.
+Current proof receipt: ProofBench has 30 executable cases across 30 bug families. In the latest run, normal visible proofs accepted 30 plausible wrong fixes; ReplayPack rejected all 30 and accepted all 30 correct fixes. AgentBench deterministic replay converts that into the agent loop: visible-only agents false-done 30/30; ReplayPack prevents 30/30 and recovers 30/30.
 
 ## Why
 
@@ -95,7 +95,8 @@ Give the capsule to an agent:
 ```text
 Use replaypack/account-access.json as the issue brief.
 Make the smallest correct fix.
-Run the proof and invariant commands before finishing.
+Do not say done until replaypack verify passes.
+If verify fails, use the proof/invariant failure to repair the fix and rerun verify.
 ```
 
 ## GitHub Actions
@@ -173,6 +174,7 @@ ReplayPack is being held to a proof loop before broad launch:
 - [Evidence](https://github.com/Atomics-hub/replaypack/blob/main/docs/evidence.md)
 - [60-Second Demo](https://github.com/Atomics-hub/replaypack/blob/main/docs/demo.md)
 - [Holy-Fuck Scorecard](https://github.com/Atomics-hub/replaypack/blob/main/docs/holy-fuck-scorecard.md)
+- [AgentBench](https://github.com/Atomics-hub/replaypack/blob/main/docs/agentbench/README.md)
 - [ProofBench](https://github.com/Atomics-hub/replaypack/blob/main/docs/proofbench/README.md)
 - [Market Proof Loop](https://github.com/Atomics-hub/replaypack/blob/main/docs/market-proof.md)
 - [Private Public-Repo Trials](https://github.com/Atomics-hub/replaypack/blob/main/docs/public-repo-trials/README.md)
@@ -184,4 +186,4 @@ Run the current readiness check:
 npm run readiness
 ```
 
-The readiness check is expected to fail until external-user proof exists.
+The readiness check is expected to fail until live-agent proof and external-user proof exist.

@@ -18,6 +18,8 @@
     "bin",
     "docs/demo.md",
     "docs/evidence.md",
+    "docs/agentbench/README.md",
+    "docs/agentbench/results.json",
     "docs/proofbench/README.md",
     "docs/proofbench/results.json",
     "examples/account-access/README.md",
@@ -34,12 +36,14 @@
     "examples/account-access/wrong/src",
     "examples/account-access/wrong/test",
     "scripts/demo-replaypack.mjs",
+    "scripts/run-agentbench.mjs",
     "action.yml",
     "README.md",
     "SECURITY.md",
     "LICENSE"
   ],
   "scripts": {
+    "agentbench": "node scripts/run-agentbench.mjs",
     "demo": "node scripts/demo-replaypack.mjs",
     "test": "node test/smoke.mjs",
     "proofbench": "node scripts/run-proofbench.mjs",

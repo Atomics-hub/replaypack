@@ -14,6 +14,7 @@ ReplayPack catches that before merge.
 | Evidence Gate | Result | What It Shows |
 | --- | ---: | --- |
 | 60-second demo | pass | One command shows visible proof passing, ReplayPack rejecting the wrong fix, and accepting the correct fix |
+| AgentBench deterministic replay | 30/30 | Visible-only finish policy false-dones; ReplayPack prevents and recovers on the same executable cases |
 | ProofBench | 30/30 pass | Synthetic wrong-fix benchmark across 30 bug families |
 | Visible-green wrong fixes rejected | 30/30 | ReplayPack catches plausible fixes that normal proof accepts |
 | Correct fixes accepted | 30/30 | ReplayPack is not rejecting the intended fixes in the benchmark |
@@ -39,6 +40,22 @@ Latest summary:
 - 0 false positives
 - 8 minute median capsule authoring estimate
 
+## AgentBench
+
+`npm run agentbench` converts ProofBench into an agent finish-policy comparison and writes:
+
+- `docs/agentbench/results.json`
+
+Latest deterministic replay:
+
+- 30 benchmark cases
+- 30 bug families
+- visible-only agent false-done outcomes: 30/30
+- ReplayPack prevented false done: 30/30
+- ReplayPack recovered to correct fix: 30/30
+
+Limitation: this is deterministic replay from executable wrong/fixed variants. It proves the finish contract an agent would experience, but it does not replace live Codex/Claude agent runs.
+
 ## Public Repo Trials
 
 `npm run public-repo-trials` clones selected public repositories into `.tmp/`, creates local capsules, and verifies them with a scrubbed environment.
@@ -63,10 +80,11 @@ Repos:
 
 ## Still Not Proven
 
-This evidence does not prove market demand.
+This evidence does not prove market demand or live-agent lift.
 
-The remaining proof is external comprehension:
+The remaining proof is live usage:
 
+- Can a coding agent recover from invariant failure using only the ReplayPack packet?
 - Can a developer understand ReplayPack without a live explanation?
 - Would they add it to a repo where coding agents make PRs?
 - What would stop them from using it?

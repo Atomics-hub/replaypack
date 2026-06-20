@@ -1,0 +1,504 @@
+{
+  "schema": "replaypack.agentbench.results.v0",
+  "generated_at": "2026-06-20T22:20:37.619Z",
+  "evidence_level": "deterministic_agent_loop_replay",
+  "methodology": {
+    "source": "docs/proofbench/results.json",
+    "baseline_agent": "Visible-only agent stops once the visible proof passes. On this benchmark corpus, that means accepting the plausible wrong fix.",
+    "replaypack_agent": "ReplayPack agent treats replaypack verify as the finish gate. A wrong fix is rejected when proof passes but invariant fails; recovery is counted when the corresponding correct fix verifies.",
+    "limitation": "This is not a live LLM-agent run. It is a deterministic replay of the agent finish loop using executable ProofBench wrong/fixed variants."
+  },
+  "summary": {
+    "case_count": 30,
+    "bug_family_count": 30,
+    "baseline_visible_only_false_done": 30,
+    "replaypack_prevented_false_done": 30,
+    "replaypack_recovered_to_correct_fix": 30,
+    "visible_only_false_done_rate": 1,
+    "replaypack_prevention_rate": 1,
+    "replaypack_recovery_rate": 1,
+    "false_done_reduction_rate": 1
+  },
+  "cases": [
+    {
+      "id": "account-access",
+      "title": "Account membership ignored for export access",
+      "bug_family": "authorization_state",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "2d8277854dbaa15ec70b3149fbb9585be8dc587d0bf1c766bd5e5a33e49a81f4",
+        "fixed_replaypack_packet_sha256": "c4fb1889cf6357c9fa6aaab353768a37c314d94ef643a994916823613b215f39"
+      }
+    },
+    {
+      "id": "pagination-cursor",
+      "title": "Pagination cursor repeats the last item",
+      "bug_family": "pagination",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "765d5e5b5166de37800fc53f8dd123d5257b5d09a16e22ca0ee55da80be992e0",
+        "fixed_replaypack_packet_sha256": "b3d1b66b53253ef9edd82fcfbc9510185487401c14208edf68f01ad157eadf01"
+      }
+    },
+    {
+      "id": "timezone-cutoff",
+      "title": "Billing cutoff ignores tenant timezone",
+      "bug_family": "time",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "1652a04175c7a4e7c978692a10f2f819c38f312c3f32511a73e5ef6525a55662",
+        "fixed_replaypack_packet_sha256": "e14c62025596e76108729980b07d38b90efd4ef89602c290de5eb83b2a0d50dc"
+      }
+    },
+    {
+      "id": "feature-flag-fallback",
+      "title": "Explicit false feature flag falls back to global default",
+      "bug_family": "feature_flags",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "3a78c24ccfed44dee912e348731ed52e67c275cc4ebf04dbe1c38ffb9cf3d897",
+        "fixed_replaypack_packet_sha256": "363719cbf9bcb2f51088d683c50818a0d01c7e691378ba0ba0c438a4061d5e54"
+      }
+    },
+    {
+      "id": "idempotency-scope",
+      "title": "Idempotency key dedupes across accounts",
+      "bug_family": "idempotency",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "d1f20ccd7abec7483deb8ab1c9d0298e93397ccdc8dcd089461755a3390aa4ad",
+        "fixed_replaypack_packet_sha256": "e7d07e62017e09cf6f5927e7a2e77f8190e7854a755f5460dc9855a8ee9fd416"
+      }
+    },
+    {
+      "id": "retry-permanent-errors",
+      "title": "Permanent errors are retried",
+      "bug_family": "retry_policy",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "de4a26fd8974ad425871f596dc0e9eb12f0bd765ee9275c0165ee39fcf5ffd08",
+        "fixed_replaypack_packet_sha256": "61caf1be36c236281d56c8dca5e6f773c6aa0fe78e24c92a3b7423dc792659d8"
+      }
+    },
+    {
+      "id": "upload-mime-sniff",
+      "title": "Upload validation trusts file extension",
+      "bug_family": "file_security",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "9b6c3fa370e7116faa39e9d5be399e3fe8aaa3ebafeed0431e353d6be8998866",
+        "fixed_replaypack_packet_sha256": "c2f6ff22500663ad16805715ee08107cd952088cf757a4c9cbe301037306523c"
+      }
+    },
+    {
+      "id": "permission-after-fetch",
+      "title": "Permission check masks after fetching private data",
+      "bug_family": "authorization_flow",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "f6cdea3e17eb936a626b90bf4954234b63f066eda7f17cb13f52539d1ceabd10",
+        "fixed_replaypack_packet_sha256": "357bc8630e279759e41cfe00a963deb295b84df4ff53173d4866c9078acfeac9"
+      }
+    },
+    {
+      "id": "cache-key-settings",
+      "title": "Cache key ignores tenant settings version",
+      "bug_family": "cache_invalidation",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "97c66715dc82ed77ccb089b6f319919cfc5b95af8849e66410bd3ec541e9bab8",
+        "fixed_replaypack_packet_sha256": "435cbc4f0f40c0a23d0f2ac6a7b89a4d0f6bb7fa3edadb8152f8f0b27c12f81b"
+      }
+    },
+    {
+      "id": "rate-limit-boundary",
+      "title": "Rate limit window boundary never expires old request",
+      "bug_family": "rate_limits",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "ceb912f47452b95870486fd6367319fd2c6915b27a53ae06042fa44602e6a2c7",
+        "fixed_replaypack_packet_sha256": "62883cacea733acaa745c2470b992a38f3e7273d13e55788b8bdbd5868d7750a"
+      }
+    },
+    {
+      "id": "webhook-signature",
+      "title": "Webhook verification accepts signature prefixes",
+      "bug_family": "webhook_authenticity",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "77d4dc6a51e7698a16774eef4a52033657448440a03e978026919e7e69c1f5ef",
+        "fixed_replaypack_packet_sha256": "5c15831926c7b0087dadc4cf5a276f7f9eb0eec0c37b1fab86675e038bcd2b9b"
+      }
+    },
+    {
+      "id": "currency-line-rounding",
+      "title": "Currency totals round after summing fractional lines",
+      "bug_family": "money_precision",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "7007107ecae7c8a8e766793792f07188f7e7d42db27294dc1383ce25f88884db",
+        "fixed_replaypack_packet_sha256": "974cfcb9f04bab76c0ca4903487475e6122b7bdea67647f680a5c40033dde067"
+      }
+    },
+    {
+      "id": "sort-stability",
+      "title": "Equal-rank sorting rewrites stable order",
+      "bug_family": "sorting_contract",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "0498abb15d79b45ecb25efc246bce5c7a7f0a6983415fcbf05bf28a7fbb2e3f1",
+        "fixed_replaypack_packet_sha256": "a6e19ca378d7dd16e59713d7a2a4a174de7fff2ef6cbb13f88438171b66e3df3"
+      }
+    },
+    {
+      "id": "soft-delete-filter",
+      "title": "Soft-deleted active records remain visible",
+      "bug_family": "soft_delete",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "4ab7d2487164e9040b12deada6274d21a77c76e19ca21610cb45074f6512fbf4",
+        "fixed_replaypack_packet_sha256": "e102aee16ffc335ebc67c31ae5892cf640f8ddd731b066e2e38daf914673fc25"
+      }
+    },
+    {
+      "id": "tenant-search-leak",
+      "title": "Tenant search returns matching rows from other tenants",
+      "bug_family": "tenant_isolation",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "046df5836aee2d3283260971b1eb17beb87811992239c06eb7eb206ac32bc94d",
+        "fixed_replaypack_packet_sha256": "a4f359c13d52c3b4d56162cf46d43803c44e866ea1f5bc769edd53bd58f812b9"
+      }
+    },
+    {
+      "id": "csv-formula-escape",
+      "title": "CSV export leaves spreadsheet formulas executable",
+      "bug_family": "spreadsheet_injection",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "c8b0c3abad32771f7b7eef1be0d1ed6ff6b9e3ab136c00ce569ab24f5ad8e123",
+        "fixed_replaypack_packet_sha256": "cdb3c2ed4da442b13757da5b8343fd837b35a5bd1353b088a942c29eff4bbbb5"
+      }
+    },
+    {
+      "id": "markdown-link-sanitize",
+      "title": "Markdown links allow javascript URLs",
+      "bug_family": "link_sanitization",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "eed1e614fe5a677cf9393bf0d61d8488c971ec804b91543fa34daf308a1d424e",
+        "fixed_replaypack_packet_sha256": "4b4e8ef1c8584d2307fe72f5286f668d9f5c4cd98a90f3b6c580d4f4e4536852"
+      }
+    },
+    {
+      "id": "path-root-prefix",
+      "title": "Path root check accepts sibling directories with matching prefix",
+      "bug_family": "path_security",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "4df8a1b9824d045a3e4bac614f9e7e24deabdce59a22302afa242b280f9cfa79",
+        "fixed_replaypack_packet_sha256": "49157f534db35986917b9f87d80c225645c766d98af3ddcd8cbff6ee6401d7c7"
+      }
+    },
+    {
+      "id": "email-normalization",
+      "title": "Email normalization lowercases the local part",
+      "bug_family": "email_identity",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "2d489ca96c9c06bc14c02af66621e8524c9b35ed116a64d25d23886dc066d74c",
+        "fixed_replaypack_packet_sha256": "190588341ccd56c548aafe78349d9dc4d79c8c2e687b72c70fdd1724a5a11c25"
+      }
+    },
+    {
+      "id": "session-expiry-boundary",
+      "title": "Sessions remain valid exactly at expiry",
+      "bug_family": "session_lifecycle",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "639349b035ebae40ef8d1223313b16d7ea2b9113567a8c4c215ada0471172761",
+        "fixed_replaypack_packet_sha256": "3b109cd5bf6bfa60ccca03338bae510286b1cf45cc620bf6b1e26577ba1db3cc"
+      }
+    },
+    {
+      "id": "queue-priority",
+      "title": "Queue dispatch ignores urgent priority",
+      "bug_family": "job_priority",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "4aa0e4128c09c9e322943f97af0e21ed796614639e427612d95f97854166d7a9",
+        "fixed_replaypack_packet_sha256": "82f91a7d6b3a8713f1f27def734b7657e55e87addee565f33d30e3b55e4aa046"
+      }
+    },
+    {
+      "id": "inventory-reservation",
+      "title": "Inventory check ignores reserved units",
+      "bug_family": "inventory_reservation",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "d4ce59ccf5a6e1973a2391495a436326c9ac5a4b832eace217c27db21cf53b31",
+        "fixed_replaypack_packet_sha256": "4c4224c4f9878ae13b982d3341e1038074e3c410d2b285eb691aee5a661e8e5f"
+      }
+    },
+    {
+      "id": "schema-migration-default",
+      "title": "Migration overwrites explicit false with default true",
+      "bug_family": "migration_defaults",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "54217073b5ae7b3b9cc53b9f83d9b23b30aa5e0dd66a40ffbd6be98dc4db44ce",
+        "fixed_replaypack_packet_sha256": "4ac47b714efc1e6a04175af4b9522658e154404d880881dc205547ab57306656"
+      }
+    },
+    {
+      "id": "redaction-nested",
+      "title": "Redaction misses nested secrets",
+      "bug_family": "pii_redaction",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "9e4510e706af209add13f17bbd6cf8847021aa4aa5c737e157dc793633b4178b",
+        "fixed_replaypack_packet_sha256": "51ca8bd883c76872d9e168cf341f56caa89d3019a06226b4457865d692725a87"
+      }
+    },
+    {
+      "id": "locale-slug",
+      "title": "Slug generation drops accented characters",
+      "bug_family": "unicode_slugs",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "7d124065cae4b53aa7ed5654a5ba3ead223c8c8fa32920a47681b2a72ee98bce",
+        "fixed_replaypack_packet_sha256": "fa0c01aba7953b2c23311c474938fca999963ac62a6b57a2cb26072e4ed97296"
+      }
+    },
+    {
+      "id": "duplicate-webhook-id",
+      "title": "Webhook dedupe key uses event type instead of event id",
+      "bug_family": "event_deduplication",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "7e025e55cafaa217d31c8af5340dae435222aa5de2c42bde82c5d4d1d3130afb",
+        "fixed_replaypack_packet_sha256": "aaf9df4370bc5912696d5c4f369adda5e11ce5055a55098785816c5c4be9a66d"
+      }
+    },
+    {
+      "id": "api-version-routing",
+      "title": "Unknown API versions silently route to v1",
+      "bug_family": "api_versioning",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "3bd8ca6a6ce00a3aab74701e7953b9ced799ebe984cf79a9dd234c56a4804061",
+        "fixed_replaypack_packet_sha256": "42aa256478539d72d09b64831c776e0690937b77856e8280af5aa996dab23e90"
+      }
+    },
+    {
+      "id": "refund-negative-amount",
+      "title": "Payment validation rejects negative refund amounts",
+      "bug_family": "payment_semantics",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "a9dcc6ea0b3ab4d4ad29f1982bf472f5435e4b87ade92812bfc64b95e6c1dd6c",
+        "fixed_replaypack_packet_sha256": "ec521ebc3fd1af7d9ca6f6650914e3d2795cb761b54368363d526b8062801493"
+      }
+    },
+    {
+      "id": "json-merge-patch-null",
+      "title": "JSON merge patch ignores null deletion",
+      "bug_family": "merge_patch_semantics",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "38b33f50ce87aa438f63e86f6d446823c7dbf422aa48435fb2cf0ddfaa26497d",
+        "fixed_replaypack_packet_sha256": "b8a860ebf2af6b1daad64b4307420e6422a0e247ab31f4ab346d0f2943985381"
+      }
+    },
+    {
+      "id": "slo-window-inclusive",
+      "title": "SLO window includes samples at the exclusive end",
+      "bug_family": "analytics_windows",
+      "baseline_visible_only_agent": "false_done",
+      "replaypack_agent_first_attempt": "rejected_wrong_fix",
+      "replaypack_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "visible_proof_on_fixed": "pass",
+        "replaypack_on_fixed": "pass",
+        "wrong_replaypack_packet_sha256": "490e8f334be557db31a5877d0dc74523b9292d7b620e7901614a5be27b2e183b",
+        "fixed_replaypack_packet_sha256": "b7e93b97b0f07a074a39e8f305c424b92c2d768411b6e385c7397cd716c0e2aa"
+      }
+    }
+  ]
+}
