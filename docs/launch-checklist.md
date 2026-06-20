@@ -2,16 +2,17 @@
 
 ReplayPack should ship as proof before platform.
 
-## Before GitHub
+## Before Public GitHub Beta
 
 ```bash
 npm test
 npm run proofbench
+npm run public-repo-trials
 npm pack --dry-run --json
 npm run readiness
 ```
 
-`npm run readiness` is expected to fail until private CI, real repo dogfood, and external-user proof exist. Treat it as the launch go/no-go check, not the basic repo health check.
+`npm run readiness` is expected to fail until external-user proof exists. Treat it as the launch go/no-go check, not the basic repo health check.
 
 Review:
 
@@ -21,10 +22,11 @@ Review:
 - `examples/account-access/wrong` fails because the invariant catches the shallow fix.
 - `examples/account-access/fixed` passes proof and invariant.
 - `docs/proofbench/results.json` has at least 10 cases and passes the launch bar.
+- `docs/public-repo-trials/results.json` shows private public-repo trials passing.
 - No research transcripts, private issue exports, credentials, or bulky fixtures are present.
 - `docs/holy-fuck-scorecard.md` names the current gate honestly.
 
-## GitHub
+## GitHub Public Beta
 
 Create the public-facing repo as private first:
 
@@ -33,6 +35,13 @@ gh repo create Atomics-hub/replaypack --private --source . --remote origin --pus
 ```
 
 Confirm GitHub Actions passes while the repo is still private.
+
+Then create the beta tester issue from `docs/trials/beta-tester-issue.md` and flip the repo public:
+
+```bash
+gh issue create --repo Atomics-hub/replaypack --title "Beta testers: run the 10-minute ReplayPack trial" --body-file docs/trials/beta-tester-issue.md
+gh repo edit Atomics-hub/replaypack --visibility public
+```
 
 ## npm
 
@@ -47,14 +56,6 @@ Publish only after the private GitHub CI pass:
 
 ```bash
 npm publish --access public
-```
-
-## Public Flip
-
-After npm publish and one clean install test:
-
-```bash
-gh repo edit Atomics-hub/replaypack --visibility public
 ```
 
 Launch message:

@@ -1,6 +1,6 @@
 {
   "schema": "replaypack.public_repo_private_trials.v0",
-  "generated_at": "2026-06-20T06:18:19.678Z",
+  "generated_at": "2026-06-20T06:24:29.365Z",
   "methodology": {
     "mode": "private read-only public repository trials",
     "writes": "local temp clone only",
@@ -34,7 +34,7 @@
       "proof_status": "ok",
       "invariant_status": "ok",
       "capsule_sha256": "3128939d105db49a9da773e23fe48913c735f2681bcf1124bc035ea070e72376",
-      "duration_ms": 706,
+      "duration_ms": 1320,
       "clone_stdout_tail": "",
       "verify_stderr_tail": "",
       "notes": [
@@ -60,7 +60,7 @@
       "proof_status": "ok",
       "invariant_status": "ok",
       "capsule_sha256": "5e61e6c8eb8d026cf00181ef550184e634d47cae3bde0a4fcda87f366f812635",
-      "duration_ms": 757,
+      "duration_ms": 773,
       "clone_stdout_tail": "",
       "verify_stderr_tail": "",
       "notes": [
@@ -86,7 +86,7 @@
       "proof_status": "ok",
       "invariant_status": "ok",
       "capsule_sha256": "19f465427c36169b21bd683743f998697f84e8ab4106407595f615ade74a1282",
-      "duration_ms": 720,
+      "duration_ms": 688,
       "clone_stdout_tail": "",
       "verify_stderr_tail": "",
       "notes": [
