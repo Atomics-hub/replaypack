@@ -1,0 +1,30 @@
+{
+  "schema": "replaypack.validation.npm_publish.v0",
+  "checked_at": "2026-06-20T20:55:00Z",
+  "package": "replaypack",
+  "version": "0.2.0",
+  "published": true,
+  "npm": {
+    "dist_tag_latest": "0.2.0",
+    "tarball": "https://registry.npmjs.org/replaypack/-/replaypack-0.2.0.tgz",
+    "shasum": "4e4cb73d800a8df1f58802640319d081d938f40c",
+    "integrity": "sha512-OcKghhRI7yhTDOjjsoC4TyoweHrQBgCwhXe6++12+p7jK+W9GYZ2itrXIsM358NkdNqhigrZNuHUFelT5HWmcw=="
+  },
+  "github": {
+    "repository": "Atomics-hub/replaypack",
+    "release": "https://github.com/Atomics-hub/replaypack/releases/tag/v0.2.0",
+    "tag": "v0.2.0",
+    "published_commit": "06c5f2c94ad779503a824c01b79c0a6d4e768118"
+  },
+  "verification": [
+    "npm view replaypack@0.2.0 returned version metadata",
+    "clean npm install --save-dev replaypack succeeded",
+    "npx replaypack --version returned 0.2.0",
+    "GitHub release v0.2.0 exists",
+    "Git tag v0.2.0 points to the published commit"
+  ],
+  "notes": [
+    "Package launch is complete.",
+    "External developer comprehension proof remains the next market-proof gate."
+  ]
+}
