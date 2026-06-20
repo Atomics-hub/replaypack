@@ -34,6 +34,11 @@ Before a broad public launch:
 - 1 quote or paraphrased reaction that shows the concept landed
 - 1 concrete objection addressed in docs or CLI
 
+Current collection path:
+
+- GitHub issue form: https://github.com/Atomics-hub/replaypack/issues/new?template=external-developer-trial.yml
+- Trial script: `docs/trials/external-developer-trial.md`
+
 ## Positioning
 
 Primary:

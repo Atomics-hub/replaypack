@@ -1,0 +1,71 @@
+name: External developer trial
+description: Run the 10-minute ReplayPack trial and tell us if the idea lands.
+title: "External developer trial: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for trying ReplayPack. Please run the trial first:
+
+        https://github.com/Atomics-hub/replaypack/blob/main/docs/trials/external-developer-trial.md
+
+        Blunt feedback is more useful than polite feedback. If ReplayPack feels confusing or unnecessary, say why.
+  - type: input
+    id: agent_surface
+    attributes:
+      label: Coding-agent workflow
+      description: Which coding agent or workflow do you use today?
+      placeholder: "Codex, Claude Code, Cursor, Copilot, none, etc."
+    validations:
+      required: true
+  - type: textarea
+    id: one_minute_read
+    attributes:
+      label: One-minute read
+      description: After one minute with the README, what did you think ReplayPack does?
+    validations:
+      required: true
+  - type: textarea
+    id: commands
+    attributes:
+      label: Commands run
+      description: Paste the commands you ran and whether each passed or failed.
+      placeholder: |
+        npm test -> pass
+        node bin/replaypack.mjs verify --root examples/account-access/wrong replaypack/account-access.json -> failed as expected
+        node bin/replaypack.mjs verify --root examples/account-access/fixed replaypack/account-access.json -> pass
+    validations:
+      required: true
+  - type: textarea
+    id: invariant_understanding
+    attributes:
+      label: Invariant vs visible proof
+      description: Did the wrong/fixed demo make clear why ReplayPack is not just unit tests?
+    validations:
+      required: true
+  - type: textarea
+    id: adoption
+    attributes:
+      label: Would you use it?
+      description: Would you add ReplayPack to a repo where agents make PRs? Why or why not?
+    validations:
+      required: true
+  - type: textarea
+    id: objection
+    attributes:
+      label: First objection
+      description: What confused you, worried you, or would stop you from using it?
+    validations:
+      required: true
+  - type: dropdown
+    id: quote_permission
+    attributes:
+      label: Quote permission
+      description: May we quote or paraphrase your feedback in ReplayPack evidence docs?
+      options:
+        - "Paraphrase anonymously only"
+        - "Quote anonymously"
+        - "Quote with my GitHub username"
+        - "Do not quote or paraphrase"
+    validations:
+      required: true

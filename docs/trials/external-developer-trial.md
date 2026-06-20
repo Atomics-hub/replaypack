@@ -57,6 +57,16 @@ Ask the developer:
 4. Would you add this to a repo where agents make PRs?
 5. What is the first objection or confusion?
 
+## Send Feedback
+
+Open an external developer trial issue:
+
+```text
+https://github.com/Atomics-hub/replaypack/issues/new?template=external-developer-trial.yml
+```
+
+Paste command outcomes, the one-minute explanation, the invariant-vs-visible-proof read, whether they would use it, and the first objection. This is the evidence ReplayPack still needs before claiming external-user proof.
+
 ## Pass Bar
 
 External proof passes only if:

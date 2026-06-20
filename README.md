@@ -186,4 +186,4 @@ Run the current readiness check:
 npm run readiness
 ```
 
-The readiness check is expected to fail until live-agent proof and external-user proof exist.
+The current technical proof gates are present; readiness still fails until external-user proof exists.
