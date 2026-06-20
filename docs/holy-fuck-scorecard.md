@@ -4,9 +4,9 @@ ReplayPack should not go public because we like the idea. It goes public when th
 
 ## Current Call
 
-Status: `external_user_trial_next`
+Status: `public_beta_external_user_trial_next`
 
-ReplayPack is a credible holy-fuck candidate, but not yet a public launch.
+ReplayPack is a credible holy-fuck candidate in public GitHub beta, but not yet an npm/product launch.
 
 The product mechanism is now benchmark-proven locally:
 
@@ -19,6 +19,7 @@ The product mechanism is now benchmark-proven locally:
 - real self-dogfood passes on a launch-blocking CI issue
 - fresh private clone can run the wrong/fixed demo and dogfood capsule
 - private public-repo trials pass on 3/3 selected OSS repositories
+- public GitHub beta is live with a tester issue
 
 The missing proof is external comprehension proof:
 
@@ -52,8 +53,8 @@ This is strong mechanism proof. It is still synthetic; it does not replace real 
 | Real repo dogfood | 82 | 80 | pass | self-dogfood caught the real CI pack-destination failure mode |
 | Public repo private trials | 84 | 80 | pass | 3/3 selected public repos verified with local capsules |
 | External user proof | 0 | 75 | fail | no external dev trial yet |
-| Discovery/readme | 74 | 80 | pending | fresh clone and public-repo trials work; external comprehension untested |
-| Launch readiness | 84 | 85 | no-go | only external user proof missing |
+| Discovery/readme | 78 | 80 | pending | public beta README and tester issue live; external comprehension untested |
+| Launch readiness | 84 | 85 | no-go | GitHub beta live; npm/product launch waits on external proof |
 
 ## Go/No-Go Rules
 

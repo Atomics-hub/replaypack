@@ -1,0 +1,24 @@
+{
+  "schema": "replaypack.validation.public_github_beta.v0",
+  "checked_at": "2026-06-20T06:26:00Z",
+  "repository": "Atomics-hub/replaypack",
+  "url": "https://github.com/Atomics-hub/replaypack",
+  "visibility": "PUBLIC",
+  "default_branch": "main",
+  "head": "eb7a82facc3e5a8e6304553cfa11ea336a116c22",
+  "beta_issue": {
+    "number": 1,
+    "title": "Beta testers: run the 10-minute ReplayPack trial",
+    "url": "https://github.com/Atomics-hub/replaypack/issues/1",
+    "state": "OPEN"
+  },
+  "verification": [
+    "gh repo view reported visibility PUBLIC",
+    "gh issue view reported beta issue #1 OPEN",
+    "git ls-remote https://github.com/Atomics-hub/replaypack.git HEAD returned the public HEAD commit"
+  ],
+  "notes": [
+    "This is a GitHub public beta, not an npm publish.",
+    "Readiness still intentionally blocks on external-user proof."
+  ]
+}

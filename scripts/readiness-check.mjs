@@ -19,6 +19,7 @@ const validationFiles = {
   private_github_ci: "docs/validation/private-github-ci.json",
   real_repo_dogfood: "docs/validation/real-repo-dogfood.json",
   public_repo_private_trials: "docs/validation/public-repo-private-trials.json",
+  public_github_beta: "docs/validation/public-github-beta.json",
   external_user_proof: "docs/validation/external-user-proof.json"
 };
 const result = {
@@ -30,6 +31,7 @@ const result = {
     private_github_ci: exists(validationFiles.private_github_ci) ? "present" : "missing",
     real_repo_dogfood: exists(validationFiles.real_repo_dogfood) ? "present" : "missing",
     public_repo_private_trials: exists(validationFiles.public_repo_private_trials) ? "present_optional" : "missing_optional",
+    public_github_beta: exists(validationFiles.public_github_beta) ? "present_optional" : "missing_optional",
     external_user_proof: exists(validationFiles.external_user_proof) ? "present" : "missing"
   },
   next_required: []
