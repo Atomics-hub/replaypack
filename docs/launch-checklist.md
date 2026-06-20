@@ -2,7 +2,7 @@
 
 ReplayPack should ship as proof before platform.
 
-## Before Public GitHub Beta
+## Before GitHub/Npm Launch
 
 ```bash
 npm test
@@ -12,7 +12,7 @@ npm pack --dry-run --json
 npm run readiness
 ```
 
-`npm run readiness` is expected to fail until external-user proof exists. Treat it as the launch go/no-go check, not the basic repo health check.
+`npm run readiness` is expected to fail until external-user proof exists. Treat it as the market go/no-go check, not the package health check.
 
 Review:
 
@@ -52,10 +52,18 @@ Check again immediately before publishing:
 npm view replaypack name version --json
 ```
 
-Publish only after the private GitHub CI pass:
+Publish only after GitHub CI, tarball install, proofbench, public-repo trials, release notes, and security note pass:
 
 ```bash
 npm publish --access public
+```
+
+After publish:
+
+```bash
+npm view replaypack version dist-tags --json
+npm install --save-dev replaypack
+npx replaypack --version
 ```
 
 Launch message:

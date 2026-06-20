@@ -4,9 +4,9 @@ ReplayPack should not go public because we like the idea. It goes public when th
 
 ## Current Call
 
-Status: `public_beta_external_user_trial_next`
+Status: `npm_release_external_user_trial_next`
 
-ReplayPack is a credible holy-fuck candidate in public GitHub beta, but not yet an npm/product launch.
+ReplayPack is a credible holy-fuck candidate moving from public GitHub beta to npm release. External demand is not proven yet.
 
 The product mechanism is now benchmark-proven locally:
 
@@ -21,7 +21,7 @@ The product mechanism is now benchmark-proven locally:
 - private public-repo trials pass on 7/7 selected OSS repositories
 - public GitHub beta is live with a tester issue
 
-The missing proof is external comprehension proof:
+The missing market proof is external comprehension proof:
 
 - external developer reaction
 - confirmation that the demo makes the value obvious without a live explanation
@@ -53,8 +53,8 @@ This is strong mechanism proof. It is still synthetic; it does not replace real 
 | Real repo dogfood | 82 | 80 | pass | self-dogfood caught the real CI pack-destination failure mode |
 | Public repo private trials | 88 | 80 | pass | 7/7 selected public repos verified with local capsules |
 | External user proof | 0 | 75 | fail | no external dev trial yet |
-| Discovery/readme | 78 | 80 | pending | public beta README and tester issue live; external comprehension untested |
-| Launch readiness | 84 | 85 | no-go | GitHub beta live; npm/product launch waits on external proof |
+| Discovery/readme | 80 | 80 | pass | npm-ready README, public beta issue, and evidence page live |
+| Launch readiness | 86 | 85 | package-go | package launch can proceed; market proof still waits on external users |
 
 ## Go/No-Go Rules
 
@@ -72,7 +72,7 @@ npm publish is allowed when:
 - install-from-tarball test passes
 - release notes and security note are present
 
-Public launch is allowed when:
+Broad market launch is allowed when:
 
 - ProofBench has at least 10 cases
 - visible tests accept at least 5 attractive wrong fixes
@@ -100,6 +100,6 @@ Until then, the honest answer is:
 
 ```text
 ReplayPack is the prime candidate.
-It is not yet fully launch-proven.
+It is package-launch ready, but not yet market-proven.
 Next gate is external user proof.
 ```

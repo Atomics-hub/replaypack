@@ -1,6 +1,6 @@
 {
   "schema": "replaypack.proofbench.results.v0",
-  "generated_at": "2026-06-20T05:53:29.086Z",
+  "generated_at": "2026-06-20T20:50:20.545Z",
   "summary": {
     "case_count": 10,
     "bug_family_count": 10,
@@ -23,8 +23,8 @@
       "replaypack_on_wrong": "fail",
       "visible_proof_on_fixed": "pass",
       "replaypack_on_fixed": "pass",
-      "wrong_replaypack_packet_sha256": "bc03f0853c29eb820b3a4e269ae19adb030ae2a1a9ca2129fa731d1917cb43be",
-      "fixed_replaypack_packet_sha256": "d8b1ede7ff9f599906eab6b5b6085278a6097d95616d9a0c3d59114fed7a9d1e"
+      "wrong_replaypack_packet_sha256": "6dcd015c72e5dd16190a437f6ec286abe8a849decad88d2e7e7f62e7c6fcd528",
+      "fixed_replaypack_packet_sha256": "bccc705a30d0fe38449e90cdc4f3c0a385db922f6cb65963ad51ae3cf53abc9b"
     },
     {
       "id": "pagination-cursor",
@@ -36,8 +36,8 @@
       "replaypack_on_wrong": "fail",
       "visible_proof_on_fixed": "pass",
       "replaypack_on_fixed": "pass",
-      "wrong_replaypack_packet_sha256": "838a4463e815554423ac9b2b8947efdd1e01d52bcb52d57820c4ac48f2954703",
-      "fixed_replaypack_packet_sha256": "34f0c2931d1f98fe1f06c24c966d870783b61de5716bbd5726d621a5666f5a71"
+      "wrong_replaypack_packet_sha256": "8be08bd750d75ca49373118b77cbf8020ecb8e1056d981563af77df95ef9398a",
+      "fixed_replaypack_packet_sha256": "c8831e3962ab473dc8c597f0bd0f3334f01726a682e4b5a0a189140dfe9ad810"
     },
     {
       "id": "timezone-cutoff",
@@ -49,8 +49,8 @@
       "replaypack_on_wrong": "fail",
       "visible_proof_on_fixed": "pass",
       "replaypack_on_fixed": "pass",
-      "wrong_replaypack_packet_sha256": "bda828176209e0322e9b838cbfde895a0bf69cf5d4d20568de9332df54ff4ff2",
-      "fixed_replaypack_packet_sha256": "4d0dbe08005fae791ce2738ca794a8f2c74e9fb86e05dc6bbb67abbe2a54baf9"
+      "wrong_replaypack_packet_sha256": "2b1f65a8f87a5739756d5b704528d22a234d3e1754826448dbeda85824c3ef48",
+      "fixed_replaypack_packet_sha256": "cbf67933b49bfbb5faee4b8e9fb0e110c91361c5fe7455566180418e298167ef"
     },
     {
       "id": "feature-flag-fallback",
@@ -62,8 +62,8 @@
       "replaypack_on_wrong": "fail",
       "visible_proof_on_fixed": "pass",
       "replaypack_on_fixed": "pass",
-      "wrong_replaypack_packet_sha256": "b7eb4c8a9b7d0bf38dc6c0e857a63838f083ebe913fc41a5da5a9c1072911b9c",
-      "fixed_replaypack_packet_sha256": "0e00493e5a5cb5d7f2d71c5020e67bd28c1816d33aa45fc31cd8ef9bdd89dfc0"
+      "wrong_replaypack_packet_sha256": "554d85e13fab7d1f330357e5cb0f5382d0bb9c70ff0c6e74b60c24f6d0c55ba1",
+      "fixed_replaypack_packet_sha256": "0d568fb82c5d67551caf856b46db7d55ffa8a49166b981193f69c515681a2585"
     },
     {
       "id": "idempotency-scope",
@@ -75,8 +75,8 @@
       "replaypack_on_wrong": "fail",
       "visible_proof_on_fixed": "pass",
       "replaypack_on_fixed": "pass",
-      "wrong_replaypack_packet_sha256": "13dc4506f8a13e33dbaca33b567925b59936e887cbb631dd1006c7ff4b257a6b",
-      "fixed_replaypack_packet_sha256": "ab28ca2afa50543f29c29669d1f90c455d34ca6793b088fd2c62baddac6c9166"
+      "wrong_replaypack_packet_sha256": "ae9814f50dd650608d395c140f1b658b1be607821ec99df0658f9dbde3827973",
+      "fixed_replaypack_packet_sha256": "c8c1ce253b8301cdc78e707d019bb617e3e431da754360d85b5ee9a7c82678eb"
     },
     {
       "id": "retry-permanent-errors",
@@ -88,8 +88,8 @@
       "replaypack_on_wrong": "fail",
       "visible_proof_on_fixed": "pass",
       "replaypack_on_fixed": "pass",
-      "wrong_replaypack_packet_sha256": "a6f2f008bcd44f03a77850fa3a8f17f6e8c38d61631f1918618ff045edd293cc",
-      "fixed_replaypack_packet_sha256": "e1e67fb87ce281ea48e623c41c4e7173fbcd14dfd1d54d522f07124869ea4ed0"
+      "wrong_replaypack_packet_sha256": "9285af2d65c992caa243aec49db3eeb9e8bbfc07486e9a64b1929d0670991752",
+      "fixed_replaypack_packet_sha256": "a3757b8d25659422d43fd57ca3434b5c3398897983f9153aa28361d088d70b8d"
     },
     {
       "id": "upload-mime-sniff",
@@ -101,8 +101,8 @@
       "replaypack_on_wrong": "fail",
       "visible_proof_on_fixed": "pass",
       "replaypack_on_fixed": "pass",
-      "wrong_replaypack_packet_sha256": "1812f8b01bfbb57b7a1c283f56b5544e263c6dd670c8e1b9d9fb353e434bb9bd",
-      "fixed_replaypack_packet_sha256": "a8e692043e9c3b36d4bc925e327feb0568a9d84252be6c70fab77cb621dad11d"
+      "wrong_replaypack_packet_sha256": "328a3686acb7c52a38163966189d65f9e23738285e0eca72258ada1cb74eac6b",
+      "fixed_replaypack_packet_sha256": "fd872eb3143e00be698b7a574a5c58c83e723e8422fd2c3c2475ec597ea07101"
     },
     {
       "id": "permission-after-fetch",
@@ -114,8 +114,8 @@
       "replaypack_on_wrong": "fail",
       "visible_proof_on_fixed": "pass",
       "replaypack_on_fixed": "pass",
-      "wrong_replaypack_packet_sha256": "e4509e0383dd72a09cda67fa190362826e39c9b5774e2d2c7e8cb98818156165",
-      "fixed_replaypack_packet_sha256": "2deb22ed01fdd338bc22e92792b7d137a158fb90201160a4fa11f18ca370cc14"
+      "wrong_replaypack_packet_sha256": "f75adbfa3d69f0ab819134f34e742b083d66b6e0f1166005345e44c74b7b3d6a",
+      "fixed_replaypack_packet_sha256": "7ad5398ef8d21a1a014ae06b6593b0cfb149f094e4eae48744596aeaefb017f4"
     },
     {
       "id": "cache-key-settings",
@@ -127,8 +127,8 @@
       "replaypack_on_wrong": "fail",
       "visible_proof_on_fixed": "pass",
       "replaypack_on_fixed": "pass",
-      "wrong_replaypack_packet_sha256": "a1ab6a747efe0a1a8aa4dd04b66cea764c1ad113bbd61373af1652a4688dcf93",
-      "fixed_replaypack_packet_sha256": "4e8f1ee1aab3cdd52d853adf2ce65576b8ad12337ed9c8873e6896efac924f78"
+      "wrong_replaypack_packet_sha256": "6a2a7590274c8935f571e7935799e1fa7e07cd48bff45776a7bddf839bdcff56",
+      "fixed_replaypack_packet_sha256": "a619b7d229e75c46572e508f3182e7b28beda854d27e31950ef767799243011b"
     },
     {
       "id": "rate-limit-boundary",
@@ -140,8 +140,8 @@
       "replaypack_on_wrong": "fail",
       "visible_proof_on_fixed": "pass",
       "replaypack_on_fixed": "pass",
-      "wrong_replaypack_packet_sha256": "c8c4b4f544fca9774387f58118abfcdd4ae6af5d386d37c94b0b8c0b7c6a1838",
-      "fixed_replaypack_packet_sha256": "683477e2fc89b27ddc71cb992e7c79fcc7614ef83b0a850ab82ce63f5d923607"
+      "wrong_replaypack_packet_sha256": "a52a2e5d07d014dd7db8c117acc8c277dae96f17f157629883385d77ebd75e44",
+      "fixed_replaypack_packet_sha256": "ea00f1a891fa2670de3794aa86f429625f808265bf7bf6b7d56373e684879cb6"
     }
   ]
 }

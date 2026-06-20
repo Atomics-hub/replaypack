@@ -1,6 +1,6 @@
 {
   "schema": "replaypack.validation.public_repo_private_trials.v0",
-  "checked_at": "2026-06-20T20:20:36Z",
+  "checked_at": "2026-06-20T20:50:12Z",
   "results": "docs/public-repo-trials/results.json",
   "mode": "private read-only public repository trials",
   "summary": {

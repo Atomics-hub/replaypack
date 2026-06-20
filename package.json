@@ -12,7 +12,7 @@
     "url": "https://github.com/Atomics-hub/replaypack/issues"
   },
   "bin": {
-    "replaypack": "./bin/replaypack.mjs"
+    "replaypack": "bin/replaypack.mjs"
   },
   "files": [
     "bin",

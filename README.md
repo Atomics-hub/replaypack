@@ -1,6 +1,6 @@
 # ReplayPack
 
-> Public beta: looking for 5 developers who use coding agents to run the 10-minute trial and tell us whether this is useful or nonsense. Start here: [External Developer Trial](docs/trials/external-developer-trial.md).
+> Public beta: looking for 5 developers who use coding agents to run the 10-minute trial and tell us whether this is useful or nonsense. Start here: [External Developer Trial](https://github.com/Atomics-hub/replaypack/blob/main/docs/trials/external-developer-trial.md).
 
 ReplayPack is the merge gate for agent-made code.
 
@@ -24,9 +24,19 @@ A narrow test can prove the symptom is gone while the product contract is broken
 
 The agent gets the capsule as its task brief. CI runs `replaypack verify` after the edit.
 
-## Public Beta Setup
+## Install
 
-ReplayPack is public on GitHub before npm publish. For the beta, clone the repo:
+```bash
+npm install --save-dev replaypack
+```
+
+Or run with `npx`:
+
+```bash
+npx replaypack --help
+```
+
+For the beta demo, clone the repo:
 
 ```bash
 git clone https://github.com/Atomics-hub/replaypack.git
@@ -34,25 +44,21 @@ cd replaypack
 npm test
 ```
 
-Run the CLI from the checkout:
+Run the checkout CLI:
 
 ```bash
+npm test
 node bin/replaypack.mjs --help
 ```
 
-The npm package is not published yet. After beta validation, the install path will be:
-
-```bash
-npm install --save-dev replaypack
-```
-
-Or:
-
-```bash
-npx replaypack --help
-```
-
 ## Verify A Capsule
+
+```bash
+npx replaypack verify replaypack/account-access.json \
+  --out dist/replaypack-verify.json
+```
+
+Or from a checkout:
 
 ```bash
 node bin/replaypack.mjs verify replaypack/account-access.json \
@@ -68,7 +74,7 @@ Verification passes only when:
 ## Capture A Capsule
 
 ```bash
-node bin/replaypack.mjs capture \
+npx replaypack capture \
   --id account-access \
   --title "Account-scoped export access ignores membership" \
   --primary-file src/access.js \
@@ -91,7 +97,7 @@ Run the proof and invariant commands before finishing.
 
 ## GitHub Actions
 
-After npm publish, as an npm command:
+As an npm command:
 
 ```yaml
 - uses: actions/setup-node@v4
@@ -101,14 +107,14 @@ After npm publish, as an npm command:
 - run: npx replaypack verify replaypack/account-access.json --out dist/replaypack-verify.json
 ```
 
-During the public beta, as an action from this repo:
+As an action from this repo:
 
 ```yaml
 - uses: actions/setup-node@v4
   with:
     node-version: 24
 - run: npm ci
-- uses: Atomics-hub/replaypack@main
+- uses: Atomics-hub/replaypack@v0.2.0
   with:
     capsule: replaypack/account-access.json
     out: dist/replaypack-verify.json
@@ -163,12 +169,12 @@ ReplayPack keeps agents from fixing the symptom and breaking the contract.
 
 ReplayPack is being held to a proof loop before broad launch:
 
-- [Evidence](docs/evidence.md)
-- [Holy-Fuck Scorecard](docs/holy-fuck-scorecard.md)
-- [ProofBench](docs/proofbench/README.md)
-- [Market Proof Loop](docs/market-proof.md)
-- [Private Public-Repo Trials](docs/public-repo-trials/README.md)
-- [External Developer Trial](docs/trials/external-developer-trial.md)
+- [Evidence](https://github.com/Atomics-hub/replaypack/blob/main/docs/evidence.md)
+- [Holy-Fuck Scorecard](https://github.com/Atomics-hub/replaypack/blob/main/docs/holy-fuck-scorecard.md)
+- [ProofBench](https://github.com/Atomics-hub/replaypack/blob/main/docs/proofbench/README.md)
+- [Market Proof Loop](https://github.com/Atomics-hub/replaypack/blob/main/docs/market-proof.md)
+- [Private Public-Repo Trials](https://github.com/Atomics-hub/replaypack/blob/main/docs/public-repo-trials/README.md)
+- [External Developer Trial](https://github.com/Atomics-hub/replaypack/blob/main/docs/trials/external-developer-trial.md)
 
 Run the current readiness check:
 
