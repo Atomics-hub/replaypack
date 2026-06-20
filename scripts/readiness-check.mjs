@@ -24,6 +24,7 @@ const validationFiles = {
   real_repo_dogfood: "docs/validation/real-repo-dogfood.json",
   public_repo_private_trials: "docs/validation/public-repo-private-trials.json",
   public_github_beta: "docs/validation/public-github-beta.json",
+  packed_package_trial: "docs/validation/private-packed-package-trial.json",
   npm_publish: `docs/validation/npm-publish-v${packageJson.version}.json`,
   full_agent_proof: "docs/validation/full-agent-proof.json",
   cross_agent_full_proof: "docs/validation/claude-code-full-agent-proof.json",
@@ -47,6 +48,10 @@ const validationChecks = {
   public_github_beta: {
     optional: true,
     validate: validatePublicGithubBeta
+  },
+  packed_package_trial: {
+    optional: true,
+    validate: validatePackedPackageTrial
   },
   npm_publish: {
     optional: true,
@@ -243,6 +248,33 @@ function validatePublicGithubBeta(data) {
   expect(data.visibility === "PUBLIC", errors, "repository visibility must be PUBLIC");
   expect(data.beta_issue?.state === "OPEN", errors, "beta issue must be OPEN");
   expect(Boolean(data.url), errors, "public repository URL is required");
+  return errors;
+}
+
+function validatePackedPackageTrial(data) {
+  const errors = [];
+  expect(data.schema === "replaypack.validation.private_packed_package_trial.v0", errors, "schema must be private_packed_package_trial.v0");
+  expect(data.package?.name === packageJson.name, errors, "package name must match package.json");
+  expect(data.package?.version === packageJson.version, errors, "package version must match package.json");
+  expect(
+    data.commands?.some((item) => item.command === "npm run package-trial" && item.actual === "exit 0"),
+    errors,
+    "npm run package-trial must be recorded as exit 0"
+  );
+  expect(
+    data.commands?.some((item) => item.command === "replaypack --version" && item.actual === packageJson.version),
+    errors,
+    "installed replaypack version must match package.json"
+  );
+  expect(
+    data.commands?.some((item) => item.command === "replaypack trial" && item.actual === "pass"),
+    errors,
+    "installed replaypack trial must be recorded as pass"
+  );
+  expect(data.trial_summary?.wrong_demo?.proof === "ok", errors, "wrong demo visible proof must be ok");
+  expect(data.trial_summary?.wrong_demo?.replaypack === "fail", errors, "wrong demo must fail ReplayPack");
+  expect(data.trial_summary?.fixed_demo?.replaypack === "pass", errors, "fixed demo must pass ReplayPack");
+  expect(data.trial_summary?.dogfood?.replaypack === "pass", errors, "dogfood must pass ReplayPack");
   return errors;
 }
 
