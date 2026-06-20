@@ -1,0 +1,27 @@
+{
+  "schema": "replaypack.validation.private_github_ci.v0",
+  "checked_at": "2026-06-20T06:00:41Z",
+  "repository": "Atomics-hub/replaypack",
+  "repository_visibility": "PRIVATE",
+  "branch": "main",
+  "commit": "72280ad405158d2010a4c3da934b656f89943627",
+  "workflow": "ReplayPack CI",
+  "run_id": 27862264865,
+  "run_url": "https://github.com/Atomics-hub/replaypack/actions/runs/27862264865",
+  "conclusion": "success",
+  "job": {
+    "name": "test",
+    "id": 82460125916,
+    "url": "https://github.com/Atomics-hub/replaypack/actions/runs/27862264865/job/82460125916",
+    "conclusion": "success"
+  },
+  "validated_steps": [
+    "npm test",
+    "mkdir -p dist && npm pack --pack-destination dist",
+    "local composite GitHub Action verifies examples/account-access/fixed"
+  ],
+  "notes": [
+    "First hosted run failed because dist did not exist before npm pack.",
+    "CI was patched and the follow-up private hosted run passed."
+  ]
+}

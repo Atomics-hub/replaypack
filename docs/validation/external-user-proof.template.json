@@ -1,0 +1,41 @@
+{
+  "schema": "replaypack.validation.external_user_proof.v0",
+  "checked_at": "YYYY-MM-DDTHH:MM:SSZ",
+  "trial_runner": {
+    "relationship": "external developer not involved in building ReplayPack",
+    "name_or_alias": "",
+    "permission_to_quote": false
+  },
+  "repo_visibility_during_trial": "PRIVATE",
+  "trial_doc": "docs/trials/external-developer-trial.md",
+  "commands_run": [
+    {
+      "command": "npm test",
+      "status": ""
+    },
+    {
+      "command": "node bin/replaypack.mjs verify --root examples/account-access/wrong replaypack/account-access.json",
+      "status": ""
+    },
+    {
+      "command": "node bin/replaypack.mjs verify --root examples/account-access/fixed replaypack/account-access.json",
+      "status": ""
+    },
+    {
+      "command": "node bin/replaypack.mjs verify docs/dogfood/ci-pack-destination/replaypack.json --out dist/dogfood-ci-pack-verify.json",
+      "status": ""
+    }
+  ],
+  "comprehension": {
+    "one_minute_explanation": "",
+    "understood_not_just_tests": null,
+    "would_try_on_agent_pr_repo": null
+  },
+  "objections": [
+    ""
+  ],
+  "doc_or_product_changes_needed": [
+    ""
+  ],
+  "verdict": "pass | fail"
+}

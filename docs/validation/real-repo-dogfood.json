@@ -1,0 +1,33 @@
+{
+  "schema": "replaypack.validation.real_repo_dogfood.v0",
+  "checked_at": "2026-06-20T06:01:56Z",
+  "repository": "Atomics-hub/replaypack",
+  "issue": "CI npm pack destination fails on fresh runner",
+  "capsule": "docs/dogfood/ci-pack-destination/replaypack.json",
+  "command": "node bin/replaypack.mjs verify docs/dogfood/ci-pack-destination/replaypack.json --out dist/dogfood-ci-pack-verify.json",
+  "status": "pass",
+  "capsule_sha256": "f87dabee34329a4afc4bd477c87352a8becfb7a557ec45ed0d857f108de94d11",
+  "proof": {
+    "command": "npm test",
+    "status": "ok"
+  },
+  "invariants": [
+    {
+      "command": "node docs/dogfood/ci-pack-destination/invariant.mjs",
+      "status": "ok",
+      "checks": [
+        "workflow creates dist before npm pack writes into it",
+        "dist is deleted before running the package command",
+        "package tarball exists after the command completes"
+      ]
+    }
+  ],
+  "why_this_counts": [
+    "The issue came from the first private hosted GitHub Actions run, not a synthetic benchmark fixture.",
+    "The visible smoke proof would not catch the bug by itself.",
+    "The ReplayPack invariant captures the real launch failure mode."
+  ],
+  "limitations": [
+    "This is self-dogfood inside the ReplayPack repository, not an external repository trial."
+  ]
+}

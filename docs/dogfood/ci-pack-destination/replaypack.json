@@ -1,0 +1,46 @@
+{
+  "schema": "replaypack.capsule.v0",
+  "id": "replaypack-ci-pack-destination",
+  "title": "CI npm pack destination fails on fresh runner",
+  "created_at": "2026-06-20T06:10:00Z",
+  "entrypoint": {
+    "repo_root": ".",
+    "primary_file": ".github/workflows/ci.yml",
+    "proof_file": "test/smoke.mjs",
+    "proof_command": "npm test",
+    "invariant_commands": [
+      "node docs/dogfood/ci-pack-destination/invariant.mjs"
+    ],
+    "related_files": [
+      "package.json",
+      "action.yml"
+    ]
+  },
+  "workflow": {
+    "issue_files": [
+      "docs/dogfood/ci-pack-destination/issue.md"
+    ],
+    "ci_logs": [
+      "docs/dogfood/ci-pack-destination/trace.md"
+    ]
+  },
+  "trace": {
+    "repro": "docs/dogfood/ci-pack-destination/trace.md",
+    "observed": {
+      "hosted_ci": "npm pack failed because dist did not exist"
+    },
+    "expected": {
+      "hosted_ci": "package step creates dist before npm pack writes tarball"
+    }
+  },
+  "acceptance": [
+    "The existing smoke proof still passes.",
+    "The workflow package command creates dist before npm pack writes into it.",
+    "The package command succeeds after dist is deleted to simulate a fresh hosted runner."
+  ],
+  "agent_instructions": [
+    "Do not rely on a locally pre-existing dist directory.",
+    "Preserve the package dry-run and local composite action verification path.",
+    "Run ReplayPack verify before calling this launch-ready."
+  ]
+}
