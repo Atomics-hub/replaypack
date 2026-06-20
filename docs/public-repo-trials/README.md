@@ -25,11 +25,15 @@ This is not external user proof. It does not show that an outside developer unde
 npm run public-repo-trials
 ```
 
-The first pilot batch uses:
+The current pilot batch uses:
 
 - `sindresorhus/escape-string-regexp`
 - `sindresorhus/is-plain-obj`
 - `sindresorhus/yoctocolors`
+- `sindresorhus/array-move`
+- `sindresorhus/quick-lru`
+- `sindresorhus/decamelize`
+- `sindresorhus/camelcase`
 
 ## Interpreting Results
 

@@ -1,11 +1,11 @@
 {
   "schema": "replaypack.validation.public_repo_private_trials.v0",
-  "checked_at": "2026-06-20T06:24:29Z",
+  "checked_at": "2026-06-20T20:20:36Z",
   "results": "docs/public-repo-trials/results.json",
   "mode": "private read-only public repository trials",
   "summary": {
-    "attempted": 3,
-    "passed": 3,
+    "attempted": 7,
+    "passed": 7,
     "failed": 0,
     "pass_rate": 1.0
   },
@@ -24,6 +24,26 @@
       "repository": "sindresorhus/yoctocolors",
       "commit": "ab9da8d65ff69b6dc107cfc048e3769d3a450de4",
       "status": "pass"
+    },
+    {
+      "repository": "sindresorhus/array-move",
+      "commit": "44103d4d7f4761823aeafe6b9dc9708deb830d57",
+      "status": "pass"
+    },
+    {
+      "repository": "sindresorhus/quick-lru",
+      "commit": "070bdf331d9e451f75f5335c127255a124d4270d",
+      "status": "pass"
+    },
+    {
+      "repository": "sindresorhus/decamelize",
+      "commit": "d0a094fe822e71c8005906cbe0c4333b192b5b0d",
+      "status": "pass"
+    },
+    {
+      "repository": "sindresorhus/camelcase",
+      "commit": "8596a65fcbfedd474cdedf16f48b7d9381eb7953",
+      "status": "pass"
     }
   ],
   "safety": [
@@ -35,7 +55,7 @@
   "what_this_proves": [
     "ReplayPack can privately verify local capsules against public repository checkouts.",
     "The capsule model works on real public code outside the ReplayPack examples.",
-    "The first pilot batch ran quickly without project-specific dependency installation."
+    "The seven-repo pilot batch ran quickly without project-specific dependency installation."
   ],
   "limitations": [
     "These were selected small JavaScript libraries.",

@@ -202,6 +202,135 @@ if (original) {
 }
 `,
       notes: ["No dependency install required; invariant forces color capability before dynamic import."]
+    },
+    {
+      id: "array-move",
+      repository: "sindresorhus/array-move",
+      url: "https://github.com/sindresorhus/array-move.git",
+      primaryFile: "index.js",
+      title: "Array move preserves order and mutation semantics",
+      issue:
+        "# Array move invariant\n\nMutable and immutable moves must handle positive and negative indexes without corrupting order or mutating immutable inputs.",
+      trace:
+        "# Trace\n\nA shallow move proof can pass one happy path while breaking negative indexes or mutating the source array.",
+      proof: `import assert from "node:assert/strict";
+import { arrayMoveImmutable } from "../index.js";
+
+assert.deepEqual(arrayMoveImmutable(["a", "b", "c"], 0, 2), ["b", "c", "a"]);
+`,
+      invariant: `import assert from "node:assert/strict";
+import { arrayMoveImmutable, arrayMoveMutable } from "../index.js";
+
+const source = ["a", "b", "c", "d"];
+const moved = arrayMoveImmutable(source, 1, -1);
+assert.deepEqual(moved, ["a", "c", "d", "b"]);
+assert.deepEqual(source, ["a", "b", "c", "d"]);
+
+const mutable = ["a", "b", "c", "d"];
+arrayMoveMutable(mutable, -1, 0);
+assert.deepEqual(mutable, ["d", "a", "b", "c"]);
+
+assert.deepEqual(arrayMoveImmutable(["x", "y"], 9, 0), ["x", "y"]);
+`,
+      notes: ["No dependency install required; imports package entrypoint directly."]
+    },
+    {
+      id: "quick-lru",
+      repository: "sindresorhus/quick-lru",
+      url: "https://github.com/sindresorhus/quick-lru.git",
+      primaryFile: "index.js",
+      title: "LRU cache preserves deletion, expiry, and resize contracts",
+      issue:
+        "# LRU invariant\n\nCache operations must preserve basic Map-like behavior, maxAge expiry, deletion, clear, and resize semantics.",
+      trace:
+        "# Trace\n\nAn agent can make get/set pass while breaking expiry or size-changing operations.",
+      proof: `import assert from "node:assert/strict";
+import QuickLRU from "../index.js";
+
+const cache = new QuickLRU({ maxSize: 3 });
+cache.set("a", 1);
+assert.equal(cache.get("a"), 1);
+`,
+      invariant: `import assert from "node:assert/strict";
+import QuickLRU from "../index.js";
+
+const cache = new QuickLRU({ maxSize: 3 });
+cache.set("a", 1);
+cache.set("b", 2);
+cache.set("c", 3);
+assert.equal(cache.has("a"), true);
+assert.equal(cache.delete("b"), true);
+assert.equal(cache.has("b"), false);
+
+cache.resize(1);
+assert.equal(cache.size <= 1, true);
+
+const expiring = new QuickLRU({ maxSize: 2 });
+expiring.set("short", "gone", { maxAge: 1 });
+await new Promise(resolve => setTimeout(resolve, 5));
+assert.equal(expiring.has("short"), false);
+
+assert.throws(() => new QuickLRU({ maxSize: 0 }), /maxSize/);
+`,
+      notes: ["No dependency install required; imports package entrypoint directly."]
+    },
+    {
+      id: "decamelize",
+      repository: "sindresorhus/decamelize",
+      url: "https://github.com/sindresorhus/decamelize.git",
+      primaryFile: "index.js",
+      title: "Decamelize preserves separator and uppercase options",
+      issue:
+        "# Decamelize invariant\n\nCamelized strings must split across lowercase/uppercase transitions, respect custom separators, and preserve uppercase runs when requested.",
+      trace:
+        "# Trace\n\nA simple lowercase split can pass one visible case while breaking acronyms, custom separators, or Unicode-aware transitions.",
+      proof: `import assert from "node:assert/strict";
+import decamelize from "../index.js";
+
+assert.equal(decamelize("unicornRainbow"), "unicorn_rainbow");
+`,
+      invariant: `import assert from "node:assert/strict";
+import decamelize from "../index.js";
+
+assert.equal(decamelize("unicornRainbow"), "unicorn_rainbow");
+assert.equal(decamelize("unicornRainbow", { separator: "-" }), "unicorn-rainbow");
+assert.equal(decamelize("dataForUSACounties"), "data_for_usa_counties");
+assert.equal(
+  decamelize("dataForUSACounties", { preserveConsecutiveUppercase: true }),
+  "data_for_USA_counties"
+);
+assert.equal(decamelize(""), "");
+assert.throws(() => decamelize(42), /type/);
+`,
+      notes: ["No dependency install required; imports package entrypoint directly."]
+    },
+    {
+      id: "camelcase",
+      repository: "sindresorhus/camelcase",
+      url: "https://github.com/sindresorhus/camelcase.git",
+      primaryFile: "index.js",
+      title: "Camelcase preserves prefixes, arrays, and option semantics",
+      issue:
+        "# Camelcase invariant\n\nString conversion must handle separators, arrays, PascalCase, leading identifier prefixes, and numeric boundaries.",
+      trace:
+        "# Trace\n\nA naive separator replacement can pass a basic dash case while breaking arrays, prefixes, or numeric transitions.",
+      proof: `import assert from "node:assert/strict";
+import camelCase from "../index.js";
+
+assert.equal(camelCase("foo-bar"), "fooBar");
+`,
+      invariant: `import assert from "node:assert/strict";
+import camelCase from "../index.js";
+
+assert.equal(camelCase("foo-bar"), "fooBar");
+assert.equal(camelCase("foo_bar.baz qux"), "fooBarBazQux");
+assert.equal(camelCase(["foo", "bar", "baz"]), "fooBarBaz");
+assert.equal(camelCase("foo-bar", { pascalCase: true }), "FooBar");
+assert.equal(camelCase("_foo-bar"), "_fooBar");
+assert.equal(camelCase("version 1 beta"), "version1Beta");
+assert.throws(() => camelCase(42), /Expected/);
+`,
+      notes: ["No dependency install required; imports package entrypoint directly."]
     }
   ];
 }

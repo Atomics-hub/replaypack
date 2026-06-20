@@ -18,7 +18,7 @@ The product mechanism is now benchmark-proven locally:
 - private GitHub CI passes
 - real self-dogfood passes on a launch-blocking CI issue
 - fresh private clone can run the wrong/fixed demo and dogfood capsule
-- private public-repo trials pass on 3/3 selected OSS repositories
+- private public-repo trials pass on 7/7 selected OSS repositories
 - public GitHub beta is live with a tester issue
 
 The missing proof is external comprehension proof:
@@ -51,7 +51,7 @@ This is strong mechanism proof. It is still synthetic; it does not replace real 
 | CI/action path | 90 | 85 | pass | private GitHub Actions passed on clean remote |
 | Benchmark proof | 90 | 85 | pass | 10/10 visible-green wrong fixes rejected; 10/10 correct fixes accepted |
 | Real repo dogfood | 82 | 80 | pass | self-dogfood caught the real CI pack-destination failure mode |
-| Public repo private trials | 84 | 80 | pass | 3/3 selected public repos verified with local capsules |
+| Public repo private trials | 88 | 80 | pass | 7/7 selected public repos verified with local capsules |
 | External user proof | 0 | 75 | fail | no external dev trial yet |
 | Discovery/readme | 78 | 80 | pending | public beta README and tester issue live; external comprehension untested |
 | Launch readiness | 84 | 85 | no-go | GitHub beta live; npm/product launch waits on external proof |

@@ -163,6 +163,7 @@ ReplayPack keeps agents from fixing the symptom and breaking the contract.
 
 ReplayPack is being held to a proof loop before broad launch:
 
+- [Evidence](docs/evidence.md)
 - [Holy-Fuck Scorecard](docs/holy-fuck-scorecard.md)
 - [ProofBench](docs/proofbench/README.md)
 - [Market Proof Loop](docs/market-proof.md)

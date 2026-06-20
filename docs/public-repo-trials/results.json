@@ -1,6 +1,6 @@
 {
   "schema": "replaypack.public_repo_private_trials.v0",
-  "generated_at": "2026-06-20T06:24:29.365Z",
+  "generated_at": "2026-06-20T20:20:36.424Z",
   "methodology": {
     "mode": "private read-only public repository trials",
     "writes": "local temp clone only",
@@ -9,8 +9,8 @@
     "limitation": "These trials prove portability on public code; they do not replace external developer comprehension proof."
   },
   "summary": {
-    "attempted": 3,
-    "passed": 3,
+    "attempted": 7,
+    "passed": 7,
     "failed": 0,
     "pass_rate": 1
   },
@@ -34,7 +34,7 @@
       "proof_status": "ok",
       "invariant_status": "ok",
       "capsule_sha256": "3128939d105db49a9da773e23fe48913c735f2681bcf1124bc035ea070e72376",
-      "duration_ms": 1320,
+      "duration_ms": 704,
       "clone_stdout_tail": "",
       "verify_stderr_tail": "",
       "notes": [
@@ -60,7 +60,7 @@
       "proof_status": "ok",
       "invariant_status": "ok",
       "capsule_sha256": "5e61e6c8eb8d026cf00181ef550184e634d47cae3bde0a4fcda87f366f812635",
-      "duration_ms": 773,
+      "duration_ms": 679,
       "clone_stdout_tail": "",
       "verify_stderr_tail": "",
       "notes": [
@@ -86,11 +86,115 @@
       "proof_status": "ok",
       "invariant_status": "ok",
       "capsule_sha256": "19f465427c36169b21bd683743f998697f84e8ab4106407595f615ade74a1282",
-      "duration_ms": 688,
+      "duration_ms": 686,
       "clone_stdout_tail": "",
       "verify_stderr_tail": "",
       "notes": [
         "No dependency install required; invariant forces color capability before dynamic import."
+      ]
+    },
+    {
+      "id": "array-move",
+      "repository": "sindresorhus/array-move",
+      "url": "https://github.com/sindresorhus/array-move.git",
+      "commit": "44103d4d7f4761823aeafe6b9dc9708deb830d57",
+      "package": {
+        "name": "array-move",
+        "version": "4.0.0",
+        "license": "MIT",
+        "type": "module"
+      },
+      "primary_file": "index.js",
+      "proof_command": "node .replaypack-trial/proof.mjs",
+      "invariant_command": "node .replaypack-trial/invariant.mjs",
+      "replaypack_status": "pass",
+      "packet_status": "pass",
+      "proof_status": "ok",
+      "invariant_status": "ok",
+      "capsule_sha256": "7ffceb1982a074f01146c8ee5478bd7df6539dd9125109cc7322d94187575759",
+      "duration_ms": 651,
+      "clone_stdout_tail": "",
+      "verify_stderr_tail": "",
+      "notes": [
+        "No dependency install required; imports package entrypoint directly."
+      ]
+    },
+    {
+      "id": "quick-lru",
+      "repository": "sindresorhus/quick-lru",
+      "url": "https://github.com/sindresorhus/quick-lru.git",
+      "commit": "070bdf331d9e451f75f5335c127255a124d4270d",
+      "package": {
+        "name": "quick-lru",
+        "version": "7.3.0",
+        "license": "MIT",
+        "type": "module"
+      },
+      "primary_file": "index.js",
+      "proof_command": "node .replaypack-trial/proof.mjs",
+      "invariant_command": "node .replaypack-trial/invariant.mjs",
+      "replaypack_status": "pass",
+      "packet_status": "pass",
+      "proof_status": "ok",
+      "invariant_status": "ok",
+      "capsule_sha256": "5e2920f4bb570890df1e66be384f960dbe93bbfaba25bd7a214a8179f9f8c02a",
+      "duration_ms": 945,
+      "clone_stdout_tail": "",
+      "verify_stderr_tail": "",
+      "notes": [
+        "No dependency install required; imports package entrypoint directly."
+      ]
+    },
+    {
+      "id": "decamelize",
+      "repository": "sindresorhus/decamelize",
+      "url": "https://github.com/sindresorhus/decamelize.git",
+      "commit": "d0a094fe822e71c8005906cbe0c4333b192b5b0d",
+      "package": {
+        "name": "decamelize",
+        "version": "6.0.1",
+        "license": "MIT",
+        "type": "module"
+      },
+      "primary_file": "index.js",
+      "proof_command": "node .replaypack-trial/proof.mjs",
+      "invariant_command": "node .replaypack-trial/invariant.mjs",
+      "replaypack_status": "pass",
+      "packet_status": "pass",
+      "proof_status": "ok",
+      "invariant_status": "ok",
+      "capsule_sha256": "ed525a10d5f0c698a98e9d185ef6ed1808b42c62d390d2db9580412a5a7e3a03",
+      "duration_ms": 731,
+      "clone_stdout_tail": "",
+      "verify_stderr_tail": "",
+      "notes": [
+        "No dependency install required; imports package entrypoint directly."
+      ]
+    },
+    {
+      "id": "camelcase",
+      "repository": "sindresorhus/camelcase",
+      "url": "https://github.com/sindresorhus/camelcase.git",
+      "commit": "8596a65fcbfedd474cdedf16f48b7d9381eb7953",
+      "package": {
+        "name": "camelcase",
+        "version": "9.0.0",
+        "license": "MIT",
+        "type": "module"
+      },
+      "primary_file": "index.js",
+      "proof_command": "node .replaypack-trial/proof.mjs",
+      "invariant_command": "node .replaypack-trial/invariant.mjs",
+      "replaypack_status": "pass",
+      "packet_status": "pass",
+      "proof_status": "ok",
+      "invariant_status": "ok",
+      "capsule_sha256": "e3210363c77589112c25df3dd0b0cb56b54788f91709fd548008716109d9267b",
+      "duration_ms": 755,
+      "clone_stdout_tail": "",
+      "verify_stderr_tail": "",
+      "notes": [
+        "No dependency install required; imports package entrypoint directly."
       ]
     }
   ]
