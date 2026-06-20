@@ -1,0 +1,37 @@
+{
+  "schema": "replaypack.validation.private_fresh_clone_trial.v0",
+  "checked_at": "2026-06-20T06:04:48Z",
+  "repository": "Atomics-hub/replaypack",
+  "repository_visibility": "PRIVATE",
+  "source": "fresh clone from private GitHub remote",
+  "commit": "1bbf94f9231c9fae4c0400644b798626f7abdd6d",
+  "commands": [
+    {
+      "command": "npm test",
+      "expected": "exit 0",
+      "actual": "exit 0",
+      "evidence": "replaypack smoke ok"
+    },
+    {
+      "command": "node bin/replaypack.mjs verify --root examples/account-access/wrong replaypack/account-access.json",
+      "expected": "exit nonzero because invariant fails after visible proof passes",
+      "actual": "exit 1",
+      "evidence": "proof status ok; invariant status nonzero; role_source was user instead of account_membership"
+    },
+    {
+      "command": "node bin/replaypack.mjs verify --root examples/account-access/fixed replaypack/account-access.json",
+      "expected": "exit 0",
+      "actual": "exit 0",
+      "evidence": "status pass"
+    },
+    {
+      "command": "node bin/replaypack.mjs verify docs/dogfood/ci-pack-destination/replaypack.json --out dist/dogfood-ci-pack-verify.json",
+      "expected": "exit 0",
+      "actual": "exit 0",
+      "evidence": "status pass"
+    }
+  ],
+  "limitations": [
+    "This proves the trial works from a clean clone; it is not external developer comprehension proof."
+  ]
+}

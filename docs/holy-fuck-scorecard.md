@@ -4,7 +4,7 @@ ReplayPack should not go public because we like the idea. It goes public when th
 
 ## Current Call
 
-Status: `proofbench_passed_validation_next`
+Status: `external_user_trial_next`
 
 ReplayPack is a credible holy-fuck candidate, but not yet a public launch.
 
@@ -15,14 +15,14 @@ The product mechanism is now benchmark-proven locally:
 - correct fix passes proof and invariant
 - 10-case synthetic ProofBench passes the launch bar
 - package surface is clean
-- local Action simulation works
+- private GitHub CI passes
+- real self-dogfood passes on a launch-blocking CI issue
+- fresh private clone can run the wrong/fixed demo and dogfood capsule
 
-The missing proof is market and in-the-wild proof:
+The missing proof is external comprehension proof:
 
-- one real repo dogfood
-- private GitHub CI pass from this clean repo
 - external developer reaction
-- short demo that makes the value obvious without explanation
+- confirmation that the demo makes the value obvious without a live explanation
 
 ## Current ProofBench Result
 
@@ -46,12 +46,12 @@ This is strong mechanism proof. It is still synthetic; it does not replace real 
 | --- | ---: | ---: | --- | --- |
 | Product mechanism | 92 | 85 | pass | wrong/fixed account-access demo plus ProofBench |
 | Package cleanliness | 86 | 85 | pass | npm dry-run ships 8 files, no fixtures |
-| CI/action path | 78 | 85 | pending | local action sim passes; hosted clean-repo CI missing |
+| CI/action path | 90 | 85 | pass | private GitHub Actions passed on clean remote |
 | Benchmark proof | 90 | 85 | pass | 10/10 visible-green wrong fixes rejected; 10/10 correct fixes accepted |
-| Real repo dogfood | 20 | 80 | fail | no real repo issue yet |
+| Real repo dogfood | 82 | 80 | pass | self-dogfood caught the real CI pack-destination failure mode |
 | External user proof | 0 | 75 | fail | no external dev trial yet |
-| Discovery/readme | 65 | 80 | pending | README clear, demo still not visual enough |
-| Launch readiness | 68 | 85 | no-go | benchmark proof passed; validation proof missing |
+| Discovery/readme | 72 | 80 | pending | fresh clone trial works; external comprehension untested |
+| Launch readiness | 82 | 85 | no-go | only external user proof missing |
 
 ## Go/No-Go Rules
 
@@ -97,5 +97,5 @@ Until then, the honest answer is:
 ```text
 ReplayPack is the prime candidate.
 It is not yet fully launch-proven.
-Next gate is private CI, real repo dogfood, and external user proof.
+Next gate is external user proof.
 ```

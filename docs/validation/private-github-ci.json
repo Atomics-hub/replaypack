@@ -1,18 +1,18 @@
 {
   "schema": "replaypack.validation.private_github_ci.v0",
-  "checked_at": "2026-06-20T06:00:41Z",
+  "checked_at": "2026-06-20T06:03:53Z",
   "repository": "Atomics-hub/replaypack",
   "repository_visibility": "PRIVATE",
   "branch": "main",
-  "commit": "72280ad405158d2010a4c3da934b656f89943627",
+  "commit": "1bbf94f9231c9fae4c0400644b798626f7abdd6d",
   "workflow": "ReplayPack CI",
-  "run_id": 27862264865,
-  "run_url": "https://github.com/Atomics-hub/replaypack/actions/runs/27862264865",
+  "run_id": 27862342929,
+  "run_url": "https://github.com/Atomics-hub/replaypack/actions/runs/27862342929",
   "conclusion": "success",
   "job": {
     "name": "test",
-    "id": 82460125916,
-    "url": "https://github.com/Atomics-hub/replaypack/actions/runs/27862264865/job/82460125916",
+    "id": 82460324588,
+    "url": "https://github.com/Atomics-hub/replaypack/actions/runs/27862342929/job/82460324588",
     "conclusion": "success"
   },
   "validated_steps": [
