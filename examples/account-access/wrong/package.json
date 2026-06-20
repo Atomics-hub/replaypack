@@ -1,0 +1,11 @@
+{
+  "name": "replaypack-account-access-wrong",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "proof": "node test/visible-proof.mjs",
+    "invariant": "node test/invariant.mjs",
+    "test": "npm run proof"
+  }
+}

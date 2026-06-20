@@ -1,0 +1,22 @@
+name: ReplayPack CI
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm test
+      - run: npm pack --pack-destination dist
+      - name: Local action verifies fixed example
+        uses: ./
+        with:
+          root: examples/account-access/fixed
+          capsule: replaypack/account-access.json
+          out: dist/action-verify.json

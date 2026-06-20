@@ -1,0 +1,24 @@
+name: ReplayPack Verify
+description: Verify a ReplayPack capsule in GitHub Actions.
+inputs:
+  capsule:
+    description: Path to the ReplayPack capsule JSON.
+    required: true
+  root:
+    description: Working directory where proof and invariant commands should run.
+    required: false
+    default: "."
+  out:
+    description: Path to write the verification packet.
+    required: false
+    default: dist/replaypack-verify.json
+runs:
+  using: composite
+  steps:
+    - name: Verify ReplayPack capsule
+      shell: bash
+      env:
+        REPLAYPACK_CAPSULE: ${{ inputs.capsule }}
+        REPLAYPACK_ROOT: ${{ inputs.root }}
+        REPLAYPACK_OUT: ${{ inputs.out }}
+      run: node "$GITHUB_ACTION_PATH/bin/replaypack.mjs" verify "$REPLAYPACK_CAPSULE" --root "$REPLAYPACK_ROOT" --out "$REPLAYPACK_OUT"

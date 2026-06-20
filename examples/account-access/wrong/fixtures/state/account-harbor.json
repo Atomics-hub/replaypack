@@ -1,0 +1,10 @@
+{
+  "id": "acct_harbor",
+  "name": "Harbor Workshop",
+  "memberships": {
+    "usr_lena": {
+      "role": "finance_admin",
+      "status": "active"
+    }
+  }
+}

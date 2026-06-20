@@ -1,0 +1,48 @@
+{
+  "schema": "replaypack.statecapsule.v0",
+  "id": "account-access-demo",
+  "title": "Account-scoped export access ignores membership",
+  "created_at": "2026-06-20T00:00:00-07:00",
+  "entrypoint": {
+    "repo_root": ".",
+    "primary_file": "src/access.js",
+    "proof_file": "test/visible-proof.mjs",
+    "proof_command": "npm run proof",
+    "invariant_commands": [
+      "npm run invariant"
+    ]
+  },
+  "workflow": {
+    "issue_files": [
+      "issues/account-access.md"
+    ]
+  },
+  "state": {
+    "user": "fixtures/state/user-lena.json",
+    "account": "fixtures/state/account-harbor.json",
+    "session": "fixtures/state/session-harbor.json",
+    "flags": "fixtures/state/flags.json"
+  },
+  "trace": {
+    "repro": "fixtures/trace/account-access.md",
+    "observed": {
+      "can_export": false,
+      "role_source": "user"
+    },
+    "expected": {
+      "can_export": true,
+      "role_source": "account_membership"
+    }
+  },
+  "acceptance": [
+    "The visible export proof passes.",
+    "The invariant confirms role_source is account_membership.",
+    "Users without account membership cannot export.",
+    "A mismatched active session account cannot export."
+  ],
+  "agent_instructions": [
+    "Do not fix only the visible export button.",
+    "Use account membership when account_scoped_roles is enabled.",
+    "Preserve active session account binding."
+  ]
+}
