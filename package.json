@@ -30,6 +30,7 @@
     "docs/public-repo-trials/README.md",
     "docs/public-repo-trials/results.json",
     "docs/trials",
+    "docs/validation/external-user-proof.template.json",
     "docs/validation/full-agent-proof.json",
     "docs/validation/live-agent-proof.json",
     "docs/validation/claude-code-agent-proof.json",
@@ -53,6 +54,7 @@
     "scripts/evaluate-live-agentbench.mjs",
     "scripts/prepare-full-agentbench.mjs",
     "scripts/prepare-live-agentbench.mjs",
+    "scripts/record-external-user-proof.mjs",
     "scripts/run-agentbench.mjs",
     "scripts/run-external-trial.mjs",
     "scripts/run-proofbench.mjs",
@@ -73,6 +75,7 @@
     "test": "node test/smoke.mjs",
     "proofbench": "node scripts/run-proofbench.mjs",
     "public-repo-trials": "node scripts/run-public-repo-trials.mjs",
+    "record-external-proof": "node scripts/record-external-user-proof.mjs",
     "readiness": "node scripts/readiness-check.mjs",
     "trial:external": "node scripts/run-external-trial.mjs",
     "pack:local": "npm pack --pack-destination dist"

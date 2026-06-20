@@ -312,9 +312,16 @@ function validateExternalUserProof(data) {
   const errors = [];
   expect(data.schema === "replaypack.validation.external_user_proof.v0", errors, "schema must be external_user_proof.v0");
   expect(data.verdict === "pass", errors, "verdict must be pass");
+  expect(Boolean(data.source?.url || data.source?.file), errors, "source issue URL or file is required");
   expect(Boolean(data.trial_runner?.relationship), errors, "trial runner relationship is required");
+  expect(data.trial_receipt?.referenced === true, errors, "trial receipt must be referenced");
   expect(Array.isArray(data.commands_run) && data.commands_run.length >= 3, errors, "commands_run must include trial commands");
   expect(data.commands_run?.every((item) => Boolean(item.command) && Boolean(item.status)), errors, "every command needs status");
+  expect(
+    data.commands_run?.some((item) => item.command.includes("trial:external") && item.status === "pass"),
+    errors,
+    "npm run trial:external must be recorded as pass"
+  );
   expect(Boolean(data.comprehension?.one_minute_explanation), errors, "one-minute explanation is required");
   expect(data.comprehension?.understood_not_just_tests === true, errors, "developer must understand why this is not just tests");
   expect(Array.isArray(data.objections) && data.objections.some(Boolean), errors, "at least one objection is required");

@@ -76,6 +76,16 @@ https://github.com/Atomics-hub/replaypack/issues/new?template=external-developer
 
 Paste command outcomes, the one-minute explanation, the invariant-vs-visible-proof read, whether they would use it, and the first objection. This is the evidence ReplayPack still needs before claiming external-user proof.
 
+## Record Proof
+
+After an outside developer files the issue, a maintainer records reviewed proof with:
+
+```bash
+npm run record-external-proof -- --issue <issue-number> --verdict pass --reviewer <name>
+```
+
+This writes `docs/validation/external-user-proof.json`. `npm run readiness` only passes when that receipt is present and validates.
+
 ## Pass Bar
 
 External proof passes only if:

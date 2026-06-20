@@ -1,35 +1,51 @@
 {
   "schema": "replaypack.validation.external_user_proof.v0",
   "checked_at": "YYYY-MM-DDTHH:MM:SSZ",
+  "source": {
+    "kind": "github_issue",
+    "number": 0,
+    "url": "",
+    "author": "",
+    "title": "",
+    "created_at": ""
+  },
   "trial_runner": {
     "relationship": "external developer not involved in building ReplayPack",
     "name_or_alias": "",
-    "permission_to_quote": false
+    "permission_to_quote": "",
+    "coding_agent_workflow": ""
   },
-  "repo_visibility_during_trial": "PRIVATE",
+  "repo_visibility_during_trial": "PUBLIC",
   "trial_doc": "docs/trials/external-developer-trial.md",
+  "trial_receipt": {
+    "referenced": true,
+    "line": "receipt: dist/external-trial/receipt.json"
+  },
   "commands_run": [
     {
-      "command": "npm test",
-      "status": ""
+      "command": "npm run trial:external",
+      "status": "pass"
     },
     {
-      "command": "node bin/replaypack.mjs verify --root examples/account-access/wrong replaypack/account-access.json",
-      "status": ""
+      "command": "wrong demo",
+      "status": "fail",
+      "expected_failure": true
     },
     {
-      "command": "node bin/replaypack.mjs verify --root examples/account-access/fixed replaypack/account-access.json",
-      "status": ""
+      "command": "fixed demo",
+      "status": "pass"
     },
     {
-      "command": "node bin/replaypack.mjs verify docs/dogfood/ci-pack-destination/replaypack.json --out dist/dogfood-ci-pack-verify.json",
-      "status": ""
+      "command": "dogfood",
+      "status": "pass"
     }
   ],
   "comprehension": {
     "one_minute_explanation": "",
-    "understood_not_just_tests": null,
-    "would_try_on_agent_pr_repo": null
+    "invariant_vs_visible_proof": "",
+    "understood_not_just_tests": true,
+    "would_try_on_agent_pr_repo": true,
+    "adoption_response": ""
   },
   "objections": [
     ""
@@ -37,5 +53,9 @@
   "doc_or_product_changes_needed": [
     ""
   ],
-  "verdict": "pass | fail"
+  "review": {
+    "reviewer": "",
+    "errors": []
+  },
+  "verdict": "pass"
 }

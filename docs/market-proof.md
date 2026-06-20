@@ -38,6 +38,7 @@ Current collection path:
 
 - GitHub issue form: https://github.com/Atomics-hub/replaypack/issues/new?template=external-developer-trial.yml
 - Trial script: `docs/trials/external-developer-trial.md`
+- Proof recorder: `npm run record-external-proof -- --issue <issue-number> --verdict pass --reviewer <name>`
 
 ## Positioning
 

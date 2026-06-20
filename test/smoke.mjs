@@ -102,6 +102,71 @@ if (readiness.status === 0) {
   assert.deepStrictEqual(readinessPacket.next_required, ["run one external developer trial"]);
 }
 
+const externalIssuePath = path.join(root, ".tmp/smoke-external-issue.md");
+const externalProofPath = path.join(root, ".tmp/smoke-external-user-proof.json");
+fs.mkdirSync(path.dirname(externalIssuePath), { recursive: true });
+fs.writeFileSync(
+  externalIssuePath,
+  `### Coding-agent workflow
+
+Claude Code on repo PRs
+
+### One-minute read
+
+ReplayPack is a merge gate for agent-made code. It checks the visible proof and the deeper invariant before the agent can call the fix done.
+
+### Commands run
+
+npm run trial:external -> pass
+receipt: dist/external-trial/receipt.json
+wrong demo: proof=ok invariant=nonzero replaypack=fail
+fixed demo: proof=ok invariant=ok replaypack=pass
+dogfood: proof=ok invariant=ok replaypack=pass
+
+### Invariant vs visible proof
+
+Yes. The visible proof checks the symptom while the invariant checks the product contract that the symptom test missed.
+
+### Would you use it?
+
+Yes, I would try it on a repo where coding agents make PRs against auth or billing code.
+
+### First objection
+
+I would want more examples for adding capsules to an existing repo.
+
+### Quote permission
+
+Paraphrase anonymously only
+`
+);
+const recordExternalProof = spawnSync(
+  process.execPath,
+  [
+    path.join(root, "scripts/record-external-user-proof.mjs"),
+    "--file",
+    ".tmp/smoke-external-issue.md",
+    "--verdict",
+    "pass",
+    "--author",
+    "external-smoke",
+    "--url",
+    "https://example.test/replaypack-external-trial",
+    "--out",
+    ".tmp/smoke-external-user-proof.json",
+    "--reviewer",
+    "smoke"
+  ],
+  { cwd: root, encoding: "utf8" }
+);
+assert.strictEqual(recordExternalProof.status, 0, recordExternalProof.stderr || recordExternalProof.stdout);
+const externalProof = readJson(externalProofPath);
+assert.strictEqual(externalProof.schema, "replaypack.validation.external_user_proof.v0");
+assert.strictEqual(externalProof.verdict, "pass");
+assert.strictEqual(externalProof.trial_receipt.referenced, true);
+assert.strictEqual(externalProof.review.errors.length, 0);
+assert.ok(externalProof.commands_run.some((item) => item.command.includes("trial:external") && item.status === "pass"));
+
 const tmpRoot = fs.mkdtempSync(path.join(os.tmpdir(), "replaypack-capture-"));
 writeFixture(tmpRoot);
 const capture = spawnSync(
