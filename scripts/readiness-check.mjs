@@ -7,6 +7,7 @@ const requiredFiles = [
   "README.md",
   "SECURITY.md",
   "action.yml",
+  "docs/demo.md",
   "docs/holy-fuck-scorecard.md",
   "docs/proofbench/README.md",
   "docs/market-proof.md",
@@ -49,7 +50,7 @@ if (fs.existsSync(resultsPath)) {
 }
 
 if (!fs.existsSync(resultsPath) || result.gates.proofbench_minimum === "fail") {
-  result.next_required.push("create docs/proofbench/results.json with at least 10 passing cases");
+  result.next_required.push("create docs/proofbench/results.json with at least 30 passing cases");
 }
 if (!exists(validationFiles.private_github_ci)) {
   result.next_required.push("run private GitHub CI from the clean repo");
@@ -83,12 +84,12 @@ function proofbenchMeetsLaunchBar(summary) {
   const visibleGreenWrong = summary.visible_green_wrong_fixes ?? 0;
 
   return (
-    caseCount >= 10 &&
-    (summary.bug_family_count ?? 0) >= 5 &&
-    visibleGreenWrong >= 5 &&
-    (summary.replaypack_rejected_visible_green_wrong_fixes ?? 0) >= Math.ceil(visibleGreenWrong * 0.8) &&
+    caseCount >= 30 &&
+    (summary.bug_family_count ?? 0) >= 20 &&
+    visibleGreenWrong >= 20 &&
+    (summary.replaypack_rejected_visible_green_wrong_fixes ?? 0) >= Math.ceil(visibleGreenWrong * 0.9) &&
     (summary.replaypack_accepted_correct_fixes ?? 0) >= Math.ceil(caseCount * 0.9) &&
-    (summary.false_positive_count ?? Number.POSITIVE_INFINITY) < Math.ceil(caseCount * 0.1) &&
+    (summary.false_positive_count ?? Number.POSITIVE_INFINITY) === 0 &&
     (summary.median_capsule_author_minutes ?? Number.POSITIVE_INFINITY) <= 15
   );
 }

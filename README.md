@@ -12,6 +12,8 @@ hidden invariant fails
 ReplayPack rejects the fix
 ```
 
+Current proof receipt: ProofBench has 30 executable cases across 30 bug families. In the latest run, normal visible proofs accepted 30 plausible wrong fixes; ReplayPack rejected all 30 and accepted all 30 correct fixes.
+
 ## Why
 
 A narrow test can prove the symptom is gone while the product contract is broken. ReplayPack stores that contract as a small JSON capsule:
@@ -42,6 +44,7 @@ For the beta demo, clone the repo:
 git clone https://github.com/Atomics-hub/replaypack.git
 cd replaypack
 npm test
+npm run demo
 ```
 
 Run the checkout CLI:
@@ -149,15 +152,13 @@ ReplayPack executes the proof and invariant commands stored in a capsule. Treat 
 
 ## Demo
 
-The GitHub repo includes a tiny account-access demo:
+The GitHub repo includes a one-command account-access demo:
 
 ```bash
-npm test
-node bin/replaypack.mjs verify --root examples/account-access/wrong replaypack/account-access.json
-node bin/replaypack.mjs verify --root examples/account-access/fixed replaypack/account-access.json
+npm run demo
 ```
 
-The wrong fix makes the visible export proof pass but leaves `role_source` as `user`. ReplayPack rejects it because the invariant requires account membership and session binding. The fixed version passes both proof and invariant.
+The wrong fix makes the visible export proof pass but leaves `role_source` as `user`. ReplayPack rejects it because the invariant requires account membership and session binding. The fixed version passes both proof and invariant. See [Demo](https://github.com/Atomics-hub/replaypack/blob/main/docs/demo.md) for the expected transcript.
 
 The wedge:
 
@@ -170,6 +171,7 @@ ReplayPack keeps agents from fixing the symptom and breaking the contract.
 ReplayPack is being held to a proof loop before broad launch:
 
 - [Evidence](https://github.com/Atomics-hub/replaypack/blob/main/docs/evidence.md)
+- [60-Second Demo](https://github.com/Atomics-hub/replaypack/blob/main/docs/demo.md)
 - [Holy-Fuck Scorecard](https://github.com/Atomics-hub/replaypack/blob/main/docs/holy-fuck-scorecard.md)
 - [ProofBench](https://github.com/Atomics-hub/replaypack/blob/main/docs/proofbench/README.md)
 - [Market Proof Loop](https://github.com/Atomics-hub/replaypack/blob/main/docs/market-proof.md)

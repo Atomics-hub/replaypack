@@ -13,9 +13,10 @@ ReplayPack catches that before merge.
 
 | Evidence Gate | Result | What It Shows |
 | --- | ---: | --- |
-| ProofBench | 10/10 pass | Synthetic wrong-fix benchmark across 10 bug families |
-| Visible-green wrong fixes rejected | 10/10 | ReplayPack catches plausible fixes that normal proof accepts |
-| Correct fixes accepted | 10/10 | ReplayPack is not rejecting the intended fixes in the benchmark |
+| 60-second demo | pass | One command shows visible proof passing, ReplayPack rejecting the wrong fix, and accepting the correct fix |
+| ProofBench | 30/30 pass | Synthetic wrong-fix benchmark across 30 bug families |
+| Visible-green wrong fixes rejected | 30/30 | ReplayPack catches plausible fixes that normal proof accepts |
+| Correct fixes accepted | 30/30 | ReplayPack is not rejecting the intended fixes in the benchmark |
 | False positives | 0 | No fixed benchmark case failed ReplayPack |
 | Private public-repo trials | 7/7 pass | ReplayPack can verify local capsules against selected public OSS repos |
 | Real self-dogfood | pass | ReplayPack captured a real CI packaging failure in this repo |
@@ -30,11 +31,11 @@ ReplayPack catches that before merge.
 
 Latest summary:
 
-- 10 benchmark cases
-- 10 bug families
-- 10 visible-green wrong fixes
-- ReplayPack rejected 10/10 visible-green wrong fixes
-- ReplayPack accepted 10/10 correct fixes
+- 30 benchmark cases
+- 30 bug families
+- 30 visible-green wrong fixes
+- ReplayPack rejected 30/30 visible-green wrong fixes
+- ReplayPack accepted 30/30 correct fixes
 - 0 false positives
 - 8 minute median capsule authoring estimate
 

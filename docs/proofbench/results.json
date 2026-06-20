@@ -1,12 +1,12 @@
 {
   "schema": "replaypack.proofbench.results.v0",
-  "generated_at": "2026-06-20T20:50:20.545Z",
+  "generated_at": "2026-06-20T21:54:21.478Z",
   "summary": {
-    "case_count": 10,
-    "bug_family_count": 10,
-    "visible_green_wrong_fixes": 10,
-    "replaypack_rejected_visible_green_wrong_fixes": 10,
-    "replaypack_accepted_correct_fixes": 10,
+    "case_count": 30,
+    "bug_family_count": 30,
+    "visible_green_wrong_fixes": 30,
+    "replaypack_rejected_visible_green_wrong_fixes": 30,
+    "replaypack_accepted_correct_fixes": 30,
     "false_positive_count": 0,
     "median_capsule_author_minutes": 8,
     "wrong_fix_rejection_rate": 1,
@@ -23,8 +23,8 @@
       "replaypack_on_wrong": "fail",
       "visible_proof_on_fixed": "pass",
       "replaypack_on_fixed": "pass",
-      "wrong_replaypack_packet_sha256": "6dcd015c72e5dd16190a437f6ec286abe8a849decad88d2e7e7f62e7c6fcd528",
-      "fixed_replaypack_packet_sha256": "bccc705a30d0fe38449e90cdc4f3c0a385db922f6cb65963ad51ae3cf53abc9b"
+      "wrong_replaypack_packet_sha256": "9cc80e23a9cda218105dc7ab04564101b7d7a69dc83461864d113ca68d0aee79",
+      "fixed_replaypack_packet_sha256": "f2a33c1a45f71b11521776f76073bcb7471adf9feb21bb5d3edfd1551fcc0a55"
     },
     {
       "id": "pagination-cursor",
@@ -36,8 +36,8 @@
       "replaypack_on_wrong": "fail",
       "visible_proof_on_fixed": "pass",
       "replaypack_on_fixed": "pass",
-      "wrong_replaypack_packet_sha256": "8be08bd750d75ca49373118b77cbf8020ecb8e1056d981563af77df95ef9398a",
-      "fixed_replaypack_packet_sha256": "c8831e3962ab473dc8c597f0bd0f3334f01726a682e4b5a0a189140dfe9ad810"
+      "wrong_replaypack_packet_sha256": "a18192067a36229db439e8836fbaf3f159694a7fb9b0e5918267f170e03e6ce3",
+      "fixed_replaypack_packet_sha256": "78985d159a1b153e8d3d39b0003322f47144a25aa5677a1859b51a3b88b3aa19"
     },
     {
       "id": "timezone-cutoff",
@@ -49,8 +49,8 @@
       "replaypack_on_wrong": "fail",
       "visible_proof_on_fixed": "pass",
       "replaypack_on_fixed": "pass",
-      "wrong_replaypack_packet_sha256": "2b1f65a8f87a5739756d5b704528d22a234d3e1754826448dbeda85824c3ef48",
-      "fixed_replaypack_packet_sha256": "cbf67933b49bfbb5faee4b8e9fb0e110c91361c5fe7455566180418e298167ef"
+      "wrong_replaypack_packet_sha256": "8ae9c34072d430bd4067ac72fbf294642d9f05edd1d139a2047b394bd9ec897a",
+      "fixed_replaypack_packet_sha256": "f5c60b958aacb5f1b6c1f0187e0dd3b878597c02734eb53fd63dd48ef03ad71c"
     },
     {
       "id": "feature-flag-fallback",
@@ -62,8 +62,8 @@
       "replaypack_on_wrong": "fail",
       "visible_proof_on_fixed": "pass",
       "replaypack_on_fixed": "pass",
-      "wrong_replaypack_packet_sha256": "554d85e13fab7d1f330357e5cb0f5382d0bb9c70ff0c6e74b60c24f6d0c55ba1",
-      "fixed_replaypack_packet_sha256": "0d568fb82c5d67551caf856b46db7d55ffa8a49166b981193f69c515681a2585"
+      "wrong_replaypack_packet_sha256": "d14bc0124e2ed04c9427d110962c0fd4b33f3b437d22091ab556f515ede52f18",
+      "fixed_replaypack_packet_sha256": "00c5b3aabf6c6437720cade7ebad7bbebfb0f8b2dfb3605f1a35517f366ffb17"
     },
     {
       "id": "idempotency-scope",
@@ -75,8 +75,8 @@
       "replaypack_on_wrong": "fail",
       "visible_proof_on_fixed": "pass",
       "replaypack_on_fixed": "pass",
-      "wrong_replaypack_packet_sha256": "ae9814f50dd650608d395c140f1b658b1be607821ec99df0658f9dbde3827973",
-      "fixed_replaypack_packet_sha256": "c8c1ce253b8301cdc78e707d019bb617e3e431da754360d85b5ee9a7c82678eb"
+      "wrong_replaypack_packet_sha256": "c544c00ddb0afa9f54a8f61afb47090fdcf91017661636289681ea89df67fa73",
+      "fixed_replaypack_packet_sha256": "2b2d8bbf8b715746b211463bc7dad4068fa52f7b91364461cff82ae59931c4f6"
     },
     {
       "id": "retry-permanent-errors",
@@ -88,8 +88,8 @@
       "replaypack_on_wrong": "fail",
       "visible_proof_on_fixed": "pass",
       "replaypack_on_fixed": "pass",
-      "wrong_replaypack_packet_sha256": "9285af2d65c992caa243aec49db3eeb9e8bbfc07486e9a64b1929d0670991752",
-      "fixed_replaypack_packet_sha256": "a3757b8d25659422d43fd57ca3434b5c3398897983f9153aa28361d088d70b8d"
+      "wrong_replaypack_packet_sha256": "86390538b70dab57db348dc065d69b65775d42db1f905a563a4361989605f824",
+      "fixed_replaypack_packet_sha256": "1452833e618c2266f9752f2deca4b191ad3d7afbeb891905d289e638d67a8260"
     },
     {
       "id": "upload-mime-sniff",
@@ -101,8 +101,8 @@
       "replaypack_on_wrong": "fail",
       "visible_proof_on_fixed": "pass",
       "replaypack_on_fixed": "pass",
-      "wrong_replaypack_packet_sha256": "328a3686acb7c52a38163966189d65f9e23738285e0eca72258ada1cb74eac6b",
-      "fixed_replaypack_packet_sha256": "fd872eb3143e00be698b7a574a5c58c83e723e8422fd2c3c2475ec597ea07101"
+      "wrong_replaypack_packet_sha256": "fd384780495a6e1e9fb714188d6317edc0386795d28e479153fa3765dc70964e",
+      "fixed_replaypack_packet_sha256": "d1aace279c5ba6c5131b5c5916beda9f8d5071e179f1976f5c2aea943ab85fdd"
     },
     {
       "id": "permission-after-fetch",
@@ -114,8 +114,8 @@
       "replaypack_on_wrong": "fail",
       "visible_proof_on_fixed": "pass",
       "replaypack_on_fixed": "pass",
-      "wrong_replaypack_packet_sha256": "f75adbfa3d69f0ab819134f34e742b083d66b6e0f1166005345e44c74b7b3d6a",
-      "fixed_replaypack_packet_sha256": "7ad5398ef8d21a1a014ae06b6593b0cfb149f094e4eae48744596aeaefb017f4"
+      "wrong_replaypack_packet_sha256": "08c588d48dc29216516a30224e72f4e678a09101076e2643dfb46ec4152bf435",
+      "fixed_replaypack_packet_sha256": "e8c1c373414973683d8360097a78399a5a73cec6646a55a97a269319796a4d73"
     },
     {
       "id": "cache-key-settings",
@@ -127,8 +127,8 @@
       "replaypack_on_wrong": "fail",
       "visible_proof_on_fixed": "pass",
       "replaypack_on_fixed": "pass",
-      "wrong_replaypack_packet_sha256": "6a2a7590274c8935f571e7935799e1fa7e07cd48bff45776a7bddf839bdcff56",
-      "fixed_replaypack_packet_sha256": "a619b7d229e75c46572e508f3182e7b28beda854d27e31950ef767799243011b"
+      "wrong_replaypack_packet_sha256": "57e62a80919c2bebfe64430350977f79e2825a7140a45582e5beb36506acc43d",
+      "fixed_replaypack_packet_sha256": "dbadcd7df14b74b74257c03a255a1e859392f06c7eea02dd995540a81ba88f33"
     },
     {
       "id": "rate-limit-boundary",
@@ -140,8 +140,268 @@
       "replaypack_on_wrong": "fail",
       "visible_proof_on_fixed": "pass",
       "replaypack_on_fixed": "pass",
-      "wrong_replaypack_packet_sha256": "a52a2e5d07d014dd7db8c117acc8c277dae96f17f157629883385d77ebd75e44",
-      "fixed_replaypack_packet_sha256": "ea00f1a891fa2670de3794aa86f429625f808265bf7bf6b7d56373e684879cb6"
+      "wrong_replaypack_packet_sha256": "c95552f6b0f0302f61bdc94bd077fba169261cf2e63f8c8a6d533b0fe8e86d2a",
+      "fixed_replaypack_packet_sha256": "f1457b67b7940dffb2f252f2a9fab5805756023d1720afe0ae71d2198921913c"
+    },
+    {
+      "id": "webhook-signature",
+      "title": "Webhook verification accepts signature prefixes",
+      "bug_family": "webhook_authenticity",
+      "wrong_fix_attractiveness": "high",
+      "capsule_author_minutes": 9,
+      "visible_proof_on_wrong": "pass",
+      "replaypack_on_wrong": "fail",
+      "visible_proof_on_fixed": "pass",
+      "replaypack_on_fixed": "pass",
+      "wrong_replaypack_packet_sha256": "238456881d95beedc4f416ed0ec4e5e27f615dc5a9610deeb5eede67b7cfc9ab",
+      "fixed_replaypack_packet_sha256": "5360078674779d9158d3da279b3f370138d89e59ddd6154fa25eef686ec20708"
+    },
+    {
+      "id": "currency-line-rounding",
+      "title": "Currency totals round after summing fractional lines",
+      "bug_family": "money_precision",
+      "wrong_fix_attractiveness": "medium",
+      "capsule_author_minutes": 8,
+      "visible_proof_on_wrong": "pass",
+      "replaypack_on_wrong": "fail",
+      "visible_proof_on_fixed": "pass",
+      "replaypack_on_fixed": "pass",
+      "wrong_replaypack_packet_sha256": "5589c109589b2c8c6e537c2f4fe23f22426506ff269265e642b54cfadf740479",
+      "fixed_replaypack_packet_sha256": "91c3a812e04f5ff25a4fbd26c7e15d18ebd6a3e1b0da17251a6ab2041577f843"
+    },
+    {
+      "id": "sort-stability",
+      "title": "Equal-rank sorting rewrites stable order",
+      "bug_family": "sorting_contract",
+      "wrong_fix_attractiveness": "medium",
+      "capsule_author_minutes": 6,
+      "visible_proof_on_wrong": "pass",
+      "replaypack_on_wrong": "fail",
+      "visible_proof_on_fixed": "pass",
+      "replaypack_on_fixed": "pass",
+      "wrong_replaypack_packet_sha256": "965949f2e589434c0a497a1048cf6331401bdcccbb89d2218e1a6f0b0be6541b",
+      "fixed_replaypack_packet_sha256": "1d34410cf6268f00aab33007722c63f80e2cccd7c62285b10ebf1e23e1645b88"
+    },
+    {
+      "id": "soft-delete-filter",
+      "title": "Soft-deleted active records remain visible",
+      "bug_family": "soft_delete",
+      "wrong_fix_attractiveness": "high",
+      "capsule_author_minutes": 7,
+      "visible_proof_on_wrong": "pass",
+      "replaypack_on_wrong": "fail",
+      "visible_proof_on_fixed": "pass",
+      "replaypack_on_fixed": "pass",
+      "wrong_replaypack_packet_sha256": "ee4d06cacea881a6a5ee6caaf663b67c8494e686a27444f0858dd68d853e1b3b",
+      "fixed_replaypack_packet_sha256": "7749d52d8503c88550c9d489175ae5b80dbc6830fa48810c09b18a87f210d009"
+    },
+    {
+      "id": "tenant-search-leak",
+      "title": "Tenant search returns matching rows from other tenants",
+      "bug_family": "tenant_isolation",
+      "wrong_fix_attractiveness": "high",
+      "capsule_author_minutes": 9,
+      "visible_proof_on_wrong": "pass",
+      "replaypack_on_wrong": "fail",
+      "visible_proof_on_fixed": "pass",
+      "replaypack_on_fixed": "pass",
+      "wrong_replaypack_packet_sha256": "7cf513570b160514a46265ad60792492f7f57e6d033e7aaf555e5465ec9f5dc9",
+      "fixed_replaypack_packet_sha256": "db19ed93735fbed112bc3eccd1b119402c5eef2e2e90636ff60424c2ced9f152"
+    },
+    {
+      "id": "csv-formula-escape",
+      "title": "CSV export leaves spreadsheet formulas executable",
+      "bug_family": "spreadsheet_injection",
+      "wrong_fix_attractiveness": "high",
+      "capsule_author_minutes": 7,
+      "visible_proof_on_wrong": "pass",
+      "replaypack_on_wrong": "fail",
+      "visible_proof_on_fixed": "pass",
+      "replaypack_on_fixed": "pass",
+      "wrong_replaypack_packet_sha256": "dfebf6c55ca345fcbaa684765aa56bf1f77f0487c90211fbd131f5e0c8ebe6d5",
+      "fixed_replaypack_packet_sha256": "2bf2361296c5d5c1061c9b94dd45b8c632cb447d2cf3631152d359f6744f6763"
+    },
+    {
+      "id": "markdown-link-sanitize",
+      "title": "Markdown links allow javascript URLs",
+      "bug_family": "link_sanitization",
+      "wrong_fix_attractiveness": "high",
+      "capsule_author_minutes": 6,
+      "visible_proof_on_wrong": "pass",
+      "replaypack_on_wrong": "fail",
+      "visible_proof_on_fixed": "pass",
+      "replaypack_on_fixed": "pass",
+      "wrong_replaypack_packet_sha256": "4e557e2bc20066c64ac6de37f1117be9b01d2ba06adb26caf2e821463333b40c",
+      "fixed_replaypack_packet_sha256": "6becbff45e33c6d203e1561994a4e5d74db1ed7183c8c30f4ccd15f13a203cd2"
+    },
+    {
+      "id": "path-root-prefix",
+      "title": "Path root check accepts sibling directories with matching prefix",
+      "bug_family": "path_security",
+      "wrong_fix_attractiveness": "high",
+      "capsule_author_minutes": 10,
+      "visible_proof_on_wrong": "pass",
+      "replaypack_on_wrong": "fail",
+      "visible_proof_on_fixed": "pass",
+      "replaypack_on_fixed": "pass",
+      "wrong_replaypack_packet_sha256": "5a65b178486230dc4f074049eb2a87ccaa08c63115ea534f5c90886d6c037778",
+      "fixed_replaypack_packet_sha256": "d55c15ba4c49efdb8bae67eb5d0a4141ea36e56cb77bb1cc09d5e81a65ea8b72"
+    },
+    {
+      "id": "email-normalization",
+      "title": "Email normalization lowercases the local part",
+      "bug_family": "email_identity",
+      "wrong_fix_attractiveness": "medium",
+      "capsule_author_minutes": 6,
+      "visible_proof_on_wrong": "pass",
+      "replaypack_on_wrong": "fail",
+      "visible_proof_on_fixed": "pass",
+      "replaypack_on_fixed": "pass",
+      "wrong_replaypack_packet_sha256": "6050afccfce4186c2db710652f58c44ac544516b617edb0a3269ba325068e45f",
+      "fixed_replaypack_packet_sha256": "82ef1c159bc29b2143217c703c57463bef8b2039d83d29e06e2f7e8bdb77f5a5"
+    },
+    {
+      "id": "session-expiry-boundary",
+      "title": "Sessions remain valid exactly at expiry",
+      "bug_family": "session_lifecycle",
+      "wrong_fix_attractiveness": "medium",
+      "capsule_author_minutes": 6,
+      "visible_proof_on_wrong": "pass",
+      "replaypack_on_wrong": "fail",
+      "visible_proof_on_fixed": "pass",
+      "replaypack_on_fixed": "pass",
+      "wrong_replaypack_packet_sha256": "efb89113000d6693c5bc1bbb80eafa4f7f12af42b5f0b3860d42eb496ee09053",
+      "fixed_replaypack_packet_sha256": "f12c25602ca3b4061476cfcff1c13fbf5c6d66cfd2010cb1614a2eb3f5a4c4fa"
+    },
+    {
+      "id": "queue-priority",
+      "title": "Queue dispatch ignores urgent priority",
+      "bug_family": "job_priority",
+      "wrong_fix_attractiveness": "medium",
+      "capsule_author_minutes": 8,
+      "visible_proof_on_wrong": "pass",
+      "replaypack_on_wrong": "fail",
+      "visible_proof_on_fixed": "pass",
+      "replaypack_on_fixed": "pass",
+      "wrong_replaypack_packet_sha256": "c0122054f549b1c08cade42fa2d2086cc78786f3a418814e56cd0eb266d6fb53",
+      "fixed_replaypack_packet_sha256": "ee0bd3350eb45757df37e447a6af363106b30cc66d60f99b3bf6fc7adb09a599"
+    },
+    {
+      "id": "inventory-reservation",
+      "title": "Inventory check ignores reserved units",
+      "bug_family": "inventory_reservation",
+      "wrong_fix_attractiveness": "high",
+      "capsule_author_minutes": 7,
+      "visible_proof_on_wrong": "pass",
+      "replaypack_on_wrong": "fail",
+      "visible_proof_on_fixed": "pass",
+      "replaypack_on_fixed": "pass",
+      "wrong_replaypack_packet_sha256": "12b45ae0a7a8bd1d7ed2825ca0918edfbe24ab326de5ba6b5c47697712d2c9e6",
+      "fixed_replaypack_packet_sha256": "f848c8f6075db3d2016eb3fa91d8529a8de6dabb2edb847213a907993f9f6278"
+    },
+    {
+      "id": "schema-migration-default",
+      "title": "Migration overwrites explicit false with default true",
+      "bug_family": "migration_defaults",
+      "wrong_fix_attractiveness": "medium",
+      "capsule_author_minutes": 7,
+      "visible_proof_on_wrong": "pass",
+      "replaypack_on_wrong": "fail",
+      "visible_proof_on_fixed": "pass",
+      "replaypack_on_fixed": "pass",
+      "wrong_replaypack_packet_sha256": "ac2a1947db39e17f848d79385f7c5d3bfa6de549ebf41b6195bba3f5c14cfdfe",
+      "fixed_replaypack_packet_sha256": "59331162fb4ecd458cc770b9e45cad4af41d31b6b55be7595c8e5886928b1725"
+    },
+    {
+      "id": "redaction-nested",
+      "title": "Redaction misses nested secrets",
+      "bug_family": "pii_redaction",
+      "wrong_fix_attractiveness": "high",
+      "capsule_author_minutes": 10,
+      "visible_proof_on_wrong": "pass",
+      "replaypack_on_wrong": "fail",
+      "visible_proof_on_fixed": "pass",
+      "replaypack_on_fixed": "pass",
+      "wrong_replaypack_packet_sha256": "01b4aa5acfd8d453400818899f9951b098cd88aa44c0d6dacf3640eebc5c1343",
+      "fixed_replaypack_packet_sha256": "136c2bbf4a2317aa7304234efaa3a3be40bf4ef0574a87d8e9c4331c10aebf09"
+    },
+    {
+      "id": "locale-slug",
+      "title": "Slug generation drops accented characters",
+      "bug_family": "unicode_slugs",
+      "wrong_fix_attractiveness": "medium",
+      "capsule_author_minutes": 8,
+      "visible_proof_on_wrong": "pass",
+      "replaypack_on_wrong": "fail",
+      "visible_proof_on_fixed": "pass",
+      "replaypack_on_fixed": "pass",
+      "wrong_replaypack_packet_sha256": "041aa82d23f65416f4bbaa422a957beda463f362d6a327d27483d43854ff1bac",
+      "fixed_replaypack_packet_sha256": "aa8c53d67c295082cbbdd8d2398cfe2fb05741e8bbaca207400415b872bc178c"
+    },
+    {
+      "id": "duplicate-webhook-id",
+      "title": "Webhook dedupe key uses event type instead of event id",
+      "bug_family": "event_deduplication",
+      "wrong_fix_attractiveness": "high",
+      "capsule_author_minutes": 7,
+      "visible_proof_on_wrong": "pass",
+      "replaypack_on_wrong": "fail",
+      "visible_proof_on_fixed": "pass",
+      "replaypack_on_fixed": "pass",
+      "wrong_replaypack_packet_sha256": "07d58e84ae7023456b24d27e4ddc61d1bd0abdcbb1945fc7bd64a31157ac78cd",
+      "fixed_replaypack_packet_sha256": "fd6920d26d48dc82a722b44f21de23fd14289291d18a12387ef10b823909f54c"
+    },
+    {
+      "id": "api-version-routing",
+      "title": "Unknown API versions silently route to v1",
+      "bug_family": "api_versioning",
+      "wrong_fix_attractiveness": "medium",
+      "capsule_author_minutes": 6,
+      "visible_proof_on_wrong": "pass",
+      "replaypack_on_wrong": "fail",
+      "visible_proof_on_fixed": "pass",
+      "replaypack_on_fixed": "pass",
+      "wrong_replaypack_packet_sha256": "3ab1a04062869dd0fbc807d1d2015f8165290c4bf62642f39766a0c3ace53fd3",
+      "fixed_replaypack_packet_sha256": "58ab71565b300c798d12f4f43a35475978df71be9f28b6a6ed3d376f7274d76d"
+    },
+    {
+      "id": "refund-negative-amount",
+      "title": "Payment validation rejects negative refund amounts",
+      "bug_family": "payment_semantics",
+      "wrong_fix_attractiveness": "medium",
+      "capsule_author_minutes": 7,
+      "visible_proof_on_wrong": "pass",
+      "replaypack_on_wrong": "fail",
+      "visible_proof_on_fixed": "pass",
+      "replaypack_on_fixed": "pass",
+      "wrong_replaypack_packet_sha256": "68f1ebe02634ee2cb7c3e48b4a9cf9d242d52a73404c51a0a0eb36f8941fcf39",
+      "fixed_replaypack_packet_sha256": "bffabb313681c20b029a5910f45a1d9e2fea578334a6709ab3aa7db6fe8089c9"
+    },
+    {
+      "id": "json-merge-patch-null",
+      "title": "JSON merge patch ignores null deletion",
+      "bug_family": "merge_patch_semantics",
+      "wrong_fix_attractiveness": "medium",
+      "capsule_author_minutes": 9,
+      "visible_proof_on_wrong": "pass",
+      "replaypack_on_wrong": "fail",
+      "visible_proof_on_fixed": "pass",
+      "replaypack_on_fixed": "pass",
+      "wrong_replaypack_packet_sha256": "31049d9f24f4ce153b0f6030cbf7ae3eff277e32a29bb8e4c40d3337d75248c4",
+      "fixed_replaypack_packet_sha256": "8d2aa48e7f79ea8197800267fb200d9e06dcc873775f502e475ef44feff00fda"
+    },
+    {
+      "id": "slo-window-inclusive",
+      "title": "SLO window includes samples at the exclusive end",
+      "bug_family": "analytics_windows",
+      "wrong_fix_attractiveness": "medium",
+      "capsule_author_minutes": 8,
+      "visible_proof_on_wrong": "pass",
+      "replaypack_on_wrong": "fail",
+      "visible_proof_on_fixed": "pass",
+      "replaypack_on_fixed": "pass",
+      "wrong_replaypack_packet_sha256": "010271148353341081500ae6f1ebdf324688f3995ecdd3a021d562c91382c187",
+      "fixed_replaypack_packet_sha256": "f0c1068904c5cf44e7ec8dc69c4c087c9a0c70a61487cef685d972e885a3a3c2"
     }
   ]
 }
