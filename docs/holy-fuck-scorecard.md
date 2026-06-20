@@ -26,8 +26,8 @@ The product mechanism is now benchmark-proven locally:
 - fresh private clone can run the wrong/fixed demo and dogfood capsule
 - private public-repo trials pass on 7/7 selected OSS repositories
 - public GitHub beta is live with a tester issue
-- npm package `replaypack@0.2.1` is published and install-verified
-- GitHub release `v0.2.1` points at the published commit
+- npm package `replaypack@0.2.0` is published and install-verified
+- patch release `v0.2.1` is prepared with the external trial/recorder path but still needs npm OTP publish
 
 The missing proof is scale and market proof:
 

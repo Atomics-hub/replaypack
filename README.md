@@ -117,7 +117,7 @@ As an action from this repo:
   with:
     node-version: 24
 - run: npm ci
-- uses: Atomics-hub/replaypack@v0.2.1
+- uses: Atomics-hub/replaypack@v0.2.0
   with:
     capsule: replaypack/account-access.json
     out: dist/replaypack-verify.json
