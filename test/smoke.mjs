@@ -71,6 +71,37 @@ const fixedVerifyFlagsFirst = spawnSync(
 );
 assert.strictEqual(fixedVerifyFlagsFirst.status, 0, fixedVerifyFlagsFirst.stderr || fixedVerifyFlagsFirst.stdout);
 
+const readiness = spawnSync(process.execPath, [path.join(root, "scripts/readiness-check.mjs")], {
+  cwd: root,
+  encoding: "utf8"
+});
+assert.ok([0, 1].includes(readiness.status), readiness.stderr || readiness.stdout);
+const readinessPacket = JSON.parse(readiness.stdout);
+for (const gate of [
+  "private_github_ci",
+  "real_repo_dogfood",
+  "full_agent_proof",
+  "cross_agent_full_proof",
+  "live_agent_proof",
+  "cross_agent_recovery_proof",
+  "proofbench_minimum",
+  "agentbench_minimum"
+]) {
+  assert.strictEqual(readinessPacket.gates[gate], "pass", `${gate} must pass readiness`);
+}
+for (const gate of ["public_repo_private_trials", "public_github_beta", "npm_publish"]) {
+  assert.strictEqual(readinessPacket.gates[gate], "pass_optional", `${gate} optional receipt must be valid`);
+}
+assert.deepStrictEqual(readinessPacket.validation_errors, []);
+if (readiness.status === 0) {
+  assert.strictEqual(readinessPacket.status, "launch_ready");
+  assert.strictEqual(readinessPacket.gates.external_user_proof, "pass");
+} else {
+  assert.strictEqual(readinessPacket.status, "not_launch_ready");
+  assert.strictEqual(readinessPacket.gates.external_user_proof, "missing");
+  assert.deepStrictEqual(readinessPacket.next_required, ["run one external developer trial"]);
+}
+
 const tmpRoot = fs.mkdtempSync(path.join(os.tmpdir(), "replaypack-capture-"));
 writeFixture(tmpRoot);
 const capture = spawnSync(

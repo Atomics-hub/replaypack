@@ -186,4 +186,4 @@ Run the current readiness check:
 npm run readiness
 ```
 
-The current technical proof gates are present; readiness still fails until external-user proof exists.
+Readiness checks receipt contents, transcripts, and launch evidence. The current technical proof gates are valid; readiness still fails until external-user proof exists.

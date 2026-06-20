@@ -18,6 +18,7 @@ const requiredFiles = [
 const missing = requiredFiles.filter((filePath) => !fs.existsSync(path.join(root, filePath)));
 const proofbenchResultsPath = path.join(root, "docs/proofbench/results.json");
 const agentbenchResultsPath = path.join(root, "docs/agentbench/results.json");
+const packageJson = readJson("package.json");
 const validationFiles = {
   private_github_ci: "docs/validation/private-github-ci.json",
   real_repo_dogfood: "docs/validation/real-repo-dogfood.json",
@@ -30,26 +31,63 @@ const validationFiles = {
   cross_agent_recovery_proof: "docs/validation/claude-code-agent-proof.json",
   external_user_proof: "docs/validation/external-user-proof.json"
 };
+const validationChecks = {
+  private_github_ci: {
+    nextRequired: "run private GitHub CI from the clean repo",
+    validate: validatePrivateGithubCi
+  },
+  real_repo_dogfood: {
+    nextRequired: "dogfood on one real repo issue",
+    validate: validateRealRepoDogfood
+  },
+  public_repo_private_trials: {
+    optional: true,
+    validate: validatePublicRepoPrivateTrials
+  },
+  public_github_beta: {
+    optional: true,
+    validate: validatePublicGithubBeta
+  },
+  npm_publish: {
+    optional: true,
+    validate: validateNpmPublish
+  },
+  full_agent_proof: {
+    nextRequired: "run one live full-generation AgentBench trial",
+    validate: (data) => validateFullAgentProof(data, { nonCodex: false })
+  },
+  cross_agent_full_proof: {
+    nextRequired: "run one non-Codex full-generation AgentBench trial",
+    validate: (data) => validateFullAgentProof(data, { nonCodex: true })
+  },
+  live_agent_proof: {
+    nextRequired: "run one live coding-agent AgentBench trial",
+    validate: (data) => validateLiveAgentProof(data, { nonCodex: false })
+  },
+  cross_agent_recovery_proof: {
+    nextRequired: "run one non-Codex AgentBench recovery trial",
+    validate: (data) => validateLiveAgentProof(data, { nonCodex: true })
+  },
+  external_user_proof: {
+    nextRequired: "run one external developer trial",
+    validate: validateExternalUserProof
+  }
+};
 const result = {
   status: "not_launch_ready",
   missing,
   gates: {
     required_files: missing.length === 0 ? "pass" : "fail",
     proofbench_results: fs.existsSync(proofbenchResultsPath) ? "present" : "missing",
-    agentbench_results: fs.existsSync(agentbenchResultsPath) ? "present" : "missing",
-    private_github_ci: exists(validationFiles.private_github_ci) ? "present" : "missing",
-    real_repo_dogfood: exists(validationFiles.real_repo_dogfood) ? "present" : "missing",
-    public_repo_private_trials: exists(validationFiles.public_repo_private_trials) ? "present_optional" : "missing_optional",
-    public_github_beta: exists(validationFiles.public_github_beta) ? "present_optional" : "missing_optional",
-    npm_publish: exists(validationFiles.npm_publish) ? "present_optional" : "missing_optional",
-    full_agent_proof: exists(validationFiles.full_agent_proof) ? "present" : "missing",
-    cross_agent_full_proof: exists(validationFiles.cross_agent_full_proof) ? "present" : "missing",
-    live_agent_proof: exists(validationFiles.live_agent_proof) ? "present" : "missing",
-    cross_agent_recovery_proof: exists(validationFiles.cross_agent_recovery_proof) ? "present" : "missing",
-    external_user_proof: exists(validationFiles.external_user_proof) ? "present" : "missing"
+    agentbench_results: fs.existsSync(agentbenchResultsPath) ? "present" : "missing"
   },
+  validation_errors: [],
   next_required: []
 };
+
+for (const [key, check] of Object.entries(validationChecks)) {
+  result.gates[key] = validationGate(key, check);
+}
 
 if (fs.existsSync(proofbenchResultsPath)) {
   const results = JSON.parse(fs.readFileSync(proofbenchResultsPath, "utf8"));
@@ -75,45 +113,64 @@ if (!fs.existsSync(proofbenchResultsPath) || result.gates.proofbench_minimum ===
 if (!fs.existsSync(agentbenchResultsPath) || result.gates.agentbench_minimum === "fail") {
   result.next_required.push("create docs/agentbench/results.json with at least 30 agent-loop cases");
 }
-if (!exists(validationFiles.private_github_ci)) {
-  result.next_required.push("run private GitHub CI from the clean repo");
-}
-if (!exists(validationFiles.real_repo_dogfood)) {
-  result.next_required.push("dogfood on one real repo issue");
-}
-if (!exists(validationFiles.full_agent_proof)) {
-  result.next_required.push("run one live full-generation AgentBench trial");
-}
-if (!exists(validationFiles.cross_agent_full_proof)) {
-  result.next_required.push("run one non-Codex full-generation AgentBench trial");
-}
-if (!exists(validationFiles.live_agent_proof)) {
-  result.next_required.push("run one live coding-agent AgentBench trial");
-}
-if (!exists(validationFiles.cross_agent_recovery_proof)) {
-  result.next_required.push("run one non-Codex AgentBench recovery trial");
-}
-if (!exists(validationFiles.external_user_proof)) {
-  result.next_required.push("run one external developer trial");
+for (const [key, check] of Object.entries(validationChecks)) {
+  const gate = result.gates[key];
+  if (!check.optional && (gate === "missing" || gate === "invalid")) {
+    result.next_required.push(check.nextRequired);
+  }
+  if (check.optional && gate === "invalid_optional") {
+    result.next_required.push(`fix optional evidence receipt: ${key}`);
+  }
 }
 
-console.log(JSON.stringify(result, null, 2));
+const validationFailure = Object.entries(validationChecks).some(([key, check]) => {
+  const gate = result.gates[key];
+  return check.optional ? gate === "invalid_optional" : gate === "missing" || gate === "invalid";
+});
 
-const validationMissing = Object.values(validationFiles).some((filePath) => !exists(filePath));
-
-if (
+const launchFailure =
   missing.length > 0 ||
   !fs.existsSync(proofbenchResultsPath) ||
   !fs.existsSync(agentbenchResultsPath) ||
   result.gates.proofbench_minimum === "fail" ||
   result.gates.agentbench_minimum === "fail" ||
-  validationMissing
-) {
+  validationFailure;
+
+if (!launchFailure) {
+  result.status = "launch_ready";
+}
+
+console.log(JSON.stringify(result, null, 2));
+
+if (launchFailure) {
   process.exit(1);
 }
 
 function exists(relativePath) {
   return fs.existsSync(path.join(root, relativePath));
+}
+
+function readJson(relativePath) {
+  return JSON.parse(fs.readFileSync(path.join(root, relativePath), "utf8"));
+}
+
+function validationGate(key, check) {
+  const relativePath = validationFiles[key];
+  if (!exists(relativePath)) {
+    return check.optional ? "missing_optional" : "missing";
+  }
+
+  try {
+    const errors = check.validate(readJson(relativePath));
+    if (errors.length > 0) {
+      result.validation_errors.push(...errors.map((error) => `${key}: ${error}`));
+      return check.optional ? "invalid_optional" : "invalid";
+    }
+    return check.optional ? "pass_optional" : "pass";
+  } catch (error) {
+    result.validation_errors.push(`${key}: ${error.message}`);
+    return check.optional ? "invalid_optional" : "invalid";
+  }
 }
 
 function proofbenchMeetsLaunchBar(summary) {
@@ -142,4 +199,130 @@ function agentbenchMeetsLaunchBar(summary) {
     (summary.replaypack_prevented_false_done ?? 0) >= Math.ceil(baselineFalseDone * 0.9) &&
     (summary.replaypack_recovered_to_correct_fix ?? 0) >= Math.ceil(caseCount * 0.9)
   );
+}
+
+function validatePrivateGithubCi(data) {
+  const errors = [];
+  expect(data.schema === "replaypack.validation.private_github_ci.v0", errors, "schema must be private_github_ci.v0");
+  expect(data.conclusion === "success", errors, "conclusion must be success");
+  expect(Boolean(data.run_url), errors, "run_url is required");
+  expect(Array.isArray(data.validated_steps) && data.validated_steps.length >= 3, errors, "validated_steps must list hosted checks");
+  return errors;
+}
+
+function validateRealRepoDogfood(data) {
+  const errors = [];
+  expect(data.schema === "replaypack.validation.real_repo_dogfood.v0", errors, "schema must be real_repo_dogfood.v0");
+  expect(data.status === "pass", errors, "status must be pass");
+  expect(Boolean(data.issue), errors, "issue is required");
+  expect(exists(data.capsule), errors, "capsule must exist");
+  expect(data.proof?.status === "ok", errors, "proof status must be ok");
+  expect(
+    Array.isArray(data.invariants) && data.invariants.length > 0 && data.invariants.every((item) => item.status === "ok"),
+    errors,
+    "all invariants must be ok"
+  );
+  return errors;
+}
+
+function validatePublicRepoPrivateTrials(data) {
+  const errors = [];
+  const summary = data.summary ?? {};
+  expect(data.schema === "replaypack.validation.public_repo_private_trials.v0", errors, "schema must be public_repo_private_trials.v0");
+  expect(summary.attempted >= 1, errors, "at least one public repo trial is required");
+  expect(summary.failed === 0, errors, "failed public repo trials must be zero");
+  expect(summary.passed === summary.attempted, errors, "all attempted public repo trials must pass");
+  expect(Array.isArray(data.repositories) && data.repositories.length === summary.attempted, errors, "repository receipts must match attempted count");
+  expect(data.repositories?.every((repo) => repo.status === "pass"), errors, "every repository receipt must pass");
+  return errors;
+}
+
+function validatePublicGithubBeta(data) {
+  const errors = [];
+  expect(data.schema === "replaypack.validation.public_github_beta.v0", errors, "schema must be public_github_beta.v0");
+  expect(data.visibility === "PUBLIC", errors, "repository visibility must be PUBLIC");
+  expect(data.beta_issue?.state === "OPEN", errors, "beta issue must be OPEN");
+  expect(Boolean(data.url), errors, "public repository URL is required");
+  return errors;
+}
+
+function validateNpmPublish(data) {
+  const errors = [];
+  expect(data.schema === "replaypack.validation.npm_publish.v0", errors, "schema must be npm_publish.v0");
+  expect(data.published === true, errors, "published must be true");
+  expect(data.package === packageJson.name, errors, "published package must match package.json");
+  expect(data.version === packageJson.version, errors, "published version must match package.json");
+  expect(data.npm?.dist_tag_latest === packageJson.version, errors, "npm latest tag must match package.json");
+  expect(Boolean(data.npm?.tarball), errors, "npm tarball URL is required");
+  return errors;
+}
+
+function validateFullAgentProof(data, { nonCodex }) {
+  const errors = [];
+  const summary = data.results ?? {};
+  const caseCount = summary.case_count ?? 0;
+  expect(data.schema === "replaypack.validation.full_agent_proof.v0", errors, "schema must be full_agent_proof.v0");
+  expect(data.status === "complete", errors, "status must be complete");
+  expect(caseCount > 0, errors, "case_count must be greater than zero");
+  expect(data.case_sample?.case_count === caseCount, errors, "case_sample count must match results count");
+  expect(Array.isArray(data.cases) && data.cases.length === caseCount, errors, "case receipts must match case_count");
+  expect(summary.replaypack_verified_correct === caseCount, errors, "ReplayPack treatments must all verify correct");
+  expect(summary.replaypack_failed === 0, errors, "ReplayPack failures must be zero");
+  expect(summary.control_protocol_violations === 0, errors, "control protocol violations must be zero");
+  expect(summary.replaypack_protocol_violations === 0, errors, "ReplayPack protocol violations must be zero");
+  expect(summary.manual_intervention_count === 0, errors, "manual intervention must be zero");
+  expect(summary.false_done_lift_cases > 0, errors, "at least one false-done control must be lifted");
+  expect(
+    data.cases?.every((item) => exists(item.control?.transcript) && exists(item.treatment?.transcript)),
+    errors,
+    "every case must have control and treatment transcripts"
+  );
+  if (nonCodex) {
+    expect(Boolean(data.agent_surface) && data.agent_surface !== "codex_subagents", errors, "agent surface must be non-Codex");
+  }
+  return errors;
+}
+
+function validateLiveAgentProof(data, { nonCodex }) {
+  const errors = [];
+  const summary = data.results ?? {};
+  const caseCount = summary.case_count ?? 0;
+  expect(data.schema === "replaypack.validation.live_agent_proof.v0", errors, "schema must be live_agent_proof.v0");
+  expect(data.status === "complete", errors, "status must be complete");
+  expect(caseCount > 0, errors, "case_count must be greater than zero");
+  expect(data.case_sample?.case_count === caseCount, errors, "case_sample count must match results count");
+  expect(Array.isArray(data.cases) && data.cases.length === caseCount, errors, "case receipts must match case_count");
+  expect(summary.visible_only_false_done > 0, errors, "visible-only controls must include false-done outcomes");
+  expect(summary.replaypack_recovered_to_correct_fix === caseCount, errors, "ReplayPack treatments must all recover");
+  expect(summary.manual_intervention_count === 0, errors, "manual intervention must be zero");
+  expect((summary.control_protocol_violations ?? 0) === 0, errors, "control protocol violations must be zero");
+  expect((summary.replaypack_protocol_violations ?? 0) === 0, errors, "ReplayPack protocol violations must be zero");
+  expect(
+    data.cases?.every((item) => exists(item.control?.transcript) && exists(item.treatment?.transcript)),
+    errors,
+    "every case must have control and treatment transcripts"
+  );
+  if (nonCodex) {
+    expect(Boolean(data.agent_surface) && data.agent_surface !== "codex_subagents", errors, "agent surface must be non-Codex");
+  }
+  return errors;
+}
+
+function validateExternalUserProof(data) {
+  const errors = [];
+  expect(data.schema === "replaypack.validation.external_user_proof.v0", errors, "schema must be external_user_proof.v0");
+  expect(data.verdict === "pass", errors, "verdict must be pass");
+  expect(Boolean(data.trial_runner?.relationship), errors, "trial runner relationship is required");
+  expect(Array.isArray(data.commands_run) && data.commands_run.length >= 3, errors, "commands_run must include trial commands");
+  expect(data.commands_run?.every((item) => Boolean(item.command) && Boolean(item.status)), errors, "every command needs status");
+  expect(Boolean(data.comprehension?.one_minute_explanation), errors, "one-minute explanation is required");
+  expect(data.comprehension?.understood_not_just_tests === true, errors, "developer must understand why this is not just tests");
+  expect(Array.isArray(data.objections) && data.objections.some(Boolean), errors, "at least one objection is required");
+  return errors;
+}
+
+function expect(condition, errors, message) {
+  if (!condition) {
+    errors.push(message);
+  }
 }
