@@ -53,8 +53,11 @@ Verification passes only when:
 npx replaypack capture \
   --id account-access \
   --title "Account-scoped export access ignores membership" \
+  --primary-file src/access.js \
+  --proof-file test/visible-proof.mjs \
+  --trace fixtures/trace/account-access.md \
   --issue-file issues/account-access.md \
-  --from-command "npm run proof" \
+  --proof-command "npm run proof" \
   --invariant-command "npm run invariant" \
   --out replaypack/account-access.json \
   --packet dist/replaypack-capture.json
@@ -93,9 +96,36 @@ As an action:
     out: dist/replaypack-verify.json
 ```
 
+`--root` is useful for monorepos and examples. Capsule paths, referenced files, proof commands, and invariant commands are resolved from that root.
+
+## Capsule Shape
+
+```json
+{
+  "schema": "replaypack.capsule.v0",
+  "id": "account-access",
+  "entrypoint": {
+    "primary_file": "src/access.js",
+    "proof_file": "test/visible-proof.mjs",
+    "proof_command": "npm run proof",
+    "invariant_commands": ["npm run invariant"]
+  },
+  "workflow": {
+    "issue_files": ["issues/account-access.md"]
+  },
+  "trace": {
+    "repro": "fixtures/trace/account-access.md"
+  }
+}
+```
+
+## Security
+
+ReplayPack executes the proof and invariant commands stored in a capsule. Treat capsules like CI configuration: verify only capsules from your repo or from people you trust.
+
 ## Demo
 
-This repo includes a tiny account-access demo:
+The GitHub repo includes a tiny account-access demo:
 
 ```bash
 npm test

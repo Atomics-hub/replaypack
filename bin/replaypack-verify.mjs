@@ -4,6 +4,11 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 
+if (process.argv.includes("--help") || process.argv.includes("-h")) {
+  printHelp();
+  process.exit(0);
+}
+
 const args = parseArgs(process.argv.slice(2));
 const root = path.resolve(args.root ?? process.cwd());
 const capsulePath = path.resolve(root, required(args.capsule, "--capsule"));
@@ -214,4 +219,19 @@ function parseArgs(raw) {
     }
   }
   return parsed;
+}
+
+function printHelp() {
+  console.log(`ReplayPack verify
+
+Usage:
+  replaypack verify <capsule>
+  replaypack verify --root <repo-or-example> <capsule>
+  replaypack verify --capsule <capsule> --out dist/replaypack-verify.json
+
+Notes:
+  Capsule paths are resolved from --root when --root is provided.
+  Proof and invariant commands execute with shell access from --root.
+  Only verify capsules you trust or capsules committed in your own repo.
+`);
 }

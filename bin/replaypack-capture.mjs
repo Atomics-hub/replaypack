@@ -4,6 +4,11 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 
+if (process.argv.includes("--help") || process.argv.includes("-h")) {
+  printHelp();
+  process.exit(0);
+}
+
 const COMMON_TOKENS = new Set([
   "test",
   "tests",
@@ -76,7 +81,7 @@ const references = [
 
 const referenceChecks = references.map((item) => checkReference(item));
 const capsule = {
-  schema: "replaypack.statecapsule.v0",
+  schema: "replaypack.capsule.v0",
   id: required(args.id, "--id"),
   title: required(args.title, "--title"),
   created_at: new Date().toISOString(),
@@ -404,4 +409,30 @@ function parseArgs(raw) {
     }
   }
   return parsed;
+}
+
+function printHelp() {
+  console.log(`ReplayPack capture
+
+Usage:
+  replaypack capture \\
+    --id <id> \\
+    --title <title> \\
+    --primary-file src/file.js \\
+    --proof-file test/proof.mjs \\
+    --trace fixtures/trace/repro.md \\
+    --proof-command "npm run proof" \\
+    --invariant-command "npm run invariant" \\
+    --out replaypack/issue.json
+
+Useful flags:
+  --from-command <command>        Alias for --proof-command; enables best-effort file inference.
+  --primary-file <path>           Main source file the agent should inspect.
+  --proof-file <path>             Focused proof file.
+  --trace <path>                  Repro trace or notes.
+  --issue-file <path>             Repeatable issue/context file.
+  --ci-log <path>                 Repeatable CI/test log.
+  --invariant-command <command>   Repeatable command required during verification.
+  --packet <path>                 Optional capture evidence packet.
+`);
 }

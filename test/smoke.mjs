@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const cli = path.join(root, "bin/replaypack.mjs");
+const packageJson = readJson(path.join(root, "package.json"));
 
 const help = spawnSync(process.execPath, [cli, "--help"], {
   cwd: root,
@@ -21,16 +22,24 @@ const version = spawnSync(process.execPath, [cli, "--version"], {
   encoding: "utf8"
 });
 assert.strictEqual(version.status, 0, version.stderr);
-assert.match(version.stdout, /^0\.2\.0/);
+assert.strictEqual(version.stdout.trim(), packageJson.version);
 
 const captureCheck = spawnSync(process.execPath, [path.join(root, "bin/replaypack-capture.mjs"), "--help"], {
   cwd: root,
   encoding: "utf8"
 });
-assert.strictEqual(captureCheck.status, 2);
-assert.match(captureCheck.stderr, /Missing required argument/);
+assert.strictEqual(captureCheck.status, 0);
+assert.match(captureCheck.stdout, /ReplayPack capture/);
+
+const verifyCheck = spawnSync(process.execPath, [path.join(root, "bin/replaypack-verify.mjs"), "--help"], {
+  cwd: root,
+  encoding: "utf8"
+});
+assert.strictEqual(verifyCheck.status, 0);
+assert.match(verifyCheck.stdout, /ReplayPack verify/);
 
 const wrongRoot = path.join(root, "examples/account-access/wrong");
+cleanupExampleOutput(wrongRoot);
 const wrongVerify = spawnSync(
   process.execPath,
   [cli, "verify", "replaypack/account-access.json", "--out", "dist/replaypack-verify.json"],
@@ -43,6 +52,7 @@ assert.strictEqual(wrongPacket.proof.status, "ok");
 assert.strictEqual(wrongPacket.invariants[0].status, "nonzero");
 
 const fixedRoot = path.join(root, "examples/account-access/fixed");
+cleanupExampleOutput(fixedRoot);
 const fixedVerify = spawnSync(
   process.execPath,
   [cli, "verify", "replaypack/account-access.json", "--out", "dist/replaypack-verify.json"],
@@ -53,6 +63,13 @@ const fixedPacket = readJson(path.join(fixedRoot, "dist/replaypack-verify.json")
 assert.strictEqual(fixedPacket.status, "pass");
 assert.strictEqual(fixedPacket.proof.status, "ok");
 assert.strictEqual(fixedPacket.invariants[0].status, "ok");
+
+const fixedVerifyFlagsFirst = spawnSync(
+  process.execPath,
+  [cli, "verify", "--root", "examples/account-access/fixed", "replaypack/account-access.json"],
+  { cwd: root, encoding: "utf8" }
+);
+assert.strictEqual(fixedVerifyFlagsFirst.status, 0, fixedVerifyFlagsFirst.stderr || fixedVerifyFlagsFirst.stdout);
 
 const tmpRoot = fs.mkdtempSync(path.join(os.tmpdir(), "replaypack-capture-"));
 writeFixture(tmpRoot);
@@ -90,11 +107,15 @@ const capture = spawnSync(
 );
 assert.strictEqual(capture.status, 0, capture.stderr || capture.stdout);
 const capsule = readJson(path.join(tmpRoot, "replaypack/repeatable-flags.json"));
+assert.strictEqual(capsule.schema, "replaypack.capsule.v0");
 assert.deepStrictEqual(capsule.entrypoint.invariant_commands, [
   "node test/invariant-a.mjs",
   "node test/invariant-b.mjs"
 ]);
 assert.deepStrictEqual(capsule.workflow.issue_files, ["issues/one.md", "issues/two.md"]);
+
+cleanupExampleOutput(wrongRoot);
+cleanupExampleOutput(fixedRoot);
 
 console.log("replaypack smoke ok");
 
@@ -114,4 +135,8 @@ function writeFixture(base) {
   fs.writeFileSync(path.join(base, "issues/one.md"), "# One\n");
   fs.writeFileSync(path.join(base, "issues/two.md"), "# Two\n");
   fs.writeFileSync(path.join(base, "fixtures/trace/manual.md"), "# Manual Trace\n");
+}
+
+function cleanupExampleOutput(exampleRoot) {
+  fs.rmSync(path.join(exampleRoot, "dist"), { recursive: true, force: true });
 }

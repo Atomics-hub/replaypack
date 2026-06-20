@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 import { spawn } from "node:child_process";
+import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
+const packageRoot = path.resolve(here, "..");
 const [, , command, ...rawArgs] = process.argv;
 
 if (!command || command === "--help" || command === "-h" || command === "help") {
@@ -12,7 +14,7 @@ if (!command || command === "--help" || command === "-h" || command === "help") 
 }
 
 if (command === "--version" || command === "-v") {
-  console.log("0.2.0");
+  console.log(readVersion());
   process.exit(0);
 }
 
@@ -50,19 +52,44 @@ child.on("error", (error) => {
 function normalizeVerifyArgs(args) {
   const normalized = [...args];
   const hasCapsuleFlag = normalized.some((arg) => arg === "--capsule" || arg.startsWith("--capsule="));
-  if (!hasCapsuleFlag && normalized[0] && !normalized[0].startsWith("--")) {
-    const [capsule, ...rest] = normalized;
-    return ["--capsule", capsule, ...rest];
+  if (hasCapsuleFlag) {
+    return normalized;
   }
+
+  const positionalIndex = firstPositionalIndex(normalized);
+  if (positionalIndex !== -1) {
+    const capsule = normalized[positionalIndex];
+    return [
+      ...normalized.slice(0, positionalIndex),
+      "--capsule",
+      capsule,
+      ...normalized.slice(positionalIndex + 1)
+    ];
+  }
+
   return normalized;
+}
+
+function firstPositionalIndex(args) {
+  for (let index = 0; index < args.length; index += 1) {
+    const arg = args[index];
+    if (!arg.startsWith("-")) {
+      return index;
+    }
+    if (!arg.includes("=")) {
+      index += 1;
+    }
+  }
+  return -1;
 }
 
 function printHelp() {
   console.log(`ReplayPack
 
 Usage:
-  replaypack capture --from-command "npm test -- ..." --out replaypack/issue.json
+  replaypack capture --proof-command "npm test -- ..." --out replaypack/issue.json
   replaypack verify replaypack/issue.json
+  replaypack verify --root examples/account-access/fixed replaypack/account-access.json
 
 Commands:
   capture   Run a failing proof command and write a portable capsule.
@@ -71,11 +98,28 @@ Commands:
 Useful capture flags:
   --id <id>
   --title <title>
-  --from-command <command>
+  --proof-command <command>
+  --from-command <command>        Alias for --proof-command; enables best-effort file inference.
+  --primary-file <path>
+  --proof-file <path>
+  --trace <path>
   --invariant-command <command>   Repeatable. Verification requires all to pass.
   --issue-file <path>             GitHub-style issue export to include as workflow context.
   --ci-log <path>                 Saved CI/test log to include as workflow context.
   --out <path>
   --packet <path>
+
+Useful verify flags:
+  --root <path>                   Run proof and invariant commands from this directory.
+  --out <path>                    Write the verification packet.
 `);
+}
+
+function readVersion() {
+  try {
+    const packageJson = JSON.parse(fs.readFileSync(path.join(packageRoot, "package.json"), "utf8"));
+    return packageJson.version ?? "0.0.0";
+  } catch {
+    return "0.0.0";
+  }
 }

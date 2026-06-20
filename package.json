@@ -18,6 +18,7 @@
     "bin",
     "action.yml",
     "README.md",
+    "SECURITY.md",
     "LICENSE"
   ],
   "scripts": {
