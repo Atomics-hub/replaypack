@@ -4,10 +4,11 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
+const outputRoot = process.cwd();
 const cli = path.join(root, "bin", "replaypack.mjs");
 const packageJson = readJson(path.join(root, "package.json"));
-const workRoot = path.join(root, ".tmp", "external-trial");
-const publicRoot = path.join(root, "dist", "external-trial");
+const workRoot = path.join(outputRoot, ".tmp", "external-trial");
+const publicRoot = path.join(outputRoot, "dist", "external-trial");
 const issueUrl = "https://github.com/Atomics-hub/replaypack/issues/new?template=external-developer-trial.yml";
 
 fs.rmSync(workRoot, { recursive: true, force: true });
@@ -107,6 +108,7 @@ const report = {
   git: gitSnapshot(),
   trial_doc: "docs/trials/external-developer-trial.md",
   feedback_issue_url: issueUrl,
+  feedback_markdown: "dist/external-trial/feedback.md",
   commands,
   checks,
   status: passed ? "pass" : "fail",
@@ -126,6 +128,7 @@ const report = {
 
 const reportPath = path.join(workRoot, "receipt.json");
 fs.writeFileSync(reportPath, `${JSON.stringify(report, null, 2)}\n`);
+fs.writeFileSync(path.join(workRoot, "feedback.md"), renderFeedback(report));
 fs.rmSync(publicRoot, { recursive: true, force: true });
 fs.mkdirSync(path.dirname(publicRoot), { recursive: true });
 fs.cpSync(workRoot, publicRoot, { recursive: true });
@@ -133,7 +136,10 @@ fs.cpSync(workRoot, publicRoot, { recursive: true });
 console.log(`ReplayPack external trial: ${report.status}
 
 Receipt:
-  ${path.relative(root, path.join(publicRoot, "receipt.json"))}
+  ${path.relative(outputRoot, path.join(publicRoot, "receipt.json"))}
+
+Feedback draft:
+  ${path.relative(outputRoot, path.join(publicRoot, "feedback.md"))}
 
 What happened:
   wrong demo   proof=${wrongPacket?.proof?.status ?? "missing"} invariant=${wrongInvariant.status ?? "missing"} replaypack=${wrongPacket?.status ?? "missing"}
@@ -180,6 +186,55 @@ function runStep({ id, command, display, cwd, expectedExit, packetPath }) {
 
 function publicPacketPath(packetPath) {
   return path.join("dist", "external-trial", path.basename(packetPath));
+}
+
+function renderFeedback(report) {
+  const status = report.status === "pass" ? "pass" : "fail";
+  const wrongLine = `wrong demo: proof=${wrongPacket?.proof?.status ?? "missing"} invariant=${wrongInvariant.status ?? "missing"} replaypack=${wrongPacket?.status ?? "missing"}`;
+  const fixedLine = `fixed demo: proof=${fixedPacket?.proof?.status ?? "missing"} invariant=${fixedInvariant.status ?? "missing"} replaypack=${fixedPacket?.status ?? "missing"}`;
+  const dogfoodLine = `dogfood: proof=${dogfoodPacket?.proof?.status ?? "missing"} invariant=${dogfoodInvariant.status ?? "missing"} replaypack=${dogfoodPacket?.status ?? "missing"}`;
+
+  return `# ReplayPack External Developer Trial Feedback
+
+Paste this into the external developer trial issue:
+
+${issueUrl}
+
+### Coding-agent workflow
+
+[Which coding agent or workflow do you use today? Example: Codex, Claude Code, Cursor, Copilot, none.]
+
+### One-minute read
+
+[After one minute with the README, what did you think ReplayPack does?]
+
+### Commands run
+
+node bin/replaypack.mjs trial -> ${status}
+receipt: dist/external-trial/receipt.json
+status: ${status}
+node: ${report.node.version}
+replaypack: ${report.package.version}
+${wrongLine}
+${fixedLine}
+${dogfoodLine}
+
+### Invariant vs visible proof
+
+[Did the wrong/fixed demo make clear why ReplayPack is not just unit tests?]
+
+### Would you use it?
+
+[Would you add ReplayPack to a repo where agents make PRs? Why or why not?]
+
+### First objection
+
+[What confused you, worried you, or would stop you from using it?]
+
+### Quote permission
+
+[Choose one: Paraphrase anonymously only / Quote anonymously / Quote with my GitHub username / Do not quote or paraphrase]
+`;
 }
 
 function stepById(id) {

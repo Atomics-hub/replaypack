@@ -9,6 +9,8 @@ body:
 
         https://github.com/Atomics-hub/replaypack/blob/main/docs/trials/external-developer-trial.md
 
+        The trial writes `dist/external-trial/feedback.md`; you can fill the bracketed answers and paste that here.
+
         Blunt feedback is more useful than polite feedback. If ReplayPack feels confusing or unnecessary, say why.
   - type: input
     id: agent_surface

@@ -46,6 +46,8 @@ cd replaypack
 node bin/replaypack.mjs trial
 ```
 
+The trial writes `dist/external-trial/receipt.json` plus `dist/external-trial/feedback.md` for the public beta issue.
+
 Run the checkout CLI:
 
 ```bash

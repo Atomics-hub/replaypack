@@ -28,7 +28,7 @@ The product mechanism is now benchmark-proven locally:
 - public GitHub beta is live with a tester issue
 - npm package `replaypack@0.2.0` is published and install-verified
 - patch release `v0.2.1` is prepared with the external trial/recorder path but still needs npm OTP publish
-- packed `v0.2.1` tarball installs into a fresh temp project and runs `replaypack trial`
+- packed `v0.2.1` tarball installs into a fresh temp project, runs `replaypack trial`, and writes receipt/feedback files
 - `npm run evidence:verify` ties public proof claims to current JSON receipts
 
 The missing proof is scale and market proof:
@@ -130,7 +130,7 @@ This proves widened small-sample full-generation lift is not Codex-only. It does
 | Gate | Score | Pass Bar | Status | Evidence |
 | --- | ---: | ---: | --- | --- |
 | Product mechanism | 94 | 85 | pass | one-command account-access demo plus ProofBench |
-| Package cleanliness | 94 | 85 | pass | npm package allowlist is explicit; packed tarball installs and runs `replaypack trial` |
+| Package cleanliness | 94 | 85 | pass | npm package allowlist is explicit; packed tarball installs, runs `replaypack trial`, and writes feedback artifacts |
 | CI/action path | 91 | 85 | pass | GitHub Actions passed on public remote; CI now gates repo trial plus packed-package trial |
 | Benchmark proof | 94 | 85 | pass | 30/30 visible-green wrong fixes rejected; 30/30 correct fixes accepted |
 | Agent-loop proof | 88 | 85 | pass | deterministic AgentBench replay: 30/30 false-done prevented and recovered |

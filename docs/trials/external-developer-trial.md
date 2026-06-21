@@ -28,6 +28,12 @@ The command writes a receipt to:
 dist/external-trial/receipt.json
 ```
 
+It also writes a ready-to-paste feedback draft to:
+
+```text
+dist/external-trial/feedback.md
+```
+
 ## Demo
 
 The trial command runs the wrong fix:
@@ -75,6 +81,8 @@ https://github.com/Atomics-hub/replaypack/issues/new?template=external-developer
 ```
 
 Paste command outcomes, the one-minute explanation, the invariant-vs-visible-proof read, whether they would use it, and the first objection. This is the evidence ReplayPack still needs before claiming external-user proof.
+
+Shortcut: open `dist/external-trial/feedback.md`, fill the bracketed answers, and paste it into the issue.
 
 ## Record Proof
 

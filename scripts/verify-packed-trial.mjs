@@ -54,6 +54,33 @@ if (!/ReplayPack external trial: pass/.test(trial.stdout)) {
   fail("Packed CLI trial did not print the expected pass summary.");
 }
 
+const receiptPath = path.join(installRoot, "dist", "external-trial", "receipt.json");
+const feedbackPath = path.join(installRoot, "dist", "external-trial", "feedback.md");
+
+if (!fs.existsSync(receiptPath)) {
+  fail("Packed CLI trial did not write dist/external-trial/receipt.json in the caller project.");
+}
+
+if (!fs.existsSync(feedbackPath)) {
+  fail("Packed CLI trial did not write dist/external-trial/feedback.md in the caller project.");
+}
+
+const feedback = fs.readFileSync(feedbackPath, "utf8");
+for (const required of [
+  "### Coding-agent workflow",
+  "### One-minute read",
+  "### Commands run",
+  "node bin/replaypack.mjs trial -> pass",
+  "wrong demo: proof=ok invariant=nonzero replaypack=fail",
+  "fixed demo: proof=ok invariant=ok replaypack=pass",
+  "dogfood: proof=ok invariant=ok replaypack=pass",
+  "### First objection"
+]) {
+  if (!feedback.includes(required)) {
+    fail(`Packed CLI trial feedback draft is missing: ${required}`);
+  }
+}
+
 console.log(`Packed ReplayPack trial: pass
 
 Tarball:
@@ -62,6 +89,8 @@ Tarball:
 Verified:
   replaypack --version -> ${version.stdout.trim()}
   replaypack trial -> pass
+  receipt -> ${path.relative(installRoot, receiptPath)}
+  feedback -> ${path.relative(installRoot, feedbackPath)}
 `);
 
 function findTarball(stdout) {
