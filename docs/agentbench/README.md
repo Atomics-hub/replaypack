@@ -80,13 +80,13 @@ Latest Claude Code recovery trial:
 
 Latest live full task generation trial:
 
-- 3 cases
-- control agents truly correct: 2/3
-- control false-done outcomes: 1/3
-- ReplayPack treatment verified correct: 3/3
+- 9 cases
+- control agents truly correct: 8/9
+- control false-done outcomes: 1/9
+- ReplayPack treatment verified correct: 9/9
 - manual intervention: 0
 - receipt: `docs/validation/full-agent-proof.json`
-- transcripts: `docs/agentbench/full-runs/full-generation-2026-06-20/`
+- transcripts: `docs/agentbench/full-runs/full-generation-codex-scale-2026-06-20/`
 
 Latest Claude Code full task generation trial:
 
@@ -101,7 +101,7 @@ Latest Claude Code full task generation trial:
 
 ## Live-Agent Protocol
 
-The next evidence level is a larger full task generation live agent run across more cases and external developer usage.
+The next evidence level is a broad full task generation live agent run across more cases and external developer usage.
 
 Control prompt:
 
@@ -146,6 +146,6 @@ AgentBench deterministic replay passes when:
 - ReplayPack prevents at least 90% of those false-done outcomes
 - ReplayPack recovers to a correct fix in at least 90% of cases
 
-The current live recovery trials prove that Codex and Claude Code can recover from visible-green wrong fixes using ReplayPack. The current live full task generation trials show a small-sample Codex lift from 2/3 control correctness to 3/3 ReplayPack verified correctness and a wider Claude Code lift from 5/6 control correctness to 6/6 ReplayPack verified correctness. ReplayPack should not claim broad agent lift until the full-generation protocol runs across more cases and external developer usage.
+The current live recovery trials prove that Codex and Claude Code can recover from visible-green wrong fixes using ReplayPack. The current live full task generation trials show an expanded Codex lift from 8/9 control correctness to 9/9 ReplayPack verified correctness and a Claude Code lift from 5/6 control correctness to 6/6 ReplayPack verified correctness. ReplayPack should not claim broad agent lift until the full-generation protocol runs across more cases and external developer usage.
 
 Full-generation receipts are marked complete only when every treatment case verifies, no protocol violations are found, no manual intervention is used, and at least one control false-done is converted into a verified ReplayPack treatment.

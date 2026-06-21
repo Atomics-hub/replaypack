@@ -1,6 +1,6 @@
 {
   "schema": "replaypack.validation.evidence_manifest.v0",
-  "checked_at": "2026-06-20T23:56:36Z",
+  "checked_at": "2026-06-21T00:15:34Z",
   "status": "technical_proof_pass_market_proof_missing",
   "package": {
     "name": "replaypack",
@@ -213,7 +213,7 @@
     {
       "id": "codex_full_generation",
       "status": "proven_small_sample",
-      "claim": "Codex full-generation trial has ReplayPack treatments verified correct on 3/3 cases versus 2/3 control correctness.",
+      "claim": "Codex full-generation scale trial has ReplayPack treatments verified correct on 9/9 cases versus 8/9 control correctness, with 1/9 control false-done lifted.",
       "evidence": [
         "docs/validation/full-agent-proof.json"
       ],
@@ -234,13 +234,13 @@
           "file": "docs/validation/full-agent-proof.json",
           "path": "results.case_count",
           "op": "eq",
-          "value": 3
+          "value": 9
         },
         {
           "file": "docs/validation/full-agent-proof.json",
           "path": "results.control_correct",
           "op": "eq",
-          "value": 2
+          "value": 8
         },
         {
           "file": "docs/validation/full-agent-proof.json",
@@ -252,7 +252,7 @@
           "file": "docs/validation/full-agent-proof.json",
           "path": "results.replaypack_verified_correct",
           "op": "eq",
-          "value": 3
+          "value": 9
         },
         {
           "file": "docs/validation/full-agent-proof.json",
@@ -479,7 +479,7 @@
     {
       "id": "broad_large_sample_full_generation",
       "status": "not_proven",
-      "claim": "Broad large-sample live full-generation lift is not proven; current live full-generation samples are 3 Codex cases and 6 Claude Code cases.",
+      "claim": "Broad large-sample live full-generation lift is not proven; current live full-generation samples are 9 Codex cases and 6 Claude Code cases.",
       "evidence": [
         "docs/validation/full-agent-proof.json",
         "docs/validation/claude-code-full-agent-proof.json"

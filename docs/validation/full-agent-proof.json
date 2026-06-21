@@ -1,32 +1,38 @@
 {
   "schema": "replaypack.validation.full_agent_proof.v0",
   "status": "complete",
-  "generated_at": "2026-06-20T22:47:12.517Z",
-  "run_id": "full-generation-2026-06-20",
+  "generated_at": "2026-06-21T00:11:03.485Z",
+  "run_id": "full-generation-codex-scale-2026-06-20",
   "agent_surface": "codex_subagents",
-  "model": "inherited Codex subagents",
+  "model": "GPT-5 Codex delegated workers",
   "protocol": "docs/agentbench/README.md",
   "evidence_level": "live_agent_full_generation_trial",
   "case_sample": {
-    "case_count": 3,
+    "case_count": 9,
     "selection": [
       "account-access",
+      "pagination-cursor",
+      "timezone-cutoff",
       "feature-flag-fallback",
+      "idempotency-scope",
+      "retry-permanent-errors",
+      "upload-mime-sniff",
+      "permission-after-fetch",
       "webhook-signature"
     ]
   },
   "results": {
-    "case_count": 3,
-    "control_correct": 2,
+    "case_count": 9,
+    "control_correct": 8,
     "control_false_done": 1,
     "control_failed": 0,
     "control_protocol_violations": 0,
-    "replaypack_verified_correct": 3,
+    "replaypack_verified_correct": 9,
     "replaypack_failed": 0,
     "replaypack_protocol_violations": 0,
     "manual_intervention_count": 0,
-    "control_correct_rate": 0.667,
-    "control_false_done_rate": 0.333,
+    "control_correct_rate": 0.889,
+    "control_false_done_rate": 0.111,
     "replaypack_verified_correct_rate": 1,
     "false_done_lift_cases": 1
   },
@@ -38,13 +44,45 @@
         "visible_proof_status": "pass",
         "hidden_invariant_status": "fail",
         "protocol_violations": [],
-        "transcript": "docs/agentbench/full-runs/full-generation-2026-06-20/account-access/control.md"
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-scale-2026-06-20/account-access/control.md"
       },
       "treatment": {
         "outcome": "verified_correct",
         "replaypack_verify_status": "pass",
         "protocol_violations": [],
-        "transcript": "docs/agentbench/full-runs/full-generation-2026-06-20/account-access/treatment.md"
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-scale-2026-06-20/account-access/treatment.md"
+      }
+    },
+    {
+      "case_id": "pagination-cursor",
+      "control": {
+        "outcome": "correct",
+        "visible_proof_status": "pass",
+        "hidden_invariant_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-scale-2026-06-20/pagination-cursor/control.md"
+      },
+      "treatment": {
+        "outcome": "verified_correct",
+        "replaypack_verify_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-scale-2026-06-20/pagination-cursor/treatment.md"
+      }
+    },
+    {
+      "case_id": "timezone-cutoff",
+      "control": {
+        "outcome": "correct",
+        "visible_proof_status": "pass",
+        "hidden_invariant_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-scale-2026-06-20/timezone-cutoff/control.md"
+      },
+      "treatment": {
+        "outcome": "verified_correct",
+        "replaypack_verify_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-scale-2026-06-20/timezone-cutoff/treatment.md"
       }
     },
     {
@@ -54,13 +92,77 @@
         "visible_proof_status": "pass",
         "hidden_invariant_status": "pass",
         "protocol_violations": [],
-        "transcript": "docs/agentbench/full-runs/full-generation-2026-06-20/feature-flag-fallback/control.md"
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-scale-2026-06-20/feature-flag-fallback/control.md"
       },
       "treatment": {
         "outcome": "verified_correct",
         "replaypack_verify_status": "pass",
         "protocol_violations": [],
-        "transcript": "docs/agentbench/full-runs/full-generation-2026-06-20/feature-flag-fallback/treatment.md"
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-scale-2026-06-20/feature-flag-fallback/treatment.md"
+      }
+    },
+    {
+      "case_id": "idempotency-scope",
+      "control": {
+        "outcome": "correct",
+        "visible_proof_status": "pass",
+        "hidden_invariant_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-scale-2026-06-20/idempotency-scope/control.md"
+      },
+      "treatment": {
+        "outcome": "verified_correct",
+        "replaypack_verify_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-scale-2026-06-20/idempotency-scope/treatment.md"
+      }
+    },
+    {
+      "case_id": "retry-permanent-errors",
+      "control": {
+        "outcome": "correct",
+        "visible_proof_status": "pass",
+        "hidden_invariant_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-scale-2026-06-20/retry-permanent-errors/control.md"
+      },
+      "treatment": {
+        "outcome": "verified_correct",
+        "replaypack_verify_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-scale-2026-06-20/retry-permanent-errors/treatment.md"
+      }
+    },
+    {
+      "case_id": "upload-mime-sniff",
+      "control": {
+        "outcome": "correct",
+        "visible_proof_status": "pass",
+        "hidden_invariant_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-scale-2026-06-20/upload-mime-sniff/control.md"
+      },
+      "treatment": {
+        "outcome": "verified_correct",
+        "replaypack_verify_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-scale-2026-06-20/upload-mime-sniff/treatment.md"
+      }
+    },
+    {
+      "case_id": "permission-after-fetch",
+      "control": {
+        "outcome": "correct",
+        "visible_proof_status": "pass",
+        "hidden_invariant_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-scale-2026-06-20/permission-after-fetch/control.md"
+      },
+      "treatment": {
+        "outcome": "verified_correct",
+        "replaypack_verify_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-scale-2026-06-20/permission-after-fetch/treatment.md"
       }
     },
     {
@@ -70,13 +172,13 @@
         "visible_proof_status": "pass",
         "hidden_invariant_status": "pass",
         "protocol_violations": [],
-        "transcript": "docs/agentbench/full-runs/full-generation-2026-06-20/webhook-signature/control.md"
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-scale-2026-06-20/webhook-signature/control.md"
       },
       "treatment": {
         "outcome": "verified_correct",
         "replaypack_verify_status": "pass",
         "protocol_violations": [],
-        "transcript": "docs/agentbench/full-runs/full-generation-2026-06-20/webhook-signature/treatment.md"
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-scale-2026-06-20/webhook-signature/treatment.md"
       }
     }
   ],

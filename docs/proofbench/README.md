@@ -96,4 +96,6 @@ npm run proofbench
 
 The runner generates executable benchmark fixtures under `.tmp/proofbench`, runs ReplayPack against each wrong and fixed variant, and writes `docs/proofbench/results.json`.
 
+The `*_replaypack_packet_sha256` fields hash a stable projection of the ReplayPack verify packet: capsule metadata, entrypoint, reference checks, proof/invariant exit statuses, and final status. Runtime-only fields such as timestamps, local root paths, command durations, and stderr stack paths are excluded so rerunning ProofBench does not churn evidence hashes when behavior is unchanged.
+
 The generated benchmark is synthetic mechanism proof. It should be treated as necessary but not sufficient for public launch; real repo dogfood and external user proof are separate gates.

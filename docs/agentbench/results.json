@@ -1,6 +1,6 @@
 {
   "schema": "replaypack.agentbench.results.v0",
-  "generated_at": "2026-06-20T23:19:21.427Z",
+  "generated_at": "2026-06-21T00:14:30.461Z",
   "evidence_level": "deterministic_agent_loop_replay",
   "methodology": {
     "source": "docs/proofbench/results.json",
@@ -32,8 +32,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "5e6a89e76f96a57c759d717e5dba3ca98bd703ff4c8c02fdda33a463194eef81",
-        "fixed_replaypack_packet_sha256": "d0fd49691abd9d4b31258f8c480f1eb609abc9d6857a858242867a183da7fbf9"
+        "wrong_replaypack_packet_sha256": "dfcd62af654d02e31fa767938d7f0e05399a168bf15ac5012a0936fdd14f5e22",
+        "fixed_replaypack_packet_sha256": "f448d1bc94f9bf5dcb4565ae5b2565857ff2d097534685da7576c8822bcf6c4d"
       }
     },
     {
@@ -48,8 +48,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "ecc8f5636911708672178f2514d0ac669b471f81e8f997d64619d14f3ce076cc",
-        "fixed_replaypack_packet_sha256": "063db08840723b740fbf52c8f116707e4f6434371d81b9a18891f19c41f6e316"
+        "wrong_replaypack_packet_sha256": "3381f0ebf4057d67df524277ab28e5bc5500b0c63bba26027d8cffbb4ef2dd91",
+        "fixed_replaypack_packet_sha256": "1742c83c1158d0f13be238907321228dbc3d883c618693a7beb95fa5a849e87e"
       }
     },
     {
@@ -64,8 +64,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "a7af027531bbfcaf7a7c7c4e1674cc9d47a03338327dfd9ec1f47721c5958aea",
-        "fixed_replaypack_packet_sha256": "bb297932eb29afa4662007b48521b770f38a632db78fc28bae7dea4c65652c8c"
+        "wrong_replaypack_packet_sha256": "b0fc2ff340de5856bbc5f7c96c08f6186e57e21a4362532ba4836f8ba4c0bb4b",
+        "fixed_replaypack_packet_sha256": "f4811d101e3e1733e12166bb33fc06fc9130176aa6598384bb5a7ba7729e9d2b"
       }
     },
     {
@@ -80,8 +80,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "b9bd52d57ebda8b843acdf1cdd3fb671199f78a4f7bf0b6866766b05573eadf0",
-        "fixed_replaypack_packet_sha256": "90da55cdbb797b83d03deb37595b33d22a2c30bf4e661e3f5781bbdd0b5691c2"
+        "wrong_replaypack_packet_sha256": "ea0b54aa5a0fe6389200c55b5689b4786a794d5e2d520625768a557e908e5805",
+        "fixed_replaypack_packet_sha256": "010674762871185fb705eed7fb301fe892443d9e25c7a60e1d39c126a76c7f36"
       }
     },
     {
@@ -96,8 +96,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "3239f8ff5cfc558c07a9a9f6ee18c6a7d241572b727c2c2c2df85bc84cf50e09",
-        "fixed_replaypack_packet_sha256": "7b406bd658926db74c4ccb829721a1df598da65050ac3a1cc1cdb21354bf59f1"
+        "wrong_replaypack_packet_sha256": "3a9846ebe9da1da9e3406df0e4dd35b6e9c4d3fbaee0bd7df8db48489ea02e2a",
+        "fixed_replaypack_packet_sha256": "83f1775b4c1fb23e9092a7cce33e8ae6ce4d32e0b62bf0a000279faeba950ac6"
       }
     },
     {
@@ -112,8 +112,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "a31688f9e049f36f23d95b6ca6c7cefae8d18a3efcb7e3e73632db438b5bb59f",
-        "fixed_replaypack_packet_sha256": "9f9808bdb75d2555f1fd25039992e7df34ef3b864b1abb0f85a80d89e595ab79"
+        "wrong_replaypack_packet_sha256": "c3a6f1ce9bde1b7d425c72b01352b3c41b1f7a002633b5cde1e66ac4b87c2139",
+        "fixed_replaypack_packet_sha256": "43dd28c16c3c9eab7715c57129421b5aa92da51743a916998c78e43b0b16c85c"
       }
     },
     {
@@ -128,8 +128,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "023750f08b60cd28de8a2a5989963583a9350c5299b1f8ab112caa3a0b81002d",
-        "fixed_replaypack_packet_sha256": "233777e8f0b8ef4817912620d907a0970b3f591ec0798605fe481348a2cae47e"
+        "wrong_replaypack_packet_sha256": "d478cbe8e1910e880e7ffcadbdbc8a2d773891a80120a2546f63a953013d0550",
+        "fixed_replaypack_packet_sha256": "058f0988b42c700ecbb28b9d4af43f7346bcbe828c11dd53d526647d55ad3470"
       }
     },
     {
@@ -144,8 +144,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "b61d11e4ffb74e502aa3078887dd622b7f4bf327e3e083e0b711c026f3846e84",
-        "fixed_replaypack_packet_sha256": "509f61e6eaa92329307b69b06f64a511a2df419584aeb5f7f7ee248d398fcf6e"
+        "wrong_replaypack_packet_sha256": "93ab55ccc559e83e162969892fdd552c13683c93e86ebfb2abad2026492106b0",
+        "fixed_replaypack_packet_sha256": "5d04800f7ecb66c4f6392ed1e1dc393dba2c6af010b318e3db66ba1bb3e7dedf"
       }
     },
     {
@@ -160,8 +160,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "4045529c1aefcbc9abd7568a1d452d41b6949b37476e80c76758aa23b91261a2",
-        "fixed_replaypack_packet_sha256": "d6d74c21f6fc5af5786a88b3e15fd9bad405e30a7b57789a9059827fc588ffa4"
+        "wrong_replaypack_packet_sha256": "9b623371098feb5e0b2a321253659a9369181ac51858910028bd45bae6fad84c",
+        "fixed_replaypack_packet_sha256": "dba49aabdfd3e023eab8605c45645b9841850292713a1a55ec233f9d337c6635"
       }
     },
     {
@@ -176,8 +176,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "55e77974431cc925404a3deea10e529095da0087d9ad304b9f87a0aeb86bb0f0",
-        "fixed_replaypack_packet_sha256": "a55061afa20f3faca11ddcb28a11236edf534f3f2edc6300682f47a20c86b6fe"
+        "wrong_replaypack_packet_sha256": "be82fd823a5b38bad3ba3d085d3a216bef61406cac99106856daca6a41031290",
+        "fixed_replaypack_packet_sha256": "d7adfc0b39e750ab6ab95da558d4ac5f960b2a6373d4c99fbcc60dbbee6d8f36"
       }
     },
     {
@@ -192,8 +192,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "1fd1804a50b920a62c910eea7621ba5b82d2a5ee0d281b12194202deebd5d470",
-        "fixed_replaypack_packet_sha256": "39af573b368a1b5b3809457ea9102ce220dad50fa38e901bbaa670341bc1acd3"
+        "wrong_replaypack_packet_sha256": "f8d5cbe4e88df748c7204018f82f0ca9ee76bf33b252bc31d576dfea27ba8a82",
+        "fixed_replaypack_packet_sha256": "9581974e0e2e98b50b9ff57354f1aab35527a42da895a6cc77dede00929fa4af"
       }
     },
     {
@@ -208,8 +208,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "d6267b0e405621e6a7708195b25157e71949be983e932ff70bb18ae1fe25920b",
-        "fixed_replaypack_packet_sha256": "18d63cb974e0d85da7404b7312cd929106d678fc34674d53590c2a0b1a95a2a4"
+        "wrong_replaypack_packet_sha256": "9b3cb41fc164572dfdfd1653048b0fd72741a38fda44e8d6dc05b1f8580751f9",
+        "fixed_replaypack_packet_sha256": "632e008979e89b912a5ada8644c5da596672e687130c4821431acdb2484b3f8e"
       }
     },
     {
@@ -224,8 +224,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "e28fd91e162f366acae5a8276976fe0e7770bb974febd71a38b8e4d38d0ff276",
-        "fixed_replaypack_packet_sha256": "230fa5ad64acead6bd543674c970bcac65848ea5ae85a39cf12acea2010e96ac"
+        "wrong_replaypack_packet_sha256": "4d34e7d73dd3a75d80a0ecd39e7a36d8e2ac972b29520c7a63b2178e5a20050f",
+        "fixed_replaypack_packet_sha256": "cc55fb29d311c094bf814a09dafb91e99697b61f2a45bceeffe431a097d55fd7"
       }
     },
     {
@@ -240,8 +240,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "166e0db64618f68b9f66195e4fdbd2a6571cc1d069fe099a86cab6f6253e54ed",
-        "fixed_replaypack_packet_sha256": "fdedf027221636ee969ff7682f76c75a999c9312683ff8e6a4b93d410ab97346"
+        "wrong_replaypack_packet_sha256": "50f6330621b0a76739fba5bdc2ab3af695c86db804d9daeae82fe96213dbc815",
+        "fixed_replaypack_packet_sha256": "84517c02b7a6d9050e8918ac2a5fcf41a23cd6d1105e0b0a4ff14ea6f1505c7b"
       }
     },
     {
@@ -256,8 +256,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "d4d61089b6ebc1e99e22383d5bcff00bb204b9667733daf7f0bef369cfb281d4",
-        "fixed_replaypack_packet_sha256": "d6a2d158e80ba9b6bdd8eaa243255f14f48d915f14e4d1851696e68a25f94274"
+        "wrong_replaypack_packet_sha256": "b7699003634704e19dfe6146a72045d3d748b421278d537b0ffd66188cb024ed",
+        "fixed_replaypack_packet_sha256": "15a2824b3fac287366ff65eea5572856f8ed328cd14559be33af0e1265258249"
       }
     },
     {
@@ -272,8 +272,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "755e1905c565ee1a25092b417dd8657b15b195fd49ff06bda48f7d526543cd05",
-        "fixed_replaypack_packet_sha256": "e5b348712d46b5c3bb4a4d5c4268f992f346ddfee28035ff192f2092a078bc3d"
+        "wrong_replaypack_packet_sha256": "b11904b88e72d57d517cb223cc64f02071bc250d9288d47977a8ab127bd32b42",
+        "fixed_replaypack_packet_sha256": "3c19190efdea54be3992e23f51e9c0c8f1018665bb36bd95cab9a136ca2d7f6b"
       }
     },
     {
@@ -288,8 +288,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "e8de8d9a605e74a588d7ad65a272599028ca8df525d0f369e19ecf320ae76beb",
-        "fixed_replaypack_packet_sha256": "5e1f97ca656737b20ef23bd459995dccbdb07ed0acc25bb3607044e3993840f1"
+        "wrong_replaypack_packet_sha256": "1be258a9a06a8980f88f23893ab369815d099b289f3dc3450df2ce9d0e1ecf9b",
+        "fixed_replaypack_packet_sha256": "f918a1592a937182cc35133507fca28e16c561cdb65d25b2ae221253d4dda43e"
       }
     },
     {
@@ -304,8 +304,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "4ae52a65c83b82465ed73284b567d7847277d8589e4b18da0c16797c38c75362",
-        "fixed_replaypack_packet_sha256": "4f79d21c84865ef5ae3f2c2b0f734f29ef50016e3938bd2a4412ee99e9e7ab8b"
+        "wrong_replaypack_packet_sha256": "5d9106769f257a75133aab5cbae3e375abe31f1c771f1cc40a59395116ae5764",
+        "fixed_replaypack_packet_sha256": "99cce6d60f367bf2a92520e22ec110f44d429f2421edabf2d600b12631f0a08e"
       }
     },
     {
@@ -320,8 +320,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "b3f772e4e84b082a2c9deb44a9a5590f3edbe6b768e018835ce6b226a386c888",
-        "fixed_replaypack_packet_sha256": "8e64acc01d046b3c5bd79762bb2871b2e29e476e5f882dd17166ae7a175abd0b"
+        "wrong_replaypack_packet_sha256": "a603a25e2764dee7f338d5129800ee82c8bf6cbcf8ba4fab9c164d4d6383d08a",
+        "fixed_replaypack_packet_sha256": "9670cdd2f22a6087cf51a3f14eeb6770521f436d7afeef7e91a926e4d242aef6"
       }
     },
     {
@@ -336,8 +336,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "35e0aa89109f245c2d2c31ff6663e806a398a0880139e174596add28e6da79d7",
-        "fixed_replaypack_packet_sha256": "3d0ef72e7ed91a5ffa5dd16f7e09f4d5ccc18603749d96d20549ba20908c0972"
+        "wrong_replaypack_packet_sha256": "6a7169c041c57ecb976de973afb8d8945d5ff0d9fdc79c8292367c5698099ea8",
+        "fixed_replaypack_packet_sha256": "6a9417fc5ae45a948b59788356c3a2a5a61830aabb4dd18c664cc2c542dff6f2"
       }
     },
     {
@@ -352,8 +352,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "d229d3e6d40e956c81ad24c22a098d0561452aac4ed12bb53900e628f83db095",
-        "fixed_replaypack_packet_sha256": "e9ccabaecc10bd330f637c897aad7dbc925e9ad766f6f3acc430181a2edb0b22"
+        "wrong_replaypack_packet_sha256": "052c1c0fa8ff33b663781564917da8b5f695ebcca5ca96aaa71f76ed7e12748b",
+        "fixed_replaypack_packet_sha256": "e81ef5a97ecb98d7d166a7b222e5c709cbd9a546972c574be71fbe8700bb5403"
       }
     },
     {
@@ -368,8 +368,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "a656326e7df07013a93d918537bcee1503fa19aabfd4dfbe203cb4e66573649f",
-        "fixed_replaypack_packet_sha256": "7b45d158caeb7ee98ef50e229e51a90811db15569feae4f03a8043b32a4819c4"
+        "wrong_replaypack_packet_sha256": "8a216cc106cc365c603fc712b3c85c44eea07f3f77687d1bde1c249a86fc17e6",
+        "fixed_replaypack_packet_sha256": "acd1009be8d16a8ad7cb6d6d848285746a1037d87a47d1a13686f97b52230b42"
       }
     },
     {
@@ -384,8 +384,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "11d845b0b88b73fe9fa4aa91c69e16ceead370a246c16824154c25a88b161fef",
-        "fixed_replaypack_packet_sha256": "bb5075421e08d9c912c14a4164ac03b9b60e08fc40416c6956d695afcf3c319f"
+        "wrong_replaypack_packet_sha256": "f3ed9f7c5e564cf62da80421d02b0b3eba34ae848551b6bf3b52bdecd21ed36d",
+        "fixed_replaypack_packet_sha256": "bf8167ac3eab038b749ca89aaba8b87c1a874f00cb46eb13243ed925949b53c3"
       }
     },
     {
@@ -400,8 +400,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "80db4a51ed3ba6138a5d8c52803a289a7e0a44deafa0fc8b8d183ad1b745afbe",
-        "fixed_replaypack_packet_sha256": "81dfb87b89cc4d299e2e556f62246e0caa7d659cefbca394a94cf41170c9bd95"
+        "wrong_replaypack_packet_sha256": "9ce45f89ce95cae2aab8a5b6b33ae1b9c02aea9ab2aa8024bc89dc33b2092532",
+        "fixed_replaypack_packet_sha256": "8630db131fe2a02f9ec42c39b04f264732ea00d22c82df18ef9d6f099211f941"
       }
     },
     {
@@ -416,8 +416,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "bc8beeb60c8c4c90a645d15bda7c510a580af3fba14381ea21b623039efcdbeb",
-        "fixed_replaypack_packet_sha256": "447e28a5b4f786f16f63c689717ab606460a3b3c695ed2308e9a89426050c20d"
+        "wrong_replaypack_packet_sha256": "29bd712d65f794cdeca8239d88bbb712a0e11da7e67909d3e3c40225234faa85",
+        "fixed_replaypack_packet_sha256": "1a05e11d52bad0fce82ff0c3ffe48df9182013befae3e57b5a20b8e26e992c95"
       }
     },
     {
@@ -432,8 +432,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "f0a6db51868f89d37396959e79e48c11024b20df51515b8d9490f2333ac8fdd5",
-        "fixed_replaypack_packet_sha256": "ccfacc298198b669f61167703bbd3ff03cd5fafcd96db2dc2f68513f12b7cad1"
+        "wrong_replaypack_packet_sha256": "b10e02da1d0f48c66ff272ea31f13d0d3b31fc0c564c4977067af22fea6aff30",
+        "fixed_replaypack_packet_sha256": "24dccbaae718899a6d19e04781430e46631c2b1e0890d94af5472443d3693d8f"
       }
     },
     {
@@ -448,8 +448,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "988072b53a4a32e4046bdee8cba15d60b15503d93465c52ba3803d54aa1e2f8b",
-        "fixed_replaypack_packet_sha256": "08293bbec51e3e32a531b4c4fc31df80df2de80947149a22d00dd11356df2ac2"
+        "wrong_replaypack_packet_sha256": "fe858dce6de489de0ddc894483d364ac202490580986c1b7531a0792ff2f1bfd",
+        "fixed_replaypack_packet_sha256": "c88ed5e7fc9d27760a423965a4dabf083119b74667a5e8f9c5ca2e47d6db6e38"
       }
     },
     {
@@ -464,8 +464,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "30dd1a23340a96c766e8d639c7ef2f45969e0b65c4de93909e24f6a26b936ddc",
-        "fixed_replaypack_packet_sha256": "80255791918c9e49a122a6912ba18d8bb7c5fc2fabb248a614a86f47e3b89d76"
+        "wrong_replaypack_packet_sha256": "9c261abcf3805c45ba50e1ed718ebf85a9b01be3a9b51b7de6355573e20ed892",
+        "fixed_replaypack_packet_sha256": "fa37f83f0faa7e8055324aaced6b6b7bb5447decece89173b690e0e2f8457e2d"
       }
     },
     {
@@ -480,8 +480,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "5aabad0454fbb787e2a108d0ed6d8acd493687cab677f53df666e9ee3e75002d",
-        "fixed_replaypack_packet_sha256": "4ba8de7c78c4290ec968d05518d190b48db6ac069d7be2fc0d8a59ee8cfe3121"
+        "wrong_replaypack_packet_sha256": "798261b2baa8bbbcea9487d62ae161d576a132481b8db56a0dbb5cc169f3dec7",
+        "fixed_replaypack_packet_sha256": "200d539504fd5992f6e6f64117ca115e6a0db83cbb3dbb92a93ae2d6f61bc861"
       }
     },
     {
@@ -496,8 +496,8 @@
         "replaypack_on_wrong": "fail",
         "visible_proof_on_fixed": "pass",
         "replaypack_on_fixed": "pass",
-        "wrong_replaypack_packet_sha256": "49732acb4bbe6c08d42fecc906c388223f496ba7009b73f2fa6eb6ea7d1e8fa2",
-        "fixed_replaypack_packet_sha256": "eaa6bb59df40437da133900dc69d7603bc431dd8cbeeecc80e8fec576099f181"
+        "wrong_replaypack_packet_sha256": "e20ac3e35ed5c7fc97d5b850a5b1d128a5f9fbaa536fa0b3361f4b20b2f1b17c",
+        "fixed_replaypack_packet_sha256": "b2281c8347d699f874e8f777490c366c5c2525eee769c260aa746c6953188e13"
       }
     }
   ]

@@ -4,9 +4,9 @@ ReplayPack should not go public because we like the idea. It goes public when th
 
 ## Current Call
 
-Status: `package_trial_external_next`
+Status: `codex_full_generation_scale_external_next`
 
-ReplayPack is a credible holy-fuck candidate with public GitHub and npm `0.2.0` live, plus a prepared `0.2.1` patch release waiting on npm OTP publish. Deterministic agent-loop proof, Codex and Claude Code recovery proof, small Codex full task generation proof, widened Claude Code full task generation proof, and packed-package trial proof now exist. External demand and broad large-sample full-generation lift are not proven yet.
+ReplayPack is a credible holy-fuck candidate with public GitHub and npm `0.2.0` live, plus a prepared `0.2.1` patch release waiting on npm OTP publish. Deterministic agent-loop proof, Codex and Claude Code recovery proof, expanded Codex full task generation proof, widened Claude Code full task generation proof, and packed-package trial proof now exist. External demand and broad large-sample full-generation lift are not proven yet.
 
 The product mechanism is now benchmark-proven locally:
 
@@ -17,7 +17,7 @@ The product mechanism is now benchmark-proven locally:
 - deterministic AgentBench shows visible-only false done at 30/30 and ReplayPack prevention/recovery at 30/30
 - live Codex subagent recovery trial shows 3/3 visible-only controls false-done and 3/3 ReplayPack treatments recover
 - live Claude Code recovery trial shows 3/3 visible-only controls false-done and 3/3 ReplayPack treatments recover with zero protocol violations
-- live Codex full task generation trial shows controls truly correct on 2/3, false-done on 1/3, and ReplayPack treatments verified correct on 3/3
+- live Codex full task generation trial shows controls truly correct on 8/9, false-done on 1/9, and ReplayPack treatments verified correct on 9/9
 - live Claude Code full task generation trial shows controls truly correct on 5/6, false-done on 1/6, and ReplayPack treatments verified correct on 6/6
 - 30-case synthetic ProofBench passes the launch bar
 - package surface is clean
@@ -33,7 +33,7 @@ The product mechanism is now benchmark-proven locally:
 
 The missing proof is scale and market proof:
 
-- larger live full task generation run against the protocol
+- broad live full task generation run against the protocol
 - external developer reaction
 - confirmation that the demo makes the value obvious without a live explanation
 
@@ -101,13 +101,13 @@ This proves the visible-green recovery effect is not Codex-only.
 
 Latest live full task generation trial:
 
-- 3 cases: account access, feature flag fallback, webhook signature
-- control agents truly correct: 2/3
-- control agents false-done: 1/3
-- ReplayPack treatments verified correct: 3/3
+- 9 cases: account access, pagination cursor, timezone cutoff, feature flag fallback, idempotency scope, retry permanent errors, upload mime sniff, permission after fetch, webhook signature
+- control agents truly correct: 8/9
+- control agents false-done: 1/9
+- ReplayPack treatments verified correct: 9/9
 - manual intervention: 0
 
-This is live full task generation proof on a small Codex-only sample.
+This is live full task generation proof on an expanded but still small Codex-only sample.
 
 ## Current Cross-Agent Full-Generation Result
 
@@ -135,7 +135,7 @@ This proves widened small-sample full-generation lift is not Codex-only. It does
 | Benchmark proof | 94 | 85 | pass | 30/30 visible-green wrong fixes rejected; 30/30 correct fixes accepted |
 | Agent-loop proof | 88 | 85 | pass | deterministic AgentBench replay: 30/30 false-done prevented and recovered |
 | Live-agent recovery proof | 78 | 75 | pass | Codex subagents: 3/3 controls false-done; 3/3 treatments recovered |
-| Full-generation agent proof | 78 | 75 | pass | Codex subagents: controls 2/3 correct and 1/3 false-done; ReplayPack treatments 3/3 verified |
+| Full-generation agent proof | 82 | 75 | pass | Codex subagents: controls 8/9 correct and 1/9 false-done; ReplayPack treatments 9/9 verified |
 | Cross-agent recovery proof | 78 | 75 | pass | Claude Code: 3/3 controls false-done; 3/3 treatments recovered; 0 protocol violations |
 | Cross-agent full-generation proof | 82 | 75 | pass | Claude Code: controls 5/6 correct and 1/6 false-done; ReplayPack treatments 6/6 verified; 0 protocol violations |
 | Real repo dogfood | 82 | 80 | pass | self-dogfood caught the real CI pack-destination failure mode |
@@ -194,6 +194,6 @@ Until then, the honest answer is:
 
 ```text
 ReplayPack is the prime candidate.
-It is package-launched, agent-loop replay proven, Codex/Claude recovery proven, small-sample Codex full-generation proven, and widened Claude full-generation proven, but not yet market-proven or broad large-sample proven.
+It is package-launched, agent-loop replay proven, Codex/Claude recovery proven, expanded Codex full-generation proven, and widened Claude full-generation proven, but not yet market-proven or broad large-sample proven.
 Next gate is external user proof and larger-sample full-generation proof.
 ```

@@ -177,7 +177,27 @@ function meetsLaunchBar(summary) {
 function packetHash(variantRoot) {
   const packetPath = path.join(variantRoot, "dist", "replaypack-verify.json");
   if (!fs.existsSync(packetPath)) return null;
-  return crypto.createHash("sha256").update(fs.readFileSync(packetPath)).digest("hex");
+  const packet = JSON.parse(fs.readFileSync(packetPath, "utf8"));
+  const stablePacket = {
+    evidence_kind: packet.evidence_kind,
+    status: packet.status,
+    capsule: packet.capsule,
+    entrypoint: packet.entrypoint,
+    reference_checks: packet.reference_checks,
+    proof: stableCommandResult(packet.proof),
+    invariants: (packet.invariants ?? []).map((item) => ({
+      command: item.command,
+      ...stableCommandResult(item)
+    }))
+  };
+  return crypto.createHash("sha256").update(`${JSON.stringify(stablePacket)}\n`).digest("hex");
+}
+
+function stableCommandResult(result) {
+  return {
+    status: result?.status ?? null,
+    exit_code: result?.exit_code ?? null
+  };
 }
 
 function writeJson(filePath, value) {
