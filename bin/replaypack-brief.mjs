@@ -8,6 +8,7 @@ if (process.argv.includes("--help") || process.argv.includes("-h")) {
 }
 
 const args = parseArgs(process.argv.slice(2));
+const cwd = process.cwd();
 const root = path.resolve(args.root ?? process.cwd());
 const capsulePath = path.resolve(root, required(args.capsule, "<capsule>"));
 const outPath = args.out ? path.resolve(root, args.out) : null;
@@ -18,7 +19,7 @@ const brief = renderBrief(capsule, capsuleRel);
 if (outPath) {
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, brief);
-  console.log(`Wrote ${relativePath(root, outPath)}`);
+  console.log(`Wrote ${relativePath(cwd, outPath)}`);
 } else {
   process.stdout.write(brief);
 }
@@ -272,7 +273,7 @@ Usage:
   replaypack brief --root <repo-or-example> <capsule> --out dist/agent-brief.md
 
 Notes:
-  Capsule paths and excerpts are resolved from --root when --root is provided.
+  Capsule paths, excerpts, and --out are resolved from --root when --root is provided.
   This command does not run proof or invariant commands.
   Review generated briefs before sharing them outside a private repo.
 `);

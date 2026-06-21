@@ -130,6 +130,12 @@ node bin/replaypack.mjs brief \
 
 Give `dist/agent-brief.md` to the coding agent. It includes the issue, trace, proof command, invariant command, relevant files, and finish gate.
 
+Because `--root` points at `.tmp/first-capsule-demo`, that output path is inside the mini repo:
+
+```text
+.tmp/first-capsule-demo/dist/agent-brief.md
+```
+
 ## 5. Verify Before The Fix
 
 ```bash

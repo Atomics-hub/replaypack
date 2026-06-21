@@ -218,6 +218,12 @@
         },
         {
           "file": "docs/validation/invariant-authoring-docs.json",
+          "path": "demo.brief_prints_caller_visible_path",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "file": "docs/validation/invariant-authoring-docs.json",
           "path": "demo.verify_after_status",
           "op": "eq",
           "value": "pass"

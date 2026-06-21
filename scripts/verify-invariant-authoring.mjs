@@ -136,7 +136,8 @@ const tutorialChecks = {
   contains_brief_command: tutorial.includes("node bin/replaypack.mjs brief"),
   contains_verify_command: tutorial.includes("node bin/replaypack.mjs verify"),
   contains_visible_proof_passes: tutorial.includes("The visible proof passes"),
-  contains_invariant_fails: tutorial.includes("The invariant fails")
+  contains_invariant_fails: tutorial.includes("The invariant fails"),
+  contains_root_out_note: tutorial.includes(".tmp/first-capsule-demo/dist/agent-brief.md")
 };
 
 const demo = {
@@ -147,6 +148,7 @@ const demo = {
   capture_invariant_precheck_status: capturePacket.invariant_prechecks?.[0]?.status ?? null,
   brief_has_finish_gate: agentBrief.includes("## Finish Gate"),
   brief_has_invariant_command: agentBrief.includes("- `npm run invariant`"),
+  brief_prints_caller_visible_path: brief.stdout_tail.includes(`${workRootRel}/dist/agent-brief.md`),
   verify_before_status: beforePacket.status,
   verify_before_proof_status: beforePacket.proof.status,
   verify_before_invariant_status: beforePacket.invariants?.[0]?.status ?? null,
@@ -215,6 +217,7 @@ function validate(receipt) {
   );
   expect(receipt.demo.brief_has_finish_gate, errors, "agent brief must include finish gate");
   expect(receipt.demo.brief_has_invariant_command, errors, "agent brief must include invariant command");
+  expect(receipt.demo.brief_prints_caller_visible_path, errors, "brief output must print the caller-visible path");
   expect(receipt.demo.verify_before_status === "fail", errors, "ReplayPack verify must fail before the fix");
   expect(receipt.demo.verify_before_proof_status === "ok", errors, "before-fix proof must be ok");
   expect(

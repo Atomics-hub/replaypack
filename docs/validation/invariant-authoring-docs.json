@@ -1,6 +1,6 @@
 {
   "schema": "replaypack.validation.invariant_authoring_docs.v0",
-  "checked_at": "2026-06-21T01:38:34.904Z",
+  "checked_at": "2026-06-21T01:44:44.521Z",
   "docs": {
     "cookbook": "docs/invariant-cookbook.md",
     "first_capsule_tutorial": "docs/tutorials/first-capsule.md"
@@ -29,7 +29,8 @@
     "contains_brief_command": true,
     "contains_verify_command": true,
     "contains_visible_proof_passes": true,
-    "contains_invariant_fails": true
+    "contains_invariant_fails": true,
+    "contains_root_out_note": true
   },
   "demo": {
     "visible_proof_status": "ok",
@@ -39,6 +40,7 @@
     "capture_invariant_precheck_status": "nonzero",
     "brief_has_finish_gate": true,
     "brief_has_invariant_command": true,
+    "brief_prints_caller_visible_path": true,
     "verify_before_status": "fail",
     "verify_before_proof_status": "ok",
     "verify_before_invariant_status": "nonzero",
