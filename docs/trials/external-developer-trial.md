@@ -76,7 +76,8 @@ Ask the developer:
 2. Was the wrong/fixed demo understandable without a live explanation?
 3. Do you understand why this is not just unit tests?
 4. Would you add this to a repo where agents make PRs?
-5. What is the first objection or confusion?
+5. Do the invariant cookbook and first-capsule tutorial make it clear how to write a first invariant?
+6. What is the first objection or confusion?
 
 ## Send Feedback
 
@@ -91,6 +92,13 @@ Paste command outcomes, the one-minute explanation, the invariant-vs-visible-pro
 Shortcut for humans: open `dist/external-trial/feedback.md`, fill the bracketed answers, and paste it into the issue.
 
 Shortcut for agents: open `dist/external-trial/agent-report.md`, inspect the machine result, replace the bracketed assessment fields with your own read, and paste the issue-ready section into the issue.
+
+If the demo makes sense, skim the authoring path next:
+
+- `docs/invariant-cookbook.md`
+- `docs/tutorials/first-capsule.md`
+
+The most useful feedback is whether those files make it clear how you would write your first invariant in your own repo.
 
 ## Record Proof
 

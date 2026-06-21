@@ -6,6 +6,7 @@ ReplayPack should ship as proof before platform.
 
 ```bash
 npm test
+npm run authoring:verify
 npm run proofbench
 npm run agentbench
 npm run live-agentbench:prepare
@@ -23,6 +24,7 @@ npm run readiness
 Review:
 
 - README explains the wrong-fix failure in under one minute.
+- `docs/invariant-cookbook.md` and `docs/tutorials/first-capsule.md` explain how to author the first useful invariant.
 - `SECURITY.md` clearly states that capsules run commands and are not a sandbox.
 - `action.yml` verifies a capsule without requiring a separate npm install.
 - `examples/account-access/wrong` fails because the invariant catches the shallow fix.

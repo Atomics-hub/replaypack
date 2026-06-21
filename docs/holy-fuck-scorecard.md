@@ -21,6 +21,7 @@ The product mechanism is now benchmark-proven locally:
 - live Codex full task generation trial shows controls truly correct on 14/15, false-done on 1/15, and ReplayPack treatments verified correct on 15/15
 - live generated-brief full task generation trial shows controls truly correct on 2/3, false-done on 1/3, and ReplayPack treatments using generated briefs verified correct on 3/3
 - live Claude Code full task generation trial shows controls truly correct on 5/6, false-done on 1/6, and ReplayPack treatments verified correct on 6/6
+- invariant authoring docs now cover four worked patterns and an executable first-capsule tutorial that captures, briefs, fails-before-fix, and passes-after-fix
 - 30-case synthetic ProofBench passes the launch bar
 - package surface is clean
 - private GitHub CI passes
@@ -37,7 +38,7 @@ The missing proof is scale and market proof:
 
 - broad live full task generation run against the protocol
 - external developer reaction
-- confirmation that the demo makes the value obvious without a live explanation
+- confirmation that a stranger can follow the authoring path without a live explanation
 
 ## Current ProofBench Result
 
@@ -167,6 +168,7 @@ This proves widened small-sample full-generation lift is not Codex-only. It does
 | Benchmark proof | 94 | 85 | pass | 30/30 visible-green wrong fixes rejected; 30/30 correct fixes accepted |
 | Agent-loop proof | 88 | 85 | pass | deterministic AgentBench replay: 30/30 false-done prevented and recovered |
 | Agent handoff proof | 92 | 85 | pass | BriefBench: generated briefs complete 30/30; live generated-brief full-generation treatments verified 3/3 |
+| Authoring/onboarding proof | 84 | 80 | pass | invariant cookbook has four patterns; first-capsule tutorial captures, briefs, fails before fix, and passes after fix |
 | Live-agent recovery proof | 78 | 75 | pass | Codex subagents: 3/3 controls false-done; 3/3 treatments recovered |
 | Full-generation agent proof | 84 | 75 | pass | Codex subagents: controls 14/15 correct and 1/15 false-done; ReplayPack treatments 15/15 verified |
 | Cross-agent recovery proof | 78 | 75 | pass | Claude Code: 3/3 controls false-done; 3/3 treatments recovered; 0 protocol violations |

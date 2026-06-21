@@ -39,7 +39,13 @@ Current collection path:
 - GitHub issue form: https://github.com/Atomics-hub/replaypack/issues/new?template=external-developer-trial.yml
 - Trial script: `docs/trials/external-developer-trial.md`
 - Agent-run report: `dist/external-trial/agent-report.md`
+- Invariant authoring path: `docs/invariant-cookbook.md` and `docs/tutorials/first-capsule.md`
 - Proof recorder: `npm run record-external-proof -- --issue <issue-number> --verdict pass --reviewer <name>`
+
+Next external ask should test both:
+
+1. Can the runner explain why the wrong/fixed demo is not just unit tests?
+2. Can the runner follow the first-capsule tutorial far enough to understand how they would write their own invariant?
 
 ## Positioning
 

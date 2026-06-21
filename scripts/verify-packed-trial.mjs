@@ -28,6 +28,36 @@ run("npm", ["install", tarball], {
   label: "npm install packed replaypack"
 });
 
+const installedPackageRoot = path.join(installRoot, "node_modules", "replaypack");
+for (const docPath of ["docs/invariant-cookbook.md", "docs/tutorials/first-capsule.md"]) {
+  const installedDocPath = path.join(installedPackageRoot, docPath);
+  if (!fs.existsSync(installedDocPath)) {
+    fail(`Packed package is missing ${docPath}.`);
+  }
+}
+
+const installedCookbook = fs.readFileSync(path.join(installedPackageRoot, "docs/invariant-cookbook.md"), "utf8");
+const installedTutorial = fs.readFileSync(path.join(installedPackageRoot, "docs/tutorials/first-capsule.md"), "utf8");
+for (const required of [
+  "## Pattern: Authorization Scope",
+  "## Pattern: Idempotent Jobs",
+  "## Pattern: Money And Totals",
+  "## Pattern: Webhook Integrity"
+]) {
+  if (!installedCookbook.includes(required)) {
+    fail(`Packed invariant cookbook is missing: ${required}`);
+  }
+}
+for (const required of [
+  "node bin/replaypack.mjs capture",
+  "node bin/replaypack.mjs brief",
+  "node bin/replaypack.mjs verify"
+]) {
+  if (!installedTutorial.includes(required)) {
+    fail(`Packed first-capsule tutorial is missing: ${required}`);
+  }
+}
+
 const replaypackBin = path.join(
   installRoot,
   "node_modules",
@@ -113,6 +143,7 @@ for (const required of [
   "wrong demo: proof=ok invariant=nonzero replaypack=fail",
   "fixed demo: proof=ok invariant=ok replaypack=pass",
   "dogfood: proof=ok invariant=ok replaypack=pass",
+  "### Authoring clarity",
   "### First objection"
 ]) {
   if (!feedback.includes(required)) {
@@ -127,6 +158,7 @@ for (const required of [
   "## Machine Result",
   "## Issue-Ready Agent Response",
   "Do not claim this is external-user proof unless the runner is actually outside the ReplayPack project.",
+  "### Authoring clarity",
   "wrong demo: proof=ok invariant=nonzero replaypack=fail",
   "fixed demo: proof=ok invariant=ok replaypack=pass",
   "dogfood: proof=ok invariant=ok replaypack=pass"
@@ -149,6 +181,7 @@ Verified:
   receipt -> ${path.relative(installRoot, receiptPath)}
   feedback -> ${path.relative(installRoot, feedbackPath)}
   agent report -> ${path.relative(installRoot, agentReportPath)}
+  authoring docs -> docs/invariant-cookbook.md, docs/tutorials/first-capsule.md
 `);
 
 function writeBriefFixture(base) {

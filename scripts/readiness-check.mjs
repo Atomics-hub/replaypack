@@ -10,7 +10,9 @@ const requiredFiles = [
   "docs/demo.md",
   "docs/agentbench/README.md",
   "docs/holy-fuck-scorecard.md",
+  "docs/invariant-cookbook.md",
   "docs/proofbench/README.md",
+  "docs/tutorials/first-capsule.md",
   "docs/market-proof.md",
   "examples/account-access/README.md"
 ];
@@ -261,6 +263,7 @@ function validateEvidenceManifest(data) {
     "proofbench_mechanism",
     "agentbench_deterministic_loop",
     "agent_brief_handoff",
+    "invariant_authoring_docs",
     "codex_live_recovery",
     "claude_code_live_recovery",
     "codex_full_generation",

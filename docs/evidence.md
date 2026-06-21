@@ -21,6 +21,7 @@ Machine-checkable manifest:
 | 60-second demo | pass | One command shows visible proof passing, ReplayPack rejecting the wrong fix, and accepting the correct fix |
 | AgentBench deterministic replay | 30/30 | Visible-only finish policy false-dones; ReplayPack prevents and recovers on the same executable cases |
 | BriefBench handoff | 30/30 | Generated agent briefs include the finish gate/context, reject wrong fixes, and recover to correct fixes |
+| Invariant authoring docs | pass | Cookbook and first-capsule tutorial teach four invariant patterns and verify an executable capture/brief/verify loop |
 | Live AgentBench recovery trial | 3/3 | Codex subagents recovered from visible-green wrong fixes using ReplayPack with no manual intervention |
 | Claude Code recovery trial | 3/3 | Non-Codex agent surface reproduced visible-only false done and ReplayPack recovery |
 | Live AgentBench full generation trial | 15/15 | Codex treatments verified 15/15 correct vs 14/15 control correctness |
@@ -151,6 +152,21 @@ Repos:
 - `sindresorhus/quick-lru`
 - `sindresorhus/decamelize`
 - `sindresorhus/camelcase`
+
+## Invariant Authoring Surface
+
+`npm run authoring:verify` builds a tiny idempotency fixture, captures a ReplayPack capsule, generates an agent brief, verifies that ReplayPack fails before the account-scoped fix, applies the fix, and verifies that ReplayPack passes after the fix.
+
+Latest local result:
+
+- receipt: `docs/validation/invariant-authoring-docs.json`
+- cookbook patterns: 4
+- tutorial capture: captured
+- generated agent brief: finish gate and invariant command present
+- verify before fix: fail, proof ok, invariant nonzero
+- verify after fix: pass, proof ok, invariant ok
+
+Limitation: this proves the authoring tutorial is executable. It is still not external developer comprehension or demand proof.
 
 ## Install Surface
 

@@ -10,6 +10,7 @@ body:
         https://github.com/Atomics-hub/replaypack/blob/main/docs/trials/external-developer-trial.md
 
         The trial writes `dist/external-trial/feedback.md`; you can fill the bracketed answers and paste that here.
+        If the demo lands, please skim `docs/invariant-cookbook.md` and `docs/tutorials/first-capsule.md` too.
 
         Blunt feedback is more useful than polite feedback. If ReplayPack feels confusing or unnecessary, say why.
   - type: input
@@ -52,6 +53,13 @@ body:
     attributes:
       label: Would you use it?
       description: Would you add ReplayPack to a repo where agents make PRs? Why or why not?
+    validations:
+      required: true
+  - type: textarea
+    id: authoring
+    attributes:
+      label: Authoring clarity
+      description: Do the invariant cookbook and first-capsule tutorial make it clear how you would write your first invariant?
     validations:
       required: true
   - type: textarea

@@ -1,6 +1,6 @@
 {
   "schema": "replaypack.validation.private_packed_package_trial.v0",
-  "checked_at": "2026-06-21T01:09:17Z",
+  "checked_at": "2026-06-21T01:35:05Z",
   "repository": "Atomics-hub/replaypack",
   "repository_visibility": "PUBLIC",
   "source": "local npm pack tarball installed into fresh temp project",
@@ -33,6 +33,12 @@
       "expected": "pass",
       "actual": "pass",
       "evidence": "wrong demo rejected, fixed demo accepted, dogfood accepted, agent report written"
+    },
+    {
+      "command": "packed authoring docs",
+      "expected": "present",
+      "actual": "present",
+      "evidence": "installed package contains invariant cookbook and first-capsule tutorial"
     }
   ],
   "generated_files": {
@@ -40,6 +46,10 @@
     "trial_receipt": "dist/external-trial/receipt.json",
     "trial_feedback": "dist/external-trial/feedback.md",
     "agent_trial_report": "dist/external-trial/agent-report.md"
+  },
+  "installed_docs": {
+    "invariant_cookbook": "docs/invariant-cookbook.md",
+    "first_capsule_tutorial": "docs/tutorials/first-capsule.md"
   },
   "trial_summary": {
     "wrong_demo": {

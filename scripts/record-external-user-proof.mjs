@@ -24,6 +24,7 @@ const commands = [...parseCommands(commandsText), ...parseTrialSummaries(command
 const oneMinute = section(sections, "One-minute read");
 const invariantUnderstanding = section(sections, "Invariant vs visible proof");
 const adoption = section(sections, "Would you use it?");
+const authoringClarity = section(sections, "Authoring clarity");
 const objection = section(sections, "First objection");
 const codingAgentWorkflow = section(sections, "Coding-agent workflow");
 const receiptLine = commandsText.split(/\r?\n/).find((line) => /receipt:/i.test(line)) ?? "";
@@ -34,6 +35,7 @@ const reviewErrors = reviewExternalTrial({
   oneMinute,
   invariantUnderstanding,
   adoption,
+  authoringClarity,
   objection,
   commandsText
 });
@@ -66,7 +68,9 @@ const proof = {
   comprehension: {
     one_minute_explanation: oneMinute,
     invariant_vs_visible_proof: invariantUnderstanding,
+    authoring_clarity: authoringClarity,
     understood_not_just_tests: !looksNegative(invariantUnderstanding),
+    understood_first_invariant_path: !looksNegative(authoringClarity),
     would_try_on_agent_pr_repo: !looksNegative(adoption),
     adoption_response: adoption
   },
@@ -188,13 +192,24 @@ function normalizeStatus(value) {
   return normalized;
 }
 
-function reviewExternalTrial({ verdict, commands, oneMinute, invariantUnderstanding, adoption, objection, commandsText }) {
+function reviewExternalTrial({
+  verdict,
+  commands,
+  oneMinute,
+  invariantUnderstanding,
+  adoption,
+  authoringClarity,
+  objection,
+  commandsText
+}) {
   const errors = [];
   expect(Boolean(oneMinute), errors, "one-minute explanation is required");
   expect(Boolean(invariantUnderstanding), errors, "invariant-vs-visible-proof response is required");
   expect(Boolean(adoption), errors, "adoption response is required");
+  expect(Boolean(authoringClarity), errors, "authoring clarity response is required");
   expect(Boolean(objection), errors, "first objection is required");
   expect(!looksNegative(invariantUnderstanding), errors, "invariant-vs-visible-proof response appears negative");
+  expect(!looksNegative(authoringClarity), errors, "authoring clarity response appears negative");
   expect(commands.some((item) => isTrialCommand(item.command) && item.status === "pass"), errors, "trial command must be recorded as pass");
   expect(/wrong demo:.*proof=ok.*invariant=(nonzero|fail|failed).*replaypack=fail/is.test(commandsText), errors, "wrong demo summary must show proof ok and ReplayPack fail");
   expect(/fixed demo:.*proof=ok.*invariant=ok.*replaypack=pass/is.test(commandsText), errors, "fixed demo summary must show proof ok and ReplayPack pass");

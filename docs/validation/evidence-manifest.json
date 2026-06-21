@@ -171,6 +171,68 @@
       ]
     },
     {
+      "id": "invariant_authoring_docs",
+      "status": "proven",
+      "claim": "Invariant authoring docs include four worked invariant patterns and an executable first-capsule tutorial that captures a capsule, generates an agent brief, fails before the invariant fix, and passes after the scoped-key fix.",
+      "evidence": [
+        "docs/validation/invariant-authoring-docs.json",
+        "docs/invariant-cookbook.md",
+        "docs/tutorials/first-capsule.md"
+      ],
+      "assertions": [
+        {
+          "file": "docs/validation/invariant-authoring-docs.json",
+          "path": "schema",
+          "op": "eq",
+          "value": "replaypack.validation.invariant_authoring_docs.v0"
+        },
+        {
+          "file": "docs/validation/invariant-authoring-docs.json",
+          "path": "pattern_count",
+          "op": "eq",
+          "value": 4
+        },
+        {
+          "file": "docs/validation/invariant-authoring-docs.json",
+          "path": "tutorial_checks.contains_capture_command",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "file": "docs/validation/invariant-authoring-docs.json",
+          "path": "demo.capture_status",
+          "op": "eq",
+          "value": "captured"
+        },
+        {
+          "file": "docs/validation/invariant-authoring-docs.json",
+          "path": "demo.verify_before_status",
+          "op": "eq",
+          "value": "fail"
+        },
+        {
+          "file": "docs/validation/invariant-authoring-docs.json",
+          "path": "demo.verify_before_invariant_status",
+          "op": "eq",
+          "value": "nonzero"
+        },
+        {
+          "file": "docs/validation/invariant-authoring-docs.json",
+          "path": "demo.verify_after_status",
+          "op": "eq",
+          "value": "pass"
+        },
+        {
+          "file": "docs/invariant-cookbook.md",
+          "op": "file_exists"
+        },
+        {
+          "file": "docs/tutorials/first-capsule.md",
+          "op": "file_exists"
+        }
+      ]
+    },
+    {
       "id": "codex_live_recovery",
       "status": "proven",
       "claim": "Codex live recovery trial shows 3/3 visible-only controls false-done and 3/3 ReplayPack treatments recover with no manual intervention.",
@@ -470,7 +532,7 @@
     {
       "id": "packed_package_trial",
       "status": "proven_pre_publish",
-      "claim": "The packed 0.2.1 tarball installs into a fresh temp project and the installed CLI runs replaypack brief and replaypack trial successfully, including the agent-readable external trial report.",
+      "claim": "The packed 0.2.1 tarball installs into a fresh temp project and the installed CLI runs replaypack brief and replaypack trial successfully, including the agent-readable external trial report and invariant authoring docs.",
       "evidence": [
         "docs/validation/private-packed-package-trial.json"
       ],
@@ -504,6 +566,18 @@
           "path": "generated_files.agent_trial_report",
           "op": "eq",
           "value": "dist/external-trial/agent-report.md"
+        },
+        {
+          "file": "docs/validation/private-packed-package-trial.json",
+          "path": "installed_docs.invariant_cookbook",
+          "op": "eq",
+          "value": "docs/invariant-cookbook.md"
+        },
+        {
+          "file": "docs/validation/private-packed-package-trial.json",
+          "path": "installed_docs.first_capsule_tutorial",
+          "op": "eq",
+          "value": "docs/tutorials/first-capsule.md"
         },
         {
           "file": "docs/validation/private-packed-package-trial.json",

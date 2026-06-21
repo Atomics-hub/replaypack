@@ -47,6 +47,13 @@ const briefCheck = spawnSync(process.execPath, [path.join(root, "bin/replaypack-
 assert.strictEqual(briefCheck.status, 0);
 assert.match(briefCheck.stdout, /ReplayPack brief/);
 
+const authoringDocsCheck = spawnSync(process.execPath, [path.join(root, "scripts/verify-invariant-authoring.mjs")], {
+  cwd: root,
+  encoding: "utf8"
+});
+assert.strictEqual(authoringDocsCheck.status, 0, authoringDocsCheck.stderr || authoringDocsCheck.stdout);
+assert.match(authoringDocsCheck.stdout, /ReplayPack invariant authoring docs: pass/);
+
 const wrongRoot = path.join(root, "examples/account-access/wrong");
 cleanupExampleOutput(wrongRoot);
 const wrongVerify = spawnSync(
@@ -171,6 +178,10 @@ Yes. The visible proof checks the symptom while the invariant checks the product
 
 Yes, I would try it on a repo where coding agents make PRs against auth or billing code.
 
+### Authoring clarity
+
+Yes. The cookbook gives me patterns for auth, idempotency, money, and webhook invariants, and the first-capsule tutorial shows how to capture a proof plus invariant before handing it to an agent.
+
 ### First objection
 
 I would want more examples for adding capsules to an existing repo.
@@ -205,6 +216,7 @@ assert.strictEqual(externalProof.schema, "replaypack.validation.external_user_pr
 assert.strictEqual(externalProof.verdict, "pass");
 assert.strictEqual(externalProof.trial_receipt.referenced, true);
 assert.strictEqual(externalProof.review.errors.length, 0);
+assert.strictEqual(externalProof.comprehension.understood_first_invariant_path, true);
 assert.ok(externalProof.commands_run.some((item) => item.command.includes("replaypack.mjs trial") && item.status === "pass"));
 
 const tmpRoot = fs.mkdtempSync(path.join(os.tmpdir(), "replaypack-capture-"));

@@ -43,7 +43,9 @@
   "comprehension": {
     "one_minute_explanation": "",
     "invariant_vs_visible_proof": "",
+    "authoring_clarity": "",
     "understood_not_just_tests": true,
+    "understood_first_invariant_path": true,
     "would_try_on_agent_pr_repo": true,
     "adoption_response": ""
   },

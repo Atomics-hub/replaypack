@@ -21,6 +21,7 @@ const requiredClaimIds = [
   "proofbench_mechanism",
   "agentbench_deterministic_loop",
   "agent_brief_handoff",
+  "invariant_authoring_docs",
   "codex_live_recovery",
   "claude_code_live_recovery",
   "codex_full_generation",

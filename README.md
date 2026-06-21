@@ -113,6 +113,11 @@ npx replaypack brief replaypack/account-access.json --out dist/agent-brief.md
 
 Then paste or attach `dist/agent-brief.md` to the coding agent. The generated brief tells the agent to make the smallest correct fix, run `replaypack verify`, and keep repairing until the verification packet passes.
 
+New to invariant authoring:
+
+- [Invariant Cookbook](https://github.com/Atomics-hub/replaypack/blob/main/docs/invariant-cookbook.md)
+- [Create Your First Capsule](https://github.com/Atomics-hub/replaypack/blob/main/docs/tutorials/first-capsule.md)
+
 ## GitHub Actions
 
 As an npm command:
@@ -187,6 +192,8 @@ ReplayPack is being held to a proof loop before broad launch:
 
 - [Evidence](https://github.com/Atomics-hub/replaypack/blob/main/docs/evidence.md)
 - [60-Second Demo](https://github.com/Atomics-hub/replaypack/blob/main/docs/demo.md)
+- [Invariant Cookbook](https://github.com/Atomics-hub/replaypack/blob/main/docs/invariant-cookbook.md)
+- [Create Your First Capsule](https://github.com/Atomics-hub/replaypack/blob/main/docs/tutorials/first-capsule.md)
 - [Holy-Fuck Scorecard](https://github.com/Atomics-hub/replaypack/blob/main/docs/holy-fuck-scorecard.md)
 - [AgentBench](https://github.com/Atomics-hub/replaypack/blob/main/docs/agentbench/README.md)
 - [ProofBench](https://github.com/Atomics-hub/replaypack/blob/main/docs/proofbench/README.md)
@@ -204,6 +211,12 @@ Run the generated-brief handoff benchmark:
 
 ```bash
 npm run briefbench
+```
+
+Run the invariant-authoring tutorial verifier:
+
+```bash
+npm run authoring:verify
 ```
 
 Run the agent-readable evidence audit:

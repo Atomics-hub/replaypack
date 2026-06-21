@@ -1,0 +1,79 @@
+{
+  "schema": "replaypack.validation.invariant_authoring_docs.v0",
+  "checked_at": "2026-06-21T01:38:34.904Z",
+  "docs": {
+    "cookbook": "docs/invariant-cookbook.md",
+    "first_capsule_tutorial": "docs/tutorials/first-capsule.md"
+  },
+  "pattern_count": 4,
+  "patterns": [
+    {
+      "id": "authorization_scope",
+      "present": true
+    },
+    {
+      "id": "idempotent_jobs",
+      "present": true
+    },
+    {
+      "id": "money_and_totals",
+      "present": true
+    },
+    {
+      "id": "webhook_integrity",
+      "present": true
+    }
+  ],
+  "tutorial_checks": {
+    "contains_capture_command": true,
+    "contains_brief_command": true,
+    "contains_verify_command": true,
+    "contains_visible_proof_passes": true,
+    "contains_invariant_fails": true
+  },
+  "demo": {
+    "visible_proof_status": "ok",
+    "invariant_before_status": "nonzero",
+    "capture_status": "captured",
+    "capture_proof_status": "ok",
+    "capture_invariant_precheck_status": "nonzero",
+    "brief_has_finish_gate": true,
+    "brief_has_invariant_command": true,
+    "verify_before_status": "fail",
+    "verify_before_proof_status": "ok",
+    "verify_before_invariant_status": "nonzero",
+    "verify_after_status": "pass",
+    "verify_after_proof_status": "ok",
+    "verify_after_invariant_status": "ok"
+  },
+  "commands": [
+    {
+      "command": "npm run proof",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run invariant",
+      "exit_code": 1
+    },
+    {
+      "command": "replaypack capture",
+      "exit_code": 0
+    },
+    {
+      "command": "replaypack brief",
+      "exit_code": 0
+    },
+    {
+      "command": "replaypack verify before fix",
+      "exit_code": 1
+    },
+    {
+      "command": "replaypack verify after fix",
+      "exit_code": 0
+    }
+  ],
+  "limitations": [
+    "This proves the first-capsule tutorial path is executable in a generated fixture.",
+    "This is not external developer comprehension or demand proof."
+  ]
+}

@@ -232,6 +232,10 @@ ${dogfoodLine}
 
 [Would you add ReplayPack to a repo where agents make PRs? Why or why not?]
 
+### Authoring clarity
+
+[After skimming docs/invariant-cookbook.md and docs/tutorials/first-capsule.md, is it clear how you would write your first invariant?]
+
 ### First objection
 
 [What confused you, worried you, or would stop you from using it?]
@@ -300,6 +304,10 @@ ${dogfoodLine}
 ### Would you use it?
 
 [Would you add ReplayPack to a repository where coding agents make PRs? Name the repo/workflow shape if yes.]
+
+### Authoring clarity
+
+[After skimming docs/invariant-cookbook.md and docs/tutorials/first-capsule.md, is it clear how you would write the first invariant for a real repo?]
 
 ### First objection
 
