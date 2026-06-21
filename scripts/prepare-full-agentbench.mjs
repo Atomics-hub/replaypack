@@ -40,6 +40,30 @@ const baseSources = {
   "webhook-signature": `export function verifyWebhook(request, secret) {
   return false;
 }
+`,
+  "rate-limit-boundary": `export function allowed(requestTimes, now, limit, windowMs) {
+  return false;
+}
+`,
+  "currency-line-rounding": `export function subtotalCents(lines) {
+  return 0;
+}
+`,
+  "sort-stability": `export function rankUsers(users) {
+  return [];
+}
+`,
+  "soft-delete-filter": `export function visibleRecords(records) {
+  return [];
+}
+`,
+  "tenant-search-leak": `export function searchDocs(docs, tenantId, query, limit) {
+  return [];
+}
+`,
+  "csv-formula-escape": `export function csvCell(value) {
+  return "";
+}
 `
 };
 const defaultCases = Object.keys(baseSources);

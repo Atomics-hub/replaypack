@@ -18,7 +18,7 @@ The product mechanism is now benchmark-proven locally:
 - BriefBench shows generated agent briefs complete at 30/30, with 30/30 wrong fixes rejected and 30/30 recoveries
 - live Codex subagent recovery trial shows 3/3 visible-only controls false-done and 3/3 ReplayPack treatments recover
 - live Claude Code recovery trial shows 3/3 visible-only controls false-done and 3/3 ReplayPack treatments recover with zero protocol violations
-- live Codex full task generation trial shows controls truly correct on 8/9, false-done on 1/9, and ReplayPack treatments verified correct on 9/9
+- live Codex full task generation trial shows controls truly correct on 14/15, false-done on 1/15, and ReplayPack treatments verified correct on 15/15
 - live Claude Code full task generation trial shows controls truly correct on 5/6, false-done on 1/6, and ReplayPack treatments verified correct on 6/6
 - 30-case synthetic ProofBench passes the launch bar
 - package surface is clean
@@ -118,13 +118,13 @@ This proves the visible-green recovery effect is not Codex-only.
 
 Latest live full task generation trial:
 
-- 9 cases: account access, pagination cursor, timezone cutoff, feature flag fallback, idempotency scope, retry permanent errors, upload mime sniff, permission after fetch, webhook signature
-- control agents truly correct: 8/9
-- control agents false-done: 1/9
-- ReplayPack treatments verified correct: 9/9
+- 15 cases: account access, pagination cursor, timezone cutoff, feature flag fallback, idempotency scope, retry permanent errors, upload mime sniff, permission after fetch, webhook signature, rate limit boundary, currency line rounding, sort stability, soft delete filter, tenant search leak, CSV formula escape
+- control agents truly correct: 14/15
+- control agents false-done: 1/15
+- ReplayPack treatments verified correct: 15/15
 - manual intervention: 0
 
-This is live full task generation proof on an expanded but still small Codex-only sample.
+This is live full task generation proof on an expanded but still small Codex-only sample. The added 6-case batch had 6/6 correct controls, so it strengthens treatment reliability and sample size but does not add new false-done lift cases.
 
 ## Current Cross-Agent Full-Generation Result
 
@@ -153,7 +153,7 @@ This proves widened small-sample full-generation lift is not Codex-only. It does
 | Agent-loop proof | 88 | 85 | pass | deterministic AgentBench replay: 30/30 false-done prevented and recovered |
 | Agent handoff proof | 90 | 85 | pass | BriefBench: generated briefs complete 30/30; wrong fixes rejected 30/30; recoveries 30/30 |
 | Live-agent recovery proof | 78 | 75 | pass | Codex subagents: 3/3 controls false-done; 3/3 treatments recovered |
-| Full-generation agent proof | 82 | 75 | pass | Codex subagents: controls 8/9 correct and 1/9 false-done; ReplayPack treatments 9/9 verified |
+| Full-generation agent proof | 84 | 75 | pass | Codex subagents: controls 14/15 correct and 1/15 false-done; ReplayPack treatments 15/15 verified |
 | Cross-agent recovery proof | 78 | 75 | pass | Claude Code: 3/3 controls false-done; 3/3 treatments recovered; 0 protocol violations |
 | Cross-agent full-generation proof | 82 | 75 | pass | Claude Code: controls 5/6 correct and 1/6 false-done; ReplayPack treatments 6/6 verified; 0 protocol violations |
 | Real repo dogfood | 82 | 80 | pass | self-dogfood caught the real CI pack-destination failure mode |

@@ -1,0 +1,139 @@
+{
+  "schema": "replaypack.validation.full_agent_proof.v0",
+  "status": "partial",
+  "generated_at": "2026-06-21T00:48:46.168Z",
+  "run_id": "full-generation-codex-extra-2026-06-20",
+  "agent_surface": "codex_subagents",
+  "model": "inherited Codex subagents",
+  "protocol": "docs/agentbench/README.md",
+  "evidence_level": "live_agent_full_generation_trial",
+  "case_sample": {
+    "case_count": 6,
+    "selection": [
+      "rate-limit-boundary",
+      "currency-line-rounding",
+      "sort-stability",
+      "soft-delete-filter",
+      "tenant-search-leak",
+      "csv-formula-escape"
+    ]
+  },
+  "results": {
+    "case_count": 6,
+    "control_correct": 6,
+    "control_false_done": 0,
+    "control_failed": 0,
+    "control_protocol_violations": 0,
+    "replaypack_verified_correct": 6,
+    "replaypack_failed": 0,
+    "replaypack_protocol_violations": 0,
+    "manual_intervention_count": 0,
+    "control_correct_rate": 1,
+    "control_false_done_rate": 0,
+    "replaypack_verified_correct_rate": 1,
+    "false_done_lift_cases": 0
+  },
+  "cases": [
+    {
+      "case_id": "rate-limit-boundary",
+      "control": {
+        "outcome": "correct",
+        "visible_proof_status": "pass",
+        "hidden_invariant_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-extra-2026-06-20/rate-limit-boundary/control.md"
+      },
+      "treatment": {
+        "outcome": "verified_correct",
+        "replaypack_verify_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-extra-2026-06-20/rate-limit-boundary/treatment.md"
+      }
+    },
+    {
+      "case_id": "currency-line-rounding",
+      "control": {
+        "outcome": "correct",
+        "visible_proof_status": "pass",
+        "hidden_invariant_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-extra-2026-06-20/currency-line-rounding/control.md"
+      },
+      "treatment": {
+        "outcome": "verified_correct",
+        "replaypack_verify_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-extra-2026-06-20/currency-line-rounding/treatment.md"
+      }
+    },
+    {
+      "case_id": "sort-stability",
+      "control": {
+        "outcome": "correct",
+        "visible_proof_status": "pass",
+        "hidden_invariant_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-extra-2026-06-20/sort-stability/control.md"
+      },
+      "treatment": {
+        "outcome": "verified_correct",
+        "replaypack_verify_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-extra-2026-06-20/sort-stability/treatment.md"
+      }
+    },
+    {
+      "case_id": "soft-delete-filter",
+      "control": {
+        "outcome": "correct",
+        "visible_proof_status": "pass",
+        "hidden_invariant_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-extra-2026-06-20/soft-delete-filter/control.md"
+      },
+      "treatment": {
+        "outcome": "verified_correct",
+        "replaypack_verify_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-extra-2026-06-20/soft-delete-filter/treatment.md"
+      }
+    },
+    {
+      "case_id": "tenant-search-leak",
+      "control": {
+        "outcome": "correct",
+        "visible_proof_status": "pass",
+        "hidden_invariant_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-extra-2026-06-20/tenant-search-leak/control.md"
+      },
+      "treatment": {
+        "outcome": "verified_correct",
+        "replaypack_verify_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-extra-2026-06-20/tenant-search-leak/treatment.md"
+      }
+    },
+    {
+      "case_id": "csv-formula-escape",
+      "control": {
+        "outcome": "correct",
+        "visible_proof_status": "pass",
+        "hidden_invariant_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-extra-2026-06-20/csv-formula-escape/control.md"
+      },
+      "treatment": {
+        "outcome": "verified_correct",
+        "replaypack_verify_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-codex-extra-2026-06-20/csv-formula-escape/treatment.md"
+      }
+    }
+  ],
+  "limitations": [
+    "Starts from deliberately broken minimal implementations generated from ProofBench cases.",
+    "Small sample; this does not replace external developer proof.",
+    "Control agents were instructed to use only the visible proof; treatment agents were instructed to use ReplayPack verify."
+  ]
+}

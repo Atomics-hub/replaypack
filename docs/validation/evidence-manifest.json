@@ -1,6 +1,6 @@
 {
   "schema": "replaypack.validation.evidence_manifest.v0",
-  "checked_at": "2026-06-21T00:15:34Z",
+  "checked_at": "2026-06-21T00:50:00Z",
   "status": "technical_proof_pass_market_proof_missing",
   "package": {
     "name": "replaypack",
@@ -277,9 +277,11 @@
     {
       "id": "codex_full_generation",
       "status": "proven_small_sample",
-      "claim": "Codex full-generation scale trial has ReplayPack treatments verified correct on 9/9 cases versus 8/9 control correctness, with 1/9 control false-done lifted.",
+      "claim": "Codex full-generation combined trial has ReplayPack treatments verified correct on 15/15 cases versus 14/15 control correctness, with 1/15 control false-done lifted.",
       "evidence": [
-        "docs/validation/full-agent-proof.json"
+        "docs/validation/full-agent-proof.json",
+        "docs/validation/full-agent-proof.previous-9case.json",
+        "docs/validation/full-agent-proof-extra.json"
       ],
       "assertions": [
         {
@@ -298,13 +300,13 @@
           "file": "docs/validation/full-agent-proof.json",
           "path": "results.case_count",
           "op": "eq",
-          "value": 9
+          "value": 15
         },
         {
           "file": "docs/validation/full-agent-proof.json",
           "path": "results.control_correct",
           "op": "eq",
-          "value": 8
+          "value": 14
         },
         {
           "file": "docs/validation/full-agent-proof.json",
@@ -316,7 +318,7 @@
           "file": "docs/validation/full-agent-proof.json",
           "path": "results.replaypack_verified_correct",
           "op": "eq",
-          "value": 9
+          "value": 15
         },
         {
           "file": "docs/validation/full-agent-proof.json",
@@ -549,7 +551,7 @@
     {
       "id": "broad_large_sample_full_generation",
       "status": "not_proven",
-      "claim": "Broad large-sample live full-generation lift is not proven; current live full-generation samples are 9 Codex cases and 6 Claude Code cases.",
+      "claim": "Broad large-sample live full-generation lift is not proven; current live full-generation samples are 15 Codex cases and 6 Claude Code cases.",
       "evidence": [
         "docs/validation/full-agent-proof.json",
         "docs/validation/claude-code-full-agent-proof.json"
