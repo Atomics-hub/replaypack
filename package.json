@@ -23,6 +23,7 @@
     "docs/holy-fuck-scorecard.md",
     "docs/market-proof.md",
     "docs/agentbench/README.md",
+    "docs/agentbench/brief-results.json",
     "docs/agentbench/claude-runs",
     "docs/agentbench/claude-full-runs",
     "docs/agentbench/full-runs",
@@ -56,6 +57,7 @@
     "scripts/record-external-user-proof.mjs",
     "scripts/verify-evidence-manifest.mjs",
     "scripts/run-agentbench.mjs",
+    "scripts/run-briefbench.mjs",
     "scripts/run-external-trial.mjs",
     "scripts/run-proofbench.mjs",
     "scripts/run-public-repo-trials.mjs",
@@ -69,6 +71,7 @@
   ],
   "scripts": {
     "agentbench": "node scripts/run-agentbench.mjs",
+    "briefbench": "node scripts/run-briefbench.mjs",
     "demo": "node scripts/demo-replaypack.mjs",
     "full-agentbench:prepare": "node scripts/prepare-full-agentbench.mjs",
     "full-agentbench:evaluate": "node scripts/evaluate-full-agentbench.mjs",

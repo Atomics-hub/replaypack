@@ -20,6 +20,7 @@ Machine-checkable manifest:
 | --- | ---: | --- |
 | 60-second demo | pass | One command shows visible proof passing, ReplayPack rejecting the wrong fix, and accepting the correct fix |
 | AgentBench deterministic replay | 30/30 | Visible-only finish policy false-dones; ReplayPack prevents and recovers on the same executable cases |
+| BriefBench handoff | 30/30 | Generated agent briefs include the finish gate/context, reject wrong fixes, and recover to correct fixes |
 | Live AgentBench recovery trial | 3/3 | Codex subagents recovered from visible-green wrong fixes using ReplayPack with no manual intervention |
 | Claude Code recovery trial | 3/3 | Non-Codex agent surface reproduced visible-only false done and ReplayPack recovery |
 | Live AgentBench full generation trial | 9/9 | Codex treatments verified 9/9 correct vs 8/9 control correctness |
@@ -32,7 +33,7 @@ Machine-checkable manifest:
 | Real self-dogfood | pass | ReplayPack captured a real CI packaging failure in this repo |
 | GitHub CI | pass | Hosted CI verifies smoke, package contents, and the local Action path |
 | Fresh clone trial | pass | Clone-based setup, wrong/fixed demo, and dogfood capsule all run from a clean checkout |
-| Packed-package trial | pass | Installed tarball exposes `replaypack trial`, runs the full proof loop, and writes receipt/feedback files |
+| Packed-package trial | pass | Installed tarball exposes `replaypack brief` and `replaypack trial`, writes an agent brief, and writes receipt/feedback files |
 
 ## ProofBench
 
@@ -63,6 +64,16 @@ Latest deterministic replay:
 - visible-only agent false-done outcomes: 30/30
 - ReplayPack prevented false done: 30/30
 - ReplayPack recovered to correct fix: 30/30
+
+Latest BriefBench handoff run:
+
+- receipt: `docs/agentbench/brief-results.json`
+- 30 generated briefs across 30 bug families
+- complete briefs with finish gate/context: 30/30
+- visible-only false-done outcomes: 30/30
+- brief-gated wrong fixes rejected: 30/30
+- brief-gated recoveries to correct fix: 30/30
+- absolute path leaks: 0
 
 Latest live recovery trial:
 
@@ -127,13 +138,15 @@ Repos:
 
 ## Install Surface
 
-`npm run package-trial` packs ReplayPack, installs the tarball into a fresh temp project, checks the installed `replaypack --version`, runs `replaypack trial`, and verifies the caller project receives both `dist/external-trial/receipt.json` and `dist/external-trial/feedback.md`.
+`npm run package-trial` packs ReplayPack, installs the tarball into a fresh temp project, checks the installed `replaypack --version`, runs `replaypack brief`, runs `replaypack trial`, and verifies the caller project receives `dist/agent-brief.md`, `dist/external-trial/receipt.json`, and `dist/external-trial/feedback.md`.
 
 Latest local result:
 
 - receipt: `docs/validation/private-packed-package-trial.json`
 - packed version: `0.2.1`
 - installed CLI version: `0.2.1`
+- installed `replaypack brief`: pass
+- generated agent brief: pass
 - installed `replaypack trial`: pass
 - generated feedback draft: pass
 - wrong demo: proof ok, invariant nonzero, ReplayPack fail

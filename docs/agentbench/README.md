@@ -8,7 +8,7 @@ Does ReplayPack make coding agents less likely to declare false done?
 
 ## Current Evidence Level
 
-Current result: deterministic agent-loop replay, live Codex and Claude Code recovery trials, and live Codex and Claude Code full task generation trials.
+Current result: deterministic agent-loop replay, deterministic generated-brief handoff proof, live Codex and Claude Code recovery trials, and live Codex and Claude Code full task generation trials.
 
 The deterministic replay is not a live LLM-agent run. It uses the executable ProofBench corpus and compares two finish policies:
 
@@ -20,6 +20,12 @@ The current run shows the mechanism an agent would experience:
 - visible-only finish policy accepts plausible wrong fixes
 - ReplayPack rejects those same false-green fixes
 - the corresponding correct fixes pass the ReplayPack finish gate
+
+BriefBench then checks the prompt surface agents actually receive:
+
+- `replaypack brief` generates a markdown handoff from each capsule
+- each generated brief must include the finish gate, proof command, invariant command, issue context, trace context, acceptance, and agent loop
+- the same visible-only false-done and ReplayPack recovery loop must hold when the generated brief is the task contract
 
 The live recovery trial then gives actual Codex subagents the same visible-green wrong variants:
 
@@ -43,11 +49,16 @@ The full task generation trial starts from deliberately broken implementations:
 ```bash
 npm run proofbench
 npm run agentbench
+npm run briefbench
 ```
 
 `npm run agentbench` writes:
 
 - `docs/agentbench/results.json`
+
+`npm run briefbench` writes:
+
+- `docs/agentbench/brief-results.json`
 
 ## Current Metrics
 
@@ -58,6 +69,16 @@ Latest deterministic replay:
 - visible-only false-done outcomes: 30/30
 - ReplayPack prevented false done: 30/30
 - ReplayPack recovered to correct fix: 30/30
+
+Latest deterministic brief handoff:
+
+- 30 generated briefs
+- 30 bug families
+- complete briefs with finish gate/context: 30/30
+- visible-only false-done outcomes: 30/30
+- brief-gated wrong fixes rejected: 30/30
+- brief-gated recoveries to correct fix: 30/30
+- absolute path leaks: 0
 
 Latest live recovery trial:
 
@@ -155,3 +176,5 @@ AgentBench deterministic replay passes when:
 The current live recovery trials prove that Codex and Claude Code can recover from visible-green wrong fixes using ReplayPack. The current live full task generation trials show an expanded Codex lift from 8/9 control correctness to 9/9 ReplayPack verified correctness and a Claude Code lift from 5/6 control correctness to 6/6 ReplayPack verified correctness. ReplayPack should not claim broad agent lift until the full-generation protocol runs across more cases and external developer usage.
 
 Full-generation receipts are marked complete only when every treatment case verifies, no protocol violations are found, no manual intervention is used, and at least one control false-done is converted into a verified ReplayPack treatment.
+
+BriefBench passes when all generated briefs are complete, no generated brief leaks an absolute local path, visible-only false done appears in at least 20 cases, ReplayPack rejects at least 90% of those wrong fixes, and ReplayPack recovers to a correct fix in at least 90% of cases.

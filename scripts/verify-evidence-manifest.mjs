@@ -20,6 +20,7 @@ for (const claim of manifest.claims ?? []) {
 const requiredClaimIds = [
   "proofbench_mechanism",
   "agentbench_deterministic_loop",
+  "agent_brief_handoff",
   "codex_live_recovery",
   "claude_code_live_recovery",
   "codex_full_generation",

@@ -260,6 +260,7 @@ function validateEvidenceManifest(data) {
   const requiredClaims = new Set([
     "proofbench_mechanism",
     "agentbench_deterministic_loop",
+    "agent_brief_handoff",
     "codex_live_recovery",
     "claude_code_live_recovery",
     "codex_full_generation",
@@ -308,6 +309,12 @@ function validatePackedPackageTrial(data) {
     errors,
     "installed replaypack trial must be recorded as pass"
   );
+  expect(
+    data.commands?.some((item) => item.command === "replaypack brief" && item.actual === "pass"),
+    errors,
+    "installed replaypack brief must be recorded as pass"
+  );
+  expect(data.generated_files?.agent_brief === "dist/agent-brief.md", errors, "agent brief file must be recorded");
   expect(data.trial_summary?.wrong_demo?.proof === "ok", errors, "wrong demo visible proof must be ok");
   expect(data.trial_summary?.wrong_demo?.replaypack === "fail", errors, "wrong demo must fail ReplayPack");
   expect(data.trial_summary?.fixed_demo?.replaypack === "pass", errors, "fixed demo must pass ReplayPack");

@@ -37,7 +37,9 @@ function renderBrief(value, capsuleReference) {
   const stateFiles = collectNamedReferences(value?.state);
   const mockFiles = collectNamedReferences(value?.mocks);
   const verifyCommand = `npx replaypack verify ${shellQuote(capsuleReference)} --out dist/replaypack-verify.json`;
-  const checkoutVerifyCommand = `node bin/replaypack.mjs verify ${shellQuote(capsuleReference)} --out dist/replaypack-verify.json`;
+  const checkoutVerifyCommand = fs.existsSync(path.join(root, "bin", "replaypack.mjs"))
+    ? `node bin/replaypack.mjs verify ${shellQuote(capsuleReference)} --out dist/replaypack-verify.json`
+    : null;
 
   lines.push("# ReplayPack Agent Brief", "");
   lines.push(`Capsule: \`${capsuleReference}\``);
@@ -56,8 +58,10 @@ function renderBrief(value, capsuleReference) {
   lines.push("");
   lines.push("```bash");
   lines.push(verifyCommand);
-  lines.push("# from this repository checkout:");
-  lines.push(checkoutVerifyCommand);
+  if (checkoutVerifyCommand) {
+    lines.push("# from this repository checkout:");
+    lines.push(checkoutVerifyCommand);
+  }
   lines.push("```");
   lines.push("");
   lines.push("Done means the verification packet status is `pass`. If the visible proof passes but ReplayPack fails, repair the invariant failure and rerun the finish gate.");

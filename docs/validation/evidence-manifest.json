@@ -107,6 +107,70 @@
       ]
     },
     {
+      "id": "agent_brief_handoff",
+      "status": "proven",
+      "claim": "BriefBench proves the generated ReplayPack brief is a complete agent handoff surface on 30 executable cases: 30/30 briefs include the finish gate/context, visible-only false-dones 30/30, and the brief-gated loop rejects 30/30 wrong fixes and recovers 30/30 correct fixes.",
+      "evidence": [
+        "docs/agentbench/brief-results.json"
+      ],
+      "assertions": [
+        {
+          "file": "docs/agentbench/brief-results.json",
+          "path": "schema",
+          "op": "eq",
+          "value": "replaypack.agentbench.brief_results.v0"
+        },
+        {
+          "file": "docs/agentbench/brief-results.json",
+          "path": "summary.case_count",
+          "op": "eq",
+          "value": 30
+        },
+        {
+          "file": "docs/agentbench/brief-results.json",
+          "path": "summary.complete_briefs",
+          "op": "eq",
+          "value": 30
+        },
+        {
+          "file": "docs/agentbench/brief-results.json",
+          "path": "summary.finish_gate_present",
+          "op": "eq",
+          "value": 30
+        },
+        {
+          "file": "docs/agentbench/brief-results.json",
+          "path": "summary.visible_only_false_done",
+          "op": "eq",
+          "value": 30
+        },
+        {
+          "file": "docs/agentbench/brief-results.json",
+          "path": "summary.brief_gate_rejected_wrong_fix",
+          "op": "eq",
+          "value": 30
+        },
+        {
+          "file": "docs/agentbench/brief-results.json",
+          "path": "summary.brief_gate_recovered_to_correct_fix",
+          "op": "eq",
+          "value": 30
+        },
+        {
+          "file": "docs/agentbench/brief-results.json",
+          "path": "summary.absolute_path_leaks",
+          "op": "eq",
+          "value": 0
+        },
+        {
+          "file": "docs/agentbench/brief-results.json",
+          "path": "summary.missing_reference_markers",
+          "op": "eq",
+          "value": 0
+        }
+      ]
+    },
+    {
       "id": "codex_live_recovery",
       "status": "proven",
       "claim": "Codex live recovery trial shows 3/3 visible-only controls false-done and 3/3 ReplayPack treatments recover with no manual intervention.",
@@ -352,7 +416,7 @@
     {
       "id": "packed_package_trial",
       "status": "proven_pre_publish",
-      "claim": "The packed 0.2.1 tarball installs into a fresh temp project and the installed CLI runs replaypack trial successfully.",
+      "claim": "The packed 0.2.1 tarball installs into a fresh temp project and the installed CLI runs replaypack brief and replaypack trial successfully.",
       "evidence": [
         "docs/validation/private-packed-package-trial.json"
       ],
@@ -374,6 +438,12 @@
           "path": "package.version",
           "op": "eq",
           "value": "0.2.1"
+        },
+        {
+          "file": "docs/validation/private-packed-package-trial.json",
+          "path": "generated_files.agent_brief",
+          "op": "eq",
+          "value": "dist/agent-brief.md"
         },
         {
           "file": "docs/validation/private-packed-package-trial.json",

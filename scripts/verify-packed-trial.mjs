@@ -45,6 +45,35 @@ if (version.stdout.trim() !== packageJson.version) {
   );
 }
 
+writeBriefFixture(installRoot);
+const brief = run(replaypackBin, ["brief", "replaypack/case.json", "--out", "dist/agent-brief.md"], {
+  cwd: installRoot,
+  label: "replaypack brief"
+});
+
+if (!/Wrote dist\/agent-brief\.md/.test(brief.stdout)) {
+  fail("Packed CLI brief did not print the expected write summary.");
+}
+
+const agentBriefPath = path.join(installRoot, "dist", "agent-brief.md");
+if (!fs.existsSync(agentBriefPath)) {
+  fail("Packed CLI brief did not write dist/agent-brief.md in the caller project.");
+}
+
+const agentBrief = fs.readFileSync(agentBriefPath, "utf8");
+for (const required of [
+  "# ReplayPack Agent Brief",
+  "Packed package brief fixture",
+  "npx replaypack verify replaypack/case.json --out dist/replaypack-verify.json",
+  "issues/issue.md",
+  "fixtures/trace/repro.md",
+  "Do not say done until ReplayPack verify passes."
+]) {
+  if (!agentBrief.includes(required)) {
+    fail(`Packed CLI brief is missing: ${required}`);
+  }
+}
+
 const trial = run(replaypackBin, ["trial"], {
   cwd: installRoot,
   label: "replaypack trial"
@@ -88,10 +117,53 @@ Tarball:
 
 Verified:
   replaypack --version -> ${version.stdout.trim()}
+  replaypack brief -> pass
+  agent brief -> ${path.relative(installRoot, agentBriefPath)}
   replaypack trial -> pass
   receipt -> ${path.relative(installRoot, receiptPath)}
   feedback -> ${path.relative(installRoot, feedbackPath)}
 `);
+
+function writeBriefFixture(base) {
+  fs.mkdirSync(path.join(base, "src"), { recursive: true });
+  fs.mkdirSync(path.join(base, "test"), { recursive: true });
+  fs.mkdirSync(path.join(base, "issues"), { recursive: true });
+  fs.mkdirSync(path.join(base, "fixtures", "trace"), { recursive: true });
+  fs.mkdirSync(path.join(base, "replaypack"), { recursive: true });
+  fs.writeFileSync(path.join(base, "src", "system.js"), "export const ok = true;\n");
+  fs.writeFileSync(path.join(base, "test", "proof.mjs"), "console.log('proof ok');\n");
+  fs.writeFileSync(path.join(base, "test", "invariant.mjs"), "console.log('invariant ok');\n");
+  fs.writeFileSync(path.join(base, "issues", "issue.md"), "# Packed package brief fixture\n\nThe agent must use ReplayPack as the finish gate.\n");
+  fs.writeFileSync(path.join(base, "fixtures", "trace", "repro.md"), "# Trace\n\nVisible proof can pass before the invariant is checked.\n");
+  fs.writeFileSync(
+    path.join(base, "replaypack", "case.json"),
+    `${JSON.stringify(
+      {
+        schema: "replaypack.capsule.v0",
+        id: "packed-brief-fixture",
+        title: "Packed package brief fixture",
+        created_at: "2026-06-20T00:00:00-07:00",
+        entrypoint: {
+          repo_root: ".",
+          primary_file: "src/system.js",
+          proof_file: "test/proof.mjs",
+          proof_command: "npm run proof",
+          invariant_commands: ["npm run invariant"]
+        },
+        workflow: {
+          issue_files: ["issues/issue.md"]
+        },
+        trace: {
+          repro: "fixtures/trace/repro.md"
+        },
+        acceptance: ["agent brief is generated in the caller project"],
+        agent_instructions: ["Do not stop at the visible proof."]
+      },
+      null,
+      2
+    )}\n`
+  );
+}
 
 function findTarball(stdout) {
   const tarballName = stdout

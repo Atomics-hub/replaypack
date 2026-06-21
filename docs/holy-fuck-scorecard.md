@@ -6,7 +6,7 @@ ReplayPack should not go public because we like the idea. It goes public when th
 
 Status: `codex_full_generation_scale_external_next`
 
-ReplayPack is a credible holy-fuck candidate with public GitHub and npm `0.2.0` live, plus a prepared `0.2.1` patch release waiting on npm OTP publish. Deterministic agent-loop proof, Codex and Claude Code recovery proof, expanded Codex full task generation proof, widened Claude Code full task generation proof, and packed-package trial proof now exist. External demand and broad large-sample full-generation lift are not proven yet.
+ReplayPack is a credible holy-fuck candidate with public GitHub and npm `0.2.0` live, plus a prepared `0.2.1` patch release waiting on npm OTP publish. Deterministic agent-loop proof, generated-brief handoff proof, Codex and Claude Code recovery proof, expanded Codex full task generation proof, widened Claude Code full task generation proof, and packed-package trial proof now exist. External demand and broad large-sample full-generation lift are not proven yet.
 
 The product mechanism is now benchmark-proven locally:
 
@@ -15,6 +15,7 @@ The product mechanism is now benchmark-proven locally:
 - correct fix passes proof and invariant
 - one-command demo shows the trap without manual log parsing
 - deterministic AgentBench shows visible-only false done at 30/30 and ReplayPack prevention/recovery at 30/30
+- BriefBench shows generated agent briefs complete at 30/30, with 30/30 wrong fixes rejected and 30/30 recoveries
 - live Codex subagent recovery trial shows 3/3 visible-only controls false-done and 3/3 ReplayPack treatments recover
 - live Claude Code recovery trial shows 3/3 visible-only controls false-done and 3/3 ReplayPack treatments recover with zero protocol violations
 - live Codex full task generation trial shows controls truly correct on 8/9, false-done on 1/9, and ReplayPack treatments verified correct on 9/9
@@ -28,7 +29,7 @@ The product mechanism is now benchmark-proven locally:
 - public GitHub beta is live with a tester issue
 - npm package `replaypack@0.2.0` is published and install-verified
 - patch release `v0.2.1` is prepared with the external trial/recorder path but still needs npm OTP publish
-- packed `v0.2.1` tarball installs into a fresh temp project, runs `replaypack trial`, and writes receipt/feedback files
+- packed `v0.2.1` tarball installs into a fresh temp project, runs `replaypack brief` and `replaypack trial`, and writes agent-brief/receipt/feedback files
 - `npm run evidence:verify` ties public proof claims to current JSON receipts
 
 The missing proof is scale and market proof:
@@ -66,6 +67,22 @@ Latest deterministic replay:
 - ReplayPack recovered to correct fix: 30/30
 
 This is the right agent-level claim shape, but it is not yet live LLM-agent evidence.
+
+## Current BriefBench Result
+
+`npm run briefbench` writes `docs/agentbench/brief-results.json`.
+
+Latest deterministic brief handoff:
+
+- 30 generated briefs
+- 30 bug families
+- complete briefs with finish gate/context: 30/30
+- visible-only false-done outcomes: 30/30
+- brief-gated wrong fixes rejected: 30/30
+- brief-gated recoveries to correct fix: 30/30
+- absolute path leaks: 0
+
+This proves the generated markdown handoff is complete enough for the deterministic agent loop. It is still not an external human trial or live LLM transcript.
 
 ## Current Live-Agent Result
 
@@ -134,6 +151,7 @@ This proves widened small-sample full-generation lift is not Codex-only. It does
 | CI/action path | 91 | 85 | pass | GitHub Actions passed on public remote; CI now gates repo trial plus packed-package trial |
 | Benchmark proof | 94 | 85 | pass | 30/30 visible-green wrong fixes rejected; 30/30 correct fixes accepted |
 | Agent-loop proof | 88 | 85 | pass | deterministic AgentBench replay: 30/30 false-done prevented and recovered |
+| Agent handoff proof | 90 | 85 | pass | BriefBench: generated briefs complete 30/30; wrong fixes rejected 30/30; recoveries 30/30 |
 | Live-agent recovery proof | 78 | 75 | pass | Codex subagents: 3/3 controls false-done; 3/3 treatments recovered |
 | Full-generation agent proof | 82 | 75 | pass | Codex subagents: controls 8/9 correct and 1/9 false-done; ReplayPack treatments 9/9 verified |
 | Cross-agent recovery proof | 78 | 75 | pass | Claude Code: 3/3 controls false-done; 3/3 treatments recovered; 0 protocol violations |
@@ -169,6 +187,7 @@ Broad market launch is allowed when:
 - ReplayPack accepts at least 90% of correct fixes
 - false positives are 0
 - AgentBench deterministic replay prevents at least 90% of false-done outcomes
+- generated agent briefs include the finish gate/context and preserve the same prevention/recovery result
 - at least one live coding-agent run proves recovery using only the packet
 - at least one live coding-agent run proves full task generation lift
 - at least one non-Codex agent surface reproduces the effect
@@ -194,6 +213,6 @@ Until then, the honest answer is:
 
 ```text
 ReplayPack is the prime candidate.
-It is package-launched, agent-loop replay proven, Codex/Claude recovery proven, expanded Codex full-generation proven, and widened Claude full-generation proven, but not yet market-proven or broad large-sample proven.
+It is package-launched, agent-loop replay proven, generated-brief handoff proven, Codex/Claude recovery proven, expanded Codex full-generation proven, and widened Claude full-generation proven, but not yet market-proven or broad large-sample proven.
 Next gate is external user proof and larger-sample full-generation proof.
 ```

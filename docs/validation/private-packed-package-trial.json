@@ -1,10 +1,9 @@
 {
   "schema": "replaypack.validation.private_packed_package_trial.v0",
-  "checked_at": "2026-06-20T23:51:32Z",
+  "checked_at": "2026-06-21T00:45:00Z",
   "repository": "Atomics-hub/replaypack",
   "repository_visibility": "PUBLIC",
   "source": "local npm pack tarball installed into fresh temp project",
-  "commit": "cd64110723a4cc77f8d08c9c31235b5316cd21cc",
   "package": {
     "name": "replaypack",
     "version": "0.2.1",
@@ -24,12 +23,23 @@
       "evidence": "installed binary version matched package.json"
     },
     {
+      "command": "replaypack brief",
+      "expected": "pass",
+      "actual": "pass",
+      "evidence": "installed binary wrote dist/agent-brief.md in the caller project"
+    },
+    {
       "command": "replaypack trial",
       "expected": "pass",
       "actual": "pass",
       "evidence": "wrong demo rejected, fixed demo accepted, dogfood accepted"
     }
   ],
+  "generated_files": {
+    "agent_brief": "dist/agent-brief.md",
+    "trial_receipt": "dist/external-trial/receipt.json",
+    "trial_feedback": "dist/external-trial/feedback.md"
+  },
   "trial_summary": {
     "wrong_demo": {
       "proof": "ok",

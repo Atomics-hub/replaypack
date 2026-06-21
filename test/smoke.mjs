@@ -90,7 +90,7 @@ assert.match(fixedBrief.stdout, /# ReplayPack Agent Brief/);
 assert.match(fixedBrief.stdout, /Account-scoped export access ignores membership/);
 assert.match(fixedBrief.stdout, /## Finish Gate/);
 assert.match(fixedBrief.stdout, /npx replaypack verify replaypack\/account-access\.json --out dist\/replaypack-verify\.json/);
-assert.match(fixedBrief.stdout, /node bin\/replaypack\.mjs verify replaypack\/account-access\.json --out dist\/replaypack-verify\.json/);
+assert.doesNotMatch(fixedBrief.stdout, /node bin\/replaypack\.mjs verify/);
 assert.match(fixedBrief.stdout, /Do not say done until ReplayPack verify passes\./);
 assert.match(fixedBrief.stdout, /issues\/account-access\.md/);
 assert.match(fixedBrief.stdout, /fixtures\/trace\/account-access\.md/);

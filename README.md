@@ -200,6 +200,12 @@ Run the current readiness check:
 npm run readiness
 ```
 
+Run the generated-brief handoff benchmark:
+
+```bash
+npm run briefbench
+```
+
 Run the agent-readable evidence audit:
 
 ```bash

@@ -13,6 +13,7 @@ jobs:
         with:
           node-version: 24
       - run: npm test
+      - run: npm run briefbench
       - run: npm run evidence:verify
       - run: npm run trial:external
       - run: npm run package-trial

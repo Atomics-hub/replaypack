@@ -5,9 +5,10 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
-const workRoot = path.join(root, ".tmp", "proofbench");
+const args = parseArgs(process.argv.slice(2));
+const workRoot = path.resolve(root, args.workRoot ?? ".tmp/proofbench");
 const cli = path.join(root, "bin", "replaypack.mjs");
-const resultsPath = path.join(root, "docs", "proofbench", "results.json");
+const resultsPath = path.resolve(root, args.resultsOut ?? "docs/proofbench/results.json");
 
 fs.rmSync(workRoot, { recursive: true, force: true });
 fs.mkdirSync(workRoot, { recursive: true });
@@ -210,6 +211,26 @@ function statusOf(result) {
 
 function tail(text, maxChars) {
   return text.length <= maxChars ? text : text.slice(text.length - maxChars);
+}
+
+function parseArgs(raw) {
+  const parsed = {};
+  for (let index = 0; index < raw.length; index += 1) {
+    const item = raw[index];
+    if (!item.startsWith("--")) continue;
+    const [key, inlineValue] = item.slice(2).split("=", 2);
+    if (inlineValue !== undefined) {
+      parsed[toCamel(key)] = inlineValue;
+    } else {
+      parsed[toCamel(key)] = raw[index + 1];
+      index += 1;
+    }
+  }
+  return parsed;
+}
+
+function toCamel(value) {
+  return value.replace(/-([a-z])/g, (_, char) => char.toUpperCase());
 }
 
 function cases() {

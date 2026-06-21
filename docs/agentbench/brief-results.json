@@ -1,0 +1,1140 @@
+{
+  "schema": "replaypack.agentbench.brief_results.v0",
+  "generated_at": "2026-06-21T00:36:03.735Z",
+  "evidence_level": "deterministic_agent_brief_handoff",
+  "methodology": {
+    "source": "scripts/run-proofbench.mjs temporary cases",
+    "baseline_agent": "Visible-only agent stops when the visible proof passes, which accepts the plausible wrong fix in each ProofBench case.",
+    "replaypack_brief_agent": "ReplayPack brief agent receives the generated markdown handoff, treats replaypack verify as the finish gate, rejects the wrong fix, and recovers to the corresponding correct fix.",
+    "limitation": "This validates the generated agent handoff surface with deterministic executable cases. It is not an external human trial or a live LLM transcript."
+  },
+  "summary": {
+    "case_count": 30,
+    "bug_family_count": 30,
+    "generated_briefs": 30,
+    "complete_briefs": 30,
+    "finish_gate_present": 30,
+    "visible_only_false_done": 30,
+    "brief_gate_rejected_wrong_fix": 30,
+    "brief_gate_recovered_to_correct_fix": 30,
+    "missing_reference_markers": 0,
+    "absolute_path_leaks": 0,
+    "median_brief_bytes": 1651,
+    "max_brief_bytes": 1691,
+    "brief_completion_rate": 1,
+    "false_done_reduction_rate": 1,
+    "recovery_rate": 1
+  },
+  "cases": [
+    {
+      "id": "account-access",
+      "title": "Account membership ignored for export access",
+      "bug_family": "authorization_state",
+      "brief": {
+        "path": ".tmp/proofbench/account-access/wrong/dist/agent-brief.md",
+        "sha256": "7111f896617d9b3dcb9216bf44dba260205c913013dbbbaafe2a64a68a9e3a81",
+        "bytes": 1691,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "pagination-cursor",
+      "title": "Pagination cursor repeats the last item",
+      "bug_family": "pagination",
+      "brief": {
+        "path": ".tmp/proofbench/pagination-cursor/wrong/dist/agent-brief.md",
+        "sha256": "b8fd325256cc3e952dec56dbf9cb41966292f2ef610241a1d3d41d561c2c9aaa",
+        "bytes": 1667,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "timezone-cutoff",
+      "title": "Billing cutoff ignores tenant timezone",
+      "bug_family": "time",
+      "brief": {
+        "path": ".tmp/proofbench/timezone-cutoff/wrong/dist/agent-brief.md",
+        "sha256": "9e881b6b600535e8a71ac5492fcd0e9c7d0b73944b053d23eeada59503fe160d",
+        "bytes": 1642,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "feature-flag-fallback",
+      "title": "Explicit false feature flag falls back to global default",
+      "bug_family": "feature_flags",
+      "brief": {
+        "path": ".tmp/proofbench/feature-flag-fallback/wrong/dist/agent-brief.md",
+        "sha256": "a395f1776809ebc9ea1d1fcf5e909b0215d1aeb0331bee0042a958887f33d5d7",
+        "bytes": 1648,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "idempotency-scope",
+      "title": "Idempotency key dedupes across accounts",
+      "bug_family": "idempotency",
+      "brief": {
+        "path": ".tmp/proofbench/idempotency-scope/wrong/dist/agent-brief.md",
+        "sha256": "82cedff7c36f185b58eba517a9cf695b6c17c1a030d59ae63909e89f4ce4e84f",
+        "bytes": 1645,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "retry-permanent-errors",
+      "title": "Permanent errors are retried",
+      "bug_family": "retry_policy",
+      "brief": {
+        "path": ".tmp/proofbench/retry-permanent-errors/wrong/dist/agent-brief.md",
+        "sha256": "d2ddefcfa82a7a75caf2b5e53e66b21f0d5c5af5c02fdf45047b2ddfedb6ffe9",
+        "bytes": 1630,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "upload-mime-sniff",
+      "title": "Upload validation trusts file extension",
+      "bug_family": "file_security",
+      "brief": {
+        "path": ".tmp/proofbench/upload-mime-sniff/wrong/dist/agent-brief.md",
+        "sha256": "480b5061b935748ebd3c435208f826444cb03832db038bc44edcae63ccabcd50",
+        "bytes": 1612,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "permission-after-fetch",
+      "title": "Permission check masks after fetching private data",
+      "bug_family": "authorization_flow",
+      "brief": {
+        "path": ".tmp/proofbench/permission-after-fetch/wrong/dist/agent-brief.md",
+        "sha256": "371f9618f7d4d15d96fea4d56fe1f9d2b8e2de770a47461b26cd1fba19cdd3bf",
+        "bytes": 1664,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "cache-key-settings",
+      "title": "Cache key ignores tenant settings version",
+      "bug_family": "cache_invalidation",
+      "brief": {
+        "path": ".tmp/proofbench/cache-key-settings/wrong/dist/agent-brief.md",
+        "sha256": "66c4d93577adbdd01983f93f08bba1e0a935c534a85af885c059a4d39431f7b8",
+        "bytes": 1660,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "rate-limit-boundary",
+      "title": "Rate limit window boundary never expires old request",
+      "bug_family": "rate_limits",
+      "brief": {
+        "path": ".tmp/proofbench/rate-limit-boundary/wrong/dist/agent-brief.md",
+        "sha256": "c047c6a2324568758d5647f1f7f457c79df5c89382497d6b6daf8021c3cd9e7b",
+        "bytes": 1654,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "webhook-signature",
+      "title": "Webhook verification accepts signature prefixes",
+      "bug_family": "webhook_authenticity",
+      "brief": {
+        "path": ".tmp/proofbench/webhook-signature/wrong/dist/agent-brief.md",
+        "sha256": "fd31d9d34c6122c5c09bb3c44116c9d2c0f87e092acbaa51a7e651535201c7e1",
+        "bytes": 1641,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "currency-line-rounding",
+      "title": "Currency totals round after summing fractional lines",
+      "bug_family": "money_precision",
+      "brief": {
+        "path": ".tmp/proofbench/currency-line-rounding/wrong/dist/agent-brief.md",
+        "sha256": "d39445e205f1257aad2731a63ab80ca173f7ed9a5c5e4e9318440881db295681",
+        "bytes": 1670,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "sort-stability",
+      "title": "Equal-rank sorting rewrites stable order",
+      "bug_family": "sorting_contract",
+      "brief": {
+        "path": ".tmp/proofbench/sort-stability/wrong/dist/agent-brief.md",
+        "sha256": "5acad80be0e17ef2b74fcfd6b3f2da056f51585c3ec6c22e5b8d31f63fe38f04",
+        "bytes": 1648,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "soft-delete-filter",
+      "title": "Soft-deleted active records remain visible",
+      "bug_family": "soft_delete",
+      "brief": {
+        "path": ".tmp/proofbench/soft-delete-filter/wrong/dist/agent-brief.md",
+        "sha256": "05a514e726180ccec8ddd5340f5d8863c76b602d0e2dd49707b4a8e06123c82a",
+        "bytes": 1655,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "tenant-search-leak",
+      "title": "Tenant search returns matching rows from other tenants",
+      "bug_family": "tenant_isolation",
+      "brief": {
+        "path": ".tmp/proofbench/tenant-search-leak/wrong/dist/agent-brief.md",
+        "sha256": "e933e888c54c94453a56b0609c3f8d32cfa62116229422c91bfcf7e69332220c",
+        "bytes": 1675,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "csv-formula-escape",
+      "title": "CSV export leaves spreadsheet formulas executable",
+      "bug_family": "spreadsheet_injection",
+      "brief": {
+        "path": ".tmp/proofbench/csv-formula-escape/wrong/dist/agent-brief.md",
+        "sha256": "e6af74a9827c01a833e39eb28a72903feac92efef1b0a42f4e4d063c3c6fc372",
+        "bytes": 1676,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "markdown-link-sanitize",
+      "title": "Markdown links allow javascript URLs",
+      "bug_family": "link_sanitization",
+      "brief": {
+        "path": ".tmp/proofbench/markdown-link-sanitize/wrong/dist/agent-brief.md",
+        "sha256": "51aa831b6a9ef8bb0f5d5985791f73cd9870df858cac71163e65347b0c658e7b",
+        "bytes": 1629,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "path-root-prefix",
+      "title": "Path root check accepts sibling directories with matching prefix",
+      "bug_family": "path_security",
+      "brief": {
+        "path": ".tmp/proofbench/path-root-prefix/wrong/dist/agent-brief.md",
+        "sha256": "d3994c19496060b14d0f069a337a9670762cabaef376484b9c65d390358f0d2f",
+        "bytes": 1671,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "email-normalization",
+      "title": "Email normalization lowercases the local part",
+      "bug_family": "email_identity",
+      "brief": {
+        "path": ".tmp/proofbench/email-normalization/wrong/dist/agent-brief.md",
+        "sha256": "3a764a0e1d75c63c050aa67c5c4f9ff90a9fa4b9d525d40fa5aba77884e793f2",
+        "bytes": 1650,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "session-expiry-boundary",
+      "title": "Sessions remain valid exactly at expiry",
+      "bug_family": "session_lifecycle",
+      "brief": {
+        "path": ".tmp/proofbench/session-expiry-boundary/wrong/dist/agent-brief.md",
+        "sha256": "eacf22175aa15218dbbc3dabc458cab55dfe78fb0a7eedf568f1423a064820d5",
+        "bytes": 1614,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "queue-priority",
+      "title": "Queue dispatch ignores urgent priority",
+      "bug_family": "job_priority",
+      "brief": {
+        "path": ".tmp/proofbench/queue-priority/wrong/dist/agent-brief.md",
+        "sha256": "a3203b83fa2ccb938cfeeec121ffd3f4502d9a8fda1dcb3f5c2d94f772ccf6cf",
+        "bytes": 1651,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "inventory-reservation",
+      "title": "Inventory check ignores reserved units",
+      "bug_family": "inventory_reservation",
+      "brief": {
+        "path": ".tmp/proofbench/inventory-reservation/wrong/dist/agent-brief.md",
+        "sha256": "589de54981a2556948a37a79536f4508c99e017aa9cc672ae07ade935cbe74f5",
+        "bytes": 1654,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "schema-migration-default",
+      "title": "Migration overwrites explicit false with default true",
+      "bug_family": "migration_defaults",
+      "brief": {
+        "path": ".tmp/proofbench/schema-migration-default/wrong/dist/agent-brief.md",
+        "sha256": "d0427b6f098bf2c67e2000b16da15d91ae23c45b0e820ec261acb1c86f1b6c7b",
+        "bytes": 1669,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "redaction-nested",
+      "title": "Redaction misses nested secrets",
+      "bug_family": "pii_redaction",
+      "brief": {
+        "path": ".tmp/proofbench/redaction-nested/wrong/dist/agent-brief.md",
+        "sha256": "42988fcfd3deb9b89d518f4c3e6791fd5567cefc0f29211374fe189832beec9b",
+        "bytes": 1601,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "locale-slug",
+      "title": "Slug generation drops accented characters",
+      "bug_family": "unicode_slugs",
+      "brief": {
+        "path": ".tmp/proofbench/locale-slug/wrong/dist/agent-brief.md",
+        "sha256": "f8e8ba5a5c852a57c3b4cdec7b00b90ca942ca6d6e5370b6aa846fe88381c81f",
+        "bytes": 1635,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "duplicate-webhook-id",
+      "title": "Webhook dedupe key uses event type instead of event id",
+      "bug_family": "event_deduplication",
+      "brief": {
+        "path": ".tmp/proofbench/duplicate-webhook-id/wrong/dist/agent-brief.md",
+        "sha256": "b9a5b25417c3465d334e0a81af5e8e186eacda03f12e3557fb8ee220eff834a1",
+        "bytes": 1662,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "api-version-routing",
+      "title": "Unknown API versions silently route to v1",
+      "bug_family": "api_versioning",
+      "brief": {
+        "path": ".tmp/proofbench/api-version-routing/wrong/dist/agent-brief.md",
+        "sha256": "4747e1a5c3bc5a6a429f5a0a15972fb24b99decab9a9480c7735e7a8e1f45dad",
+        "bytes": 1648,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "refund-negative-amount",
+      "title": "Payment validation rejects negative refund amounts",
+      "bug_family": "payment_semantics",
+      "brief": {
+        "path": ".tmp/proofbench/refund-negative-amount/wrong/dist/agent-brief.md",
+        "sha256": "09782b477dcd644b6c5a45ce1bf4a66f4ccaba43fb8452cd389d7b318393ebdd",
+        "bytes": 1635,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "json-merge-patch-null",
+      "title": "JSON merge patch ignores null deletion",
+      "bug_family": "merge_patch_semantics",
+      "brief": {
+        "path": ".tmp/proofbench/json-merge-patch-null/wrong/dist/agent-brief.md",
+        "sha256": "301d6eeba4480fd26ee42f8ec1f07f3f06b6b98461e56627c8bfd0d17b6b07e1",
+        "bytes": 1621,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    },
+    {
+      "id": "slo-window-inclusive",
+      "title": "SLO window includes samples at the exclusive end",
+      "bug_family": "analytics_windows",
+      "brief": {
+        "path": ".tmp/proofbench/slo-window-inclusive/wrong/dist/agent-brief.md",
+        "sha256": "4e86a77f6e3a90f798909550a397ec13d4de0177958f6f94c654521bbe806c06",
+        "bytes": 1652,
+        "command_status": "pass",
+        "checks": {
+          "has_heading": true,
+          "has_title": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_visible_proof_command": true,
+          "has_invariant_command": true,
+          "has_primary_file": true,
+          "has_proof_file": true,
+          "has_issue_context": true,
+          "has_trace_context": true,
+          "has_acceptance": true,
+          "has_agent_instructions": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        },
+        "status": "complete"
+      },
+      "baseline_visible_only_agent": "false_done",
+      "brief_agent_first_attempt": "rejected_wrong_fix",
+      "brief_agent_recovery": "accepted_correct_fix",
+      "proofbench_receipt": {
+        "visible_proof_on_wrong": "pass",
+        "replaypack_on_wrong": "fail",
+        "replaypack_on_fixed": "pass"
+      }
+    }
+  ]
+}
