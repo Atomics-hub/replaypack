@@ -109,6 +109,7 @@ const report = {
   trial_doc: "docs/trials/external-developer-trial.md",
   feedback_issue_url: issueUrl,
   feedback_markdown: "dist/external-trial/feedback.md",
+  agent_report_markdown: "dist/external-trial/agent-report.md",
   commands,
   checks,
   status: passed ? "pass" : "fail",
@@ -129,6 +130,7 @@ const report = {
 const reportPath = path.join(workRoot, "receipt.json");
 fs.writeFileSync(reportPath, `${JSON.stringify(report, null, 2)}\n`);
 fs.writeFileSync(path.join(workRoot, "feedback.md"), renderFeedback(report));
+fs.writeFileSync(path.join(workRoot, "agent-report.md"), renderAgentReport(report));
 fs.rmSync(publicRoot, { recursive: true, force: true });
 fs.mkdirSync(path.dirname(publicRoot), { recursive: true });
 fs.cpSync(workRoot, publicRoot, { recursive: true });
@@ -140,6 +142,9 @@ Receipt:
 
 Feedback draft:
   ${path.relative(outputRoot, path.join(publicRoot, "feedback.md"))}
+
+Agent report:
+  ${path.relative(outputRoot, path.join(publicRoot, "agent-report.md"))}
 
 What happened:
   wrong demo   proof=${wrongPacket?.proof?.status ?? "missing"} invariant=${wrongInvariant.status ?? "missing"} replaypack=${wrongPacket?.status ?? "missing"}
@@ -234,6 +239,75 @@ ${dogfoodLine}
 ### Quote permission
 
 [Choose one: Paraphrase anonymously only / Quote anonymously / Quote with my GitHub username / Do not quote or paraphrase]
+`;
+}
+
+function renderAgentReport(report) {
+  const status = report.status === "pass" ? "pass" : "fail";
+  const wrongLine = `wrong demo: proof=${wrongPacket?.proof?.status ?? "missing"} invariant=${wrongInvariant.status ?? "missing"} replaypack=${wrongPacket?.status ?? "missing"}`;
+  const fixedLine = `fixed demo: proof=${fixedPacket?.proof?.status ?? "missing"} invariant=${fixedInvariant.status ?? "missing"} replaypack=${fixedPacket?.status ?? "missing"}`;
+  const dogfoodLine = `dogfood: proof=${dogfoodPacket?.proof?.status ?? "missing"} invariant=${dogfoodInvariant.status ?? "missing"} replaypack=${dogfoodPacket?.status ?? "missing"}`;
+
+  return `# ReplayPack Agent Trial Report
+
+Use this file when a coding agent is evaluating ReplayPack for an external trial.
+
+## Agent Task
+
+1. Read README.md and docs/trials/external-developer-trial.md.
+2. Run the trial command from a fresh checkout or installed package.
+3. Inspect dist/external-trial/receipt.json.
+4. Explain whether ReplayPack is useful for agent-made PRs.
+5. Paste the issue-ready section below into the GitHub external developer trial issue after replacing bracketed answers with the agent's own assessment.
+
+Do not claim this is external-user proof unless the runner is actually outside the ReplayPack project.
+
+## Machine Result
+
+- status: ${status}
+- receipt: dist/external-trial/receipt.json
+- replaypack: ${report.package.version}
+- node: ${report.node.version}
+- ${wrongLine}
+- ${fixedLine}
+- ${dogfoodLine}
+
+## Issue-Ready Agent Response
+
+### Coding-agent workflow
+
+[Agent/workflow used for this trial. Example: Codex in a fresh clone, Claude Code, Cursor, Copilot.]
+
+### One-minute read
+
+[In your own words, explain what ReplayPack does after reading the README.]
+
+### Commands run
+
+node bin/replaypack.mjs trial -> ${status}
+receipt: dist/external-trial/receipt.json
+status: ${status}
+node: ${report.node.version}
+replaypack: ${report.package.version}
+${wrongLine}
+${fixedLine}
+${dogfoodLine}
+
+### Invariant vs visible proof
+
+[Did the wrong/fixed demo prove the distinction between a visible test and the deeper invariant?]
+
+### Would you use it?
+
+[Would you add ReplayPack to a repository where coding agents make PRs? Name the repo/workflow shape if yes.]
+
+### First objection
+
+[What would stop adoption, confuse a user, or need better docs?]
+
+### Quote permission
+
+Do not quote or paraphrase
 `;
 }
 

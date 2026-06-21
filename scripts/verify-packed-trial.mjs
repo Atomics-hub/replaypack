@@ -85,6 +85,7 @@ if (!/ReplayPack external trial: pass/.test(trial.stdout)) {
 
 const receiptPath = path.join(installRoot, "dist", "external-trial", "receipt.json");
 const feedbackPath = path.join(installRoot, "dist", "external-trial", "feedback.md");
+const agentReportPath = path.join(installRoot, "dist", "external-trial", "agent-report.md");
 
 if (!fs.existsSync(receiptPath)) {
   fail("Packed CLI trial did not write dist/external-trial/receipt.json in the caller project.");
@@ -92,6 +93,15 @@ if (!fs.existsSync(receiptPath)) {
 
 if (!fs.existsSync(feedbackPath)) {
   fail("Packed CLI trial did not write dist/external-trial/feedback.md in the caller project.");
+}
+
+if (!fs.existsSync(agentReportPath)) {
+  fail("Packed CLI trial did not write dist/external-trial/agent-report.md in the caller project.");
+}
+
+const receipt = JSON.parse(fs.readFileSync(receiptPath, "utf8"));
+if (receipt.agent_report_markdown !== "dist/external-trial/agent-report.md") {
+  fail("Packed CLI trial receipt did not reference dist/external-trial/agent-report.md.");
 }
 
 const feedback = fs.readFileSync(feedbackPath, "utf8");
@@ -110,6 +120,22 @@ for (const required of [
   }
 }
 
+const agentReport = fs.readFileSync(agentReportPath, "utf8");
+for (const required of [
+  "# ReplayPack Agent Trial Report",
+  "## Agent Task",
+  "## Machine Result",
+  "## Issue-Ready Agent Response",
+  "Do not claim this is external-user proof unless the runner is actually outside the ReplayPack project.",
+  "wrong demo: proof=ok invariant=nonzero replaypack=fail",
+  "fixed demo: proof=ok invariant=ok replaypack=pass",
+  "dogfood: proof=ok invariant=ok replaypack=pass"
+]) {
+  if (!agentReport.includes(required)) {
+    fail(`Packed CLI trial agent report is missing: ${required}`);
+  }
+}
+
 console.log(`Packed ReplayPack trial: pass
 
 Tarball:
@@ -122,6 +148,7 @@ Verified:
   replaypack trial -> pass
   receipt -> ${path.relative(installRoot, receiptPath)}
   feedback -> ${path.relative(installRoot, feedbackPath)}
+  agent report -> ${path.relative(installRoot, agentReportPath)}
 `);
 
 function writeBriefFixture(base) {

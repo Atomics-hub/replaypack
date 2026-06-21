@@ -34,6 +34,12 @@ It also writes a ready-to-paste feedback draft to:
 dist/external-trial/feedback.md
 ```
 
+For agent-run evaluations, it writes an agent-facing report to:
+
+```text
+dist/external-trial/agent-report.md
+```
+
 ## Demo
 
 The trial command runs the wrong fix:
@@ -82,7 +88,9 @@ https://github.com/Atomics-hub/replaypack/issues/new?template=external-developer
 
 Paste command outcomes, the one-minute explanation, the invariant-vs-visible-proof read, whether they would use it, and the first objection. This is the evidence ReplayPack still needs before claiming external-user proof.
 
-Shortcut: open `dist/external-trial/feedback.md`, fill the bracketed answers, and paste it into the issue.
+Shortcut for humans: open `dist/external-trial/feedback.md`, fill the bracketed answers, and paste it into the issue.
+
+Shortcut for agents: open `dist/external-trial/agent-report.md`, inspect the machine result, replace the bracketed assessment fields with your own read, and paste the issue-ready section into the issue.
 
 ## Record Proof
 

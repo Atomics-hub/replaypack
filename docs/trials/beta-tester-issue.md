@@ -20,6 +20,7 @@ node bin/replaypack.mjs trial
 
 It should take about 10 minutes and writes `dist/external-trial/receipt.json`.
 It also writes `dist/external-trial/feedback.md`; fill the bracketed answers and paste it into this issue.
+If you are running this through an agent, use `dist/external-trial/agent-report.md` as the issue-ready report.
 
 ## Please Reply With
 

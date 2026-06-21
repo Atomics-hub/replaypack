@@ -34,7 +34,7 @@ Machine-checkable manifest:
 | Real self-dogfood | pass | ReplayPack captured a real CI packaging failure in this repo |
 | GitHub CI | pass | Hosted CI verifies smoke, package contents, and the local Action path |
 | Fresh clone trial | pass | Clone-based setup, wrong/fixed demo, and dogfood capsule all run from a clean checkout |
-| Packed-package trial | pass | Installed tarball exposes `replaypack brief` and `replaypack trial`, writes an agent brief, and writes receipt/feedback files |
+| Packed-package trial | pass | Installed tarball exposes `replaypack brief` and `replaypack trial`, writes an agent brief, and writes receipt/feedback/agent-report files |
 
 ## ProofBench
 
@@ -154,7 +154,7 @@ Repos:
 
 ## Install Surface
 
-`npm run package-trial` packs ReplayPack, installs the tarball into a fresh temp project, checks the installed `replaypack --version`, runs `replaypack brief`, runs `replaypack trial`, and verifies the caller project receives `dist/agent-brief.md`, `dist/external-trial/receipt.json`, and `dist/external-trial/feedback.md`.
+`npm run package-trial` packs ReplayPack, installs the tarball into a fresh temp project, checks the installed `replaypack --version`, runs `replaypack brief`, runs `replaypack trial`, and verifies the caller project receives `dist/agent-brief.md`, `dist/external-trial/receipt.json`, `dist/external-trial/feedback.md`, and `dist/external-trial/agent-report.md`.
 
 Latest local result:
 
@@ -165,6 +165,7 @@ Latest local result:
 - generated agent brief: pass
 - installed `replaypack trial`: pass
 - generated feedback draft: pass
+- generated agent trial report: pass
 - wrong demo: proof ok, invariant nonzero, ReplayPack fail
 - fixed demo: proof ok, invariant ok, ReplayPack pass
 - dogfood: proof ok, invariant ok, ReplayPack pass

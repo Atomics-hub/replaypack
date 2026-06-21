@@ -470,7 +470,7 @@
     {
       "id": "packed_package_trial",
       "status": "proven_pre_publish",
-      "claim": "The packed 0.2.1 tarball installs into a fresh temp project and the installed CLI runs replaypack brief and replaypack trial successfully.",
+      "claim": "The packed 0.2.1 tarball installs into a fresh temp project and the installed CLI runs replaypack brief and replaypack trial successfully, including the agent-readable external trial report.",
       "evidence": [
         "docs/validation/private-packed-package-trial.json"
       ],
@@ -498,6 +498,12 @@
           "path": "generated_files.agent_brief",
           "op": "eq",
           "value": "dist/agent-brief.md"
+        },
+        {
+          "file": "docs/validation/private-packed-package-trial.json",
+          "path": "generated_files.agent_trial_report",
+          "op": "eq",
+          "value": "dist/external-trial/agent-report.md"
         },
         {
           "file": "docs/validation/private-packed-package-trial.json",
