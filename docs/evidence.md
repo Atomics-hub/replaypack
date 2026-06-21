@@ -24,6 +24,7 @@ Machine-checkable manifest:
 | Live AgentBench recovery trial | 3/3 | Codex subagents recovered from visible-green wrong fixes using ReplayPack with no manual intervention |
 | Claude Code recovery trial | 3/3 | Non-Codex agent surface reproduced visible-only false done and ReplayPack recovery |
 | Live AgentBench full generation trial | 15/15 | Codex treatments verified 15/15 correct vs 14/15 control correctness |
+| Live generated-brief full generation trial | 3/3 | Codex treatments using generated briefs verified 3/3 correct vs 2/3 control correctness |
 | Claude Code full generation trial | 6/6 | Claude Code treatments verified 6/6 correct vs 5/6 control correctness |
 | ProofBench | 30/30 pass | Synthetic wrong-fix benchmark across 30 bug families |
 | Visible-green wrong fixes rejected | 30/30 | ReplayPack catches plausible fixes that normal proof accepts |
@@ -105,6 +106,18 @@ Latest live full task generation trial:
 - transcripts: `docs/agentbench/full-runs/full-generation-codex-scale-2026-06-20/`
 - transcripts: `docs/agentbench/full-runs/full-generation-codex-extra-2026-06-20/`
 
+Latest live generated-brief full task generation trial:
+
+- 3 cases
+- treatment prompt surface: generated `dist/agent-brief.md`
+- control agents truly correct: 2/3
+- control false-done outcomes: 1/3
+- ReplayPack treatment verified correct: 3/3
+- generated brief checks passed: 3/3
+- manual intervention: 0
+- receipt: `docs/validation/full-agent-brief-proof.json`
+- transcripts and generated briefs: `docs/agentbench/full-runs/full-generation-brief-codex-2026-06-20/`
+
 Latest Claude Code full task generation trial:
 
 - 6 cases
@@ -115,7 +128,7 @@ Latest Claude Code full task generation trial:
 - manual intervention: 0
 - receipt: `docs/validation/claude-code-full-agent-proof.json`
 
-Limitations: deterministic replay is not live LLM-agent evidence. The live recovery trials start from visible-green wrong variants. The live full task generation trials are real but still small. The added 6-case Codex batch had 6/6 correct controls, so it strengthens treatment reliability and sample size but does not add new false-done lift cases.
+Limitations: deterministic replay is not live LLM-agent evidence. The live recovery trials start from visible-green wrong variants. The live full task generation trials are real but still small. The added 6-case Codex batch had 6/6 correct controls, so it strengthens treatment reliability and sample size but does not add new false-done lift cases. The generated-brief full-generation trial is only 3 cases, but it uses the actual generated brief artifact as the treatment surface.
 
 ## Public Repo Trials
 

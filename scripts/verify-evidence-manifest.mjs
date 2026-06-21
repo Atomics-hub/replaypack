@@ -24,6 +24,7 @@ const requiredClaimIds = [
   "codex_live_recovery",
   "claude_code_live_recovery",
   "codex_full_generation",
+  "codex_generated_brief_full_generation",
   "claude_code_full_generation",
   "packed_package_trial",
   "external_user_proof",
@@ -143,6 +144,7 @@ function valueAtPath(data, dottedPath) {
   return dottedPath.split(".").reduce((current, segment) => {
     if (current === undefined || current === null) return undefined;
     if (segment === "length") return current.length;
+    if (Array.isArray(current) && /^\d+$/.test(segment)) return current[Number(segment)];
     return current[segment];
   }, data);
 }

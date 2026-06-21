@@ -19,6 +19,7 @@ The product mechanism is now benchmark-proven locally:
 - live Codex subagent recovery trial shows 3/3 visible-only controls false-done and 3/3 ReplayPack treatments recover
 - live Claude Code recovery trial shows 3/3 visible-only controls false-done and 3/3 ReplayPack treatments recover with zero protocol violations
 - live Codex full task generation trial shows controls truly correct on 14/15, false-done on 1/15, and ReplayPack treatments verified correct on 15/15
+- live generated-brief full task generation trial shows controls truly correct on 2/3, false-done on 1/3, and ReplayPack treatments using generated briefs verified correct on 3/3
 - live Claude Code full task generation trial shows controls truly correct on 5/6, false-done on 1/6, and ReplayPack treatments verified correct on 6/6
 - 30-case synthetic ProofBench passes the launch bar
 - package surface is clean
@@ -126,6 +127,20 @@ Latest live full task generation trial:
 
 This is live full task generation proof on an expanded but still small Codex-only sample. The added 6-case batch had 6/6 correct controls, so it strengthens treatment reliability and sample size but does not add new false-done lift cases.
 
+## Current Generated-Brief Full-Generation Result
+
+Latest live generated-brief full task generation trial:
+
+- 3 cases: account access, pagination cursor, webhook signature
+- treatment prompt surface: generated `dist/agent-brief.md`
+- control agents truly correct: 2/3
+- control agents false-done: 1/3
+- ReplayPack treatments verified correct: 3/3
+- generated brief checks passed: 3/3
+- manual intervention: 0
+
+This proves the generated brief can serve as the live agent task surface on a small Codex sample. It does not replace broad full-generation proof or external user proof.
+
 ## Current Cross-Agent Full-Generation Result
 
 `npm run full-agentbench:prepare` and `npm run full-agentbench:evaluate` can prepare and evaluate a live full task generation trial on a non-Codex agent surface.
@@ -151,7 +166,7 @@ This proves widened small-sample full-generation lift is not Codex-only. It does
 | CI/action path | 91 | 85 | pass | GitHub Actions passed on public remote; CI now gates repo trial plus packed-package trial |
 | Benchmark proof | 94 | 85 | pass | 30/30 visible-green wrong fixes rejected; 30/30 correct fixes accepted |
 | Agent-loop proof | 88 | 85 | pass | deterministic AgentBench replay: 30/30 false-done prevented and recovered |
-| Agent handoff proof | 90 | 85 | pass | BriefBench: generated briefs complete 30/30; wrong fixes rejected 30/30; recoveries 30/30 |
+| Agent handoff proof | 92 | 85 | pass | BriefBench: generated briefs complete 30/30; live generated-brief full-generation treatments verified 3/3 |
 | Live-agent recovery proof | 78 | 75 | pass | Codex subagents: 3/3 controls false-done; 3/3 treatments recovered |
 | Full-generation agent proof | 84 | 75 | pass | Codex subagents: controls 14/15 correct and 1/15 false-done; ReplayPack treatments 15/15 verified |
 | Cross-agent recovery proof | 78 | 75 | pass | Claude Code: 3/3 controls false-done; 3/3 treatments recovered; 0 protocol violations |

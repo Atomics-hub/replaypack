@@ -112,6 +112,18 @@ Latest live full task generation trial:
 - transcripts: `docs/agentbench/full-runs/full-generation-codex-scale-2026-06-20/`
 - transcripts: `docs/agentbench/full-runs/full-generation-codex-extra-2026-06-20/`
 
+Latest live generated-brief full task generation trial:
+
+- 3 cases
+- treatment prompt surface: generated `dist/agent-brief.md`
+- control agents truly correct: 2/3
+- control false-done outcomes: 1/3
+- ReplayPack treatment verified correct: 3/3
+- generated brief checks passed: 3/3
+- manual intervention: 0
+- receipt: `docs/validation/full-agent-brief-proof.json`
+- transcripts and generated briefs: `docs/agentbench/full-runs/full-generation-brief-codex-2026-06-20/`
+
 Latest Claude Code full task generation trial:
 
 - 6 cases
@@ -176,7 +188,7 @@ AgentBench deterministic replay passes when:
 - ReplayPack prevents at least 90% of those false-done outcomes
 - ReplayPack recovers to a correct fix in at least 90% of cases
 
-The current live recovery trials prove that Codex and Claude Code can recover from visible-green wrong fixes using ReplayPack. The current live full task generation trials show a Codex lift from 14/15 control correctness to 15/15 ReplayPack verified correctness and a Claude Code lift from 5/6 control correctness to 6/6 ReplayPack verified correctness. The added 6-case Codex batch had 6/6 correct controls, so it strengthens treatment reliability and sample size but does not add new false-done lift cases. ReplayPack should not claim broad agent lift until the full-generation protocol runs across more cases and external developer usage.
+The current live recovery trials prove that Codex and Claude Code can recover from visible-green wrong fixes using ReplayPack. The current live full task generation trials show a Codex lift from 14/15 control correctness to 15/15 ReplayPack verified correctness and a Claude Code lift from 5/6 control correctness to 6/6 ReplayPack verified correctness. A separate generated-brief live run shows Codex treatments can use the actual `replaypack brief` artifact as the task surface and verify 3/3 cases, with one control false-done lifted. The added 6-case Codex batch had 6/6 correct controls, so it strengthens treatment reliability and sample size but does not add new false-done lift cases. ReplayPack should not claim broad agent lift until the full-generation protocol runs across more cases and external developer usage.
 
 Full-generation receipts are marked complete only when every treatment case verifies, no protocol violations are found, no manual intervention is used, and at least one control false-done is converted into a verified ReplayPack treatment.
 

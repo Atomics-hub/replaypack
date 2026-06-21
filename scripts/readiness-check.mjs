@@ -264,6 +264,7 @@ function validateEvidenceManifest(data) {
     "codex_live_recovery",
     "claude_code_live_recovery",
     "codex_full_generation",
+    "codex_generated_brief_full_generation",
     "claude_code_full_generation",
     "packed_package_trial",
     "external_user_proof",

@@ -31,6 +31,10 @@ for (const assignment of run.assignments) {
   const controlInvariant = runCommand(controlRoot, [process.execPath, "test/invariant.hidden.mjs"]);
   const controlViolations = controlProtocolViolations(controlRoot, expectedRoot);
   const treatmentViolations = treatmentProtocolViolations(treatmentRoot, expectedRoot);
+  const treatmentBrief = treatmentBriefChecks(treatmentRoot);
+  if (treatmentBrief.errors.length > 0) {
+    treatmentViolations.push(...treatmentBrief.errors);
+  }
   const treatmentVerify = runCommand(treatmentRoot, [
     process.execPath,
     "../../../../../bin/replaypack.mjs",
@@ -70,6 +74,10 @@ for (const assignment of run.assignments) {
       outcome: treatmentOutcome
     })
   });
+  const treatmentBriefPath = copyEvidenceFile({
+    sourcePath: path.join(treatmentRoot, "dist", "agent-brief.md"),
+    targetPath: path.join(caseEvidenceRoot, "treatment-brief.md")
+  });
 
   caseResults.push({
     case_id: assignment.case_id,
@@ -84,7 +92,9 @@ for (const assignment of run.assignments) {
       outcome: treatmentOutcome,
       replaypack_verify_status: treatmentVerify.status,
       protocol_violations: treatmentViolations,
-      transcript: path.relative(root, treatmentTranscriptPath)
+      transcript: path.relative(root, treatmentTranscriptPath),
+      agent_brief: treatmentBriefPath ? path.relative(root, treatmentBriefPath) : null,
+      agent_brief_checks: treatmentBrief.checks
     }
   });
 }
@@ -125,7 +135,7 @@ const validation = {
   limitations: [
     "Starts from deliberately broken minimal implementations generated from ProofBench cases.",
     "Small sample; this does not replace external developer proof.",
-    "Control agents were instructed to use only the visible proof; treatment agents were instructed to use ReplayPack verify."
+    "Control agents were instructed to use only the visible proof; treatment agents were instructed to use the generated ReplayPack brief and verify gate."
   ]
 };
 
@@ -196,6 +206,35 @@ function treatmentProtocolViolations(treatmentRoot, expectedRoot) {
   return violations;
 }
 
+function treatmentBriefChecks(treatmentRoot) {
+  const briefPath = path.join(treatmentRoot, "dist", "agent-brief.md");
+  const checks = {
+    exists: fs.existsSync(briefPath),
+    has_heading: false,
+    has_finish_gate: false,
+    has_verify_command: false,
+    has_agent_loop: false,
+    no_missing_reference_marker: false,
+    no_absolute_path_leak: false
+  };
+  if (!checks.exists) {
+    return { checks, errors: ["treatment generated brief missing"] };
+  }
+
+  const text = fs.readFileSync(briefPath, "utf8");
+  checks.has_heading = text.includes("# ReplayPack Agent Brief");
+  checks.has_finish_gate = text.includes("## Finish Gate");
+  checks.has_verify_command = text.includes("npx replaypack verify replaypack/case.json --out dist/replaypack-verify.json");
+  checks.has_agent_loop = text.includes("## Agent Loop");
+  checks.no_missing_reference_marker = !text.includes("(missing)") && !text.includes("_Missing file._");
+  checks.no_absolute_path_leak = !text.includes(root) && !text.includes("/Users/");
+
+  const errors = Object.entries(checks)
+    .filter(([, value]) => value !== true)
+    .map(([key]) => `treatment generated brief failed ${key}`);
+  return { checks, errors };
+}
+
 function checkSameFile({ label, actualPath, expectedPath, violations }) {
   if (!fs.existsSync(actualPath) || !fs.existsSync(expectedPath)) {
     violations.push(label);
@@ -226,6 +265,14 @@ function copyTranscript({ sourceRoot, targetPath, fallback }) {
   const transcriptPath = path.join(sourceRoot, "transcript.md");
   const transcript = fs.existsSync(transcriptPath) ? fs.readFileSync(transcriptPath, "utf8") : fallback;
   fs.writeFileSync(targetPath, sanitize(transcript));
+  return targetPath;
+}
+
+function copyEvidenceFile({ sourcePath, targetPath }) {
+  if (!fs.existsSync(sourcePath)) {
+    return null;
+  }
+  fs.writeFileSync(targetPath, sanitize(fs.readFileSync(sourcePath, "utf8")));
   return targetPath;
 }
 

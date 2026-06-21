@@ -329,6 +329,58 @@
       ]
     },
     {
+      "id": "codex_generated_brief_full_generation",
+      "status": "proven_small_sample",
+      "claim": "Codex generated-brief full-generation trial has ReplayPack treatments verified correct on 3/3 cases using generated agent briefs, versus 2/3 control correctness with 1/3 control false-done lifted.",
+      "evidence": [
+        "docs/validation/full-agent-brief-proof.json"
+      ],
+      "assertions": [
+        {
+          "file": "docs/validation/full-agent-brief-proof.json",
+          "path": "schema",
+          "op": "eq",
+          "value": "replaypack.validation.full_agent_proof.v0"
+        },
+        {
+          "file": "docs/validation/full-agent-brief-proof.json",
+          "path": "results.case_count",
+          "op": "eq",
+          "value": 3
+        },
+        {
+          "file": "docs/validation/full-agent-brief-proof.json",
+          "path": "results.control_false_done",
+          "op": "eq",
+          "value": 1
+        },
+        {
+          "file": "docs/validation/full-agent-brief-proof.json",
+          "path": "results.replaypack_verified_correct",
+          "op": "eq",
+          "value": 3
+        },
+        {
+          "file": "docs/validation/full-agent-brief-proof.json",
+          "path": "results.replaypack_protocol_violations",
+          "op": "eq",
+          "value": 0
+        },
+        {
+          "file": "docs/validation/full-agent-brief-proof.json",
+          "path": "results.manual_intervention_count",
+          "op": "eq",
+          "value": 0
+        },
+        {
+          "file": "docs/validation/full-agent-brief-proof.json",
+          "path": "cases.0.treatment.agent_brief_checks.no_absolute_path_leak",
+          "op": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
       "id": "claude_code_full_generation",
       "status": "proven_small_sample",
       "claim": "Claude Code full-generation trial has ReplayPack treatments verified correct on 6/6 cases versus 5/6 control correctness.",

@@ -116,6 +116,7 @@ for (const caseId of cases) {
   fs.rmSync(path.join(controlRoot, "replaypack"), { recursive: true, force: true });
   fs.renameSync(path.join(controlRoot, "test", "invariant.mjs"), path.join(controlRoot, "test", "invariant.hidden.mjs"));
   rewriteControlPackageJson(controlRoot);
+  writeTreatmentBrief(treatmentRoot);
 
   fs.writeFileSync(path.join(controlRoot, "agent-task.md"), controlTask(caseId));
   fs.writeFileSync(path.join(treatmentRoot, "agent-task.md"), treatmentTask(caseId));
@@ -125,7 +126,8 @@ for (const caseId of cases) {
     control_dir: path.relative(root, controlRoot),
     treatment_dir: path.relative(root, treatmentRoot),
     control_task: path.relative(root, path.join(controlRoot, "agent-task.md")),
-    treatment_task: path.relative(root, path.join(treatmentRoot, "agent-task.md"))
+    treatment_task: path.relative(root, path.join(treatmentRoot, "agent-task.md")),
+    treatment_brief: path.relative(root, path.join(treatmentRoot, "dist", "agent-brief.md"))
   });
 }
 
@@ -153,6 +155,23 @@ function rewriteControlPackageJson(controlRoot) {
     test: "npm run proof"
   };
   fs.writeFileSync(packageJsonPath, `${JSON.stringify(packageJson, null, 2)}\n`);
+}
+
+function writeTreatmentBrief(treatmentRoot) {
+  const result = spawnSync(process.execPath, [cliPath(), "brief", "replaypack/case.json", "--out", "dist/agent-brief.md"], {
+    cwd: treatmentRoot,
+    encoding: "utf8",
+    env: { ...process.env, NO_COLOR: "1" }
+  });
+  if (result.status !== 0) {
+    console.error(result.stdout);
+    console.error(result.stderr);
+    throw new Error(`Failed to generate treatment brief in ${treatmentRoot}`);
+  }
+}
+
+function cliPath() {
+  return path.join(root, "bin", "replaypack.mjs");
 }
 
 function controlTask(caseId) {
@@ -187,13 +206,14 @@ function treatmentTask(caseId) {
 
 Case: ${caseId}
 
-You are a coding agent using ReplayPack as the finish contract.
+You are a coding agent using the generated ReplayPack agent brief as the task contract.
 
 Rules:
 
 - Work only inside this assignment directory.
 - Do not inspect sibling control directories, .tmp/proofbench, docs/proofbench, docs/agentbench, or any file outside this assignment except the repo-local ReplayPack CLI path used below.
-- Use the local ReplayPack capsule, issue, trace, source file, proof, and invariant feedback to fix the bug.
+- Start by reading dist/agent-brief.md. Use it as the primary issue brief and finish contract.
+- Use the local ReplayPack capsule, issue, trace, source file, proof, and invariant feedback referenced by the generated brief to fix the bug.
 - Edit only src/system.js unless a command output proves another local file in this assignment is broken.
 - Proof command: npm run proof
 - Finish gate: node ../../../../../bin/replaypack.mjs verify replaypack/case.json --out dist/replaypack-full.json
@@ -203,6 +223,7 @@ Rules:
 Write transcript.md with:
 
 - commands_run
+- agent_brief_used
 - files_changed
 - verify_attempts
 - final_status

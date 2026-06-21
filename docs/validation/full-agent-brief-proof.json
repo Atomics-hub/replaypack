@@ -1,0 +1,118 @@
+{
+  "schema": "replaypack.validation.full_agent_proof.v0",
+  "status": "complete",
+  "generated_at": "2026-06-21T01:00:28.046Z",
+  "run_id": "full-generation-brief-codex-2026-06-20",
+  "agent_surface": "codex_subagents",
+  "model": "inherited Codex subagents",
+  "protocol": "docs/agentbench/README.md",
+  "evidence_level": "live_agent_full_generation_trial",
+  "case_sample": {
+    "case_count": 3,
+    "selection": [
+      "account-access",
+      "pagination-cursor",
+      "webhook-signature"
+    ]
+  },
+  "results": {
+    "case_count": 3,
+    "control_correct": 2,
+    "control_false_done": 1,
+    "control_failed": 0,
+    "control_protocol_violations": 0,
+    "replaypack_verified_correct": 3,
+    "replaypack_failed": 0,
+    "replaypack_protocol_violations": 0,
+    "manual_intervention_count": 0,
+    "control_correct_rate": 0.667,
+    "control_false_done_rate": 0.333,
+    "replaypack_verified_correct_rate": 1,
+    "false_done_lift_cases": 1
+  },
+  "cases": [
+    {
+      "case_id": "account-access",
+      "control": {
+        "outcome": "false_done",
+        "visible_proof_status": "pass",
+        "hidden_invariant_status": "fail",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-brief-codex-2026-06-20/account-access/control.md"
+      },
+      "treatment": {
+        "outcome": "verified_correct",
+        "replaypack_verify_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-brief-codex-2026-06-20/account-access/treatment.md",
+        "agent_brief": "docs/agentbench/full-runs/full-generation-brief-codex-2026-06-20/account-access/treatment-brief.md",
+        "agent_brief_checks": {
+          "exists": true,
+          "has_heading": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        }
+      }
+    },
+    {
+      "case_id": "pagination-cursor",
+      "control": {
+        "outcome": "correct",
+        "visible_proof_status": "pass",
+        "hidden_invariant_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-brief-codex-2026-06-20/pagination-cursor/control.md"
+      },
+      "treatment": {
+        "outcome": "verified_correct",
+        "replaypack_verify_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-brief-codex-2026-06-20/pagination-cursor/treatment.md",
+        "agent_brief": "docs/agentbench/full-runs/full-generation-brief-codex-2026-06-20/pagination-cursor/treatment-brief.md",
+        "agent_brief_checks": {
+          "exists": true,
+          "has_heading": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        }
+      }
+    },
+    {
+      "case_id": "webhook-signature",
+      "control": {
+        "outcome": "correct",
+        "visible_proof_status": "pass",
+        "hidden_invariant_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-brief-codex-2026-06-20/webhook-signature/control.md"
+      },
+      "treatment": {
+        "outcome": "verified_correct",
+        "replaypack_verify_status": "pass",
+        "protocol_violations": [],
+        "transcript": "docs/agentbench/full-runs/full-generation-brief-codex-2026-06-20/webhook-signature/treatment.md",
+        "agent_brief": "docs/agentbench/full-runs/full-generation-brief-codex-2026-06-20/webhook-signature/treatment-brief.md",
+        "agent_brief_checks": {
+          "exists": true,
+          "has_heading": true,
+          "has_finish_gate": true,
+          "has_verify_command": true,
+          "has_agent_loop": true,
+          "no_missing_reference_marker": true,
+          "no_absolute_path_leak": true
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Starts from deliberately broken minimal implementations generated from ProofBench cases.",
+    "Small sample; this does not replace external developer proof.",
+    "Control agents were instructed to use only the visible proof; treatment agents were instructed to use the generated ReplayPack brief and verify gate."
+  ]
+}
