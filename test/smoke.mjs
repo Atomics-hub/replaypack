@@ -17,6 +17,7 @@ assert.strictEqual(help.status, 0, help.stderr);
 assert.match(help.stdout, /replaypack capture/);
 assert.match(help.stdout, /replaypack verify/);
 assert.match(help.stdout, /replaypack trial/);
+assert.match(help.stdout, /replaypack brief/);
 
 const version = spawnSync(process.execPath, [cli, "--version"], {
   cwd: root,
@@ -38,6 +39,13 @@ const verifyCheck = spawnSync(process.execPath, [path.join(root, "bin/replaypack
 });
 assert.strictEqual(verifyCheck.status, 0);
 assert.match(verifyCheck.stdout, /ReplayPack verify/);
+
+const briefCheck = spawnSync(process.execPath, [path.join(root, "bin/replaypack-brief.mjs"), "--help"], {
+  cwd: root,
+  encoding: "utf8"
+});
+assert.strictEqual(briefCheck.status, 0);
+assert.match(briefCheck.stdout, /ReplayPack brief/);
 
 const wrongRoot = path.join(root, "examples/account-access/wrong");
 cleanupExampleOutput(wrongRoot);
@@ -71,6 +79,32 @@ const fixedVerifyFlagsFirst = spawnSync(
   { cwd: root, encoding: "utf8" }
 );
 assert.strictEqual(fixedVerifyFlagsFirst.status, 0, fixedVerifyFlagsFirst.stderr || fixedVerifyFlagsFirst.stdout);
+
+const fixedBrief = spawnSync(
+  process.execPath,
+  [cli, "brief", "--root", "examples/account-access/fixed", "replaypack/account-access.json"],
+  { cwd: root, encoding: "utf8" }
+);
+assert.strictEqual(fixedBrief.status, 0, fixedBrief.stderr || fixedBrief.stdout);
+assert.match(fixedBrief.stdout, /# ReplayPack Agent Brief/);
+assert.match(fixedBrief.stdout, /Account-scoped export access ignores membership/);
+assert.match(fixedBrief.stdout, /## Finish Gate/);
+assert.match(fixedBrief.stdout, /npx replaypack verify replaypack\/account-access\.json --out dist\/replaypack-verify\.json/);
+assert.match(fixedBrief.stdout, /node bin\/replaypack\.mjs verify replaypack\/account-access\.json --out dist\/replaypack-verify\.json/);
+assert.match(fixedBrief.stdout, /Do not say done until ReplayPack verify passes\./);
+assert.match(fixedBrief.stdout, /issues\/account-access\.md/);
+assert.match(fixedBrief.stdout, /fixtures\/trace\/account-access\.md/);
+assert.doesNotMatch(fixedBrief.stdout, new RegExp(root.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+
+const briefOutPath = path.join(fixedRoot, "dist/agent-brief.md");
+const fixedBriefOut = spawnSync(
+  process.execPath,
+  [cli, "brief", "replaypack/account-access.json", "--out", "dist/agent-brief.md"],
+  { cwd: fixedRoot, encoding: "utf8" }
+);
+assert.strictEqual(fixedBriefOut.status, 0, fixedBriefOut.stderr || fixedBriefOut.stdout);
+assert.match(fixedBriefOut.stdout, /Wrote dist\/agent-brief\.md/);
+assert.match(fs.readFileSync(briefOutPath, "utf8"), /# ReplayPack Agent Brief/);
 
 const readiness = spawnSync(process.execPath, [path.join(root, "scripts/readiness-check.mjs")], {
   cwd: root,

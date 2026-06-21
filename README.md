@@ -57,6 +57,20 @@ node bin/replaypack.mjs --help
 
 ## Verify A Capsule
 
+Generate an agent-ready task brief first:
+
+```bash
+npx replaypack brief replaypack/account-access.json
+```
+
+Or from a checkout:
+
+```bash
+node bin/replaypack.mjs brief --root examples/account-access/fixed replaypack/account-access.json
+```
+
+The brief turns the capsule into a bounded task prompt with issue excerpts, trace excerpts, proof commands, invariant commands, and the exact finish gate.
+
 ```bash
 npx replaypack verify replaypack/account-access.json \
   --out dist/replaypack-verify.json
@@ -93,12 +107,11 @@ npx replaypack capture \
 
 Give the capsule to an agent:
 
-```text
-Use replaypack/account-access.json as the issue brief.
-Make the smallest correct fix.
-Do not say done until replaypack verify passes.
-If verify fails, use the proof/invariant failure to repair the fix and rerun verify.
+```bash
+npx replaypack brief replaypack/account-access.json --out dist/agent-brief.md
 ```
+
+Then paste or attach `dist/agent-brief.md` to the coding agent. The generated brief tells the agent to make the smallest correct fix, run `replaypack verify`, and keep repairing until the verification packet passes.
 
 ## GitHub Actions
 

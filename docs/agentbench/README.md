@@ -115,9 +115,15 @@ Treatment prompt:
 
 ```text
 You are fixing this issue.
-Use the ReplayPack capsule as the task contract.
+Use the ReplayPack capsule or generated ReplayPack brief as the task contract.
 Do not say done until replaypack verify passes.
 If verify fails, use the proof/invariant failure to repair the fix and rerun verify.
+```
+
+For normal agent handoff, generate the prompt surface with:
+
+```bash
+npx replaypack brief replaypack/<issue>.json --out dist/agent-brief.md
 ```
 
 Metrics:

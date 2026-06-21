@@ -19,6 +19,7 @@ if (command === "--version" || command === "-v") {
 }
 
 const scriptByCommand = {
+  brief: path.join(here, "replaypack-brief.mjs"),
   capture: path.join(here, "replaypack-capture.mjs"),
   verify: path.join(here, "replaypack-verify.mjs"),
   trial: path.join(packageRoot, "scripts", "run-external-trial.mjs")
@@ -88,12 +89,15 @@ function printHelp() {
   console.log(`ReplayPack
 
 Usage:
+  replaypack brief replaypack/issue.json
+  replaypack brief --root examples/account-access/fixed replaypack/account-access.json
   replaypack capture --proof-command "npm test -- ..." --out replaypack/issue.json
   replaypack verify replaypack/issue.json
   replaypack verify --root examples/account-access/fixed replaypack/account-access.json
   replaypack trial
 
 Commands:
+  brief    Print an agent-ready task brief from a capsule.
   capture   Run a failing proof command and write a portable capsule.
   verify    Run the capsule proof command and invariant commands.
   trial     Run the 10-minute external developer trial and write a receipt.
